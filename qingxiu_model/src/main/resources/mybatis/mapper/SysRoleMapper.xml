@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.citysmart.ucenter.mybatis.mapper.SysRoleMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.citysmart.ucenter.mybatis.model.SysRole">
+        <id column="id" property="id"/>
+        <result column="code" property="code"/>
+        <result column="sort_index" property="sortIndex"/>
+        <result column="name" property="name"/>
+        <result column="remark" property="remark"/>
+        <result column="is_system" property="isSystem"/>
+        <result column="role_state" property="roleState"/>
+    </resultMap>
+    <select id="selectListByVo" resultMap="BaseResultMap">
+        select
+          role.*
+        FROM
+        <if test="vo.deptId!=null">
+            t_sys_org_role as org_role,
+        </if>
+            t_sys_role as role
+        <where>
+            <if test="vo.deptId!=null">
+              AND
+                org_role.role_id = role.id
+              AND
+                org_role.org_id=#{vo.deptId}
+            </if>
+            <if test="vo.name !=null and vo.name != ''">
+              AND
+                role.name like concat('%',#{vo.name},'%')
+            </if>
+            <if test="vo.roleState!=null">
+                AND
+                 role.role_state=#{vo.roleState}
+            </if>
+        </where>
+    </select>
+    
+    <select id="countFromActDeModel" resultType="java.lang.Integer">
+        ${sql}
+    </select>
+
+    <select id="countFromActRuIdentitylink" resultType="java.lang.Integer">
+        ${sql}
+    </select>
+
+</mapper>

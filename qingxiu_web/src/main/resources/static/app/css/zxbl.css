@@ -1,0 +1,184 @@
+.subpageDIV6{padding:20px 0px;border-bottom: 1px solid #ccc;}
+.jeiguoTitle{
+    height: 20px;
+    line-height: 20px;
+    border-left: 8px solid #006ec5;
+    font-size: 16px;
+    color: #006ec5;
+    padding-left: 10px;
+    font-weight: normal;
+    margin-bottom: 15px;
+    position: relative;
+}
+.zixunDiv1 tbody td {
+    word-break: break-all;
+    vertical-align:top;
+    padding: 5px;
+}
+.zixunDiv1 td b {
+    color: #555;
+    font-weight: bold;
+    background: url(../../images/zxbl/list02-icon.png) no-repeat left center;
+    padding-left: 10px;
+    font-size:15px;
+}
+.sqsmbt{
+    background: url(../../images/zxbl/bt01.png) no-repeat;
+    width: 76px;
+    height: 26px;
+    display: inline-block;
+    text-align: center;
+    line-height: 26px;
+    color: #fff;
+    border:0px;
+    margin-right:5px;
+    cursor: pointer;
+}
+.grbs_right_center_con {
+    border: 1px solid #d5d5d5;
+    border-bottom: 0px;
+}
+.grbs_right_center_con .hover {
+    background: #f2f9fe;
+}
+.grbs_right_center_con .xzsp{padding:0px 20px 10px;}
+.xzsp {
+    padding: 0px 20px;
+    border-bottom: 1px solid #d5d5d5;
+}
+.xzsp .title03 span {
+    margin-left: 0px;
+}
+.xzsp_con {
+    padding: 10px 0px;
+}
+.xzsp_con p {
+    font-size: 15px;
+
+    padding: 5px 10px 5px 25px;
+    border-bottom: 1px solid #d5d5d5;
+    background: url(../../images/zxbl/list02.jpg) no-repeat 5px 15px;
+}
+.xzsp_con p a {
+    font-size: 14px;
+    color: #bc6d5c;
+}
+.xzsp_con ul li {
+    background: url(../../images/zxbl/list.jpg) no-repeat 30px 20px;
+    padding: 10px 8px 10px 40px;
+    border-bottom: 1px dashed #d5d5d5;
+}
+.xzsp_con ul li a {
+    color: #bc6d5c;
+}
+.xzsp_con_list .hover {
+    color: #bc6d5c;
+    background: #fff url(../../images/zxbl/list02.jpg) no-repeat 5px 15px;
+}
+.xzsp_con_list02 ul li {
+    background-position: 10px 20px;
+    padding-left: 20px;
+}
+.sqtb,.sqxx{width:100%;}
+.sqtb tr td,.sqxx tr td{padding:5px;}
+.ling,.lin{border:1px solid #ccc;padding:5px;width:70%;}
+.sqtb tr td label,.sqxx tr td label{color:#f00;}
+.table-result td table tr td{border:0px;}
+/*查询结果表格*/
+.table-result{
+    width: 100%;
+    border-collapse: collapse;
+}
+.table-result th,.table-result td{
+    padding: 10px 5px;
+    border:1px solid #efeff0;
+    font-size:14px;
+    word-break: break-all;
+}
+.table-result th{
+    color: #0662ad;
+    background-color: #dfecef;
+}
+.table-result td{
+    color: #666;
+}
+.table-result tr:hover td{
+    background-color: #e6ecf7;
+}
+.table-result a{
+    margin:0 5px;
+    color: #0662ad;
+}
+.table-result a:hover{
+    color: #FFA448;
+}
+.table-result .a1{
+    color:#4886d3;
+    text-decoration: underline;
+}
+.table-result .a2{
+    color:#3282b5;
+    text-decoration: underline;
+}
+.subButtom{margin:20px 0px;text-align:center;}
+#submitBtn,.submitBtn{
+    background: url(../../images/zxbl/img33.png) no-repeat;
+    width: 159px;
+    height: 45px;
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+    border:0px;
+    cursor: pointer;
+}
+#submitBtn,.submita{
+    background: url(../../images/zxbl/img33.png) no-repeat;
+    width: 159px;
+    height: 45px;
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+    border:0px;
+    cursor: pointer;
+}
+.fanhuiBtn{
+    background: url(../../images/zxbl/img36.png) no-repeat;
+    width: 159px;
+    height: 45px;
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+    border:0px;
+    cursor: pointer;
+}
+.success_msg{
+    margin:60px 0;
+    line-height: 30px;
+}
+.success_msg span{
+    line-height: 30px;
+}
+.submitBtn{
+    background: url(../../images/zxbl/img33.png) no-repeat;
+    width: 159px;
+    height: 45px;
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+    border:0px;
+    cursor: pointer;
+}
+.submita{
+    background-color:#0C70C4;
+    width: 72px;
+    height: 25px;
+    color: #fff;
+    font-size: 15px;
+    text-align: center;
+    border:0px;
+    cursor: pointer;
+    float: right;
+    color: #fff !important;
+    border-radius:5px;
+    line-height: 25px;
+}

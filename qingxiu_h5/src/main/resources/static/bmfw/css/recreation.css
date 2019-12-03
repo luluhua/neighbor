@@ -1,0 +1,189 @@
+ul {
+    padding-left: 0px;
+}
+
+ul li {
+    list-style-type: none;
+}
+
+a {
+    color: #000000;
+}
+
+.mui-bar {
+    background-color: #fff;
+}
+
+.mui-content {
+    background-color: #FFF !important;
+}
+
+.box {
+    width: 100%;
+    margin: auto;
+}
+
+.fuser_ul {
+    width: 100%;
+
+}
+
+.fuser_ul li a {
+    padding: 10px 0 10px 0;
+    display: block;
+    width: 96%;
+    margin: auto;
+}
+
+.img_vessel {
+    width: 30%;
+    float: left;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.img_vessel img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.fuser_ul li {
+    border-bottom: 1px solid #E4E4E4;
+}
+
+.fuser_ul li b {
+    padding: 5px 0 0 10px;
+    position: relative;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+
+.fuser_ul li p {
+    padding: 5px 0 0 10px;
+    position: relative;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    color: #666;
+    /*letter-spacing: 3px;*/
+
+}
+
+.fuser_ul li text {
+    display: inline-block;
+    padding: 0px 0 0 10px;
+    font-size: 14px;
+    color: #666;
+    float: left;
+}
+
+.fuser_ul li span {
+    display: inline-block;
+    /*padding: 2px 0 0 0;*/
+    color: #666;
+    width: 80%;
+    padding-left: 10px;
+    font-size: 14px;
+}
+
+.saixuan {
+    width: 90%;
+    margin: auto;
+    height: 40px;
+    border-bottom: 1px solid #E4E4E4;
+    /*padding-top: 10px;*/
+
+}
+
+.saixuan a {
+    display: inline-block;
+    float: right;
+}
+
+.saixuan span {
+    padding-left: 10px;
+    font-size: 16px;
+}
+
+.fyuaiwre {
+    width: 90%;
+    margin: auto;
+    padding: 20px 0 20px 0;
+}
+
+.fyuaiwre span {
+    display: inline-block;
+    width: 26%;
+    height: 25px;
+    margin: 5px auto 0 10px;
+    font-size: 12px;
+    padding-bottom: 20px;
+    text-align: center;
+    border: 1px solid #E3E3E3;
+}
+
+.hfase {
+    width: 100%;
+    margin: auto;
+}
+
+.hfase button {
+    width: 50%;
+    float: left;
+    border: 1px solid #E3E3E3;
+    border-radius: 0px;
+}
+
+.bu1 {
+    color: #0062CC;
+}
+
+.bu2 {
+    color: #fff;
+    background-color: #0062CC;
+}
+
+.zhanwu {
+    margin-top: 150px;
+}
+
+.zhanwu img {
+    width: 100%;
+}
+
+.rec_info {
+    display: block;
+    margin-top: -20px;
+}
+
+.khfhwe {
+    width: 70%;
+    float: right;
+    margin-top: -5px;
+}
+
+.phone_ye {
+    color: #0C70C4 !important;
+
+}
+
+.klaskle {
+    width: 70%;
+    float: right
+}
+
+.bfuihawre {
+    width: 70%;
+    float: right;
+}
+
+.ydjaw {
+    width: 96%;
+    margin: auto;
+}
+

@@ -1,0 +1,148 @@
+ul {
+	padding-left: 0px;
+}
+ul li{
+list-style-type:none;
+}
+a{
+	color: #000000;
+}
+body{
+	background-color: #FFF;
+}
+.yirtj{
+	background-color: #FFF;
+}.jfoiwjer{
+	width: 90%;
+	margin: auto;
+}
+.top_huihewr{
+	width: 100%;
+	height: 300px;
+	margin: 30px auto;
+	background-color: #F3F3F3;
+	border-radius: 8px;
+}
+.top_huihewr img{
+	width: 100%;
+}
+.huotose_lir{
+	width: 90%;
+	margin: 10px auto;
+}
+
+.didian{
+	width: 20px;
+	height: 20px;
+	display:block;
+	background:url(../images/icon/didian.png)no-repeat;
+    background-repeat: no-repeat;
+    background-size: 100% 100%; 
+    float: left;
+}
+.fsru{
+	padding-top: 10px;
+
+}
+.rews{
+
+}
+.rew{
+	
+}
+.hfasr p{
+	width: 90%;
+	float: right;
+	font-size: 14px;
+
+}
+.shijian{
+	width: 20px;
+	height: 20px;
+	display:block;
+	background:url(../images/icon/shijian.png)no-repeat;
+    background-repeat: no-repeat;
+    background-size: 100% 100%; 
+    float: left;
+}
+.fufeis{
+	width: 20px;
+	height: 20px;
+	display:block;
+	background:url(../images/icon/qianbao.png)no-repeat;
+    background-repeat: no-repeat;
+    background-size: 100% 100%; 
+    float: left;
+}
+.fhw{
+	color: #007DDB;
+}
+.zhuifher img{
+	width: 30%;
+	float: left;
+}
+
+.zubaf{
+	color: #007DDB;
+	display: block;
+}
+.bitoti{
+	font-size: 14px;
+}
+.hfoaihwr{
+	padding-top: 4px;
+	font-size: 12px;
+}
+.zhuifher{
+	overflow:auto;
+	border-bottom: 1px solid #E4E4E4;
+}
+.tyueir{
+	
+	width: 68%;
+	float: left;
+}
+.conuter{
+	padding-top: 30px;
+}
+.fksakr{
+	color: #007DDB;
+}
+.congksjer{
+	padding-top: 20px;
+}
+.fhiuawhe{
+	display: block;
+	text-align: center;
+	font-size: 12px;
+	color: #8f8f94;
+}
+.congksjer .fjioaw{
+	padding-top: 30px;
+	line-height: 30px;
+	font-size: 12px;
+}
+.safsdf{
+	padding: 30px 0 30px 0;
+}
+.fowimg{
+	width: 100%;
+	margin: auto;
+}
+.fiwtest{
+	padding: 30px 0 0 0;
+}
+.freas{
+	padding: 30px 0 30px 0;
+}
+.fjioa{
+	text-align: center;
+}
+.erwema{
+	display: block;
+	width: 50%;
+	margin: auto;
+}
+.fjioawhroewe{
+	height: 50px;	
+}

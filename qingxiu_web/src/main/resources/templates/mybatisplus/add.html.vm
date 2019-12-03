@@ -1,0 +1,60 @@
+#set($layout_dl='<#include "../../common/layout_dl.ftl">')
+$layout_dl
+<@header>
+</@header>
+<@body>
+<form class="form-horizontal layui-form layui-form-pane" method="post" action="#if(${package.ModuleName})/${package.ModuleName}#end/${table.entityPath}/doAdd">
+    <div class="box-body">
+    #foreach($field in ${table.fields})
+        $!{field.nullable}
+        #if(!${field.keyFlag}&&"$field.propertyName"!="dtCreate"&&"$field.propertyName"!="isDeleted")
+            #if("$!field.comment" != "")
+                #set($common=$field.comment)
+            #else
+                #set($common=$field.propertyName)
+            #end
+            #if(${field.propertyType.equals("String")})
+                <div class="form-group">
+                    <label for="$field.propertyName" class="col-sm-2 control-label">$common</label>
+                    <div class="col-sm-10">
+                        <input type="text" id="$field.propertyName" name="$field.propertyName" class="form-control" placeholder="请输入$common"  />
+                    </div>
+                </div>
+            #end
+            #if(${field.propertyType.equals("Integer")})
+                <div class="form-group">
+                    <label for="$field.propertyName" class="col-sm-2 control-label">$common</label>
+                    <div class="col-sm-10">
+                        <input type="number" id="$field.propertyName" name="$field.propertyName" class="form-control" placeholder="请输入$common"  />
+                    </div>
+                </div>
+##                <div class="form-group">
+##                    <label class="col-sm-2 control-label">$common</label>
+##                    <div class="col-sm-10">
+##                        <select name="$field.propertyName" class="form-control select2" lay-ignore style="width: 100%;" lay-verify="required">
+##                            <#list deptList as dept>
+##                                <option value="${(dept.id)!}">${(dept.deptName)!}</option>
+##                            </#list>
+##                        </select>
+##                    </div>
+##                </div>
+            #end
+            #if(${field.propertyType.equals("Date")})
+                <div class="form-group">
+                    <label for="$field.propertyName" class="col-sm-2 control-label">$common</label>
+                    <input type="text" name="$field.propertyName" class="form-control date" id="$field.propertyName" placeholder="开始日期  - 结束日期" style="width: 228px;">
+                </div>
+            #end
+        #end
+    #end
+        <div class="form-group">
+            <label class="col-sm-2 control-label">&nbsp;</label>
+            <div class="col-sm-10">
+                <button type="submit" class="btn btn-success" lay-submit lay-filter="submit"><i class="fa fa-save"></i>  提 交</button>
+            </div>
+        </div>
+    </div><!-- /.box-body -->
+</form>
+</@body>
+<@footer>
+</@footer>

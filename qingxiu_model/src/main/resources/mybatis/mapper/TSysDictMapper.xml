@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.citysmart.ucenter.mybatis.mapper.TSysDictMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.citysmart.ucenter.mybatis.model.TSysDict">
+		<id column="id" property="id" />
+		<result column="code" property="code" />
+		<result column="value" property="value" />
+		<result column="label" property="label" />
+		<result column="type" property="type" />
+		<result column="parent_id" property="parentId" />
+		<result column="sort_index" property="sortIndex" />
+		<result column="is_deleted" property="isDeleted" />
+		<result column="remark" property="remark" />
+		<result column="project_id" property="projectId" />
+		<result column="module_id" property="moduleId" />
+		<result column="dt_create" property="dtCreate" />
+
+	</resultMap>
+	<select id="getRecordStatusLabel" resultType="java.lang.String">
+		select label from t_sys_dict where type='record_status' and value=#{value}
+	</select>
+
+</mapper>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.citysmart.ucenter.mybatis.mapper.TianqiCityMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.citysmart.ucenter.mybatis.model.TianqiCity">
+    <result column="id" property="id" />
+        <result column="cityEn" property="cityEn" />
+        <result column="cityZh" property="cityZh" />
+        <result column="provinceEn" property="provinceEn" />
+        <result column="provinceZh" property="provinceZh" />
+        <result column="countryEn" property="countryEn" />
+        <result column="countryZh" property="countryZh" />
+        <result column="leaderEn" property="leaderEn" />
+        <result column="leaderZh" property="leaderZh" />
+        <result column="lat" property="lat" />
+        <result column="lng" property="lng" />
+    </resultMap>
+
+
+</mapper>

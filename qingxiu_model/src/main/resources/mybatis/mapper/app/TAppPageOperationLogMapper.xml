@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.citysmart.ucenter.mybatis.mapper.app.TAppPageOperationLogMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.citysmart.ucenter.mybatis.model.app.TAppPageOperationLog">
+    <result column="id" property="id" />
+        <result column="model" property="model" />
+        <result column="name" property="name" />
+        <result column="url" property="url" />
+        <result column="key" property="key" />
+        <result column="fun_name" property="funName" />
+        <result column="start_time" property="startTime" />
+        <result column="end_time" property="endTime" />
+        <result column="time_length" property="timeLength" />
+        <result column="equipment_token" property="equipmentToken" />
+        <result column="page_type" property="pageType" />
+        <result column="mobile_platform" property="mobilePlatform" />
+        <result column="app_version" property="appVersion" />
+        <result column="package_name" property="packageName" />
+        <result column="val" property="val" />
+        <result column="gid" property="gid" />
+        <result column="request_ip" property="requestIp" />
+        <result column="mobile_system_version" property="mobileSystemVersion" />
+        <result column="mobile_model" property="mobileModel" />
+        <result column="dt_create" property="dtCreate" />
+        <result column="is_deleted" property="isDeleted" />
+    </resultMap>
+
+</mapper>

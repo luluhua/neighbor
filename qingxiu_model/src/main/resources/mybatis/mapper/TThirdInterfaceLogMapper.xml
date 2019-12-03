@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.citysmart.ucenter.mybatis.mapper.TThirdInterfaceLogMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.citysmart.ucenter.mybatis.model.TThirdInterfaceLog">
+    <result column="id" property="id" />
+        <result column="interface_id" property="interfaceId" />
+        <result column="interface_code" property="interfaceCode" />
+        <result column="req_pam" property="reqPam" />
+        <result column="res_content" property="resContent" />
+        <result column="dt_create" property="dtCreate" />
+        <result column="is_deleted" property="isDeleted" />
+        <result column="is_ok" property="isOk" />
+        <result column="group_log" property="groupLog" />
+        <result column="u_id" property="uId" />
+    </resultMap>
+
+</mapper>

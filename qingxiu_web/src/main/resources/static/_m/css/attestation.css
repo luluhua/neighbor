@@ -1,0 +1,145 @@
+ul {
+    padding-left: 0px;
+}
+
+ul li {
+    list-style-type: none;
+}
+
+a {
+    color: #000000;
+}
+
+.mui-content {
+    background-color: #FFF !important;
+}
+
+.mui-bar {
+    background-color: #fff;
+}
+
+.box {
+    width: 100%;
+    margin: auto;
+    background-color: #fff;
+}
+
+.top-background {
+    display: block;
+    background: url(../images/top-background.png) no-repeat;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    width: 100%;
+    height: 300px;
+}
+
+.top-background b {
+    display: block;
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    padding-top: 10px;
+    color: #FFF;
+    font-size: 22px;
+}
+
+.top-background span {
+    width: 94%;
+    margin: auto;
+    display: block;
+    font-size: 12px;
+    text-align: center;
+    padding-top: 12px;
+    color: #FFF;
+}
+
+.img_open {
+    width: 80%;
+    margin: auto;
+    padding-top: 40px;
+}
+
+.img_open button {
+    width: 100%;
+    height: 40px;
+    margin: auto;
+    background-color: #33B7FF;
+    border: #33B7FF;
+    color: #FFF;
+    font-weight: bold;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+.img_ingse {
+    width: 80%;
+    margin: auto;
+    padding-top: 20px;
+}
+
+.img_living {
+    padding-top: 10px;
+}
+
+.img_ingse b {
+    color: #8F8F94;
+    font-size: 14px;
+}
+
+.img_living img {
+    padding-left: 4px;
+    width: 34%;
+}
+
+.top-background img {
+    display: block;
+    margin: auto;
+    width: 54.4%;
+    height: 174px;
+    padding-top: 58px;
+}
+
+.discern-result {
+    width: 100%;
+    margin: 20px auto;
+}
+
+.discern-result text {
+    display: block;
+    width: 90%;
+    margin: auto;
+    color: #48BEFF;
+}
+
+.discern-result ul {
+    width: 100%;
+    margin: 4px auto;
+}
+
+.discern-result ul li {
+    height: 40px;
+    line-height: 40px;
+}
+
+.discern-result ul li div {
+    width: 90%;
+    margin: auto;
+}
+
+.discern-result ul li span:nth-child(1) {
+    width: 20%;
+    float: left;
+    text-align: -webkit-right;
+    display: -webkit-inline-box;
+}
+
+.discern-result ul li span:nth-child(2) {
+
+    text-align: -webkit-left;
+    display: -webkit-inline-box;
+    padding-left: 20px;
+}
+
+.discern-result ul li:nth-child(odd) {
+    background-color: #E4E4E4;
+}

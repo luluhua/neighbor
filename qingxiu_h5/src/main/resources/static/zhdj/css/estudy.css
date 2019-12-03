@@ -1,0 +1,58 @@
+ul {
+    padding-left: 0px;
+}
+
+ul li {
+    list-style-type: none;
+}
+
+a {
+    color: #000000;
+}
+
+.mui-content {
+    background: url(../images/bg-d.png) no-repeat;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    display: block;
+
+}
+
+.box {
+    width: 100%;
+    margin: auto;
+    padding: 0 0 150px 0;
+}
+
+.conmuse_info {
+    width: 90%;
+    margin: 30px auto;
+}
+
+.conmuse_info h2 {
+    display: block;
+    color: #EC3C02;
+    text-align: center;
+}
+
+.conmuse_info p {
+    margin-top: 20px;
+    color: #000000;
+    line-height: 26px;
+    font-size: 16px;
+}
+
+.doeimg {
+    width: 94%;
+    margin: auto;
+    padding: 100px 0 200px 0;
+}
+
+.doeimg img {
+    position: fixed;
+    width: 30%;
+    z-index: 999;
+    right: 10px;
+    top: 500px;
+
+}

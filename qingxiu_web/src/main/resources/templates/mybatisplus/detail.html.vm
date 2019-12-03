@@ -1,0 +1,41 @@
+#set($layout_dl='<#include "../../common/layout_dl.ftl">')
+$layout_dl
+<@header>
+</@header>
+<@body>
+<div class="box-body">
+    #foreach($field in ${table.fields})
+        #if(!${field.keyFlag}&&"$field.propertyName"!="dtCreate"&&"$field.propertyName"!="isDeleted")
+            #if("$!field.comment" != "")
+                #set($common=$field.comment)
+            #else
+                #set($common=$field.propertyName)
+            #end
+            #if(${field.propertyType.equals("String")})
+                <div class="form-group">
+                    <label for="$field.propertyName" class="col-sm-2 control-label">$common</label>
+                    <div class="col-sm-10">
+                        <input type="text" disabled id="$field.propertyName" name="$field.propertyName" value="${(entity.$field.propertyName)!}" class="form-control"  />
+                    </div>
+                </div>
+            #end
+            #if(${field.propertyType.equals("Integer")})
+                <div class="form-group">
+                    <label for="$field.propertyName" class="col-sm-2 control-label">$common</label>
+                    <div class="col-sm-10">
+                        <input type="number" disabled id="$field.propertyName" name="$field.propertyName" value="${(entity.$field.propertyName)!}" class="form-control"  />
+                    </div>
+                </div>
+            #end
+            #if(${field.propertyType.equals("Date")})
+                <div class="form-group">
+                    <label for="$field.propertyName" class="col-sm-2 control-label">$common</label>
+                    <input type="text" disabled name="$field.propertyName" class="form-control" value="${(entity.$field.propertyName?string('yyyy-MM-dd'))!}" id="$field.propertyName" >
+                </div>
+            #end
+        #end
+    #end
+</div>
+</@body>
+<@footer>
+</@footer>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.citysmart.ucenter.mybatis.mapper.app.TAppUserSharedetailMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.citysmart.ucenter.mybatis.model.app.TAppUserSharedetail">
+    <result column="id" property="id" />
+        <result column="dt_create" property="dtCreate" />
+        <result column="is_deleted" property="isDeleted" />
+        <result column="dt_download" property="dtDownload" />
+        <result column="dt_activation" property="dtActivation" />
+        <result column="dt_browse" property="dtBrowse" />
+        <result column="share_code" property="shareCode" />
+        <result column="equipmentToken" property="equipmentToken" />
+        <result column="mobileSystemVersion" property="mobileSystemVersion" />
+        <result column="appVersion" property="appVersion" />
+        <result column="mobileModel" property="mobileModel" />
+        <result column="packageName" property="packageName" />
+        <result column="clientIp" property="clientIp" />
+        <result column="screen_width" property="screenWidth" />
+        <result column="screen_height" property="screenHeight" />
+        <result column="webgl_version" property="webglVersion" />
+        <result column="context" property="context" />
+        <result column="vendor" property="vendor" />
+        <result column="webgl_sl_version" property="webglSlVersion" />
+        <result column="max_texture_size" property="maxTextureSize" />
+        <result column="renderer" property="renderer" />
+        <result column="verify_type" property="verifyType" />
+        <result column="verify_state" property="verifyState" />
+        <result column="mobile" property="mobile" />
+    </resultMap>
+
+</mapper>

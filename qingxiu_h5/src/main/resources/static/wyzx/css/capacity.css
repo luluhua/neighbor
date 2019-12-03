@@ -1,0 +1,107 @@
+ul {
+    padding-left: 0px;
+}
+
+ul li {
+    list-style-type: none;
+}
+
+a {
+    color: #000000;
+}
+
+.mui-bar {
+    background-color: #fff;
+}
+
+#boodylie {
+    background-color: #EBF0F5;
+}
+
+.box {
+    width: 100%;
+    margin: auto;
+}
+
+.cap_title {
+    width: 94%;
+    margin: auto;
+    height: 46px;
+    padding-top: 18px;
+}
+
+.cap_title b {
+    font-size: 14px;
+}
+
+.type_option {
+    width: 100%;
+    background-color: #fff;
+}
+
+.option {
+    width: 94%;
+    margin: auto;
+    padding: 10px 0 10px 0;
+}
+
+.option div {
+    width: 33.33333333%;
+    float: left;
+    padding: 8px 0 10px 0;
+}
+
+.option a {
+    width: 80%;
+    margin: auto;
+    font-size: 14px;
+    border: 1px solid #9A9A9A;
+    padding: 4px 5px 4px 5px;
+    border-radius: 6px;
+    display: block;
+    text-align: center;
+    color: #424242;
+}
+
+.pitch_on {
+    background-color: #3594E5;
+    border: 1px solid #3594E5 !important;
+    color: #fff !important;
+}
+
+.submit_open {
+    height: 150px;
+}
+
+.op {
+    width: 92%;
+    margin: auto;
+    padding: 46px 0 60px 0;
+}
+
+.op a {
+    display: block;
+    width: 40%;
+    height: 46px;
+    background-color: #3594E5;
+    border-radius: 26px;
+    float: right;
+}
+
+.icon {
+    width: 20px;
+    height: 20px;
+    background: url(../images/icon/tiwen.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    display: block;
+    margin: 14px 0 0 20px;
+    float: left;
+}
+
+.op b {
+    display: block;
+    color: #fff;
+    margin: 14px 5px 0 10px;
+    float: left;
+}

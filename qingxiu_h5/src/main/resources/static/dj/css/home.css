@@ -1,0 +1,127 @@
+body{
+	margin: 0;
+}
+.home_top{
+	position:absolute;
+	top: 0;
+	left: 0;
+	width:100%;
+	height:200px;
+	min-width: 200px;
+	z-index:-10;
+	zoom: 1;
+	background-color: #fff;
+	background: url(../images/home_top.png) no-repeat;
+	background-size: cover;
+	-webkit-background-size: cover;
+	-o-background-size: cover;
+	background-position: center 0;
+}
+.home_body{
+	position:absolute;
+	top: 160px;
+	/*bottom:0;*/
+	width: 100%;
+	/*height: 100%;*/
+	overflow:scroll;
+}
+.homt_top_content{
+	margin: 80px 10px 10px 10px;
+	width: 100%;
+}
+.homt_top_content_left{
+	float: left;
+}
+.homt_top_content_left img{
+}
+.homt_top_content_right{
+	float: left;
+	margin-left: 10px;
+	color: #FFFFFF;
+	font-size: 18px;
+}
+.home_top_content_sel_div{
+	clear: both;
+	padding: 5px 5px 5px 0px;
+	z-index: 9999;
+}
+.home_top_content_sel_div span{
+	background-color: #EC971F;
+	padding: 2px;
+	font-size: 15px;
+}
+.home_men{
+	margin: 10px 20px;
+	background-color: #FFFFFF;
+	height: 80px;
+	/* margin-top: 160px; */
+	border-radius:5px;
+	border: 1px #f1efef solid;
+	box-shadow:0px 15px 10px -15px #ccc;
+	
+}
+.home_men_1{
+	padding: 10px;
+	text-align: center;
+	float: left;
+	width: 40%;
+	border-right-height: 40px;
+	margin-top: 10px;
+}
+.home_men_2{
+	border-right: 1px rgb(243,181,183) solid;
+	width: 1px;
+	float: left;
+	height: 45%;
+	margin-top: 20px;
+	margin-left: 10px;
+}
+.home_men_3{
+	padding: 10px;
+	text-align: center;
+	float: left;
+	width: 40%;
+	margin-top: 10px;
+	margin-left: 10px;
+}
+.home_men_span{
+	font-size: 15px;
+	color: #C7C7CC;
+}
+.content{
+	margin: 20px auto;
+	width: 90%;
+}
+.content_title{
+	font-size: 17px;
+	float: left;
+	/*margin-left:10px;*/
+}
+.content_select{
+	float: right;
+	border: 1px rgb(237,226,226) solid;
+	padding: 3px;
+	background-color: #FFFFFF;
+	/*margin-right:20px;*/
+}
+.content_a{
+	padding-top: 20px;
+}
+.content_c{
+	/*width: 90%;*/
+	margin: 15px 0px;
+	padding: 10px;
+	box-shadow:1px 1px 5px 1px #ccc;
+	border-radius:5px;
+	font-size: 15px;
+}
+.content_txt{
+	/*width: 300px;*/
+	overflow: hidden; 
+	white-space:nowrap; 
+	text-overflow:ellipsis;
+}
+.content_txt span{
+	color: #C7C7CC;
+	margin-right: 10px;
+}

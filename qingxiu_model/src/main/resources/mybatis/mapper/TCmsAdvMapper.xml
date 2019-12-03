@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.citysmart.ucenter.mybatis.mapper.TCmsAdvMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.citysmart.ucenter.mybatis.model.TCmsAdv">
+        <id column="id" property="id"/>
+        <result column="advpos_id" property="advposId"/>
+        <result column="adv_title" property="advTitle"/>
+        <result column="adv_remark" property="advRemark"/>
+        <result column="link_url" property="linkUrl"/>
+        <result column="link_target" property="linkTarget"/>
+        <result column="ref_type" property="refType"/>
+        <result column="adv_type" property="advType"/>
+        <result column="dt_start" property="dtStart"/>
+        <result column="dt_end" property="dtEnd"/>
+        <result column="status" property="status"/>
+        <result column="sort_index" property="sortIndex"/>
+        <result column="dt_create" property="dtCreate"/>
+        <result column="dt_update" property="dtUpdate"/>
+        <result column="is_deleted" property="isDeleted"/>
+        <result column="content" property="content"/>
+    </resultMap>
+
+
+</mapper>

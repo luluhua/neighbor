@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.citysmart.ucenter.mybatis.mapper.oauth2.OauthClientsMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.citysmart.ucenter.mybatis.model.oauth2.OauthClients">
+    <result column="id" property="id" />
+        <result column="clientId" property="clientId" />
+        <result column="resourceIds" property="resourceIds" />
+        <result column="resources" property="resources" />
+        <result column="isSecretRequired" property="isSecretRequired" />
+        <result column="clientSecret" property="clientSecret" />
+        <result column="clientSecretPlaintext" property="clientSecretPlaintext" />
+        <result column="isScoped" property="isScoped" />
+        <result column="scope" property="scope" />
+        <result column="authorizedGrantTypes" property="authorizedGrantTypes" />
+        <result column="registeredRedirectUri" property="registeredRedirectUri" />
+        <result column="authorities" property="authorities" />
+        <result column="isAutoApprove" property="isAutoApprove" />
+        <result column="accessTokenValiditySeconds" property="accessTokenValiditySeconds" />
+        <result column="refreshTokenValiditySeconds" property="refreshTokenValiditySeconds" />
+        <result column="createTime" property="createTime" />
+        <result column="modifyTime" property="modifyTime" />
+        <result column="applicationProvider" property="applicationProvider" />
+        <result column="is_verify_domainName" property="isVerifyDomainName" />
+        <result column="is_verify_ip" property="isVerifyIp" />
+        <result column="request_ip" property="requestip" />
+    </resultMap>
+
+</mapper>

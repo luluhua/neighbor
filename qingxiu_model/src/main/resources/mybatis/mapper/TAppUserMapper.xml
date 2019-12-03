@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.citysmart.ucenter.mybatis.mapper.TAppUserMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.citysmart.ucenter.mybatis.model.TAppUser">
+        <id column="id" property="id"/>
+        <result column="gid" property="gid"/>
+        <result column="id_card" property="idCard"/>
+        <result column="mobile" property="mobile"/>
+        <result column="password" property="password"/>
+        <result column="user_type" property="userType"/>
+        <result column="avatar" property="avatar"/>
+        <result column="gender" property="gender"/>
+        <result column="status" property="status"/>
+        <result column="auth_status" property="authStatus"/>
+        <result column="login_count" property="loginCount"/>
+        <result column="last_login_date" property="lastLoginDate"/>
+        <result column="dt_create" property="dtCreate"/>
+        <result column="is_deleted" property="isDeleted"/>
+        <result column="share_code" property="shareCode"/>
+
+    </resultMap>
+
+
+    <select id="booleanBysql" resultType="java.lang.Integer">
+		${value}
+	</select>
+    <select id="getcontactPhone" resultType="java.lang.String">
+        ${value}
+    </select>
+    <select id="getUserName" resultType="java.lang.String">
+        select username from t_app_user where id=#{apuId}
+    </select>
+
+    <select id="selectUserByUseridsds" resultType="com.citysmart.ucenter.mybatis.model.TAppUser"
+            parameterType="java.lang.String">
+        SELECT u.`id`,u.`username` from `t_app_user` u where u.`id` in (#{userids,jdbcType=VARCHAR})
+
+    </select>
+
+    <select id="countUserCreateByDay" resultType="com.citysmart.ucenter.mybatis.entity.vo.EPublicVo">
+        ${sql}
+    </select>
+
+    <select id="countUserAuthStatus" resultType="com.citysmart.ucenter.mybatis.entity.vo.EPublicVo">
+        ${sql}
+    </select>
+
+    <select id="countUserAccountType" resultType="com.citysmart.ucenter.mybatis.entity.vo.EPublicVo">
+        ${sql}
+    </select>
+
+    <select id="countUserByUserType" resultType="com.citysmart.ucenter.mybatis.entity.vo.EPublicVo">
+        ${sql}
+    </select>
+
+    <select id="countTotalUserNum" resultType="java.lang.Integer">
+        ${sql}
+    </select>
+    <select id="counTodayUserNum" resultType="java.lang.Integer">
+        ${sql}
+    </select>
+    <select id="countCreateNumListByDay" resultType="com.citysmart.ucenter.mybatis.entity.vo.EPublicVo">
+        ${sql}
+    </select>
+    <select id="countAllStatistics" resultType="com.citysmart.ucenter.mybatis.entity.vo.EPublicVo">
+        ${sql}
+    </select>
+</mapper>

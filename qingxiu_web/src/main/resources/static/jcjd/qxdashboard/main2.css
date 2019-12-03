@@ -1,0 +1,567 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 20px;
+    color: #fefefc;
+}
+
+.float-left {
+    float: left;
+}
+
+.float-right {
+    float: right;
+}
+
+body, html {
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    background-color: #051539;
+}
+
+@keyframes box-pluse {
+    from {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
+
+    50% {
+        -webkit-transform: scale3d(1.15, 1.15, 1.15);
+        transform: scale3d(1.15, 1.15, 1.15);
+    }
+
+    to {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
+}
+
+.box-pluse {
+    -webkit-animation-name: box-pluse;
+    animation-name: box-pluse;
+}
+
+.scene {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    background-color: #c09b6f;
+    color: #fff;
+    user-select: none;
+    transform-origin: 0 0 0;
+    overflow: hidden;
+}
+
+.scene-page {
+    position: absolute;
+    width: 1920px;
+    height: 1080px;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    background-color: transparent;
+    user-select: none;
+    transform-origin: 0 0 0;
+    transform: scale(1);
+}
+
+.sc-title {
+    font-size: 20px;
+    color: #cefaff;
+    height: 50px;
+    line-height: 50px;
+    overflow: hidden;
+    padding: 0;
+    margin: 0 0 0 26px;
+}
+
+.scene-home {
+    background: #05102e url(images/bg.jpg) no-repeat;
+}
+
+.main-top-banner {
+    height: 62px;
+    width: 100%;
+    overflow: hidden;
+    text-align: center;
+    color: #cdfaff;
+    position: relative;
+    background: url(images/top-bg.jpg) no-repeat;
+}
+
+.main-top-banner .panel {
+    height: 62px;
+    line-height: 62px;
+    overflow: hidden;
+    color: #a9d0da;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.main-top-banner .pnl-left {
+    position: absolute;
+    left: 30px;
+}
+
+.main-top-banner .pnl-center {
+    height: 40px;
+    line-height: 40px;
+    width: 380px;
+    margin: 12px auto;
+    text-align: center;
+    font-size: 24px;
+    color: #cefaff;
+    cursor: pointer;
+}
+
+.main-top-banner .pnl-right {
+    position: absolute;
+    top: 0;
+    text-align: right;
+    right: 30px;
+    width: 500px;
+    overflow: hidden;
+}
+
+/** 主布局 ***/
+.main-panel-left {
+    position: absolute;
+    left: 30px;
+    top: 94px;
+    width: 930px;
+    height: 976px;
+    overflow: hidden;
+}
+
+.main-panel-left-row {
+    width: 930px;
+    overflow: hidden;
+}
+
+.main-panel-right {
+    position: absolute;
+    right: 30px;
+    top: 94px;
+    width: 930px;
+    height: 976px;
+    overflow: hidden;
+}
+
+.main-panel-right-row {
+    width: 930px;
+    overflow: hidden;
+}
+
+.dsj-row {
+    clear: both;
+}
+
+/** 左侧::总数概要 ***/
+.dsj-summary {
+    width: 930px;
+    margin: 0px 0px 30px 60px;
+    overflow: hidden;
+}
+
+.dsj-summary .item {
+    width: 173px;
+    height: 108px;
+    margin-right: 40px;
+    float: left;
+    background: url(images2/number-bg.png) no-repeat;
+    overflow: hidden;
+    text-align: center;
+}
+
+.dsj-summary .item b {
+    height: 60px;
+    line-height: 60px;
+    overflow: hidden;
+    text-align: center;
+    display: block;
+    font-size: 32px;
+}
+
+.dsj-summary .item p {
+    height: 40px;
+    line-height: 40px;
+    overflow: hidden;
+    text-align: center;
+    display: block;
+    font-size: 16px;
+    color: #f8b239;
+}
+
+/** 左侧::每日申请数 ***/
+.dsj-chart-daily {
+    width: 922px;
+    height: 350px;
+    margin: 0 auto;
+    overflow: visible;
+    background: url(images2/bg-jczl-01.png) no-repeat;
+}
+
+.dsj-chart-daily .caption {
+    height: 24px;
+    line-height: 24px;
+    padding-left: 60px;
+    overflow: hidden;
+    font-size: 18px;
+    color: #fff;
+}
+
+.dsj-chart-daily .panel-chart {
+    width: 870px;
+    height: 270px;
+    margin: 30px auto 0 auto;
+    overflow: visible;
+    /*background-color: #ccc;*/
+}
+
+/** 左侧::申请最多、浏览最多 ***/
+.dsj-panel-table {
+    width: 453px;
+    height: 410px;
+    margin-top: 50px;
+    overflow: hidden;
+    margin-left: 10px;
+    background: url(images2/table-bg.png) no-repeat;
+}
+
+.dsj-panel-table .caption {
+    height: 24px;
+    line-height: 24px;
+    padding-left: 60px;
+    overflow: hidden;
+    font-size: 18px;
+    color: #fff;
+}
+
+.dsj-panel-table .panel-chart {
+    width: 427px;
+    margin: 10px auto 0 auto;
+    overflow: visible;
+}
+
+.dsj-table {
+    margin: 0 auto;
+    width: 100%;
+}
+
+.dsj-table th, .dsj-table td {
+    text-align: left;
+    height: 40px;
+    font-size: 16px;
+}
+
+.dsj-table th {
+    color: #40e6ff;
+}
+
+.dsj-table tr:nth-child(even) {
+    background: url(images/table-row.png) repeat;
+}
+
+.dsj-table .w-num {
+    width: 60px;
+    text-align: center;
+}
+
+/** 左侧::党建 ***/
+.dsj-dj-box-03 {
+    background: url(images2/bg-dj-03.png) no-repeat;
+}
+
+.dsj-dj-chart-01 {
+    width: 440px;
+    height: 385px;
+    margin: 0 auto;
+    overflow: visible;
+    background: url(images2/bg-dj-01.png) no-repeat;
+}
+
+.dsj-dj-chart-01 .caption {
+    height: 24px;
+    line-height: 24px;
+    padding-left: 60px;
+    overflow: hidden;
+    font-size: 18px;
+    color: #fff;
+}
+
+.dsj-dj-chart-01 .panel-chart {
+    width: 400px;
+    height: 220px;
+    margin: 0px auto 0 auto;
+    overflow: visible;
+    /*background-color: #ccc;*/
+}
+
+.dsj-dj-chart-01 .number-box {
+    width: 146px;
+    height: 93px;
+    overflow: visible;
+    margin: 10px auto 0 auto;
+}
+.dsj-dj-chart-01 .number-box2-w2{
+    width: 340px;
+}
+
+.dsj-dj-chart-01 .number-box .item {
+    width: 146px;
+    height: 93px;
+    background: url(images/number-bg.png) no-repeat;
+    overflow: hidden;
+    text-align: center;
+}
+
+.dsj-dj-chart-01 .number-box .item b {
+    height: 50px;
+    line-height: 50px;
+    overflow: hidden;
+    text-align: center;
+    display: block;
+    font-size: 32px;
+}
+
+.dsj-dj-chart-01 .number-box .item p {
+    height: 40px;
+    line-height: 40px;
+    overflow: hidden;
+    text-align: center;
+    display: block;
+    font-size: 16px;
+    color: #f8b239;
+}
+
+.dsj-dj-chart-02 {
+    width: 440px;
+    height: 225px;
+    margin: 35px auto 0 auto;
+    overflow: visible;
+    background: url(images2/bg-dj-02.png) no-repeat;
+}
+
+.dsj-dj-chart-02 .caption {
+    height: 24px;
+    line-height: 24px;
+    padding-left: 60px;
+    overflow: hidden;
+    font-size: 18px;
+    color: #fff;
+}
+
+.dsj-dj-chart-02 .panel-chart {
+    width: 430px;
+    height: 175px;
+    margin: 10px auto 0 auto;
+    overflow: visible;
+    /*background-color: #ccc;*/
+}
+
+.dsj-dj-chart-03 {
+    width: 927px;
+    height: 265px;
+    margin: 35px auto;
+    overflow: visible;
+    background: url(images2/bg-dj-03.png) no-repeat;
+}
+
+.dsj-dj-chart-03 .caption {
+    height: 24px;
+    line-height: 24px;
+    padding-left: 60px;
+    overflow: hidden;
+    font-size: 18px;
+    color: #fff;
+}
+
+.dsj-dj-chart-03 .panel-chart {
+    width: 870px;
+    height: 220px;
+    margin: 10px auto 0 auto;
+    overflow: visible;
+    /*background-color: #ccc;*/
+}
+
+/** 右侧::地图 ***/
+.dsj-panel-map {
+    width: 100%;
+    height: 490px;
+    overflow: hidden;
+}
+
+.dsj-panel-map .mapbox {
+    text-align: center;
+    width: 860px;
+    height: 456px;
+    overflow: hidden;
+    margin: 30px auto 5px;
+    /* 2019 10 15 zyj
+    width: 830px;
+    height: 406px;
+    overflow: hidden;
+    margin: 30px auto;
+    */
+}
+
+/** 右侧::简介 ***/
+.dsj-panel-intro {
+    width: 857px;
+    height: 456px;
+    overflow: hidden;
+    margin: 0 auto;
+    background: url(images2/bg-intro.png) no-repeat;
+}
+
+.dsj-panel-intro .caption {
+    height: 24px;
+    line-height: 24px;
+    padding-left: 60px;
+    overflow: hidden;
+    font-size: 18px;
+    color: #fff;
+}
+
+.dsj-panel-intro .panel-chart {
+    width: 857px;
+    margin: 10px auto 0 auto;
+    overflow: visible;
+}
+
+.dsj-panel-intro .panel-chart .content {
+    width: 778px;
+    overflow: hidden;
+    margin: 24px auto;
+    font-size: 20px;
+    line-height: 40px;
+    text-align: justify;
+    text-justify: inter-ideograph;
+}
+
+.pop_uy {
+    cursor: pointer;
+}
+
+.pop-up {
+    display: none;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    /*background-color: #fff;*/
+    position: absolute;
+    top: 5%;
+    bottom: 0;
+    left: 5%;
+    overflow: hidden;
+}
+
+.shut-pop-up {
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    display: block;
+    width: 100px;
+    height: 30px;
+    text-align: center;
+    background: rgba(26, 103, 98, 0.6);
+    border: 2px solid #51CAAC !important;
+    border-radius: 16px;
+    color: #FDFDFD;
+    line-height: 30px;
+    cursor: pointer
+}
+
+.pop_uy {
+    cursor: pointer;
+}
+
+.pop-up {
+    display: none;
+    width: 90%;
+    height: 90%;
+    z-index: 999;
+    /*background-color: #fff;*/
+    position: absolute;
+    top: 5%;
+    bottom: 0;
+    left: 5%;
+    overflow: hidden;
+}
+
+.shut-pop-up {
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    display: block;
+    width: 100px;
+    height: 30px;
+    text-align: center;
+    background: rgba(26, 103, 98, 0.6);
+    border: 2px solid #51CAAC !important;
+    border-radius: 16px;
+    color: #FDFDFD;
+    line-height: 30px;
+    cursor: pointer
+}
+
+/*.street-up {*/
+/*display: none;*/
+/*width: 100%;*/
+/*height: 100%;*/
+/*position: absolute;*/
+/*bottom: 0;*/
+/*left: 0;*/
+/*background: rgba(0, 0, 0, 0.6);*/
+/*z-index: 999;*/
+/*}*/
+
+.street-list {
+    width: 30%;
+    height: 80%;
+    margin: 4% auto;
+    background-color: #fff;
+}
+
+.tu-dangyuan {
+    position: absolute;
+}
+
+.dangyuanimg {
+    width: 50%;
+    margin: auto;
+    display: block
+}
+
+.div-left {
+    background-color: #C2C3C6;
+    width: 30%;
+    height: 100%;
+    float: left;
+}
+
+.div-right {
+    background-color: #EEEEEE;
+    width: 70%;
+    height: 100%;
+    float: right;
+}
+
+.tab-navigation {
+    width: 50%;
+    margin: 10% auto;
+
+}
+
+.tab-navigation h2 {
+    width: 30%;
+    display: inline-block;
+    color: #0C0C0C;
+    border: 2px solid #51CAAC;
+    text-align: center;
+}

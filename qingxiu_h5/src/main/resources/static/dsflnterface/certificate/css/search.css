@@ -1,0 +1,43 @@
+
+.mui-bar {
+    background-color: #fff;
+}
+
+.mui-content {
+    background-color: #EBF0F5 !important;
+}
+
+.box {
+    width: 100%;
+    margin: auto;
+}
+
+.search_info {
+    display: block;
+    width: 90%;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.search_info input{
+    border-radius: 15px;
+}
+
+.search_info select{
+    border-radius: 15px;
+}
+
+.search_submit {
+    width: 80%;
+    margin: 40px auto;
+
+}
+
+.search_submit button {
+    background-color: #3594E5;
+    color: #fff;
+    width: 100%;
+    height: 46px;
+    border-radius: 26px;
+    font-size: 20px;
+}

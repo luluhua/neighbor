@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.citysmart.ucenter.mybatis.mapper.app.TAppUserLoginClientMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.citysmart.ucenter.mybatis.model.app.TAppUserLoginClient">
+    <result column="id" property="id" />
+        <result column="userId" property="userId" />
+        <result column="guid" property="guid" />
+        <result column="clientId" property="clientId" />
+        <result column="deviceToken" property="deviceToken" />
+        <result column="loginIp" property="loginIp" />
+        <result column="loginTime" property="loginTime" />
+        <result column="mobileSystemVersion" property="mobileSystemVersion" />
+        <result column="mobileModel" property="mobileModel" />
+        <result column="mobilePlatform" property="mobilePlatform" />
+        <result column="appVersion" property="appVersion" />
+        <result column="packageName" property="packageName" />
+    </resultMap>
+
+</mapper>
