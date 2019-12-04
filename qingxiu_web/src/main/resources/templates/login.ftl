@@ -84,13 +84,13 @@
 
                             </div>
                         </div>
-                        <#--
-                        <div class="login_jiz">
-                            <div class="form-group has-feedback">
-                                <input type="checkbox" name="" title="记住用户名密码" lay-skin="primary" checked>
-                            </div>
+                    <#--
+                    <div class="login_jiz">
+                        <div class="form-group has-feedback">
+                            <input type="checkbox" name="" title="记住用户名密码" lay-skin="primary" checked>
                         </div>
-                        -->
+                    </div>
+                    -->
                         <!-- /.col -->
                         <div class="login_submit">
                             <button type="submit" class="">
@@ -154,8 +154,8 @@
     }
 
     //在登陆过期后，拦截通过layui的data-url访问的页面加载，阻止弹窗内页面跳转
-    $(function(){
-        if (top != window){
+    $(function () {
+        if (top != window) {
             top.location.href = window.location.href;
         }
     })
