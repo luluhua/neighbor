@@ -203,7 +203,7 @@
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-core</artifactId>
-            <version>5.0.11.RELEASE</version>
+            <version>5.0.13.RELEASE</version>
         </dependency>
         <!--ios 原生推送-->
         <dependency>
