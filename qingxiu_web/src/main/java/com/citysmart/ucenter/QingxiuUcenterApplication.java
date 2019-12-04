@@ -53,6 +53,7 @@ public class QingxiuUcenterApplication extends SpringBootServletInitializer {
         MultipartConfigFactory factory = new MultipartConfigFactory();
         factory.setMaxFileSize(maxFileSize);
         factory.setMaxRequestSize(maxRequestSize);
+
         return factory.createMultipartConfig();
     }
 
