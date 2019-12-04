@@ -58,9 +58,9 @@
 <script src="/plugins/plupload-2.3.6/js/plupload.full.min.js"></script>
 <script type="text/javascript">
     //检测用户是否登录
-    $.post('/login/checkLogin',function(res){
-        if(res.code==1){
-            window.location.href="/login";
+    $.post('/login/checkLogin', function (res) {
+        if (res.code == 1) {
+            window.location.href = "/login";
         }
     });
 

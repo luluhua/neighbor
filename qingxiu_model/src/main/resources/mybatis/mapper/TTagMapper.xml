@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.citysmart.ucenter.mybatis.mapper.TTagMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.citysmart.ucenter.mybatis.model.TTag">
+        <result column="id" property="id"/>
+        <result column="pid" property="pid"/>
+        <result column="depth" property="depth"/>
+        <result column="navigation_id" property="navigationId"/>
+        <result column="name" property="name"/>
+        <result column="code" property="code"/>
+        <result column="icon" property="icon"/>
+        <result column="skip_url" property="skipUrl"/>
+        <result column="skip_type" property="skipType"/>
+        <result column="sort_index" property="sortIndex"/>
+        <result column="dt_create" property="dtCreate"/>
+        <result column="is_deleted" property="isDeleted"/>
+    </resultMap>
+
+</mapper>

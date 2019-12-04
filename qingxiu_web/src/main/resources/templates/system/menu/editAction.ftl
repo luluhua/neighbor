@@ -27,15 +27,8 @@
                          -${(muse.menuName)!}</option>
                      </#list>
                  </#if>
-
              </select>
-             <div class="sel" style="display:<#if tyr==0>block<#else >none</#if> ">
-                 <select id="pids" name="<#if tyr==0>pid</#if>" class="form-control select2"
-                         style="width: 100%;" lay-verify="" lay-ignore>
-                     <option value="${(pSysMenu.id)!}" selected="selected">${(pSysMenu.code)!}
-                         -${(pSysMenu.menuName)!}</option>
-                 </select>
-             </div>
+
          </div>
          <div class="form-group">
              <label for="uname">编码</label>
@@ -97,15 +90,10 @@
         $.post('/system/menu/json?_dc=' + new Date().getTime(), {pid: pid}, function (response) {
             if (response.code == 200) {
                 if (response.data.length != 0) {
-                    $('.sel').css({'display': 'block'})
-                    $("#pid").attr('name', "")
                     $("#pids").empty();
                     $("#pids").select2({
                         data: response.data
                     });
-                } else {
-                    $('.sel').css({'display': 'none'})
-                    $("#pids").attr('name', "")
                 }
 
             }

@@ -78,10 +78,10 @@ public class Generator {
             }
         });
         dsc.setUrl(
-                "jdbc:mysql://192.168.1.27:3306/qingxiu_ucenter?useUnicode=true&useSSL=false&characterEncoding=utf8");
+                "jdbc:mysql://localhost:3306/neighbor?useUnicode=true&useSSL=false&characterEncoding=utf8");
         dsc.setDriverName("com.mysql.jdbc.Driver");
-        dsc.setUsername("admin");
-        dsc.setPassword("admin123456");
+        dsc.setUsername("root");
+        dsc.setPassword("123456");
         mpg.setDataSource(dsc);
 
         // 包配置

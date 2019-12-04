@@ -8,7 +8,6 @@
                 <ul class="nav nav-tabs">
                     <li class="active"><a href="#tab_1" data-toggle="tab">添加目录</a></li>
                     <li><a href="#tab_2" data-toggle="tab">添加菜单</a></li>
-                    <li><a href="#tab_4" data-toggle="tab">添加子菜单</a></li>
                     <li><a href="#tab_3" data-toggle="tab">添加功能</a></li>
                 </ul>
                 <div class="tab-content">
@@ -228,12 +227,6 @@
                                                     style="width: 100%;" lay-verify="required" lay-ignore>
                                                 <option value="" selected="selected">--请选择--</option>
                                             </select>
-                                            <div class="sel" style="display: none">
-                                                <select id="pids" name="pid" class="form-control select2"
-                                                        style="width: 100%;" lay-verify="" lay-ignore>
-                                                    <option value="" selected="selected">--请选择--</option>
-                                                </select>
-                                            </div>
 
 
                                             <input id="actionServiceType" name="serviceType" type="hidden" value="1">
@@ -308,17 +301,10 @@
         $.post('/system/menu/json?_dc=' + new Date().getTime(), {pid: pid}, function (response) {
             if (response.code == 200) {
                 if (response.data.length != 0) {
-                    $('.sel').css({'display': 'block'})
-                    $("#pid").attr('name', "")
                     $("#pids").empty();
                     $("#pids").select2({
                         data: response.data
                     });
-                } else {
-                    $("#pid").attr('name', "pid")
-                    $('.sel').css({'display': 'none'})
-                    $("#pids").attr('name', "")
-
                 }
 
             }

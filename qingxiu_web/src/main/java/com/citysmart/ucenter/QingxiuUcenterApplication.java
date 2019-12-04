@@ -6,7 +6,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
-import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.servlet.MultipartConfigFactory;
 import org.springframework.boot.web.servlet.ServletComponentScan;
@@ -53,7 +52,6 @@ public class QingxiuUcenterApplication extends SpringBootServletInitializer {
         MultipartConfigFactory factory = new MultipartConfigFactory();
         factory.setMaxFileSize(maxFileSize);
         factory.setMaxRequestSize(maxRequestSize);
-
         return factory.createMultipartConfig();
     }
 

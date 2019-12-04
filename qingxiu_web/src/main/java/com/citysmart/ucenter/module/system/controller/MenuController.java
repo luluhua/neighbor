@@ -107,7 +107,7 @@ public class MenuController extends SuperController {
         List<SysMenu> list = sysMenuService.selectList(ew);
         EntityWrapper<SysMenu> ews = new EntityWrapper<SysMenu>();
         ews.orderBy("code", true);
-        ews.eq("deep", 2);
+        ews.eq("deep", 1);
         List<SysMenu> submenulist = sysMenuService.selectList(ews);
         model.addAttribute("list", list);
         model.addAttribute("submenulist", submenulist);

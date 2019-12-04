@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.citysmart.ucenter.mybatis.mapper.commodity.TGoodsMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.citysmart.ucenter.mybatis.model.commodity.TGoods">
+        <result column="id" property="id"/>
+        <result column="tag_id" property="tagId"/>
+        <result column="user_id" property="userId"/>
+        <result column="name" property="name"/>
+        <result column="describe" property="describe"/>
+        <result column="quantity" property="quantity"/>
+        <result column="specification" property="specification"/>
+        <result column="intro" property="intro"/>
+        <result column="price" property="price"/>
+        <result column="Images" property="Images"/>
+        <result column="price_type" property="priceType"/>
+        <result column="sort_index" property="sortIndex"/>
+        <result column="navigation_code" property="navigationCode"/>
+        <result column="dt_create" property="dtCreate"/>
+        <result column="is_deleted" property="isDeleted"/>
+    </resultMap>
+
+</mapper>
