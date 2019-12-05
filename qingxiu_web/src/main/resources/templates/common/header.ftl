@@ -7,7 +7,7 @@
         <span class="logo-lg">
            <img id="img_icon" style="width: 30px;height:30px;border-radius: 150px;margin-bottom: 8px"
                 src="/base/images/iPhone1024@2x.png">
-            <b>${(systemName)!''}</b></span>
+            <b>${(systemName)!'邻居帮'}</b></span>
     </a>
 
     <!-- Header Navbar -->
@@ -19,25 +19,7 @@
             <ul class="nav navbar-nav">
                 <!-- Notifications Menu -->
                 <li class="dropdown notifications-menu">
-                    <!-- Menu toggle button -->
-                <#--<a href="/tSmsSendLog/sms/list?uId=${(me.id)}" class="dropdown-toggle" data-toggle="dropdown">-->
-                <#--<i class="fa fa-bell-o"></i>-->
-                <#--<span class="label label-warning">${(msgCount)!'0'}</span>-->
-                <#--</a>-->
-                <#--<ul class="dropdown-menu">-->
-                <#--<li class="header">您有0条消息</li>-->
-                <#--<li>-->
-                <#--<!-- Inner Menu: contains the notifications &ndash;&gt;-->
-                <#--<ul class="menu">-->
-                <#--<li><!-- start notification &ndash;&gt;-->
-                <#--<a href="#">-->
-                <#--<i class="fa fa-comment-o"></i> 1 new members joined today-->
-                <#--</a>-->
-                <#--</li><!-- end notification &ndash;&gt;-->
-                <#--</ul>-->
-                <#--</li>-->
-                <#--<li class="footer"><a href="#"><i class="fa fa-angle-double-down"></i>查看全部</a></li>-->
-                <#--</ul>-->
+
                 </li>
                 <!-- User Account Menu -->
                 <li class="dropdown user user-menu">
@@ -45,7 +27,7 @@
                     <a href="/system/me/info" class="dropdown-toggle" data-toggle="tooltip" title="Admnin"
                        data-placement="bottom">
                         <img src="<@commonTags method="tagHtpImgURL" type="1" value="1">${(tagHtpImgURL)!}</@commonTags>${(me.avatarUrl)!}"
-                             class="user-image" alt="User Image">
+                             class="user-image" alt="">
                         <span class="hidden-xs">${(me.username)!'游客'}</span>
                     </a>
                 </li>

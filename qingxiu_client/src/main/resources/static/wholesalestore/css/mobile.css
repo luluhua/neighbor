@@ -1,0 +1,1246 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+
+/*2017-05-10*/
+
+
+/*小于1199的屏幕里*/
+@media(max-width: 1199px) {
+.content_foot,
+.content_car,	
+#head,		
+.member_cent,
+.product,
+.index_Product,					  /*- 首页内容 -*/
+.banner,						 /*- banner -*/
+nav,							 /*- 导航 -*/
+.head,                          /*- 头部 -*/
+.header{
+	max-width: 997px;
+}
+
+/*产品类*/
+.allA a {
+    padding: 16.1px 0;
+}
+
+.all {
+    background: #ed6e37 url(../images/icon_04.png) no-repeat 10px 12px;
+    padding-left: 36px;
+	background-size: 22px;
+}
+
+.allA a:before{
+  top: 24px;
+  left: 20px;
+}
+
+.callbacks_container{
+  width:67.6%;
+}
+
+/*签到*/
+.banner_fr{
+  width: 16%;
+  padding: 10px 0;
+}
+
+.banner_fr dl{
+  height: 127px;
+  margin-top: 20px;
+  padding-top: 10px;
+}
+
+/*首页产品*/
+.index_Product ul li{
+	width: 24.86%;
+}
+
+.common_div dd img{
+	margin-bottom: 8.5%;
+}
+
+
+/*收货地址*/
+.add_div .h6 p{
+	height: 35px;
+}
+
+
+/*1000*/
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*小于1000的屏幕里*/
+@media(max-width: 999px) {
+.content_foot,
+.content_car,	
+.member_cent,
+#head,	
+.product,
+.index_Product,					  /*- 首页内容 -*/
+.banner,						 /*- banner -*/
+nav,							 /*- 导航 -*/
+.head,                          /*- 头部 -*/
+.header{
+	max-width: 801px;
+}
+
+/*logo*/
+.logo{
+	margin-top: 5px;
+	width: 32%;
+}
+.logo img{
+	display: block;
+	width: 100%;
+}
+
+.all:hover .allA{
+  display: block;
+}
+
+/*- 搜索 -*/
+.search{
+  margin-left: 5%;
+}
+
+.allA{
+  display: none;
+}
+
+/*-轮播-*/
+.callbacks_container{
+  width:80%;
+  margin-left: 0%;
+}
+
+/*签到*/
+.banner_fr{
+  width: 20%;
+}
+
+.banner_fr dl{
+  height: 112px;
+}
+
+/*首页产品*/
+.index_Product ul li{
+	width: 24.8%;
+}
+
+.common_div dd a, 
+.index_Product ul li h3 a {
+    right: -3px;
+    padding: 6px 6px;
+}
+
+.index_Product dl dd{
+	width: 24.8%;
+    padding: 11px 0;
+}
+
+.common_div dd p,
+.index_Product ul li p{
+	margin-top: 2%;
+	font-size: 12px;
+}
+
+
+
+/*产品评价*/
+.comments_right {
+    float: right;
+    width: 25%;
+}
+
+
+
+/*个人中心—左侧*/
+.menu_ul li a{
+	text-indent: 1.5em;
+}
+
+/*底部*/
+
+.all_content ul li{
+	width: 50%;
+	margin-bottom: 10px;
+}
+
+
+
+
+/*1000*/
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*小于800的屏幕里*/
+@media(max-width: 800px) {
+.content_foot,
+.content_car,	
+.member_cent,
+#head,	
+.product,	
+#footer,
+.footer,
+.index_Product,					  /*- 首页内容 -*/
+.banner,						 /*- banner -*/
+nav,							 /*- 导航 -*/
+.head,                          /*- 头部 -*/
+.header{
+	max-width: 98%;
+}
+
+.head{
+	padding: 20px 0;
+}
+
+/*-轮播-*/
+.callbacks_container{
+  width:100%;
+  margin-bottom: 20px;
+}
+
+.banner_fr{
+	padding: 0;
+}
+
+.banner_fr dl,
+.banner_fr h2,
+.banner_fr img{
+	display: none;
+}
+
+.sign{
+	position: fixed;
+	right: 0;
+	top: 40%;
+	z-index: 2;
+	box-shadow: 0 3px 3px #ccc;
+}
+
+.common_div dd a, 
+.index_Product ul li h3 a {
+	font-size: 12px;
+}
+
+/*底部*/
+.footer ul{
+    width: 33.3%;
+}
+
+.footer .footer_ul{
+	width: 60%;
+}
+
+#footer{
+    height: 100px;
+}
+
+.focus{
+	margin-top: 10px;
+	width: 100%;
+}
+
+/*产品中心*/
+.productA .left li{
+	margin-right: 2%;
+}
+
+
+/*产品评价*/
+.comments_right {
+    width: 30%;
+}
+
+/*优惠券*/
+.coupons_ol li {
+    width: 50%;
+    margin-bottom: 20px;
+}
+
+
+
+/*店家认证*/
+.store_ol{
+	width: 95%;
+}
+
+.progress{
+	width:90%;
+}
+
+/*购物车*/
+.car_ulA .liA p {
+    width: 55%;
+}
+.car_ulA .liA img {
+    max-width: 80px;
+}
+
+h5.p_num {
+    width: 100px;
+}
+
+/*查看物流-订单信息*/
+
+.ddxx_div p{
+	width: 50%;
+	line-height: 24px;
+}
+
+.note {
+    width: 90%;
+}
+
+/*800*/
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*小于700的屏幕里*/
+@media(max-width: 700px) {
+
+/*logo*/
+.logo{
+	margin-top: 8px;
+	width: 35%;
+}
+
+/*- 搜索 -*/
+.search{
+  margin-left: 2%;
+}
+
+.drop-down{
+  width: 24%;
+}
+
+.index_Product ul li{
+	width: 49.6%;
+	margin-bottom: 20px;
+}
+
+.common_div dd a, 
+.index_Product ul li h3 a {
+	font-size: 14px;
+	padding: 10px 12px;
+}
+
+.index_Product dl{
+	overflow: hidden;
+	background-color: inherit;
+	border-right: inherit;
+	border-left: inherit;
+}
+
+.index_Product dl dt{
+	display: none;
+}
+
+.index_Product dl dd{
+	background-color: #fff;
+	width: 49.6%;
+}
+
+/*产品中心*/
+.productA .left{
+	width: 73%;
+}
+
+.productA .left li{
+	width: 47%;
+}
+
+.productA .right_recomm{
+	width: 26%;
+}
+
+/*产品详情*/
+.productA .datails{
+	width: 99%;
+}
+
+.infor_fr,
+.pr_infor dl{
+	width: 80%;
+	float: left;
+	margin-left: 10%;
+}
+
+.infor_fr{
+	margin-top: 20px;
+}
+
+/*个人中心——左侧*/
+.member_cent{
+	position: relative;
+	overflow: inherit;
+}
+
+.member_cent .left{
+	position: absolute;
+	top: -85px;
+	width: 130px;
+	float: inherit;
+	z-index: 99;
+}
+
+.menu_ul{
+	display: none;
+	box-shadow: 0 3px 3px #ccc;
+}
+.member_cent .left:hover .menu_ul{
+	display: block;
+}
+
+.member_cent .right{
+	width: 100%;
+	float: inherit;
+}
+
+.member_cent .left p {
+    background: #ed6e37 url(../images/icon_33.png) no-repeat 10px;
+    background-size: 20px;
+	text-indent: 1.5em;
+	font-size: 20px;
+}
+
+/*确定订单*/
+.add_information li{
+	width:40%;
+	margin-bottom: 10px;
+}
+
+.content_foot .left{
+	display: none;
+}
+
+.content_foot .right{
+	width: 99.6%;
+}
+
+
+/*700*/
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*小于600的屏幕里*/
+@media(max-width: 600px) {
+/*logo*/
+.head {
+    padding: 20px 0;
+	height: 90px;
+}
+
+.logo{
+	margin-top: 0px;
+	width: inherit;
+	margin-bottom: 10px;
+	float: inherit;
+}
+
+.logo img{
+	width:280px;
+}
+
+.allA a {
+    padding: 10px 0;
+}
+
+.allA a:before {
+    top:18px;
+    left: 10%;
+} 
+
+/*- 搜索 -*/
+.search{
+	margin-left: 0%;
+	max-width: 70%;   
+	min-width:70%;
+	margin-bottom: 20px;
+}
+
+.sign{
+	right: 5px;
+	top: 7%;
+}
+
+/*底部*/
+.footer_h3,
+.focus p,
+.link p{
+	margin-left: 10px;
+}
+
+
+/*产品详情*/
+.infor_fr,
+.pr_infor dl{
+	width: 100%;
+	margin-left: 0%;
+}
+
+.datailsA {
+    max-width: 98%;
+}
+/*产品评价*/
+.comments_left {
+    float: left;
+    width: 100%;
+}
+
+.comments_right {
+    width: 100%;
+    margin-top: 10px;
+}
+.comments_right h5 span{
+    float: left;
+    margin-left: 0;
+    margin-right: 10px;
+}
+
+.comments_right p{
+	float: left;
+}
+
+/*个人中心—右侧*/
+.member_cent dl dd {
+    width: 50%;
+    float: left;
+    padding-left: 3%;
+}
+
+.member_cent dl dt{
+	width: 22%;
+}
+
+/*-个人资料-*/
+.data_ol{
+	width: 95%;
+}
+
+/*-收货地址-*/
+
+.add_ol li input{
+	width: 50%;
+}
+
+.add_info select{
+	width: 30%;
+}
+
+/*-购物车-*/
+
+
+.like_dl dd{
+	width: 50%;
+}
+
+h5.p_num {
+    width: 80px;
+}
+
+input.sy_num {
+    width: 20px;
+}
+.car_ulA .liA{
+	line-height: inherit;
+}
+
+.car_ulA .liA p{
+	width: 80%;
+	margin-left: 18%;
+}
+
+/*确定订单*/
+.order_progress{
+	width: 100%;
+	margin-top: 30px;
+	margin-bottom: 60px;
+}
+
+/*-产品评价-*/
+
+.eva_divA{
+	width: 98%;
+}
+
+/*底部*/
+
+.all_content ul li{
+	width: 100%;
+}
+
+.content_foot dl a{
+	padding: 16px 15px;
+}
+
+/*600*/
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*小于500的屏幕里*/
+@media(max-width: 500px) {
+
+.welcome{
+	display: none;
+}
+
+/*- 搜索 -*/
+.search{
+	max-width: 60%;   
+	min-width:60%;
+}
+
+.h1{
+	font-size: 20px;
+	margin-top: 0px;
+}
+
+/*产品中心*/
+.productA .left{
+	width: 100%;
+}
+
+.productA .left li{
+	width: 47%;
+	margin-left: 1%;
+	margin-right: 1%;
+}
+
+.total,
+.productA .right_recomm{
+	display: none;
+}
+
+.datailsA li {
+    width: 100%;
+}
+
+/*个人中心-右侧*/
+.member_cent .left{
+	top: -80px;
+}
+
+.member_cent dl{
+	padding: 15px 0;
+}
+
+.member_cent dl img {
+    width: 50px;
+    height: 50px;
+	margin-top: 10px;
+}
+.member_cent dl dd span{
+	margin-top: 3px;
+}
+
+.common_border ul li{
+	width: 20%;
+}
+
+.common_border ul .date_li {
+    width: 39%;
+}
+
+.orderA_ul li img {
+    max-width: 40%;
+}
+
+.orderA_ul li h6 {
+    margin-top: 1%;
+    width: 90%;
+}
+
+.order_none p{
+    left: 18%;
+
+}
+
+
+/*收货地址*/
+
+.add_div h6 p{
+	width: 22%;
+}
+
+.add_div .h6 .pB{
+	width: 100%;
+	border-top: 1px solid #c9c9c9;
+}
+
+.add_div .h6 p.pC{
+	border-right: none;
+}
+
+.add_div .pB_hidden{
+	display: none;
+}
+
+.add_div .pA{
+	width: 31%;
+}
+
+.add_info textarea,
+.add_ol li input{
+	width: 80%;
+}
+
+.add_info select{
+	width: 30%;
+}
+
+.add_ol li p{
+	width: 80%;
+	text-align: left;
+	float: inherit;
+	text-indent: 1em;
+}
+
+.add_ol li p:before{
+	left:-10px;
+	top: 0;
+}
+
+.add_ol button{
+	margin-left: 0px;
+}
+
+/*-我的收藏-*/
+.collection li{
+	width: 50%;
+}
+
+/*-修改密码-*/
+.password_ol input,
+.password_ol p{
+	width: 99%;
+}
+
+.password_ol button{
+	margin-left: 0px;
+}
+
+.password_ol span{
+	margin-left: 20%;
+}
+
+/*-店家认证-*/
+.store_ol p{
+	width: 70px;
+	text-align: left;
+}
+
+.store_ol .store_img{
+	width: 99%;
+}
+
+/*-购物车-*/
+
+
+.li_hidden{
+	display: none;
+}
+
+.car_ulA .liC{
+	width: 100%;
+	border-top: 1px solid #e2e2e2;
+	border-left: none;
+}
+
+.car_ul .liA{
+	width: 50%;
+}
+
+.car_ul li{
+	width: 24%;
+}
+
+.settlement h4 {
+	margin-left: 20px;
+}
+
+.settlement{
+	padding: 10px 0;
+}
+
+.settlement button {
+	top: 22px;
+	right: 10px;
+    padding: 15px 15px;
+}
+
+.checkboxFiveA{
+	margin-left: 2%;
+	float: inherit;
+}
+
+.settlement h4,
+.settlement h3{
+	float: inherit;
+	margin-left: 40px;
+}
+
+.settlement h3{
+}	
+
+
+/*确定订单*/
+.add_information li{
+	width:90%;
+}
+
+/*优惠券*/
+
+.coupons_div {
+    width: 90%;
+}
+
+/*产品评价*/
+.eva_divA{
+	margin: 15px auto;
+}
+
+
+.eva_divA h4{
+	border-bottom: 1px solid #e2e2e2;
+}
+
+.eva_divA h5{
+	margin: 10px 0;
+}
+
+.eva_divA h5 b{
+	line-height: 40px;
+	width: 100%;
+	text-align: left;
+	text-indent: 1em;
+	border-right: 1px solid #e2e2e2;
+	border-bottom: 1px solid #e2e2e2;
+}
+
+.eva_divA h5 textarea{
+	width: 100%;
+
+}
+
+.eva_divA h6{
+	border-top: 1px solid #e2e2e2;
+	padding-bottom: 15px;
+}
+
+.eva_divA h6 b{	
+	line-height: 40px;
+	width: 100%;
+	text-align: left;
+	text-indent: 1em;
+	float: inherit;
+}
+
+.eva_divA h6 span{
+	top: 10px;
+	left: 56px;
+}
+
+.eva_divA h6 p{
+	float: inherit;
+}
+
+/*修改头像*/
+.imageBox,
+.action,
+.container {
+	width: 98%;
+}
+
+/*500*/
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*小于400的屏幕里*/
+@media(max-width: 400px) {
+
+.header ul li {
+    float: left;
+    padding: 0 10px;
+    line-height: 30px;
+}
+
+.header ul li.fh_index{
+    padding-left:15px;
+}
+
+.common_div dd a, 
+.index_Product ul li h3 a {
+	width: 40px;
+	padding: 2px;
+	border-radius: 0;
+	text-align: center;
+}
+
+/*- 搜索 -*/
+.search{
+	max-width: 65%;   
+	min-width:65%;
+}
+
+.cart{
+  padding: 10px 10px 10px 30px;
+  background:url(../images/icon_03.png) no-repeat 10px 12px;
+  background-size: 16px;
+}
+
+/*底部*/
+.link a {
+    padding: 0 0px;
+    margin-left: 10px;
+    font-size: 12px;
+    margin-bottom: 6px;
+}
+
+#footer{
+  height: 130px;
+}
+
+.footer ul{
+  width: 50%;
+  margin-bottom: 10px;
+}
+
+.common_div {
+    margin-top: 15px;
+}
+
+.index_Product ul li{
+	width: 49.4%;
+}
+
+/*个人中心-我的订单*/
+#head p,
+#head a{
+	margin-right:10px;
+}
+
+.member_cent dl dd{
+	width: 100%;
+}
+
+.member_cent dl dt{
+	display: none;
+}
+
+.nav_signA{
+	padding: 5px 6px;
+}
+
+.date_liA p {
+    padding: 5px 0;
+}
+
+/*-个人资料-*/
+.data_ol li p{
+	color: #666;
+	width: 80%;
+}
+
+.data_ol li input.text{
+	width: 100%;
+}
+
+.data_ol li input.text_phone{
+	width: 65%;
+}
+
+.info{
+	width: 100%;
+}
+
+.info select{  
+	width:30%; 
+}
+
+.data_ol li span{
+	width: 50%;
+}
+
+.phone_hidden img{
+	max-width: 30%;
+}
+
+/*优惠券*/
+.coupons_ol li {
+    width: 90%;
+    float: inherit;
+    margin: 0 auto;
+    margin-bottom: 10px;
+}
+
+
+/*查看物流-订单信息*/
+
+.ddxx_div p{
+	width: 100%;
+	text-align: left;
+	text-indent: 1em;
+}
+
+.eva_divA h6 p .img{
+	width: 30px;
+	margin-top: 10px;
+}
+
+.eva_divA h6 p img{
+	max-width: 80px;
+}
+
+/*底部*/
+.content_foot dl a{
+	padding: 10px 10px;
+	font-size: 14px;
+}
+
+/*修改头像*/
+.new-contentarea {
+	width: 100px;
+}
+
+.Btnsty_peyton {
+    width: 55px;
+}
+.jiesuandiv{
+  padding:20px 5px;
+}
+
+.jiesuanleft,
+.jiesuandiv a{
+  float: inherit;
+}
+	
+	
+/*400*/
+}
+
+
+/*小于350的屏幕里*/
+@media(max-width: 350px) {
+
+/*产品中心*/
+.screening dl dt,
+.price p{
+	width: 50px;
+	margin-right: 10px;
+}
+
+.productA .left{
+	width: 100%;
+}
+
+.productA .left li{
+	width: 80%;
+	margin-right: inherit;
+	float: inherit;
+	margin: 0 auto;
+	margin-bottom: 20px;
+}
+
+.common_border .orderA_ul li{
+	padding-bottom: 20px;
+}
+
+/*-全部订单-*/
+.all_tab p{
+	padding: 6px 10px;
+}
+
+
+/*350*/
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*小于320的屏幕里*/
+@media(max-width: 320px) {
+
+.index_Product dl dd,
+.index_Product ul li{
+	width: 98%;
+	float: inherit;
+	margin: 0 auto;
+	margin-bottom: 10px;
+}
+
+/*自行车*/
+
+.tab{
+	position: absolute;
+	right: 0;
+	top: -30px
+}
+
+
+
+
+
+/*320*/
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

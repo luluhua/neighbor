@@ -14,10 +14,7 @@
         background-size: cover !important
     }
 
-    .form-control-feedback {
-        top: 8px;
-        important !
-    }
+
 </style>
 <body class="hold-transition login-page">
 
@@ -25,7 +22,7 @@
     <div class="login_divd ">
         <div class="yrise">
             <div class="login-logo">
-                <b>${(systemName)!'手上青秀后台登录'}</b>
+                <b>邻居帮登录</b>
             </div>
             <!-- /.login-logo -->
             <form action="/login/doLogin" data-validator-option="{theme:'bootstrap', timely:2, theme:'simple_bottom'}"
@@ -47,32 +44,16 @@
                         <input type="hidden" name="return_url" value="${return_url!}">
                         <input type="text" class="form-control log_user" name="userName" id="userName" placeholder="用户名"
                                data-rule="用户名:required;" value="">
-                        <span class="glyphicon glyphicon-user form-control-feedbacks"></span>
+                    <#--<span class="glyphicon glyphicon-user form-control-feedbacks"></span>-->
                     </div>
                     <div class="form-group has-feedback mg">
                         <input type="password" class="form-control log_user" name="password" id="password"
                                placeholder="密码"
                                data-rule="密码:required;password;" value="">
-                        <span class="glyphicon glyphicon-lock form-control-feedbacks"></span>
+                    <#--<span class="glyphicon glyphicon-lock form-control-feedbacks"></span>-->
                     </div>
                     <div class="form-group has-feedback">
                         <div class="row">
-                        <#--<div class="col-lg-7">-->
-                        <#--<div class="form-group has-feedback mg">-->
-                        <#--<input type="text" class="form-control" value="12345" name="captcha"-->
-                        <#--placeholder="验证码"-->
-                        <#--data-rule="验证码:required;length(5);" size="5">-->
-                        <#--<span class="glyphicon glyphicon-warning-sign form-control-feedback"></span>-->
-                        <#--</div>-->
-                        <#--</div>-->
-                        <#--<div class="col-lg-5">-->
-                        <#--<div class="form-group has-feedback">-->
-                        <#--<img style="float: right" alt="如果看不清楚，请单击图片刷新！" class="pointer img"-->
-                        <#--src="/login/captcha">-->
-                        <#--</div>-->
-                        <#--</div>-->
-                        <#--<a style="display: block; height: 20px;float: right;"-->
-                        <#--href="javascript:$('.img').attr('src','/login/captcha');">点击刷新</a>-->
                             <input type="hidden" name="ticket" id="ticket"/>
                             <input type="hidden" name="rand" id="rand"/>
                         </div>
@@ -84,25 +65,12 @@
 
                             </div>
                         </div>
-                    <#--
-                    <div class="login_jiz">
-                        <div class="form-group has-feedback">
-                            <input type="checkbox" name="" title="记住用户名密码" lay-skin="primary" checked>
-                        </div>
-                    </div>
-                    -->
-                        <!-- /.col -->
                         <div class="login_submit">
                             <button type="submit" class="">
                                 登录
                             </button>
                         </div>
                         <!-- /.col -->
-                        <div class="login_jiz" style="text-align: right; margin-top: 25px;">
-                            <div class="form-group has-feedback">
-                                <a href="/login/forgetPassword">忘记密码？</a>
-                            </div>
-                        </div>
                     </div>
                     <!-- /.social-auth-links -->
                 </div>

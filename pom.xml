@@ -19,6 +19,7 @@
         <module>qingxiu_servcie</module>
         <module>qingxiu_api</module>
         <module>qingxiu_h5</module>
+        <module>qingxiu_client</module>
     </modules>
 
     <properties>

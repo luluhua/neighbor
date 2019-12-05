@@ -26,7 +26,6 @@
                                 </@dictTag>
                                 <li>短信设置</li>
                                 <li>附件上传设置</li>
-                                <li>登录白名单</li>
                             </ul>
                             <div class="layui-tab-content">
                                 <@dictTag method="getDictListByType" type="setting_group" >
@@ -195,36 +194,6 @@
                                     </form>
                                 </div>
 
-                                <div class="layui-tab-item">
-                                    <form class="form-horizontal layui-form layui-form-pane" method="post"
-                                          action="" id="WhiteList"
-                                          onkeydown="if(event.keyCode==13){return false;}">
-                                        <div class=" box-body">
-                                            <div class="form-group">
-                                                <label for="whiteListPhone"
-                                                       class="col-sm-2 control-label">手机号码：</label>
-                                                <div class="col-sm-10">
-                                                    <textarea id="whiteListValue" class="whiteListValue"
-                                                              name="whiteListValue"></textarea>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-sm-2 control-label">&nbsp;</label>
-                                                <div class="col-sm-10">
-                                                    提示：白名单内手机号码登录无需短信验证
-                                                </div>
-                                            </div>
-                                        </div><!-- /.box-body -->
-                                        <div class="box-footer">
-                                            <button type="button" class="btn btn-success"
-                                                    onclick="onUpdateWhiteList()"><i
-                                                    class="fa fa-save"></i> 提 交
-                                            </button>
-                                            <a class="btn btn-default" href="/system/menu/list/1"><i
-                                                    class="fa fa-close"></i> 取消</a>
-                                        </div>
-                                    </form>
-                                </div>
 
                             </div>
                         </div>
@@ -244,35 +213,6 @@
         layui.use('element', function () {
             var element = layui.element;
             console.log(element);
-            var dataUrl = "/system/setting/selectSmsSetting";
-            $.post(dataUrl, {}, function (json) {
-                if (json.code == 200) {
-                    console.log(json);
-                    if (json.data != null) {
-                        $("#smsId").val(json.data.id);
-                        $("#smsTitle").val(json.data.smsTitle);
-                        $("#smsUrl").val(json.data.smsUrl);
-                        $("#smsAccount").val(json.data.smsAccount);
-                        $("#smsPassword").val(json.data.smsPassword);
-                        $("#smsTemplate").val(json.data.smsTemplate);
-                        $("#smsSign").val(json.data.smsSign);
-                        if (json.data.isEnabled == 0) {
-                            $('#isEnabledYes').attr("checked", true);
-                            $('#isEnabledNo').attr("checked", false);
-                        } else {
-                            $('#isEnabledYes').attr("checked", false);
-                            $('#isEnabledNo').attr("checked", true);
-                        }
-                    }
-                } else {
-                    $.alert({
-                        title: '提示',
-                        content: json.msg,
-                        buttons: {"好的": {btnClass: 'btn-blue'}}
-                    });
-                }
-            });
-
             var attaconfigUrl = "/system/setting/selectAttachmentConfig";
             $.post(attaconfigUrl, {}, function (json) {
                 if (json.code == 200) {
@@ -290,7 +230,6 @@
                         });
                     }
 
-
                 } else {
                     $.alert({
                         title: '提示',
@@ -300,35 +239,6 @@
                 }
 
             });
-
-            //手机白名单
-            var selectWhiteListUrl = "/system/setting/selectWhiteList";
-            $.post(selectWhiteListUrl, {}, function (json) {
-                if (json.code == 200) {
-                    console.log(json);
-                    if (json.data != null) {
-                        $(".whiteListValue").html(json.data);
-                        $(".whiteListValue").tagEditor({
-                            placeholder: '添加手机号码后按Enter',
-                            val: json.data,
-                        });
-                    } else {
-                        $(".whiteListValue").tagEditor({
-                            placeholder: '添加手机号码后按Enter',
-                        });
-                    }
-
-
-                } else {
-                    $.alert({
-                        title: '提示',
-                        content: json.msg,
-                        buttons: {"好的": {btnClass: 'btn-blue'}}
-                    });
-                }
-
-            });
-
         });
 
         /**
