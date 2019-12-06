@@ -1,815 +1,779 @@
 @charset "utf-8";
 /* CSS Document */
 
-
-
-
-.login_bg{
-	background-color: #120b00;   /*页面背景*/
+.login_bg {
+    background-color: #120b00; /*页面背景*/
 }
-
 
 /*头部*/
 
-.header_div{
-	border-bottom: #3b3b3b 1px solid;
-	width: 100%;
-	padding: 20px 0;
+.header_div {
+    border-bottom: #3b3b3b 1px solid;
+    width: 100%;
+    padding: 20px 0;
 }
 
-.header_div .head{
-	background-color: #fff;
-	width: 70%;
-	margin: auto;
+.header_div .head {
+    background-color: #fff;
+    width: 70%;
+    margin: auto;
 }
 
-.header_div .return{
-	float: left;
+.header_div .return {
+    float: left;
 }
 
-.header_div .return p{
-	float: left;
-	background:url(../images/jt.png) no-repeat;
-	width: 42px;
-	height: 42px;
-	cursor: pointer;
+.header_div .return p {
+    float: left;
+    background: url(../images/jt.png) no-repeat;
+    width: 42px;
+    height: 42px;
+    cursor: pointer;
 }
 
-.header_div .log_nav{
-	float: right;
+.header_div .log_nav {
+    float: right;
 }
 
-.header_div .log_nav ul{
-	float: left;
-	margin-top: 12px;
+.header_div .log_nav ul {
+    float: left;
+    margin-top: 12px;
 }
 
-.header_div .log_nav ul li{
-	float: left;
-	padding: 0 5px;
+.header_div .log_nav ul li {
+    float: left;
+    padding: 0 5px;
 }
 
-.header_div .log_nav ul li a{
-	padding: 0 10px;
-	display: block;
-	font-size: 16px;
-	color: #bbb;
- 	padding-bottom: 15px;
-	border-bottom: 3px solid #120b00;
+.header_div .log_nav ul li a {
+    padding: 0 10px;
+    display: block;
+    font-size: 16px;
+    color: #bbb;
+    padding-bottom: 15px;
+    border-bottom: 3px solid #120b00;
 }
 
-.header_div .log_nav ul li a:hover{
-	color: #ac2a08;
-	border-bottom: 3px solid #ac2a08;
+.header_div .log_nav ul li a:hover {
+    color: #ac2a08;
+    border-bottom: 3px solid #ac2a08;
 }
-
-
 
 /*内容*/
-.common_con{
-	width: 70%;
-	margin: auto;
-	margin-top: 4.4%;
-	margin-bottom: 4.4%;
+.common_con {
+    width: 70%;
+    margin: auto;
+    margin-top: 4.4%;
+    margin-bottom: 4.4%;
 }
 
-.common_con .content{
-	width: 100%;
-	float: left;
+.common_con .content {
+    width: 100%;
+    float: left;
 }
-
 
 /*left*/
-.common_con .content .left{
-	width: 50%;
-	float: left;
+.common_con .content .left {
+    width: 50%;
+    float: left;
 }
 
-.common_con .content .left .top{
-	float: left;
-	color: #fff;
-	width: 100%;
+.common_con .content .left .top {
+    float: left;
+    color: #fff;
+    width: 100%;
 }
 
-.common_con .content h1{
-	color: #ac2a08;
-	font-size: 24px;
- 	float: left;
+.common_con .content h1 {
+    color: #ac2a08;
+    font-size: 24px;
+    float: left;
 }
 
-.common_con .content .left p{
-	color: #bbb;
-	font-size: 14px;
- 	float: right;
- 	text-align: right;
+.common_con .content .left p {
+    color: #bbb;
+    font-size: 14px;
+    float: right;
+    text-align: right;
 }
 
-.common_con .content .left .top p a{
-	padding: 5px 10px;
-	background-color: #ac2a08;
-	border-radius: 4px;
-	color: #bbb;
+.common_con .content .left .top p a {
+    padding: 5px 10px;
+    background-color: #ac2a08;
+    border-radius: 4px;
+    color: #bbb;
 }
 
-.common_con .content .left .top p a:hover{
-	background-color: #9b2000;
+.common_con .content .left .top p a:hover {
+    background-color: #9b2000;
 }
 
-.common_con .content h2{
-	font-size: 16px;
-	color: #bbb;
-	letter-spacing: 1px;
-	margin: 20px 0;
+.common_con .content h2 {
+    font-size: 16px;
+    color: #bbb;
+    letter-spacing: 1px;
+    margin: 20px 0;
 }
 
-.common_con .content .left h3{
-	font-size: 14px;
-	color: #bbb;
-	letter-spacing: 1px;
+.common_con .content .left h3 {
+    font-size: 14px;
+    color: #bbb;
+    letter-spacing: 1px;
 }
 
-.common_con .content .left h3 a{
-	color: #ac2a08;
+.common_con .content .left h3 a {
+    color: #ac2a08;
 }
 
-.common_con .content .login{       /*登陆-注册 背景框*/
-	padding: 10% 0;
-	background-color: #1c1a16;
-	position: relative;
-	margin-top: 100px;
+.common_con .content .login { /*登陆-注册 背景框*/
+    padding: 10% 0;
+    background-color: #1c1a16;
+    position: relative;
+    margin-top: 100px;
 }
 
-.common_con .content .login dl{       /*选项按钮*/
-	position: absolute;
-	top: -70px;
-	left: 0px;
+.common_con .content .login dl { /*选项按钮*/
+    position: absolute;
+    top: -70px;
+    left: 0px;
 }
 
-.common_con .content .login dl dt{
-	color: #bbb;
-	background-color: #1c1a16;
-	float: left;
-	padding:10px 30px;
-	margin-left: 20px;
-	font-size: 16px;
-	border-radius: 4px;
-	cursor: pointer;
+.common_con .content .login dl dt {
+    color: #bbb;
+    background-color: #1c1a16;
+    float: left;
+    padding: 10px 30px;
+    margin-left: 20px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
-.common_con .content .login dl .dt_curt{
-	color: #fff;
-	background-color: #ac2a08;
+.common_con .content .login dl .dt_curt {
+    color: #fff;
+    background-color: #ac2a08;
 }
 
-.common_con .content .login ul{       /*信息框*/
-	width: 90%;
-	margin: auto;
-	display: none;
+.common_con .content .login ul { /*信息框*/
+    width: 90%;
+    margin: auto;
 }
 
-.common_con .content .login .ul_block{
-	display: block;
-}
-.common_con .content .login li{
-	float: left;
-	width: 100%;
-	margin-bottom: 40px;
+.form_login {
+    display: block;
 }
 
-.common_con .content .login span{
-	width: 105px;
-	display: block;
-	color: #bbb;
-	font-size: 18px;
-	float: left;
-	line-height: 36px;
-	text-align: right;
+.pho_login {
+    display: none;
 }
 
-.common_con .content .login li b{
-	color: #ac2a08;
+.common_con .content .login li {
+    float: left;
+    width: 100%;
+    margin-bottom: 40px;
 }
 
-.common_con .content .login input{
-	width: 70%;
-	display: block;
-	background-color: #302f2e;
-	border: none;
-	line-height: 36px;
-	border-radius: 4px;
-	float: left;
-	text-indent: 1em;
-	color: #fff;
-	font-size: 14px;
-	margin-left: 30px;
+.common_con .content .login span {
+    width: 105px;
+    display: block;
+    color: #bbb;
+    font-size: 18px;
+    float: left;
+    line-height: 36px;
+    text-align: right;
 }
 
-.common_con .content .login .yzm_input{
-	width: 40%;
+.common_con .content .login li b {
+    color: #ac2a08;
 }
 
-.yzm{
-	background-color: #fff;
-	max-width: 20%;
-	min-width: 20%;
-	height: 36px;
-	float: left;
-	margin-left: 9%;
+.common_con .content .login input {
+    width: 70%;
+    display: block;
+    background-color: #302f2e;
+    border: none;
+    line-height: 36px;
+    border-radius: 4px;
+    float: left;
+    text-indent: 1em;
+    color: #fff;
+    font-size: 14px;
+    margin-left: 30px;
 }
 
-.back_li{
-	position: relative;
+.common_con .content .login .yzm_input {
+    width: 40%;
 }
 
-.back_li .back{
-	position: absolute;
-	left: 134px;
-	top:45px;
-	color: #bbb;
-	font-size: 14px;
+.yzm {
+    background-color: #fff;
+    max-width: 20%;
+    min-width: 20%;
+    height: 36px;
+    float: left;
+    margin-left: 9%;
 }
 
-.back_li .back:hover{
-	color: #ac2a08;
+.back_li {
+    position: relative;
 }
 
-.common_con .content .login li .log_butt{       /*提交按钮*/
-	background-color: #ac2a08;
-	float: left;
-	width: 70%;
-	border: none;
-	line-height: 34px;
-	border-radius: 4px;
-	font-size: 16px;
-	font-family: '微软雅黑';
-	color: #fff;
-	margin-top: 20px;
-	cursor: pointer;
-	margin-left: 135px;
+.back_li .back {
+    position: absolute;
+    left: 134px;
+    top: 45px;
+    color: #bbb;
+    font-size: 14px;
 }
 
-.common_con .content .login li .reg_butt{
-	margin-top: 0px;
+.back_li .back:hover {
+    color: #ac2a08;
 }
 
-.common_con .content .login .code_li .code_input{
-	width: 40%;
+.common_con .content .login li .log_butt { /*提交按钮*/
+    background-color: #ac2a08;
+    float: left;
+    width: 70%;
+    border: none;
+    line-height: 34px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-family: '微软雅黑';
+    color: #fff;
+    margin-top: 20px;
+    cursor: pointer;
+    margin-left: 135px;
 }
 
-.common_con .content .login .code_li  .code_butt{
-	padding: 0 4%;
-	line-height: 32px;
-	border:none;
-	background-color: #ac2a08;
-	color: #fff;
-	font-family: '微软雅黑';
-	border-radius: 4px;
-	float: right;
-	position: absolute;
-	right:9%;
-	cursor: pointer;
+.common_con .content .login li .reg_butt {
+    margin-top: 0px;
 }
 
-.common_con .content .login .code_li  .code_butt:hover,
-.common_con .content .login li .log_butt:hover{
-	background-color: #9b2000;}
+.common_con .content .login .code_li .code_input {
+    width: 40%;
+}
 
+.common_con .content .login .code_li .code_butt {
+    padding: 0 4%;
+    line-height: 32px;
+    border: none;
+    background-color: #ac2a08;
+    color: #fff;
+    font-family: '微软雅黑';
+    border-radius: 4px;
+    float: right;
+    position: absolute;
+    right: 9%;
+    cursor: pointer;
+}
 
+.common_con .content .login .code_li .code_butt:hover,
+.common_con .content .login li .log_butt:hover {
+    background-color: #9b2000;
+}
 
 /*错误提示*/
-.error{
-	color: #ac2a08;
-	height:24px;
-	text-indent: 1.5em;
-	background:url(../images/xx.png) no-repeat 2px 1.5px; 
-	background-size: 15px;
-	margin-left: 130px;
-	display: none;
+.error {
+    color: #ac2a08;
+    height: 24px;
+    text-indent: 1.5em;
+    background: url(../images/xx.png) no-repeat 2px 1.5px;
+    background-size: 15px;
+    margin-left: 130px;
+    display: none;
 }
 
-.er_block{
-	display: block;
+.er_block {
+    display: block;
 }
-
 
 /*right*/
 .common_con .content .right {
-	width: 40%;
-	float: right;
+    width: 40%;
+    float: right;
 }
 
-.common_con .content .right h1{
-	float: none;
+.common_con .content .right h1 {
+    float: none;
 }
 
-.common_con .content .right .yichu{
-	margin-top: 5%;
+.common_con .content .right .yichu {
+    margin-top: 5%;
 }
 
-.common_con .content .right .yichu dd{
-	color: #bbb;
-	font-size: 16px;
-	margin-top: 20px;
-	background:url(../images/icon41.png) no-repeat 3px 7px; 
-	text-indent: 1.5em;
-	background-size: 10px;
+.common_con .content .right .yichu dd {
+    color: #bbb;
+    font-size: 16px;
+    margin-top: 20px;
+    background: url(../images/icon41.png) no-repeat 3px 7px;
+    text-indent: 1.5em;
+    background-size: 10px;
 }
-
-
 
 /*产品注册步骤*/
 
-.steps{
-	margin-top: 20%;
+.steps {
+    margin-top: 20%;
 }
 
-.steps h3{
-	color:#ac2a08;
-	font-size: 18px;
-	font-weight: 700;
+.steps h3 {
+    color: #ac2a08;
+    font-size: 18px;
+    font-weight: 700;
 }
 
-.steps_dl dt{
-	margin-top: 20px;
+.steps_dl dt {
+    margin-top: 20px;
 }
 
-.steps_dl dt span{
-	display: block;
-	width: 30px;
-	height: 30px;
-	background-color: #ac2a08;
-	border-radius: 50%;
-	font-size: 18px;
-	text-align: center;
-	line-height: 30px;
-	color: #bbb;
-	float: left;
+.steps_dl dt span {
+    display: block;
+    width: 30px;
+    height: 30px;
+    background-color: #ac2a08;
+    border-radius: 50%;
+    font-size: 18px;
+    text-align: center;
+    line-height: 30px;
+    color: #bbb;
+    float: left;
 }
 
-.steps_dl dt p{
-	float: left;
-	font-size: 18px;
-	color: #bbb;
-	line-height: 30px;
-	text-indent: 1em;
+.steps_dl dt p {
+    float: left;
+    font-size: 18px;
+    color: #bbb;
+    line-height: 30px;
+    text-indent: 1em;
 }
 
-.steps_dl dd{
-	color: #bbb;
-	font-size: 14px;
-	margin-top: 10px;
-	letter-spacing: 1px;
+.steps_dl dd {
+    color: #bbb;
+    font-size: 14px;
+    margin-top: 10px;
+    letter-spacing: 1px;
 }
-
 
 /*注册*/
 
-.common_reg{
-	width: 70%;
-	margin: auto;
-	margin-top: 2%;
-	margin-bottom: 2%;
+.common_reg {
+    width: 70%;
+    margin: auto;
+    margin-top: 2%;
+    margin-bottom: 2%;
 }
 
-.common_con .content .reg li{
-	margin-bottom: 20px;
+.common_con .content .reg li {
+    margin-bottom: 20px;
 }
 
-.common_con .content .reg{
-	padding-top: 8%;
-	padding-bottom: 4%;
+.common_con .content .reg {
+    padding-top: 8%;
+    padding-bottom: 4%;
+    margin-top: 20px !important;
 }
-
-
-
 
 /*找回密码*/
-.password{
-	width: 70%;
-	margin: 0 auto;
-	margin-top: 3%;
-	margin-bottom: 3%;
-	background-color: #1c1a16;
-	padding-bottom: 6%;
+.password {
+    width: 70%;
+    margin: 0 auto;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    background-color: #1c1a16;
+    padding-bottom: 6%;
 }
 
-.pass_tit{
-	font-size: 24px;
-	color: #ac2a08;
-	text-indent: 1em;
-	padding: 20px 0;
-	border-bottom: 1px solid #000;
+.pass_tit {
+    font-size: 24px;
+    color: #ac2a08;
+    text-indent: 1em;
+    padding: 20px 0;
+    border-bottom: 1px solid #000;
 }
 
-.password ul{
-	width:650px;
-	margin: 0 auto;
-	margin-top: 8%;
+.password ul {
+    width: 650px;
+    margin: 0 auto;
+    margin-top: 8%;
 }
 
-.error1{
-	color: #ac2a08;
-	color: #ac2a08;
-	height:24px;
-	text-indent: 1.5em;
-	background:url(../images/xx.png) no-repeat 2px 1.5px; 
-	background-size: 15px;
-	margin-left: 120px;
-	display: none;
+.error1 {
+    color: #ac2a08;
+    color: #ac2a08;
+    height: 24px;
+    text-indent: 1.5em;
+    background: url(../images/xx.png) no-repeat 2px 1.5px;
+    background-size: 15px;
+    margin-left: 120px;
+    display: none;
 }
 
-.er1_block{
-	display: block;
+.er1_block {
+    display: block;
 }
 
-.password ul li{
-	width: 100%;
-	float: left;
-	margin-bottom: 40px;
+.password ul li {
+    width: 100%;
+    float: left;
+    margin-bottom: 40px;
 }
 
-.password ul li span{
-	display: block;
-	width: 100px;
-	color: #bbb;
-	font-size: 16px;
-	float: left;
-	text-align: right;
-	line-height: 36px;
+.password ul li span {
+    display: block;
+    width: 100px;
+    color: #bbb;
+    font-size: 16px;
+    float: left;
+    text-align: right;
+    line-height: 36px;
 }
 
-.password ul li input{
-	width: 80%;
-	display: block;
-	background-color: #302f2e;
-	border: none;
-	line-height: 36px;
-	border-radius: 4px;
-	float: left;
-	text-indent: 1em;
-	color: #fff;
-	font-size: 14px;
-	margin-left: 20px;
+.password ul li input {
+    width: 80%;
+    display: block;
+    background-color: #302f2e;
+    border: none;
+    line-height: 36px;
+    border-radius: 4px;
+    float: left;
+    text-indent: 1em;
+    color: #fff;
+    font-size: 14px;
+    margin-left: 20px;
 }
 
-.password ul li b{
-	color: #ac2a08;
+.password ul li b {
+    color: #ac2a08;
 }
 
-.password ul li .code_input{
-	width: 55%;
+.password ul li .code_input {
+    width: 55%;
 }
 
-.password ul li .code_butt{
-	padding: 0 30px;
-	color: #fff;
-	border: none;
-	background-color: #ac2a08;
-	line-height: 34px;
-	border-radius: 4px;
-	margin-left: 34px;
-	font-family: '微软雅黑';
-	cursor: pointer;
+.password ul li .code_butt {
+    padding: 0 30px;
+    color: #fff;
+    border: none;
+    background-color: #ac2a08;
+    line-height: 34px;
+    border-radius: 4px;
+    margin-left: 34px;
+    font-family: '微软雅黑';
+    cursor: pointer;
 }
 
-.password ul li .log_butt{
-	color: #fff;
-	border: none;
-	width: 80%;
-	background-color: #ac2a08;
-	line-height: 32px;
-	border-radius: 4px;
-	margin-left: 120px;
-	font-size: 16px;
-	font-family: '微软雅黑';
-	cursor: pointer;
+.password ul li .log_butt {
+    color: #fff;
+    border: none;
+    width: 80%;
+    background-color: #ac2a08;
+    line-height: 32px;
+    border-radius: 4px;
+    margin-left: 120px;
+    font-size: 16px;
+    font-family: '微软雅黑';
+    cursor: pointer;
 }
 
 .password ul li .code_butt:hover,
-.password ul li .log_butt:hover{
-	background-color: #9b2000;
+.password ul li .log_butt:hover {
+    background-color: #9b2000;
 }
 
 .password ul li input,
-.common_con .content .login input{
-	border: 1px solid #1c1a16;
+.common_con .content .login input {
+    border: 1px solid #1c1a16;
 }
 
-
-	
 .password ul li input:focus,
-.common_con .content .login input:focus{
-	border: 1px solid #ac2a08;
+.common_con .content .login input:focus {
+    border: 1px solid #ac2a08;
 }
-
-
-
 
 /*底部*/
-footer{
-	border-top: #3b3b3b 1px solid;
-	width: 100%;
+footer {
+    border-top: #3b3b3b 1px solid;
+    width: 100%;
+    position: absolute;
+    bottom: 15px;
 }
 
-footer p{	
-	width: 100%;
-	color: #bbb;
-	font-size: 14px;
-	text-align: center;
-	padding-bottom: 10px;
-	padding-top: 10px;
+footer p {
+    width: 100%;
+    color: #bbb;
+    font-size: 14px;
+    text-align: center;
+    padding-bottom: 10px;
+    padding-top: 10px;
 }
 
-footer p a{
-	color: #bbb;}
+footer p a {
+    color: #bbb;
+}
 
-footer p a:hover{
-	color: #ac2a08;}
-
-
-
-
-
+footer p a:hover {
+    color: #ac2a08;
+}
 
 /*样式结束*/
-
-
-
-
-
-
-
-
-
 
 /*响应式*/
 
 /*1200 - 1600 像素之间的屏幕*/
 
-@media	(min-width: 1200px) and (max-width: 1600px) {
+@media (min-width: 1200px) and (max-width: 1600px) {
 
-.password,
-footer p,
-.common_con,
-.header_div .head{
-	width: 85%;
+    .password,
+    footer p,
+    .common_con,
+    .header_div .head {
+        width: 85%;
+    }
+
+    .common_con .content .left {
+        width: 55%;
+    }
+
+    .common_con .content .login {
+        padding: 10% 0;
+    }
+
+    /**/
 }
-
-.common_con .content .left{
-	width: 55%;
-}
-
-.common_con .content .login{
-	padding: 10% 0;
-}
-
-/**/
-}
-
-
 
 /*800 和1199 像素之间的屏幕*/
 
-@media	(min-width: 800px)and (max-width: 1199px) {
+@media (min-width: 800px)and (max-width: 1199px) {
 
-.password,
-footer p,
-.common_con,
-.header_div .head{
-	width: 95%;
+    .password,
+    footer p,
+    .common_con,
+    .header_div .head {
+        width: 95%;
+    }
+
+    .common_con .content .left {
+        width: 55%;
+    }
+
+    .common_con .content .login {
+        padding-top: 12%;
+        padding-bottom: 6%;
+    }
+
+    .common_con .content .login ul {
+        width: 98%;
+    }
+
+    .common_con .content .login li .log_butt,
+    .common_con .content .login input {
+        width: 64%;
+    }
+
+    .common_con .content h1 {
+        line-height: 30px;
+    }
+
+    /**/
 }
-
-.common_con .content .left{
-	width: 55%;
-}
-
-.common_con .content .login{
-	padding-top: 12%;
-	padding-bottom: 6%;
-}
-
-.common_con .content .login ul{
-	width: 98%;
-}
-
-.common_con .content .login li .log_butt,
-.common_con .content .login input{
-	width: 64%;}
-
-.common_con .content h1{
- 	line-height: 30px;
-}
-
-
-
- /**/
- }
-
 
 /*小于 799 像素之间的屏幕*/
 
-@media (max-width: 799px){
+@media (max-width: 799px) {
 
-.password,
-footer p,
-.common_con,
-.header_div .head{
-	width: 98%;
-	margin:auto;
+    .password,
+    footer p,
+    .common_con,
+    .header_div .head {
+        width: 98%;
+        margin: auto;
+    }
+
+    .header_div {
+        padding: 10px 0;
+    }
+
+    .header_div .return p {
+        background-size: 36px;
+    }
+
+    .common_con .content .login {
+        padding-top: 12%;
+        padding-bottom: 6%;
+    }
+
+    .header_div .head {
+        position: relative;
+    }
+
+    .common_con .content .left .top {
+        margin-top: 20px;
+    }
+
+    .header_div .log_nav ul { /*导航隐藏*/
+        float: none;
+        position: absolute;
+        right: 6px;
+        background-color: #000;
+        top: 32px;
+        z-index: 99;
+        display: none;
+    }
+
+    .header_div .log_nav ul li {
+        border-bottom: none;
+        float: none;
+        padding: 5px 5px;
+    }
+
+    .header_div .log_nav ul li a {
+        border-bottom: none;
+        padding: none;
+        padding-bottom: inherit;
+        border-bottom: none;
+        line-height: 30px;
+    }
+
+    .header_div .log_nav ul li a:hover {
+        border-bottom: none;
+    }
+
+    .menu { /*响应式按钮*/
+        float: right;
+        position: absolute;
+        top: 20px;
+        right: 10px;
+        cursor: pointer;
+        padding: 2px 5px 5px 5px;
+        background-color: #3b3b3b;
+        border-radius: 4px;
+    }
+
+    .menu p {
+        width: 24px;
+        height: 3px;
+        background-color: #fff;
+        margin-top: 3px;
+    }
+
+    .menu:hover {
+        opacity: 0.7;
+    }
+
+    .common_con .content .right,
+    .common_con .content .left {
+        width: 98%;
+        float: none;
+        margin: 0 auto;
+        margin-bottom: 30px;
+    }
+
+    .common_con .content .login span {
+        width: 100%;
+        text-align: left;
+    }
+
+    .common_con .content .login li .log_butt,
+    .common_con .content .login input {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .back_li .back {
+        left: 0px;
+        top: 100px;
+    }
+
+    /*错误提示*/
+    .error {
+        margin-left: 0px;
+    }
+
+    .common_con .content .right dl {
+        margin-top: 10%;
+    }
+
+    .common_con .content h1 {
+        line-height: 30px;
+    }
+
+    .common_con .content .login .code_li .code_butt {
+        right: 0;
+        bottom: 0;
+    }
+
+    .common_con .content .login .yzm_input,
+    .common_con .content .login .code_li .code_input {
+        width: 60%;
+    }
+
+    .common_con .content .login dl dt { /*登陆选项按钮*/
+        padding: 10px 26px;
+        margin-left: 0px;
+        margin-right: 20px;
+    }
+
+    /*找回密码*/
+    .password ul {
+        width: 90%;
+    }
+
+    .password ul li {
+        margin-bottom: 4%;
+    }
+
+    .password ul li span {
+        width: 100%;
+        text-align: left;
+    }
+
+    .password ul li input {
+        width: 100%;
+        margin-left: 0px;
+    }
+
+    .password ul li .code_input { /*验证码input*/
+        width: 70%;
+    }
+
+    .password ul li.code_li {
+        position: relative;
+    }
+
+    .password ul li .code_butt {
+        padding: 0 5%;
+        color: #fff;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+    }
+
+    .error1,
+    .password ul li .log_butt {
+        width: 100%;
+        margin-left: 0px;
+    }
+
+    .password ul li .log_butt {
+        margin-top: 10px;
+    }
+
+    /**/
 }
-
-.header_div{
-	padding:10px 0;
-}
-
-.header_div .return p{
-	background-size: 36px;
-}
-
-.common_con .content .login{
-	padding-top: 12%;
-	padding-bottom: 6%;
-}
-
-.header_div .head{
-	position: relative;
-}
-
-.common_con .content .left .top{
-	margin-top: 20px;
-}
-
-.header_div .log_nav ul{        /*导航隐藏*/
-	float: none;
-	position: absolute;
-	right: 6px;
-	background-color:#000;
-	top:32px;
-	z-index: 99;
-	display: none;
-}
-
-.header_div .log_nav ul li{
-	border-bottom: none;
-	float: none;
-	padding: 5px 5px;
-}
-
-.header_div .log_nav ul li a{
-	border-bottom: none;
-	padding:none;
- 	padding-bottom:inherit;
-	border-bottom:none;
-	line-height: 30px;
-}
-
-.header_div .log_nav ul li a:hover{
-	border-bottom: none;
-}
-
-.menu{                             /*响应式按钮*/
-	float: right;
-	position: absolute;
-	top: 20px;
-	right: 10px;
-	cursor: pointer;
-	padding:2px 5px 5px 5px;
-	background-color: #3b3b3b;
-	border-radius: 4px;
-}
-
-.menu p{
-	width: 24px;
-	height: 3px;
-	background-color: #fff;
-	margin-top: 3px;
-}
-
-.menu:hover{
-	opacity: 0.7;
-}
-
-
-.common_con .content .right,
-.common_con .content .left{
-	width: 98%;
-	float: none;
-	margin: 0 auto;
-	margin-bottom: 30px;
-}
-
-.common_con .content .login span{
-	width: 100%;
-	text-align: left;
-}
-
-.common_con .content .login li .log_butt,
-.common_con .content .login input{
-	width: 100%;
-	margin-left: 0;
-}
-
-.back_li .back{
-	left: 0px;
-	top:100px;
-}
-
-
-
-/*错误提示*/
-.error{
-	margin-left: 0px;
-}
-
-.common_con .content .right dl{    
-	margin-top: 10%;
-}
-
-
-.common_con .content h1{
- 	line-height: 30px;
-}
-
-.common_con .content .login .code_li  .code_butt{
-	right:0;
-	bottom:0;
-}
-
-.common_con .content .login .yzm_input,
-.common_con .content .login .code_li .code_input{
-	width: 60%;
-}
-
-.common_con .content .login dl dt{        /*登陆选项按钮*/
-	padding:10px 26px;
-	margin-left: 0px; 
-	margin-right: 20px;   
-}
-
-
-/*找回密码*/
-
-.password ul{
-	width: 90%;
-}
-
-.password ul li{
-	margin-bottom: 4%;
-}
-
-.password ul li span{
-	width: 100%;
-	text-align: left;
-}
-
-.password ul li input{
-	width: 100%;
-	margin-left: 0px;
-}
-
-.password ul li .code_input{    /*验证码input*/
-	width: 70%;
-}
-
-.password ul li.code_li{
-	position: relative;
-}
-
-.password ul li .code_butt{
-	padding: 0 5%;
-	color: #fff;
-	position: absolute;
-	right: 0;
-	bottom: 0;
-}
-
-.error1,
-.password ul li .log_butt{
-	width: 100%;
-	margin-left: 0px;
-}
-
-.password ul li .log_butt{
-	margin-top: 10px;
-}
-
-
-
-/**/
-}
-
-
 
 /*小于399像素的屏幕*/
-@media (max-width: 399px){
+@media (max-width: 399px) {
 
-.password ul li .code_input,
-.common_con .content .login .code_li .code_input{   /*获取验证码input*/
-	width: 60%;
+    .password ul li .code_input,
+    .common_con .content .login .code_li .code_input { /*获取验证码input*/
+        width: 60%;
+    }
+
+    /**/
 }
 
-
-/**/
+.regs {
+    display: none;
 }
 
 
