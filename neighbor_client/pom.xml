@@ -3,19 +3,19 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>qingxiu_parent</artifactId>
+        <artifactId>neighbor_parent</artifactId>
         <groupId>com.citysmart</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>qingxiu_h5</artifactId>
+    <artifactId>neighbor_client</artifactId>
     <packaging>war</packaging>
     <version>1.0-SNAPSHOT</version>
 
-    <name>qingxiu_h5</name>
+    <name>neighbor_client</name>
 
     <properties>
-        <qingxiu-service.version>1.0-SNAPSHOT</qingxiu-service.version>
+        <neighbor-service.version>1.0-SNAPSHOT</neighbor-service.version>
         <tengxun.qcloudsms.version>1.0.6</tengxun.qcloudsms.version>
         <shiro-redis>3.1.0</shiro-redis>
     </properties>
@@ -29,8 +29,8 @@
         </dependency>
         <dependency>
             <groupId>com.citysmart</groupId>
-            <artifactId>qingxiu_servcie</artifactId>
-            <version>${qingxiu-service.version}</version>
+            <artifactId>neighbor_servcie</artifactId>
+            <version>${neighbor-service.version}</version>
         </dependency>
 
         <!--redis-shiro緩存封裝-->
@@ -78,7 +78,7 @@
     </dependencies>
 
     <build>
-        <finalName>qingxiu_h5</finalName>
+        <finalName>neighbor_client</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>qingxiu_parent</artifactId>
+        <artifactId>neighbor_parent</artifactId>
         <groupId>com.citysmart</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>qingxiu_client</artifactId>
-    <packaging>war</packaging>
+    <artifactId>neighbor_api</artifactId>
     <version>1.0-SNAPSHOT</version>
-
-    <name>qingxiu_client</name>
-
+    <packaging>war</packaging>
     <properties>
-        <qingxiu-service.version>1.0-SNAPSHOT</qingxiu-service.version>
+        <neighbor-service.version>1.0-SNAPSHOT</neighbor-service.version>
+        <neighbor-mq.version>1.0-SNAPSHOT</neighbor-mq.version>
+        <swagger.version>2.7.0</swagger.version>
+        <swagger-annotations.version>1.5.20</swagger-annotations.version>
         <tengxun.qcloudsms.version>1.0.6</tengxun.qcloudsms.version>
-        <shiro-redis>3.1.0</shiro-redis>
+        <jedis.version>2.9.0</jedis.version>
+        <bean-util.version>1.0.10</bean-util.version>
     </properties>
 
     <dependencies>
@@ -29,21 +30,31 @@
         </dependency>
         <dependency>
             <groupId>com.citysmart</groupId>
-            <artifactId>qingxiu_servcie</artifactId>
-            <version>${qingxiu-service.version}</version>
+            <artifactId>neighbor_servcie</artifactId>
+            <version>${neighbor-service.version}</version>
         </dependency>
-
-        <!--redis-shiro緩存封裝-->
+        <!--<dependency>
+            <groupId>com.citysmart</groupId>
+            <artifactId>qingxiu_mq</artifactId>
+            <version>${qingxiu-mq.version}</version>
+        </dependency>-->
+        <!--添加Swagger2依赖 -->
         <dependency>
-            <groupId>org.crazycake</groupId>
-            <artifactId>shiro-redis</artifactId>
-            <version>${shiro-redis}</version>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-annotations</artifactId>
+            <version>${swagger-annotations.version}</version>
         </dependency>
-        <!--redis-shiro緩存封裝-->
+        <!--添加Swagger2依赖 -->
         <dependency>
-            <groupId>org.crazycake</groupId>
-            <artifactId>shiro-redis</artifactId>
-            <version>${shiro-redis}</version>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>${swagger.version}</version>
+        </dependency>
+        <!--添加Swagger-UI依赖 -->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>${swagger.version}</version>
         </dependency>
         <!--redis 缓存-->
         <dependency>
@@ -56,29 +67,29 @@
             <artifactId>qcloudsms</artifactId>
             <version>${tengxun.qcloudsms.version}</version>
         </dependency>
-
-        <!--请求包-->
+        <!--jedis工具-->
         <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpclient</artifactId>
-            <version>4.5.3</version>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+            <version>${jedis.version}</version>
         </dependency>
-        <!--城市获取-->
+        <!--beancopy工具-->
         <dependency>
-            <groupId>com.googlecode.libphonenumber</groupId>
-            <artifactId>geocoder</artifactId>
-            <version>2.99</version>
+            <groupId>com.github.yangtu222</groupId>
+            <artifactId>BeanUtils</artifactId>
+            <version>${bean-util.version}</version>
         </dependency>
-        <dependency>
-            <groupId>com.googlecode.libphonenumber</groupId>
-            <artifactId>libphonenumber</artifactId>
-            <version>8.9.14</version>
-        </dependency>
-
+        <!-- spring-boot-devtools依赖包 -->
+        <!--<dependency>-->
+        <!--<groupId>org.springframework.boot</groupId>-->
+        <!--<artifactId>spring-boot-devtools</artifactId>-->
+        <!--<optional>true</optional>-->
+        <!--<scope>true</scope>-->
+        <!--</dependency>-->
     </dependencies>
 
     <build>
-        <finalName>qingxiu_client</finalName>
+        <finalName>neighbor_api</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -108,4 +119,5 @@
             </resource>
         </resources>
     </build>
+
 </project>
