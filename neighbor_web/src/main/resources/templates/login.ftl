@@ -22,7 +22,7 @@
     <div class="login_divd ">
         <div class="yrise">
             <div class="login-logo">
-                <b>邻居帮登录</b>
+                <b>简单生活网管理系统</b>
             </div>
             <!-- /.login-logo -->
             <form action="/login/doLogin" data-validator-option="{theme:'bootstrap', timely:2, theme:'simple_bottom'}"

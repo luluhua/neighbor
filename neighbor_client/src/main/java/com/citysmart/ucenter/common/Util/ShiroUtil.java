@@ -8,7 +8,11 @@ import com.citysmart.common.util.HttpClientUtil;
 import com.citysmart.ucenter.common.HttpHelper;
 import com.citysmart.ucenter.module.appc.service.ITAppUserService;
 import com.citysmart.ucenter.mybatis.model.TAppUser;
+import com.citysmart.ucenter.mybatis.model.TSysUser;
+import com.citysmart.ucenter.mybatis.model.app.TLjUser;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -83,6 +87,25 @@ public class ShiroUtil {
             }
         }
         return token;
+    }
+
+    public static TLjUser getSessionUser() {
+        try {
+            Subject subject = SecurityUtils.getSubject();
+            if (subject != null) {
+                Object object = subject.getPrincipal();
+                if (object != null) {
+                    TLjUser ljUser = (TLjUser) object;
+                    HttpHelper.getHttpServletRequest().getSession().setAttribute("user", ljUser);
+                    /*秒为单位*/
+//                    HttpHelper.getHttpServletRequest().getSession().setMaxInactiveInterval(60);
+                    return ljUser;
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
 

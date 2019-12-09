@@ -4,3 +4,14 @@
 <base id="projectName" href="${projectName}">
 <script type="text/javascript" src="${ctx}/base/js/jquery-1.8.3.min.js"></script>
 <script type="text/javascript" src="${ctx}/base/js/main.js"></script>
+<script type="text/javascript" src="${ctx}/base/js/layui/layui.js"></script>
+
+
+<script type="text/javascript">
+    layui.config({
+        version: true,
+        debug: true,
+        base: '${ctx}/base/modules/'
+    }).use('xform'); //加载入口
+
+</script>

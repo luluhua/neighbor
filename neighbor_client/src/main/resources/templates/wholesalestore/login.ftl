@@ -30,7 +30,6 @@
         <nav class="log_nav">
             <ul>
                 <li><a href="/index.html" target="_Blank">简单生活网</a></li>
-
                 <li><a href="javascript:void{0}" onclick="Classify('ALL')">论坛</a></li>
             </ul>
         </nav>
@@ -61,16 +60,22 @@
                     <dt>验证码登陆</dt>
                 </dl>
                 <div class="tab_1">
-                    <form action="" class="form_login" method="">
+                    <form action="${ctx}/clientDoLogin"
+                          data-validator-option="{theme:'bootstrap', timely:2, theme:'simple_bottom'}"
+                          class="form_login ayui-form layui-form-pane"
+                          id="submitForm"
+                          method="post">
                         <input type="hidden" name="header" value="">
+                        <input type="hidden" name="isPasslogin" value="1">
                         <!--密码登陆-->
                         <ul>
                             <li>
-                                <h6 class="error" id="us_hint"></h6>      <!--错误提示-->
+                                <h6 class="error" style="display: <#if error??>block</#if>"
+                                    id="us_hint">${(error)!}</h6>
+                                <!--错误提示-->
 
                                 <span>手机<b>*</b></span>
-
-                                <input type="text" placeholder="手机" id="name">
+                                <input type="text" name="userName" placeholder="手机" id="name">
                             </li>
                             <div class="clear"></div>
 
@@ -78,14 +83,15 @@
 
                                 <span>输入密码<b>*</b></span>
 
-                                <input type="password" placeholder="请输入密码" id="psd">
+                                <input type="password" name="password" placeholder="请输入密码" id="psd">
 
                                 <a href="password.html" class="back">忘记密码？找回密码</a>
                             </li>
                             <div class="clear"></div>
 
                             <li>
-                                <button class="log_butt">登陆</button>
+                                <button type="submit" class="log_butt">登陆
+                                </button>
                             </li>
                             <div class="clear"></div>
                         </ul>
@@ -93,6 +99,7 @@
                     <!--验证码登陆-->
                     <form action="" class="pho_login" method="">
                         <input type="hidden" name="header" value="">
+                        <input type="hidden" name="isPasslogin" value="2">
                         <ul class="ul_block">
                             <li>
                                 <h6 class="error er_block" id="pho_hitn" style="display: none"></h6>
@@ -148,65 +155,67 @@
             <h3>点击“注册”表示您同意 <a href="../store/foot_xy.html">《简单生活网用户注册协议》</a></h3>
 
             <div class="login reg">
-                <div class="tab_1">
-                    <!--手机注册-->
-                    <ul class="ul_block">
-                        <li>
-                            <h6 class="error" id="phone_htin"></h6>
+                <form action="${ctx}/register" method="post"
+                      class="layui-form layui-form-pane form-horizontal layui-form layui-form-pane"
+                      data-validator-option="{theme:'bootstrap', timely:2, theme:'simple_bottom'}" id="submitForm">
+                    <div class="tab_1">
+                        <!--手机注册-->
+                        <ul class="ul_block">
+                            <li>
+                                <h6 class="error" id="phone_htin"></h6>
 
-                            <span>手机号<b>*</b></span>
+                                <span>手机号<b>*</b></span>
 
-                            <input type="text" placeholder="输入正确的手机号" id="phones" value=""/>
-                        </li>
-                        <div class="clear"></div>
-                        <li>
-                            <h6 class="error" id="re1_hint"></h6>
+                                <input type="text" name="username" placeholder="输入正确的手机号" id="phones" value=""/>
+                            </li>
+                            <div class="clear"></div>
+                            <li>
+                                <h6 class="error" id="re1_hint"></h6>
 
-                            <span>输入密码<b>*</b></span>
-                            <input type="password" placeholder="由字母和数字组成，不少于6位字符" id="re1" value=""/>
-                        </li>
-                        <div class="clear"></div>
-                        <li>
-                            <h6 class="error er_block" id="re2_hint" style="display: none"></h6>
+                                <span>输入密码<b>*</b></span>
+                                <input type="password" name="password" placeholder="由字母和数字组成，不少于6位字符" id="re1"
+                                       value=""/>
+                            </li>
+                            <div class="clear"></div>
+                            <li>
+                                <h6 class="error er_block" id="re2_hint" style="display: none"></h6>
 
-                            <span>确认密码<b>*</b></span>
+                                <span>确认密码<b>*</b></span>
 
-                            <input type="password" placeholder="再次输入密码" id="re2" value=""/>
-                        </li>
-                        <div class="clear"></div>
-                        <li>
-                            <h6 class="error er_block" id="rey" style="display: none"></h6>
-                            <span>验证码<b>*</b></span>
+                                <input type="password" name="password1" placeholder="再次输入密码" id="re2" value=""/>
+                            </li>
+                            <div class="clear"></div>
+                            <li>
+                                <h6 class="error er_block" id="rey" style="display: none"></h6>
+                                <span>验证码<b>*</b></span>
 
-                            <input type="text" id="reyzm" placeholder="请输入验证码" class="yzm_input">
+                                <input type="text" id="reyzm" name="code" placeholder="请输入验证码" class="yzm_input">
 
-                            <img id="rg_img" src="${ctx}/login/captcha" class="yzm refimg">
-                        </li>
-                        <div class="clear"></div>
-                        <li class="code_li back_li">
-                            <h6 class="error" id="verify_hint"></h6>
+                                <img id="rg_img" src="${ctx}/login/captcha" class="yzm refimg">
+                            </li>
+                            <div class="clear"></div>
+                            <li class="code_li back_li">
+                                <h6 class="error" id="verify_hint"></h6>
 
-                            <span>手机验证码<b>*</b></span>
+                                <span>手机验证码<b>*</b></span>
 
-                            <input type="text" placeholder="输入手机验证码" class="code_input" id="verify" value=""/>
+                                <input type="text" name="phoneCode" placeholder="输入手机验证码" class="code_input" id="verify"
+                                       value=""/>
 
-                            <a href="javascript:void(0)" class="code_butt" id="enroll_bt"
-                               onclick="registercode()">获取验证码</a>
+                                <a href="javascript:void(0)" class="code_butt" id="enroll_bt"
+                                   onclick="registercode()">获取验证码</a>
 
-                        </li>
-                        <li>
-                            <span>邀请码</span>
-                            <input type="text" placeholder="请输入邀请码" id="invitationPhone" value=""/>
-                        </li>
-                        <div class="clear"></div>
-
-                        <li>
-                            <button class="log_butt reg_butt" onclick="phoneregsiter()">注册</button>
-                        </li>
-                        <div class="clear"></div>
-                    </ul>
-                </div>
-
+                            </li>
+                            <div class="clear"></div>
+                            <li>
+                                <button class="log_butt reg_butt btn btn-success" lay-submit lay-filter="submit"
+                                        type="submit">注册
+                                </button>
+                            </li>
+                            <div class="clear"></div>
+                        </ul>
+                    </div>
+                </form>
             </div>
         </div>
 
