@@ -1,6 +1,7 @@
 package com.citysmart.ucenter.module.login;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.citysmart.common.bean.Rest;
 import com.citysmart.common.controller.SuperController;
 import com.citysmart.common.util.IpUtil;
 import com.citysmart.common.util.PBKDF2Util;
@@ -12,6 +13,7 @@ import com.citysmart.ucenter.module.appc.service.ITLjUserService;
 import com.citysmart.ucenter.module.system.service.ITLjUserSecurityService;
 import com.citysmart.ucenter.module.system.service.ITSysUserLogService;
 import com.citysmart.ucenter.module.system.service.ITSysUserSecurityService;
+import com.citysmart.ucenter.mybatis.entity.vo.registreVO;
 import com.citysmart.ucenter.mybatis.model.app.TLjUser;
 import com.citysmart.ucenter.mybatis.model.app.TLjUserSecurity;
 import com.google.code.kaptcha.impl.DefaultKaptcha;
@@ -119,14 +121,22 @@ public class loginController extends SuperController {
              * 记录登录日志
              */
             sysLogService.insertLog("用户登录成功", userName, IpUtil.getIpAddr(request), 1, 1);
-            return redirectTo(header);
-
+            return redirectTo((header == "" || header == null) ? "/eec/index" : header);
         } catch (Exception e) {
             e.printStackTrace();
             model.addFlashAttribute("error", "用户名或密码错误");
             sysLogService.insertLog("用户登录失败：" + e.getMessage(), userName, IpUtil.getIpAddr(request), 1, 1);
             return redirectTo("/login");
         }
+    }
+
+    @RequestMapping("/logout")
+    @ResponseBody
+    public Rest register(Model model, HttpServletRequest request) {
+        HttpServletRequest req = (HttpServletRequest) request;
+        Subject currentUser = SecurityUtils.getSubject();
+        currentUser.logout();
+        return Rest.ok();
     }
 
 

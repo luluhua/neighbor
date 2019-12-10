@@ -6,7 +6,7 @@ import com.citysmart.ucenter.mybatis._Model;
 
 /**
  * <p>
- * 
+ * <p>
  * </p>
  *
  * @author lub
@@ -20,117 +20,115 @@ public class TSysLog extends _Model<TSysLog> {
     /**
      * 操作用户编号
      */
-	@TableField("user_id")
-	private Integer userId;
+    @TableField("user_id")
+    private String userId;
     /**
      * 操作用户
      */
-	@TableField("user_name")
-	private String userName;
+    @TableField("user_name")
+    private String userName;
     /**
      * 组件（模块/服务）
      */
-	private String module;
+    private String module;
     /**
      * 级别（DEBUG调试、INFO信息、WARN警告、ERROR严重、FATAL崩溃、service信息）
      */
-	private String level;
+    private String level;
     /**
      * 日志标题
      */
-	private String title;
+    private String title;
     /**
      * 日志详细
      */
-	private String content;
+    private String content;
     /**
      * 请求地址
      */
-	private String url;
+    private String url;
     /**
      * 请求参数
      */
-	private String params;
+    private String params;
     /**
      * 请求ip
      */
-	@TableField("from_ip")
-	private String fromIp;
+    @TableField("from_ip")
+    private String fromIp;
 
 
+    public String getUserId() {
+        return userId;
+    }
 
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
 
-	public Integer getUserId() {
-		return userId;
-	}
+    public String getUserName() {
+        return userName;
+    }
 
-	public void setUserId(Integer userId) {
-		this.userId = userId;
-	}
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 
-	public String getUserName() {
-		return userName;
-	}
+    public String getModule() {
+        return module;
+    }
 
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
+    public void setModule(String module) {
+        this.module = module;
+    }
 
-	public String getModule() {
-		return module;
-	}
+    public String getLevel() {
+        return level;
+    }
 
-	public void setModule(String module) {
-		this.module = module;
-	}
+    public void setLevel(String level) {
+        this.level = level;
+    }
 
-	public String getLevel() {
-		return level;
-	}
+    public String getTitle() {
+        return title;
+    }
 
-	public void setLevel(String level) {
-		this.level = level;
-	}
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-	public String getTitle() {
-		return title;
-	}
+    public String getContent() {
+        return content;
+    }
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
+    public void setContent(String content) {
+        this.content = content;
+    }
 
-	public String getContent() {
-		return content;
-	}
+    public String getUrl() {
+        return url;
+    }
 
-	public void setContent(String content) {
-		this.content = content;
-	}
+    public void setUrl(String url) {
+        this.url = url;
+    }
 
-	public String getUrl() {
-		return url;
-	}
+    public String getParams() {
+        return params;
+    }
 
-	public void setUrl(String url) {
-		this.url = url;
-	}
+    public void setParams(String params) {
+        this.params = params;
+    }
 
-	public String getParams() {
-		return params;
-	}
+    public String getFromIp() {
+        return fromIp;
+    }
 
-	public void setParams(String params) {
-		this.params = params;
-	}
-
-	public String getFromIp() {
-		return fromIp;
-	}
-
-	public void setFromIp(String fromIp) {
-		this.fromIp = fromIp;
-	}
+    public void setFromIp(String fromIp) {
+        this.fromIp = fromIp;
+    }
 
 
 }

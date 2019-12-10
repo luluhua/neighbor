@@ -16,6 +16,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.filter.DelegatingFilterProxy;
 
 import javax.servlet.MultipartConfigElement;
 
@@ -67,4 +68,6 @@ public class QingxiuUcenterApplication extends SpringBootServletInitializer {
         filterRegistrationBean.setEnabled(false);
         return filterRegistrationBean;
     }
+
+
 }

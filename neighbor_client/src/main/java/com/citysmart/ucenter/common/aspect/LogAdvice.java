@@ -1,12 +1,13 @@
 package com.citysmart.ucenter.common.aspect;
 
 import com.citysmart.common.util.IpUtil;
-import com.citysmart.ucenter.common.Util.ShiroUtilWeb;
+import com.citysmart.ucenter.common.Util.ShiroUtil;
 import com.citysmart.ucenter.common.Util.SpringUtil;
 import com.citysmart.ucenter.common.anno.Log;
 import com.citysmart.ucenter.module.system.service.ITSysLogService;
 import com.citysmart.ucenter.mybatis.model.TSysLog;
 import com.citysmart.ucenter.mybatis.model.TSysUser;
+import com.citysmart.ucenter.mybatis.model.app.TLjUser;
 import com.google.gson.Gson;
 import org.apache.log4j.Logger;
 import org.aspectj.lang.JoinPoint;
@@ -50,10 +51,10 @@ public class LogAdvice {
         Method method = methodSignature.getMethod();
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
         Log log = method.getAnnotation(Log.class);
-        TSysUser sysUser = ShiroUtilWeb.getSessionUser();
+        TLjUser sysUser = ShiroUtil.getSessionUser();
         if (log != null) {
             TSysLog sysLog = new TSysLog();
-            sysLog.setUserId((sysUser != null) ? sysUser.getId() : 0);
+            sysLog.setUserId((sysUser != null) ? sysUser.getId() : "0");
             sysLog.setFromIp(IpUtil.getIpAddr(request));
             sysLog.setLevel("INFO信息");
             sysLog.setModule(method.getName());

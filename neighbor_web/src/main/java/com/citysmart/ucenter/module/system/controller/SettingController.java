@@ -146,15 +146,14 @@ public class SettingController extends SuperController {
     /**
      * 查询短信配置
      */
-//    @RequiresPermissions("selectSmsSetting")
-//    @RequestMapping("/selectSmsSetting")
-//    @ResponseBody
-//    public Rest selectSmsSetting(Model model) {
-//        EntityWrapper<TSmsConfig> ew = new EntityWrapper<TSmsConfig>();
-//        ew.last("limit 1");
-//        TSmsConfig smsConfig = smsConfigService.selectOne(ew);
-//        return Rest.okData(smsConfig);
-//    }
+    @RequestMapping("/selectSmsSetting")
+    @ResponseBody
+    public Rest selectSmsSetting(Model model) {
+        EntityWrapper<TSmsConfig> ew = new EntityWrapper<TSmsConfig>();
+        ew.last("limit 1");
+        TSmsConfig smsConfig = smsConfigService.selectOne(ew);
+        return Rest.okData(smsConfig);
+    }
 
     /**
      * 更新短信配置
@@ -163,7 +162,6 @@ public class SettingController extends SuperController {
      * @param model
      * @return
      */
-    @RequiresPermissions("doSmsSetting")
     @Log("更新短信配置")
     @RequestMapping("/doSmsSetting")
     @ResponseBody

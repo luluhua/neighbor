@@ -3,12 +3,10 @@
 <html>
 <head>
     <meta charset="utf-8">
-
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
-    <title>login</title>
+    <title>登录</title>
 </head>
 <link rel="stylesheet" type="text/css" href="${ctx}/wholesalestore/css/css.css"/>
 <link rel="stylesheet" type="text/css" href="${ctx}/wholesalestore/css/login.css"/>
@@ -202,9 +200,14 @@
                                 <input type="text" name="phoneCode" placeholder="输入手机验证码" class="code_input" id="verify"
                                        value=""/>
 
-                                <a href="javascript:void(0)" class="code_butt" id="enroll_bt"
-                                   onclick="registercode()">获取验证码</a>
-
+                                <a href="javascript:void(0)" style="display: none" class="code_butt"
+                                   id="codedaojis"></a>
+                                <a class="code_butt" id="enroll_re" href="javascript:;" data-toggle="tooltip"
+                                   title="获取验证码"
+                                   data-placement="bottom"
+                                   data-tiggle="ajax"
+                                   data-submit-url="${ctx}/getVerification"
+                                   data-confirm="您确定要推出登录吗?">获取验证码</a>
                             </li>
                             <div class="clear"></div>
                             <li>
@@ -302,12 +305,56 @@
         $(".log").hide();
         $(".regs").show();
     })
-    $('#tabs').tabulous({
-        effect: 'scale'
-    });
+    // $('#tabs').tabulous({
+    //     effect: 'scale'
+    // });
 
+    $("#enroll_re").click(function () {
+        var phone = $("#phones").val();
+        var imgCode = $("#reyzm").val();
+        var dataUrl = $(this).attr("data-submit-url");
+        $.post(dataUrl, {"phone": phone, "captcha": imgCode}, function (json) {
+            console.log(json)
+            if (json.code == 200) {
+                layer.msg(json.msg);
+                loganresCofg.upImgCode();
+                $("#enroll_re").hide();
+                $("#codedaojis").show();
+                countDown();
+            } else {
+                layer.msg(json.msg);
+                loganresCofg.upImgCode();
+            }
+        });
 
+    })
+
+    windoe:loganresCofg = {
+        upImgCode: function () {
+            $.post('${ctx}/login/captcha', function (response) {
+                $('.refimg').attr('src', '${ctx}/login/captcha')
+            })
+        },
+
+    }
+    var flag = 1;
+    var i = 60;
+
+    function countDown() {
+        i = i - 1;
+        $("#codedaojis").html(i + "秒后重发");
+        if (i == 0) {
+            $("#enroll_re").show();
+            $("#enroll_re").html("重新发送");
+            $("#codedaojis").hide();
+            flag = 1;
+            i = 60;
+            return;
+        }
+        setTimeout('countDown()', 1000);
+    }
 </script>
+<script type="text/javascript" src="${ctx}/base/js/jquery-confirm/jquery-confirm.min.js"></script>
 </body>
 </html>
 

@@ -11,7 +11,7 @@ import java.util.Date;
 
 /**
  * <p>
- *
+ * <p>
  * </p>
  *
  * @author lub
@@ -41,7 +41,7 @@ public class TSmsConfig extends Model<TSmsConfig> {
      * 短信接口账号
      */
     @TableField("sms_account")
-    private Integer smsAccount;
+    private String smsAccount;
     /**
      * 短信接口账号密码
      */
@@ -98,11 +98,11 @@ public class TSmsConfig extends Model<TSmsConfig> {
         this.smsUrl = smsUrl;
     }
 
-    public Integer getSmsAccount() {
+    public String getSmsAccount() {
         return smsAccount;
     }
 
-    public void setSmsAccount(Integer smsAccount) {
+    public void setSmsAccount(String smsAccount) {
         this.smsAccount = smsAccount;
     }
 

@@ -15,6 +15,9 @@ public class homeController extends SuperController {
 
     @RequestMapping("/index")
     public String show(Model model) {
+
+
+
         return "/wholesalestore/index";
     }
 }

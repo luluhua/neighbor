@@ -23,6 +23,8 @@ import java.io.Serializable;
 public class TLjUser extends Model<TLjUser> {
 
     private static final long serialVersionUID = 1L;
+    public static final int status_0 = 0;
+    public static final int status_1 = 1;
 
     @TableId(type = IdType.UUID)
     private String id;

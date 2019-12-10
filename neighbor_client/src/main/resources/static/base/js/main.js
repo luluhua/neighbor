@@ -7,6 +7,7 @@ if (typeof (activity) == 'undefined') {
 
             return document.referrer;
         },
+
     }
 }
 $(document).ready(function () {

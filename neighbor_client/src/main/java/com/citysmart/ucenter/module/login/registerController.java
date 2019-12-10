@@ -3,13 +3,13 @@ package com.citysmart.ucenter.module.login;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.citysmart.common.bean.Rest;
 import com.citysmart.common.controller.SuperController;
+import com.citysmart.common.json.JsonResult;
 import com.citysmart.common.util.IpUtil;
 import com.citysmart.ucenter.common.Util.PWDStrongUtil;
-import com.citysmart.ucenter.common.anno.Log;
 import com.citysmart.ucenter.module.appc.service.ITLjUserService;
 import com.citysmart.ucenter.module.system.service.ITSysUserLogService;
+import com.citysmart.ucenter.mybatis.model.TSmsConfig;
 import com.citysmart.ucenter.mybatis.model.app.TLjUser;
-import com.citysmart.ucenter.mybatis.model.app.TLjUserSecurity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
@@ -17,6 +17,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.citysmart.ucenter.mybatis.entity.vo.registreVO;
 import org.springframework.web.bind.annotation.ResponseBody;
+import com.citysmart.ucenter.common.Util.sendsmsrUtil;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * @author li
@@ -52,5 +55,24 @@ public class registerController extends SuperController {
             return Rest.failure("用户创建失败");
 
         }
+    }
+
+    /**
+     * 注册发送短信
+     *
+     * @param model
+     * @param request
+     * @return
+     */
+    @RequestMapping("/getVerification")
+    @ResponseBody
+    public Rest getVerification(Model model, HttpServletRequest request, String phone, String captcha) {
+        String rightCode = (String) request.getSession().getAttribute("rightCode");
+        if (rightCode.equals(captcha)) {
+            TSmsConfig config = sendsmsrUtil.getTSmsConfig();
+            JsonResult result = sendsmsrUtil.sendMessageByHttp(config, phone, sendsmsrUtil.REGISTER_CODE);
+            return Rest.ok(result.getMsg());
+        }
+        return Rest.failure("图片验证码错误");
     }
 }

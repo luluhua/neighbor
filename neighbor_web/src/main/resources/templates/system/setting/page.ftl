@@ -213,6 +213,35 @@
         layui.use('element', function () {
             var element = layui.element;
             console.log(element);
+            console.log(element);
+            var dataUrl = "/system/setting/selectSmsSetting";
+            $.post(dataUrl, {}, function (json) {
+                if (json.code == 200) {
+                    console.log(json);
+                    if (json.data != null) {
+                        $("#smsId").val(json.data.id);
+                        $("#smsTitle").val(json.data.smsTitle);
+                        $("#smsUrl").val(json.data.smsUrl);
+                        $("#smsAccount").val(json.data.smsAccount);
+                        $("#smsPassword").val(json.data.smsPassword);
+                        $("#smsTemplate").val(json.data.smsTemplate);
+                        $("#smsSign").val(json.data.smsSign);
+                        if (json.data.isEnabled == 0) {
+                            $('#isEnabledYes').attr("checked", true);
+                            $('#isEnabledNo').attr("checked", false);
+                        } else {
+                            $('#isEnabledYes').attr("checked", false);
+                            $('#isEnabledNo').attr("checked", true);
+                        }
+                    }
+                } else {
+                    $.alert({
+                        title: '提示',
+                        content: json.msg,
+                        buttons: {"好的": {btnClass: 'btn-blue'}}
+                    });
+                }
+            });
             var attaconfigUrl = "/system/setting/selectAttachmentConfig";
             $.post(attaconfigUrl, {}, function (json) {
                 if (json.code == 200) {
