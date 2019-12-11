@@ -81,60 +81,67 @@ public class sendsmsrUtil {
         String verificationCode = CommonUtil.randomNumber().toString();
         String smsTest = RedisUtil.getValueByKey("sms.test");
         //把验证码加入redis缓存
-        String userRedispackagekey = RedisUtil.QINGXIU_PACKAGE_KEY + ".smsCode." + smsType + ":" + phone;
+        String userRedispackagekey = RedisUtil.QINGXIU_PACKAGE_KEY + ".smsCode." + smsType + ":" + PWDStrongUtil.Encryption3DEs(phone);
         String verificationCodeTime = RedisUtil.getValueByKey("verification.Code.Time");
         long time_expire = 60;
         //获取剩余时间
         long restTime = JedisUtil.getInstance().new Keys().ttl(userRedispackagekey);
         long existenceTime = Long.valueOf(TimeUtil.MillisecondToSecond(Integer.parseInt(verificationCodeTime)).toString()) - restTime;
         if (existenceTime == 0 || existenceTime >= time_expire) {
-            String content = new String("欢迎您使用简单生活网，您的验证码是：" + verificationCode
-                    + "。有效时间5分钟。安全提醒：验证码切勿向他人泄露，以防止上当受骗。如有疑问请咨询在线客服。");
-            NameValuePair[] data = {//提交短信
-                    new NameValuePair("account", smsConfig.getSmsAccount()),
-                    new NameValuePair("password", smsConfig.getSmsPassword()),
-                    new NameValuePair("mobile", phone),
-                    new NameValuePair("content", content),
-            };
-            method.setRequestBody(data);
-            try {
-                client.executeMethod(method);
-                String SubmitResult = method.getResponseBodyAsString();
-                Document doc = DocumentHelper.parseText(SubmitResult);
-                Element root = doc.getRootElement();
-                String code = root.elementText("code");
-                String msg = root.elementText("msg");
-                String smsid = root.elementText("smsid");
-                if ("2".equals(code)) {
+            RedisUtil.delPackageKey("smsCode", PWDStrongUtil.Encryption3DEs(phone));
+            if ("true".equals(smsTest)) {
+                JedisUtil.getInstance().new Strings().setEx(userRedispackagekey,
+                        TimeUtil.MillisecondToSecond(Integer.parseInt(verificationCodeTime)),
+                        verificationCode);
+                int t = smsConfig.getSmsTemplate() / 60;
+                String content = new String("欢迎您使用简单生活网，您的验证码是：" + verificationCode
+                        + "。有效时间" + t + "分钟。安全提醒：验证码切勿向他人泄露，以防止上当受骗。如有疑问请咨询在线客服。");
+                NameValuePair[] data = {//提交短信
+                        new NameValuePair("account", smsConfig.getSmsAccount()),
+                        new NameValuePair("password", smsConfig.getSmsPassword()),
+                        new NameValuePair("mobile", phone),
+                        new NameValuePair("content", content),
+                };
+                method.setRequestBody(data);
+                try {
+                    client.executeMethod(method);
+                    String SubmitResult = method.getResponseBodyAsString();
+                    Document doc = DocumentHelper.parseText(SubmitResult);
+                    Element root = doc.getRootElement();
+                    String code = root.elementText("code");
+                    String msg = root.elementText("msg");
+                    String smsid = root.elementText("smsid");
+                    if ("2".equals(code)) {
+                        //把验证码加入缓存
+                        JedisUtil.getInstance().new Strings().setEx(userRedispackagekey,
+                                smsConfig.getSmsTemplate(),
+                                verificationCode);
+                        addSendMessageLogInfo("您的验证码为：" + verificationCode, phone, "", smsType.toString());
+                        logger.warn("验证码发送：验证码类型【验证码】,输入验证码【" + verificationCode + "】,手机号码【" + phone + "】,redis key【" + userRedispackagekey + "】");
+                        return new JsonSuccessResult("发送成功", verificationCode);
+                    } else {
+                        return new JsonFailResult(msg);
+                    }
 
-                    JedisUtil.getInstance().new Strings().setEx(userRedispackagekey,
-                            TimeUtil.MillisecondToSecond(Integer.parseInt(verificationCodeTime)),
-                            verificationCode);
-                    addSendMessageLogInfo("您的验证码为：" + verificationCode, phone, "", smsType.toString());
-                    logger.warn("验证码发送：验证码类型【验证码】,输入验证码【" + verificationCode + "】,手机号码【" + phone + "】,redis key【" + userRedispackagekey + "】");
-                    return new JsonSuccessResult("发送成功", verificationCode);
-                } else {
-                    return new JsonFailResult(msg);
+                } catch (HttpException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                } catch (DocumentException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                } finally {
+                    // Release connection
+                    method.releaseConnection();
+                    //client.getConnectionManager().shutdown();
                 }
-
-            } catch (HttpException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            } catch (IOException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            } catch (DocumentException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            } finally {
-                // Release connection
-                method.releaseConnection();
-                //client.getConnectionManager().shutdown();
+            } else {
+                return new JsonFailResult("已发送过短信");
             }
-        } else {
-            return new JsonFailResult("已发送过短信");
         }
-        return null;
+        return new JsonFailResult("已发送过短信");
     }
 
     /**

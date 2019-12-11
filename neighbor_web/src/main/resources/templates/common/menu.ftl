@@ -2,7 +2,7 @@
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
         <ul class="sidebar-menu">
-            <li class="header">邻居</li>
+            <li class="header">简单生活网</li>
      <#if treeMenus??>
          <#list treeMenus as vo>
 		     <li class="treeview <#if res?? && vo.sysMenu.id==res> active </#if> ">

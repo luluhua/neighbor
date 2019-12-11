@@ -37,27 +37,12 @@ public class GlobalInterceptor extends HandlerInterceptorAdapter {
              */
 
             TLjUser me = (TLjUser) request.getSession().getAttribute("user");
-//            if (me == null) {
-//                return false;
-//            }
             request.setAttribute("me", me);
 
             /**
              * 资源和当前选中菜单
              */
-//            String res = request.getParameter("p");
-//            if (StringUtils.isNotBlank(res)) {
-//                request.getSession().setAttribute("res", res);
-//            }
-//            String cur = request.getParameter("t");
-//            if (StringUtils.isNotBlank(cur)) {
-//                request.getSession().setAttribute("cur", cur);
-//            }
-//            String cur1 = request.getParameter("p1");
-//            if (StringUtils.isNotBlank(cur1)) {
-//                request.getSession().setAttribute("cur1", cur1);
-//            }
-//            getOthenData(request);
+            getOthenData(request);
 
         }
 
@@ -72,7 +57,7 @@ public class GlobalInterceptor extends HandlerInterceptorAdapter {
      *
      * @param request
      */
-//    public void getOthenData(HttpServletRequest request) {
+    public void getOthenData(HttpServletRequest request) {
 //        TSysUser sysUser = SessionUtil.getSessionUser();
 //        request.setAttribute("recordCount", SpringUtil.getBean(ITGovRecordService.class).getRecordCount(1, sysUser));
 //        request.setAttribute("taskMyListCount", SpringUtil.getBean(ITGovRecordService.class).getRecordCount(2, sysUser));
@@ -83,6 +68,6 @@ public class GlobalInterceptor extends HandlerInterceptorAdapter {
 //        request.setAttribute("consultCount", consultCount);
 //        Integer feedbackMsgCount = SpringUtil.getBean(ITAppFeedbackMsgService.class).countNoReply();
 //        request.setAttribute("feedbackMsgCount", feedbackMsgCount);
-//    }
+    }
 
 }

@@ -7,7 +7,7 @@
         <span class="logo-lg">
            <img id="img_icon" style="width: 30px;height:30px;border-radius: 150px;margin-bottom: 8px"
                 src="/base/images/iPhone1024@2x.png">
-            <b>${(systemName)!'邻居帮'}</b></span>
+            <b>${(systemName)!'简单生活网'}</b></span>
     </a>
 
     <!-- Header Navbar -->

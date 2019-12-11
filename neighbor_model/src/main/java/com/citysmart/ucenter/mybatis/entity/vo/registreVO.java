@@ -29,7 +29,7 @@ public class registreVO {
 
     @ApiModelProperty(value = "验证码", name = "code", required = true)
     @NotBlank(message = "验证码不能为空")
-    String code;
+    String phoneCode;
 
 
 }

@@ -45,6 +45,9 @@ public class registerController extends SuperController {
             if (userService.selectOne(new EntityWrapper<TLjUser>().eq("username", vo.getUsername())) != null) {
                 return Rest.failure("用户名已存在");
             }
+            if (!sendsmsrUtil.verify(vo.getUsername(), vo.getPhoneCode(), sendsmsrUtil.REGISTER_CODE)) {
+                return Rest.failure("短信验证码不正确");
+            }
             userService.insertUser(vo);
             sysLogService.insertLog("用户注册", vo.getUsername(), IpUtil.getIpAddr(request), 1, 1);
             return Rest.ok();
@@ -67,12 +70,18 @@ public class registerController extends SuperController {
     @RequestMapping("/getVerification")
     @ResponseBody
     public Rest getVerification(Model model, HttpServletRequest request, String phone, String captcha) {
+        if (userService.selectOne(new EntityWrapper<TLjUser>().eq("username", PWDStrongUtil.Encryption3DEs(phone))) != null) {
+            return Rest.failure("手机号码已注册");
+        }
         String rightCode = (String) request.getSession().getAttribute("rightCode");
         if (rightCode.equals(captcha)) {
             TSmsConfig config = sendsmsrUtil.getTSmsConfig();
             JsonResult result = sendsmsrUtil.sendMessageByHttp(config, phone, sendsmsrUtil.REGISTER_CODE);
-            return Rest.ok(result.getMsg());
+            if (result.getCode() == 0) {
+                return Rest.ok(result.getMsg());
+            }
+            return Rest.failure(result.getMsg());
         }
-        return Rest.failure("图片验证码错误");
+        return Rest.failure("图形验证码错误");
     }
 }
