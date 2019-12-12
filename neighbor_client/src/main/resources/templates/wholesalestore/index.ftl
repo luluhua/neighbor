@@ -119,15 +119,15 @@
             <div class="allA">
                 <a href="javascript:void(0)" onclick="pitchon('all')">全部商品</a>
 
-                <a href="javascript:void(0)" onclick="pitchon('bike')">自行车</a>
+                <a href="javascript:void(0)" onclick="pitchon('bike')">商品分类</a>
 
-                <a href="javascript:void(0)" onclick="pitchon('把带')">自行车把带</a>
+                <a href="javascript:void(0)" onclick="pitchon('把带')">商品分类</a>
 
-                <a href="javascript:void(0)" onclick="pitchon('把套')">自行车把套</a>
+                <a href="javascript:void(0)" onclick="pitchon('把套')">商品分类</a>
 
-                <a href="javascript:void(0)" onclick="pitchon('包包')">自行车包包</a>
+                <a href="javascript:void(0)" onclick="pitchon('包包')">商品分类</a>
 
-                <a href="javascript:void(0)" onclick="pitchon('Cordee')">自行车配件</a>
+                <a href="javascript:void(0)" onclick="pitchon('Cordee')">商品分类</a>
 
             </div>
         </li>
@@ -188,44 +188,44 @@
 
         <li class="border">
             <h3>
-                <img src="${ctx}/wholesalestore/images/pr_01.jpg">
-                <p class="pA">CycleDesign 自行车包自行车骑行包便携水袋包双肩背包 </p>
+                <img src="${ctx}/wholesalestore/images/logo.png">
+                <p class="pA">商品名称 </p>
                 <p>CDBG0057</p>
-                <p>会员价：￥<span>310</span></p>
-                <p>销售价：￥<span>310</span></p>
+                <p>购买价：￥<span>310</span></p>
+                <p>出借价：￥<span>310</span></p>
                 <a href="product_details.html">立即购买</a>
             </h3>
         </li>
 
         <li>
             <h3>
-                <img src="${ctx}/wholesalestore/images/pr_01.jpg">
-                <p class="pA">CycleDesign 自行车包自行车骑行包便携水袋包双肩背包 </p>
+                <img src="${ctx}/wholesalestore/images/logo.png">
+                <p class="pA">商品名称 </p>
                 <p>CDBG0057</p>
-                <p>会员价：￥<span>310</span></p>
-                <p>销售价：￥<span>310</span></p>
+                <p>购买价：￥<span>310</span></p>
+                <p>出借价：￥<span>310</span></p>
                 <a href="product_details.html">立即购买</a>
             </h3>
         </li>
 
         <li>
             <h3>
-                <img src="${ctx}/wholesalestore/images/pr_01.jpg">
-                <p class="pA">CycleDesign 自行车包自行车骑行包便携水袋包双肩背包 </p>
+                <img src="${ctx}/wholesalestore/images/logo.png">
+                <p class="pA">商品名称 </p>
                 <p>CDBG0057</p>
-                <p>会员价：￥<span>310</span></p>
-                <p>销售价：￥<span>310</span></p>
+                <p>购买价：￥<span>310</span></p>
+                <p>出借价：￥<span>310</span></p>
                 <a href="product_details.html">立即购买</a>
             </h3>
         </li>
 
         <li>
             <h3>
-                <img src="${ctx}/wholesalestore/images/pr_01.jpg">
-                <p class="pA">CycleDesign 自行车包自行车骑行包便携水袋包双肩背包 </p>
+                <img src="${ctx}/wholesalestore/images/logo.png">
+                <p class="pA">商品名称 </p>
                 <p>CDBG0057</p>
-                <p>会员价：￥<span>310</span></p>
-                <p>销售价：￥<span>310</span></p>
+                <p>购买价：￥<span>310</span></p>
+                <p>出借价：￥<span>310</span></p>
                 <a href="product_details.html">立即购买</a>
             </h3>
         </li>
@@ -236,51 +236,51 @@
 
         <li class="border">
             <h3>
-                <img src="${ctx}/wholesalestore/images/pr_01.jpg">
-                <p class="pA">CycleDesign 自行车包自行车骑行包便携水袋包双肩背包 </p>
+                <img src="${ctx}/wholesalestore/images/logo.png">
+                <p class="pA">商品名称 </p>
                 <p>CDBG0057</p>
-                <p>会员价：￥<span>310</span></p>
-                <p>销售价：￥<span>310</span></p>
+                <p>购买价：￥<span>310</span></p>
+                <p>出借价：￥<span>310</span></p>
                 <a href="product_details.html">立即购买</a>
             </h3>
         </li>
 
         <li>
             <h3>
-                <img src="${ctx}/wholesalestore/images/pr_01.jpg">
-                <p class="pA">CycleDesign 自行车包自行车骑行包便携水袋包双肩背包 </p>
+                <img src="${ctx}/wholesalestore/images/logo.png">
+                <p class="pA">商品名称 </p>
                 <p>CDBG0057</p>
-                <p>会员价：￥<span>310</span></p>
-                <p>销售价：￥<span>310</span></p>
+                <p>购买价：￥<span>310</span></p>
+                <p>出借价：￥<span>310</span></p>
                 <a href="product_details.html">立即购买</a>
             </h3>
         </li>
 
         <li>
             <h3>
-                <img src="${ctx}/wholesalestore/images/pr_01.jpg">
-                <p class="pA">CycleDesign 自行车包自行车骑行包便携水袋包双肩背包 </p>
+                <img src="${ctx}/wholesalestore/images/logo.png">
+                <p class="pA">商品名称 </p>
                 <p>CDBG0057</p>
-                <p>会员价：￥<span>310</span></p>
-                <p>销售价：￥<span>310</span></p>
+                <p>购买价：￥<span>310</span></p>
+                <p>出借价：￥<span>310</span></p>
                 <a href="product_details.html">立即购买</a>
             </h3>
         </li>
 
         <li>
             <h3>
-                <img src="${ctx}/wholesalestore/images/pr_01.jpg">
-                <p class="pA">CycleDesign 自行车包自行车骑行包便携水袋包双肩背包 </p>
+                <img src="${ctx}/wholesalestore/images/logo.png">
+                <p class="pA">商品名称 </p>
                 <p>CDBG0057</p>
-                <p>会员价：￥<span>310</span></p>
-                <p>销售价：￥<span>310</span></p>
-                <a href="">立即购买</a>
+                <p>购买价：￥<span>310</span></p>
+                <p>出借价：￥<span>310</span></p>
+                <a href="product_details.html">立即购买</a>
             </h3>
         </li>
 
     </ul>
 
-    <h1 class="h1">自行车</h1>
+    <h1 class="h1">分类名称</h1>
 
     <div class="common_div">
 
@@ -306,22 +306,22 @@
 
                 <dd>
                     <h4>
-                        <img src="${ctx}/wholesalestore/images/pr_03.jpg">
-                        <p>Duke Tourney 公爵</p>
-                        <p>铬钼钢小径跑車</p>
-                        <p>会员价：￥<span>2598</span></p>
-                        <p>销售价：￥<span>2598</span></p>
+                        <img src="${ctx}/wholesalestore/images/logo.png">
+                        <p>商品名称</p>
+                        <p>商品简介</p>
+                        <p>购买：￥<span>2598</span></p>
+                        <p>出借价：￥<span>2598</span></p>
                         <a href="">立即购买</a>
                     </h4>
                 </dd>
 
                 <dd>
                     <h4>
-                        <img src="${ctx}/wholesalestore/images/pr_03.jpg">
-                        <p>Duke Tourney 公爵</p>
-                        <p>铬钼钢小径跑車</p>
-                        <p>会员价：￥<span>2598</span></p>
-                        <p>销售价：￥<span>2598</span></p>
+                        <img src="${ctx}/wholesalestore/images/logo.png">
+                        <p>商品名称</p>
+                        <p>商品简介</p>
+                        <p>购买：￥<span>2598</span></p>
+                        <p>出借价：￥<span>2598</span></p>
                         <a href="">立即购买</a>
                     </h4>
                 </dd>
@@ -330,11 +330,11 @@
 
                 <dd style="border-left:none">
                     <h4>
-                        <img src="${ctx}/wholesalestore/images/pr_03.jpg">
-                        <p>Duke Tourney 公爵</p>
-                        <p>铬钼钢小径跑車</p>
-                        <p>会员价：￥<span>2598</span></p>
-                        <p>销售价：￥<span>2598</span></p>
+                        <img src="${ctx}/wholesalestore/images/logo.png">
+                        <p>商品名称</p>
+                        <p>商品简介</p>
+                        <p>购买：￥<span>2598</span></p>
+                        <p>出借价：￥<span>2598</span></p>
                         <a href="">立即购买</a>
                     </h4>
                 </dd>
@@ -342,11 +342,11 @@
 
                 <dd>
                     <h4>
-                        <img src="${ctx}/wholesalestore/images/pr_03.jpg">
-                        <p>Duke Tourney 公爵</p>
-                        <p>铬钼钢小径跑車</p>
-                        <p>会员价：￥<span>2598</span></p>
-                        <p>销售价：￥<span>2598</span></p>
+                        <img src="${ctx}/wholesalestore/images/logo.png">
+                        <p>商品名称</p>
+                        <p>商品简介</p>
+                        <p>购买：￥<span>2598</span></p>
+                        <p>出借价：￥<span>2598</span></p>
                         <a href="">立即购买</a>
                     </h4>
                 </dd>
@@ -354,11 +354,11 @@
 
                 <dd>
                     <h4>
-                        <img src="${ctx}/wholesalestore/images/pr_03.jpg">
-                        <p>Duke Tourney 公爵</p>
-                        <p>铬钼钢小径跑車</p>
-                        <p>会员价：￥<span>2598</span></p>
-                        <p>销售价：￥<span>2598</span></p>
+                        <img src="${ctx}/wholesalestore/images/logo.png">
+                        <p>商品名称</p>
+                        <p>商品简介</p>
+                        <p>购买：￥<span>2598</span></p>
+                        <p>出借价：￥<span>2598</span></p>
                         <a href="">立即购买</a>
                     </h4>
                 </dd>
@@ -366,11 +366,11 @@
 
                 <dd>
                     <h4>
-                        <img src="${ctx}/wholesalestore/images/pr_03.jpg">
-                        <p>Duke Tourney 公爵</p>
-                        <p>铬钼钢小径跑車</p>
-                        <p>会员价：￥<span>2598</span></p>
-                        <p>销售价：￥<span>2598</span></p>
+                        <img src="${ctx}/wholesalestore/images/logo.png">
+                        <p>商品名称</p>
+                        <p>商品简介</p>
+                        <p>购买：￥<span>2598</span></p>
+                        <p>出借价：￥<span>2598</span></p>
                         <a href="">立即购买</a>
                     </h4>
                 </dd>
@@ -382,7 +382,7 @@
     </div>
 
 
-    <h1 class="h1">自行车·零件</h1>
+    <h1 class="h1">分类名称</h1>
 
     <div class="common_div">
 
@@ -395,34 +395,33 @@
         <dl>
             <dt>
                 <a href="">
-                    <img src="${ctx}/wholesalestore/images/pr_02.jpg">
-
+                    <img src="${ctx}/wholesalestore/images/logo.png">
                     <div class="figure">
-                        <p>RALEIGH-铝合金20速公路车</p>
-                        <span>6061铝合金公路跑车车架-碳纤前叉</span>
-                        <b>￥3998</b>
+                        <p>商品名称</p>
+                        <span>商品简介</span>
+                        <b>￥10/天</b>
                     </div>
                 </a>
             </dt>
             <div id="">
                 <dd>
                     <h4>
-                        <img src="${ctx}/wholesalestore/images/pr_03.jpg">
-                        <p>Duke Tourney 公爵</p>
-                        <p>铬钼钢小径跑車</p>
-                        <p>会员价：￥<span>2598</span></p>
-                        <p>销售价：￥<span>2598</span></p>
+                        <img src="${ctx}/wholesalestore/images/logo.png">
+                        <p>商品名称</p>
+                        <p>商品简介</p>
+                        <p>购买价：￥<span>2598</span></p>
+                        <p>出借价：￥<span>2598</span></p>
                         <a href="">立即购买</a>
                     </h4>
                 </dd>
 
                 <dd>
                     <h4>
-                        <img src="${ctx}/wholesalestore/images/pr_03.jpg">
-                        <p>Duke Tourney 公爵</p>
-                        <p>铬钼钢小径跑車</p>
-                        <p>会员价：￥<span>2598</span></p>
-                        <p>销售价：￥<span>2598</span></p>
+                        <img src="${ctx}/wholesalestore/images/logo.png">
+                        <p>商品名称</p>
+                        <p>商品简介</p>
+                        <p>购买价：￥<span>2598</span></p>
+                        <p>出借价：￥<span>2598</span></p>
                         <a href="">立即购买</a>
                     </h4>
                 </dd>
@@ -430,11 +429,11 @@
 
                 <dd style="border-left:none">
                     <h4>
-                        <img src="${ctx}/wholesalestore/images/pr_03.jpg">
-                        <p>Duke Tourney 公爵</p>
-                        <p>铬钼钢小径跑車</p>
-                        <p>会员价：￥<span>2598</span></p>
-                        <p>销售价：￥<span>2598</span></p>
+                        <img src="${ctx}/wholesalestore/images/logo.png">
+                        <p>商品名称</p>
+                        <p>商品简介</p>
+                        <p>购买价：￥<span>2598</span></p>
+                        <p>出借价：￥<span>2598</span></p>
                         <a href="">立即购买</a>
                     </h4>
                 </dd>
@@ -442,11 +441,11 @@
 
                 <dd>
                     <h4>
-                        <img src="${ctx}/wholesalestore/images/pr_03.jpg">
-                        <p>Duke Tourney 公爵</p>
-                        <p>铬钼钢小径跑車</p>
-                        <p>会员价：￥<span>2598</span></p>
-                        <p>销售价：￥<span>2598</span></p>
+                        <img src="${ctx}/wholesalestore/images/logo.png">
+                        <p>商品名称</p>
+                        <p>商品简介</p>
+                        <p>购买价：￥<span>2598</span></p>
+                        <p>出借价：￥<span>2598</span></p>
                         <a href="">立即购买</a>
                     </h4>
                 </dd>
@@ -454,11 +453,11 @@
 
                 <dd>
                     <h4>
-                        <img src="${ctx}/wholesalestore/images/pr_03.jpg">
-                        <p>Duke Tourney 公爵</p>
-                        <p>铬钼钢小径跑車</p>
-                        <p>会员价：￥<span>2598</span></p>
-                        <p>销售价：￥<span>2598</span></p>
+                        <img src="${ctx}/wholesalestore/images/logo.png">
+                        <p>商品名称</p>
+                        <p>商品简介</p>
+                        <p>购买价：￥<span>2598</span></p>
+                        <p>出借价：￥<span>2598</span></p>
                         <a href="">立即购买</a>
                     </h4>
                 </dd>
@@ -466,11 +465,11 @@
 
                 <dd>
                     <h4>
-                        <img src="${ctx}/wholesalestore/images/pr_03.jpg">
-                        <p>Duke Tourney 公爵</p>
-                        <p>铬钼钢小径跑車</p>
-                        <p>会员价：￥<span>2598</span></p>
-                        <p>销售价：￥<span>2598</span></p>
+                        <img src="${ctx}/wholesalestore/images/logo.png">
+                        <p>商品名称</p>
+                        <p>商品简介</p>
+                        <p>购买价：￥<span>2598</span></p>
+                        <p>出借价：￥<span>2598</span></p>
                         <a href="">立即购买</a>
                     </h4>
                 </dd>
@@ -480,7 +479,7 @@
     </div>
 
 
-    <h1 class="h1">自行车·配件</h1>
+    <h1 class="h1">分类名称</h1>
 
     <div class="common_div">
 
@@ -493,12 +492,11 @@
         <dl>
             <dt>
                 <a id="onc" href="javascript:void(0)" onclick="">
-                    <img id="accimg" src="">
-
+                    <img src="${ctx}/wholesalestore/images/logo.png">
                     <div class="figure">
-                        <p id="accbrand"></p>
-                        <span id="acccommname"></span>
-                        <b>￥<span id="accprice"></span></b>
+                        <p id="accbrand">商品名称</p>
+                        <span id="acccommname">商品简介</span>
+                        <b>￥<span id="accprice">120</span></b>
                     </div>
                 </a>
             </dt>
@@ -506,22 +504,22 @@
 
                 <dd>
                     <h4>
-                        <img src="${ctx}/wholesalestore/images/pr_03.jpg">
-                        <p>Duke Tourney 公爵</p>
-                        <p>铬钼钢小径跑車</p>
-                        <p>会员价：￥<span>2598</span></p>
-                        <p>销售价：￥<span>2598</span></p>
+                        <img src="${ctx}/wholesalestore/images/logo.png">
+                        <p>商品名称</p>
+                        <p>商品简介</p>
+                        <p>购买价：￥<span>2598</span></p>
+                        <p>出借：￥<span>2598</span></p>
                         <a href="">立即购买</a>
                     </h4>
                 </dd>
 
                 <dd>
                     <h4>
-                        <img src="${ctx}/wholesalestore/images/pr_03.jpg">
-                        <p>Duke Tourney 公爵</p>
-                        <p>铬钼钢小径跑車</p>
-                        <p>会员价：￥<span>2598</span></p>
-                        <p>销售价：￥<span>2598</span></p>
+                        <img src="${ctx}/wholesalestore/images/logo.png">
+                        <p>商品名称</p>
+                        <p>商品简介</p>
+                        <p>购买价：￥<span>2598</span></p>
+                        <p>出借：￥<span>2598</span></p>
                         <a href="">立即购买</a>
                     </h4>
                 </dd>
@@ -529,11 +527,11 @@
 
                 <dd style="border-left:none">
                     <h4>
-                        <img src="${ctx}/wholesalestore/images/pr_03.jpg">
-                        <p>Duke Tourney 公爵</p>
-                        <p>铬钼钢小径跑車</p>
-                        <p>会员价：￥<span>2598</span></p>
-                        <p>销售价：￥<span>2598</span></p>
+                        <img src="${ctx}/wholesalestore/images/logo.png">
+                        <p>商品名称</p>
+                        <p>商品简介</p>
+                        <p>购买价：￥<span>2598</span></p>
+                        <p>出借：￥<span>2598</span></p>
                         <a href="">立即购买</a>
                     </h4>
                 </dd>
@@ -541,11 +539,11 @@
 
                 <dd>
                     <h4>
-                        <img src="${ctx}/wholesalestore/images/pr_03.jpg">
-                        <p>Duke Tourney 公爵</p>
-                        <p>铬钼钢小径跑車</p>
-                        <p>会员价：￥<span>2598</span></p>
-                        <p>销售价：￥<span>2598</span></p>
+                        <img src="${ctx}/wholesalestore/images/logo.png">
+                        <p>商品名称</p>
+                        <p>商品简介</p>
+                        <p>购买价：￥<span>2598</span></p>
+                        <p>出借：￥<span>2598</span></p>
                         <a href="">立即购买</a>
                     </h4>
                 </dd>
@@ -553,11 +551,11 @@
 
                 <dd>
                     <h4>
-                        <img src="${ctx}/wholesalestore/images/pr_03.jpg">
-                        <p>Duke Tourney 公爵</p>
-                        <p>铬钼钢小径跑車</p>
-                        <p>会员价：￥<span>2598</span></p>
-                        <p>销售价：￥<span>2598</span></p>
+                        <img src="${ctx}/wholesalestore/images/logo.png">
+                        <p>商品名称</p>
+                        <p>商品简介</p>
+                        <p>购买价：￥<span>2598</span></p>
+                        <p>出借：￥<span>2598</span></p>
                         <a href="">立即购买</a>
                     </h4>
                 </dd>
@@ -565,11 +563,11 @@
 
                 <dd>
                     <h4>
-                        <img src="${ctx}/wholesalestore/images/pr_03.jpg">
-                        <p>Duke Tourney 公爵</p>
-                        <p>铬钼钢小径跑車</p>
-                        <p>会员价：￥<span>2598</span></p>
-                        <p>销售价：￥<span>2598</span></p>
+                        <img src="${ctx}/wholesalestore/images/logo.png">
+                        <p>商品名称</p>
+                        <p>商品简介</p>
+                        <p>购买价：￥<span>2598</span></p>
+                        <p>出借：￥<span>2598</span></p>
                         <a href="">立即购买</a>
                     </h4>
                 </dd>
@@ -602,7 +600,7 @@
                 <p>售后服务</p>
                 <a href="After_service.html#shopping_introduced">退款说明</a>
                 <a href="After_service.html#logistics_distribution">退换货流程</a>
-                <a href="After_service.html#method_payment">自行车保修</a>
+            <#--<a href="After_service.html#method_payment">自行车保修</a>-->
             </li>
         </ul>
 
@@ -635,28 +633,28 @@
     </div>
 
     <div id="footer">
-        <div class="link">
-            <p>伊恩伯格企业集团</p>
+    <#--<div class="link">-->
+    <#--<p>伊恩伯格企业集团</p>-->
 
-            <a href="/index.html" target="_Blank">简单生活网</a>
+    <#--<a href="/index.html" target="_Blank">简单生活网</a>-->
 
-            <a href="/pointsMall/product_list.html" target="_Blank">积分商城</a>
+    <#--<a href="/pointsMall/product_list.html" target="_Blank">积分商城</a>-->
 
-            <a href="/mall/index.html">电子商城</a>
+    <#--<a href="/mall/index.html">电子商城</a>-->
 
-            <a href="/raleigh/index.html" target="_blank">RALEIGH</a>
+    <#--<a href="/raleigh/index.html" target="_blank">RALEIGH</a>-->
 
-            <a href="/gios/index.html" target="_Blank">GIOS</a>
+    <#--<a href="/gios/index.html" target="_Blank">GIOS</a>-->
 
-            <a href="/mhl/index.html" target="_blank">MHL</a>
+    <#--<a href="/mhl/index.html" target="_blank">MHL</a>-->
 
-            <a href="/cycledesign/index.html" target="_Blank">CYCLEDESIGN</a>
+    <#--<a href="/cycledesign/index.html" target="_Blank">CYCLEDESIGN</a>-->
 
-            <a href="/frontier/index.html" target="_blank">FRONTIER</a>
+    <#--<a href="/frontier/index.html" target="_blank">FRONTIER</a>-->
 
-        </div>
+    <#--</div>-->
 
-        <h3 class="footer_h3">Copyright©南宁伊恩伯格商贸有限公司 <a href="">桂ICP备17002166号</a></h3>
+        <h3 class="footer_h3">Copyright©简单生活网 <a href="">桂ICP备17002166号</a></h3>
 
         <div class="focus">
             <p>关注我们</p>
