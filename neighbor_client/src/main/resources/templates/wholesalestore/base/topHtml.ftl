@@ -7,7 +7,11 @@
             <li class="login">
                 <#if me??>
                     <a href="javascript:void{0}">
-                    <@commonTags method="getDecrypt3DEs" type="1" value="${(me.username)!}">${(getDecrypt3DEs)!}</@commonTags>
+                        <#if me.nickname ??>
+                            ${(me.nickname)!}
+                        <#else >
+                            ${(me.userName)!}
+                        </#if>
                     </a>|
                     <a class="bat-logout" href="javascript:;" data-toggle=" tooltip" title="退出"
                        data-placement="bottom"

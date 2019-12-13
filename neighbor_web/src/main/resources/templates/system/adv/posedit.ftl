@@ -25,35 +25,6 @@
              </div>
          </div>
          <div class="form-group">
-             <label for="code" class="col-sm-2 control-label">位置：<span
-                     class="xing_red">*</span></label>
-             <div class="col-sm-10" >
-                 <@dictTag method="getDictListByType" type="cms_layout" >
-                    <#list getDictListByType as m>
-                        <input type="radio" name="layout" value="${(m.value)!}" <#if "${(m.value)!}"=="${(advpos.layout)!}">checked</#if> title="${(m.label)!}">
-                    </#list>
-                 </@dictTag>
-             </div>
-         </div>
-         <div class="form-group">
-             <label for="layoutPic" class="col-sm-2 control-label">示例：<span
-                     class="xing_red">*</span></label>
-             <div class="col-sm-10">
-                 <input type="hidden" id="layoutPicUrl" name="layoutPicUrl" value="${(advpos.layoutPicUrl)}" class="form-control"/>
-                 <input name="file" type="file" class="file-loading" id="layoutPic">
-             </div>
-         </div>
-     <#--<div class="form-group">-->
-     <#--<label for="sortIndex" class="col-sm-2 control-label">排序</label>-->
-     <#--<div class="col-sm-10">-->
-     <#--<span>*</span>-->
-     <#--<input type="text" name="sortIndex" style="width: 100px;float: left" class="form-control"-->
-     <#--value="${(advpos.sortIndex)}"-->
-     <#--lay-verify="required|number">-->
-     <#--<text> 排序越大越靠前</text>-->
-     <#--</div>-->
-     <#--</div>-->
-         <div class="form-group">
              <label for="remark" class="col-sm-2 control-label">备注</label>
              <div class="col-sm-10">
                 <textarea name="remark" class="form-control textar-remark"
@@ -98,9 +69,9 @@
         var id = ${(advpos.id)};
         return id;
     };
-    initFileInput("layoutPic", "/file/upload","${(advpos.layoutPicUrl)!}", saveTypeId());
+    initFileInput("layoutPic", "/file/upload", "${(advpos.layoutPicUrl)!}", saveTypeId());
     //上传成功回调函数
-    $('#layoutPic').on("fileuploaded", function(event, data, previewId, index) {
+    $('#layoutPic').on("fileuploaded", function (event, data, previewId, index) {
         var result = data.response;
         $('#layoutPicUrl').val(result.urls[0]);
     });

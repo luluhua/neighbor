@@ -198,23 +198,4 @@ public class loginController extends SuperController {
         responseOutputStream.close();
     }
 
-
-    public static TLjUser getSessionUser() {
-        try {
-            Subject subject = SecurityUtils.getSubject();
-            if (subject != null) {
-                Object object = subject.getPrincipal();
-                if (object != null) {
-                    TLjUser ljUser = (TLjUser) object;
-                    HttpHelper.getHttpServletRequest().getSession().setAttribute("user", ljUser);
-                    /*秒为单位*/
-//                    HttpHelper.getHttpServletRequest().getSession().setMaxInactiveInterval(60);
-                    return ljUser;
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
 }

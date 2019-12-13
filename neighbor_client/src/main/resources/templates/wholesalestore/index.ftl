@@ -17,7 +17,8 @@
     <link href="${ctx}/wholesalestore/css/mobile.css" rel="stylesheet" type="text/css"/>
     <script type="text/javascript" src="${ctx}/wholesalestore/js/jquery-1.8.3.min.js"></script>
     <script type="text/javascript" src="${ctx}/wholesalestore/js/fanhuidibu.js"></script>     <!--返回顶部-->
-
+    <script type="text/javascript" src="${ctx}/wholesalestore/js/banner.js"></script>
+    <script type="text/javascript" src="${ctx}/wholesalestore/js/index.js"></script>
 
 </head>
 
@@ -56,7 +57,7 @@
             <span class="span"></span>
 
             <div class="chose">
-                <div class="curt">自行车</div>
+                <div class="curt">东西</div>
                 <div class="curt">配件</div>
                 <div class="curt">零件</div>
             </div>
@@ -103,7 +104,7 @@
                     </div>
 
                     <a href="My_shopping_car.html" class="js_cart">去购物车</a>
-                    -->
+                    =
                 </div>
             </div>
         </div>
@@ -117,29 +118,40 @@
     <ul>
         <li class="all"><a href="javascript:void(0)">产品分类</a>
             <div class="allA">
-                <a href="javascript:void(0)" onclick="pitchon('all')">全部商品</a>
-
-                <a href="javascript:void(0)" onclick="pitchon('bike')">商品分类</a>
-
-                <a href="javascript:void(0)" onclick="pitchon('把带')">商品分类</a>
-
-                <a href="javascript:void(0)" onclick="pitchon('把套')">商品分类</a>
-
-                <a href="javascript:void(0)" onclick="pitchon('包包')">商品分类</a>
-
-                <a href="javascript:void(0)" onclick="pitchon('Cordee')">商品分类</a>
+                <section class="banner_nav">
+                    <div class="left_nav">
+                        <ul>
+                            <#list navigation as mun>
+                                <li><a class="show" href="">${(mun.navigationName)!}</a>
+                                    <div class="lenovo-pc">
+                                        <div class="left-pc">
+                                            <dl>
+                                                <b class="hfuiase">${(mun.navigationName)!}</b>
+                                                <div class="list">
+                                                    <#list mun.tagList as tag>
+                                                        <dd><a href="">${(tag.tagName)!}</a></dd>
+                                                    </#list>
+                                                </div>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                </li>
+                            </#list>
+                        </ul>
+                    </div>
+                </section>
 
             </div>
         </li>
-        <li><a href="">优惠活动</a></li>
+    <#--<li><a href="">优惠活动</a></li>-->
 
-        <li><a href="">领优惠券</a></li>
+    <#--<li><a href="">领优惠券</a></li>-->
 
-        <li><a href="">优惠活动</a></li>
+    <#--<li><a href="">优惠活动</a></li>-->
 
-        <li><a href="">优惠活动</a></li>
+    <#--<li><a href="">优惠活动</a></li>-->
 
-        <li><a href="">优惠活动</a></li>
+    <#--<li><a href="">优惠活动</a></li>-->
     </ul>
     <div class="clear"></div>
 
@@ -152,23 +164,38 @@
     <!--轮播-->
     <div class="callbacks_container">
         <ul class="rslides" id="slider">
-            <li><img src="${ctx}/wholesalestore/images/banner01.jpg" alt=""></li>
-            <li><img src="${ctx}/wholesalestore/images/banner02.jpg" alt=""></li>
-            <li><img src="${ctx}/wholesalestore/images/banner03.jpg" alt=""></li>
+            <#list adv as adv>
+                <#if adv_index ==0>
+                    <#list adv.advList as ad>
+                     <li><img src="${(ad.imgUrl)}" alt=""></li>
+                    </#list>
+
+                </#if>
+
+            </#list>
         </ul>
     </div>
     <script type="text/javascript" src="${ctx}/wholesalestore/js/lunbo.min.js"></script>
 
     <div class="banner_fr">
-        <img src="${ctx}/wholesalestore/images/icon_05.png" id="ports1" onclick="GOuser_home()">
-        <h2>您好,<span id="username" onclick="GOuser_home()" style="cursor: pointer"></span></h2>
-        <h2>欢迎来到简单生活 !</h2>
-
+        <a>
+            <img src="${(me.avatarUrl)!}" onerror="this.src='${ctx}/base/images/default.jpg'" id="ports1">
+            <h2>您好,<span id="username" style="cursor: pointer"><#if (me.nickname)??>
+                ${(me.nickname)!}
+            <#else >
+                ${(me.userName)!}
+            </#if></span></h2>
+            <h2>欢迎来到简单生活 !</h2>
+        </a>
         <dl>
             <dt>商城公告</dt>
             <br/>
             <div id="marquee6" style="height:142px; overflow:hidden;background:#EFEFEF;">
-                <ul id="sakjw">
+                <ul>
+                    <#list inform as m>
+                        <li><b>${(m.title)!}</b></li>
+                        <p>${(m.remark)!}</p>
+                    </#list>
 
                 </ul>
             </div>
@@ -680,6 +707,9 @@
 
 </body>
 <script type="text/javascript" src="${ctx}/wholesalestore/js/passbyvalue.js"></script>
-
+<script type="text/javascript" src="${ctx}/base/js/jquery.kxbdmarquee.js"></script>
+<script>
+    $("#marquee6").kxbdMarquee({direction: "up", isEqual: false});
+</script>
 </html>
 <#--</#macro>-->
