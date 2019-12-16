@@ -1,0 +1,238 @@
+/**红色 星 */
+.xing_red {
+    color: #dd4b39;
+}
+
+/**表格 checkbox td 宽度*/
+.td_checkbox {
+    width: 80px !important;
+}
+
+/**input 宽度*/
+.input-number-100 {
+    width: 100px !important;
+}
+
+/**input、select 宽度*/
+.input-select-200 {
+    width: 200px !important;
+}
+
+.input-title-500 {
+    width: 500px !important;
+}
+
+.input-title-700 {
+    width: 700px !important;
+}
+
+.input-detail-200 {
+    width: 200px;
+    height: 33px;
+    background-color: #fff;
+    border: 1px solid #FFF;
+}
+
+.input-detail {
+    width: 200px !important;
+    height: 33px !important;
+    background-color: #fff !important;
+    border: 1px solid #FFF;
+}
+
+.textarea-detail {
+    width: 400px !important;
+    height: 100px !important;
+    background-color: #fff !important;
+    border: 1px solid #FFF;
+}
+
+.input-detail-700 {
+    width: 700px;
+    height: 33px;
+    background-color: #fff;
+    border: 1px solid #FFF;
+}
+
+/** 表格 td中 input宽度：适用于排序输入框 */
+.td-input-80 {
+    width: 60px !important;
+}
+
+/** 提示文字颜色 */
+.ts-color {
+    color: #888 !important;
+}
+
+/** 表格td强制不可以换行 */
+.table-nowrap {
+    white-space: nowrap !important;
+}
+
+/** textarea 宽度 100% 适用于富文本*/
+.textar {
+    width: 100% !important;
+}
+
+/** textarea 使用于 备注、说明、摘要  */
+.textar-remark {
+    width: 400px;
+    height: 100px;
+}
+
+/**附件上传 外框样式 */
+.upload-img-icon {
+    width: 200px !important;
+    height: 200px !important;
+}
+
+.upload-img-icon .file-drop-zone-title {
+    padding: 10px !important;
+    font-size: 1.2em !important;
+    cursor: default !important;
+    color: #aaa !important;
+}
+
+.upload-img-icon .file-drop-zone {
+    border: 1px dashed #aaa;
+    border-radius: 4px;
+    height: 100%;
+    text-align: center;
+    vertical-align: middle;
+    padding: 5px;
+}
+
+/**tag插件 高度*/
+.tag-editor {
+    height: 100px !important;
+}
+
+.no-border {
+    border: none;
+}
+
+.line-height-35 {
+    line-height: 35px;
+}
+
+.my-table {
+    table-layout: fixed;
+}
+
+.my-table tr td {
+    text-overflow: ellipsis; /* for IE */
+    -moz-text-overflow: ellipsis; /* for Firefox,mozilla */
+    overflow: hidden;
+    white-space: nowrap;
+    text-align: left
+}
+
+/*  列表宽度  */
+.td-width-50 {
+    width: 50px;
+}
+
+.td-width-100 {
+    width: 100px;
+}
+
+.td-width-150 {
+    width: 150px;
+}
+
+.td-width-200 {
+    width: 200px;
+}
+
+.td-width-250 {
+    width: 250px;
+}
+
+.td-width-300 {
+    width: 300px;
+}
+
+.td-width-350 {
+    width: 350px;
+}
+
+.td-width-400 {
+    width: 400px;
+}
+
+.td-width-450 {
+    width: 450px;
+}
+
+.td-width-500 {
+    width: 500px;
+}
+
+.td-width-550 {
+    max-width: 550px;
+}
+
+.td-width-600 {
+    width: 600px;
+}
+
+.td-width-650 {
+    max-width: 650px;
+}
+
+.td-width-700 {
+    width: 700px;
+}
+
+.td-width-750 {
+    width: 750px;
+}
+
+.td-width-800 {
+    max-width: 800px;
+}
+
+.td-width-850 {
+    width: 850px;
+}
+
+.td-width-900 {
+    width: 900px;
+}
+
+.td-width-950 {
+    width: 950px;
+}
+
+.td-width-1000 {
+    width: 1000px;
+}
+
+<!--
+附件上传公共样式
+
+-->
+.uiisar li {
+    width: 160px;
+    padding: 10px;
+    display: -webkit-inline-box;
+
+}
+
+.uiisar li img {
+    width: 96%;
+}
+
+.uiisar li span {
+    width: 16px;
+    height: 16px;
+    border-radius: 8px;
+    display: block;
+    position: relative;
+    font-size: 14px;
+    color: #fff;
+    background-color: red;
+    left: 100%;
+    top: -5px;
+    text-align: center;
+}

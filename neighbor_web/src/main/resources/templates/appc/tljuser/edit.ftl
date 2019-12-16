@@ -11,52 +11,67 @@
 >
         <#if (entity.id)??><input type="hidden" name="id" value="${(entity.id)}"/></#if>
     <div class="box-body">
+
         <div class="form-group">
-            <label for="username" class="col-sm-2 control-label">用户名</label>
-            <div class="col-sm-10">
-                <input type="text" id="username" name="username"
-                       value="${(entity.username)!}" class="form-control" placeholder="请输入用户名"
-                       lay-verify="required"/>
+            <div class="col-sm-10" style="margin: auto; float: none">
+                <table class="layui-table">
+                    <colgroup>
+                        <col width="15%">
+                        <col width="35%">
+                        <col width="15%">
+                        <col width="35%">
+                    </colgroup>
+                    <tbody>
+                    <tr>
+                        <td style="text-align: right; background: #ebf5ff">用户名</td>
+                        <td><@commonTags method="getDecrypt3DEs" type="1" value="${(entity.username)!}">${(getDecrypt3DEs)!}</@commonTags></td>
+                        <td style="text-align: right; background: #ebf5ff">昵称</td>
+                        <td>${(info.nickname)!'--'}</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right; background: #ebf5ff">手机号码</td>
+                        <td><@commonTags method="getDecrypt3DEs" type="1" value="${(entity.mobile)!}">${(getDecrypt3DEs)!}</@commonTags></td>
+                        <td style="text-align: right; background: #ebf5ff">GUID</td>
+                        <td>${(entity.guid)!'--'}</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right; background: #ebf5ff">邮箱</td>
+                        <td>${(info.email)!'--'}</td>
+                        <td style="text-align: right; background: #ebf5ff">性别</td>
+                        <td>${(info.gender)!'--'}</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right; background: #ebf5ff">注册时间</td>
+                        <td>${(entity.dtCreate?string('yyyy-MM-dd hh:mm:ss'))!'--'}</td>
+                        <td style="text-align: right; background: #ebf5ff">状态</td>
+                        <td><#if entity.status==0>
+                            正在使用中
+                        <#else >
+                禁用
+                        </#if></td>
+                    </tr>
+
+                    </tbody>
+                </table>
             </div>
         </div>
         <div class="form-group">
-            <label for="password" class="col-sm-2 control-label">密码</label>
-            <div class="col-sm-10">
-                <input type="text" id="password" name="password"
-                       value="${(entity.password)!}" class="form-control" placeholder="请输入密码"
-                       lay-verify="required"/>
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="mobile" class="col-sm-2 control-label">mobile</label>
-            <div class="col-sm-10">
-                <input type="text" id="mobile" name="mobile"
-                       value="${(entity.mobile)!}" class="form-control" placeholder="请输入mobile"
-                       lay-verify="required"/>
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="status" class="col-sm-2 control-label">0:正在使用中 1 禁用</label>
-            <div class="col-sm-10">
-                <input type="number" id="status" name="status"
-                       value="${(entity.status)!}" class="form-control" placeholder="请输入0:正在使用中 1 禁用"
-                       lay-verify="required"/>
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="guid" class="col-sm-2 control-label">GUID</label>
-            <div class="col-sm-10">
-                <input type="text" id="guid" name="guid"
-                       value="${(entity.guid)!}" class="form-control" placeholder="请输入GUID"
-                       lay-verify="required"/>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label">&nbsp;</label>
-            <div class="col-sm-10">
-                <button type="submit" class="btn btn-success" lay-submit lay-filter="submit"><i class="fa fa-save"></i>
-                    提 交
-                </button>
+            <div class="col-sm-10" style="margin: auto; float: none">
+                <table class="layui-table">
+                    <colgroup>
+                        <col width="15%">
+                        <col width="85%">
+                    </colgroup>
+                    <tbody>
+                    <#list address as address>
+                    <tr>
+                        <td style="text-align: right; background: #ebf5ff">地址</td>
+                        <td>${(address.province)!}${(address.city)!}${(address.region)!}
+                            -${(address.detailedAddress)!}</td>
+                    </tr>
+                    </#list>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div><!-- /.box-body -->

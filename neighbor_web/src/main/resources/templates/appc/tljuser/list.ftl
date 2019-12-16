@@ -50,8 +50,12 @@
                             </tr>
                 <#list pageData.getRecords() as entity>
         <tr>
-            <td>${(entity.username)!'--'}</td>
-            <td>${(entity.mobile)!'--'}</td>
+            <td>
+                  <@commonTags method="getDecrypt3DEs" type="1" value="${(entity.username)!}">${(getDecrypt3DEs)!}</@commonTags>
+            </td>
+            <td>
+                 <@commonTags method="getDecrypt3DEs" type="1" value="${(entity.mobile)!}">${(getDecrypt3DEs)!}</@commonTags>
+            </td>
             <td>
                 <#if entity.status==0>
                     正在使用中

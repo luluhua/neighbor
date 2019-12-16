@@ -109,6 +109,7 @@ public class GlobalInterceptor extends HandlerInterceptorAdapter {
                 Map<String, Object> tagmap = new HashMap(16);
                 tagmap.put("tagName", tag.getName());
                 tagmap.put("tagIcon", tag.getIcon());
+                tagmap.put("id", tag.getId());
                 tagmap.put("tagSkipUrl", tag.getSkipUrl());
                 tagListyt.add(tagmap);
             }

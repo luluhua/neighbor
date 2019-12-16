@@ -6,7 +6,7 @@
 <script type="text/javascript" src="${ctx}/base/js/main.js"></script>
 <script type="text/javascript" src="${ctx}/base/js/layui/layui.js"></script>
 <link href="${ctx}/base/js/jquery-confirm/jquery-confirm.min.css" rel="stylesheet">
-
+<link href="${ctx}/base/css/my_base.css" rel="stylesheet">
 
 <script type="text/javascript">
     layui.config({

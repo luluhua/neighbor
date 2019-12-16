@@ -130,11 +130,7 @@ public class Encryption3DEsUtil {
      * 工具测试
      */
     public static void main(String[] args) {
-        String msg = "{" + "\"idCard\":\"320924199103262114\"," + "  \"password\":\"123456\"," +
-                "\"phone\":\"15177198241\"," + "\"userType\":1," + "  \"verifyCode\":123456" + "}";
-//        String msg="{"+"\"idCard\":\"320924199103262114\"," + "\"password\":\"123456\","+
-//                "phone\":\"15177198241\"," + "\"userType\":1," + "\"verifyCode\":123456"+"}";
-        //2012PinganVitality075522628888ForShenZhenBelter075561869839  D3/Vt46cOwu+w3eSBXou5YIBOzJAdpp8
+        String msg = "6Xnsu3DrPcojjNAhvRWtmA==";
         String key = "qingxiuParentEncryptionMode2019";
         System.out.println("【加密前】：" + msg);
         //加密

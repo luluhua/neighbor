@@ -251,8 +251,7 @@
     border: 2px solid #ed6e37;
     float: right;
     font-size: 14px;
-    padding: 10px 16px 10px 40px;
-    background: url(../images/icon_03.png) no-repeat 10px 8px;
+    padding: 10px 20px 10px 20px;
     position: relative;
     background-color: #fff;
 }
