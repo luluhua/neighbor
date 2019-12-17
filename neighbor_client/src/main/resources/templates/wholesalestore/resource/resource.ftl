@@ -47,7 +47,7 @@
                 <form class="layui-form" method="post" action="javascript:;">
                     <div class="layui-form-item">
                         <label class="layui-form-label">类型</label>
-                        <div class="ygkrt">
+                        <div class="ygkrt" id="navList">
                             <#list list as nav>
                                 <input class="nav" type="checkbox" lay-check-type="radio" name="navigationCode"
                                        value="${(nav.navigationId)!}"
@@ -163,10 +163,7 @@
 <script>
     layui.use('form', function () {
         var form = layui.form;
-
         form.on('checkbox', function (data) {
-            var sf = $(this).val();
-
             var name = data.elem.getAttribute("name");
             if (data.elem.getAttribute("lay-check-type") === "radio" && name) {
                 var domArr = document.getElementsByName(name);
@@ -184,20 +181,21 @@
                 data.elem.checked = !checked ? true : data.elem.checked;
                 form.render('checkbox');
             }
-            $(".ygkrt").find("div").removeClass("layui-form-checked")
-            $(this).next('div').addClass("layui-form-checked");
+            if (name != "tagId") {
+                $("#navList").find("div").removeClass("layui-form-checked")
+                $(this).next('div').addClass("layui-form-checked");
+            }
             var navigationId = $(this).val();
             $.post('${ctx}/resource/json?_dc=' + new Date().getTime(), {navigationId: navigationId}, function (response) {
-                if (response.code == 200) {
+                if (response.code == 200 && response.data.length > 0) {
                     var html = "";
                     for (var i = 0; i < response.data.length; i++) {
-                        html += '<input class="nav" type="checkbox" lay-check-type="radio" name="navigationCode" value="' + response.data[i].id + '" title="' + response.data[i].tagName + '">'
+                        html += '<input class="nav" type="checkbox" lay-check-type="radio" name="tagId" value="' + response.data[i].id + '" title="' + response.data[i].tagName + '">'
                     }
                     $("#taglist").html(html);
-                    // $(".ygkrtghfe").show();
+                    form.render();
                 }
             });
-
         });
     });
 
