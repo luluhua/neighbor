@@ -2,9 +2,11 @@ package com.citysmart.ucenter.mybatis.model.commodity;
 
 import java.math.BigDecimal;
 import java.util.Date;
+
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.activerecord.Model;
 import com.baomidou.mybatisplus.annotations.TableName;
+
 import java.io.Serializable;
 
 /**
@@ -19,7 +21,7 @@ import java.io.Serializable;
 public class TGoods extends Model<TGoods> {
 
     private static final long serialVersionUID = 1L;
-
+    private Integer id;
     /**
      * 标签id
      */
@@ -77,7 +79,7 @@ public class TGoods extends Model<TGoods> {
      */
     @TableField("is_deleted")
     private Integer isDeleted;
-
+    private String files;
 
     public String getTagId() {
         return tagId;
@@ -191,28 +193,36 @@ public class TGoods extends Model<TGoods> {
         this.isDeleted = isDeleted;
     }
 
+    public String getFiles() {
+        return files;
+    }
+
+    public void setFiles(String files) {
+        this.files = files;
+    }
+
     @Override
     protected Serializable pkVal() {
-        return null;
+        return this.id;
     }
 
     @Override
     public String toString() {
         return "TGoods{" +
-        "tagId=" + tagId +
-        ", userId=" + userId +
-        ", name=" + name +
-        ", describe=" + describe +
-        ", quantity=" + quantity +
-        ", specification=" + specification +
-        ", intro=" + intro +
-        ", price=" + price +
-        ", Images=" + Images +
-        ", priceType=" + priceType +
-        ", sortIndex=" + sortIndex +
-        ", navigationCode=" + navigationCode +
-        ", dtCreate=" + dtCreate +
-        ", isDeleted=" + isDeleted +
-        "}";
+                "tagId=" + tagId +
+                ", userId=" + userId +
+                ", name=" + name +
+                ", describe=" + describe +
+                ", quantity=" + quantity +
+                ", specification=" + specification +
+                ", intro=" + intro +
+                ", price=" + price +
+                ", Images=" + Images +
+                ", priceType=" + priceType +
+                ", sortIndex=" + sortIndex +
+                ", navigationCode=" + navigationCode +
+                ", dtCreate=" + dtCreate +
+                ", isDeleted=" + isDeleted +
+                "}";
     }
 }

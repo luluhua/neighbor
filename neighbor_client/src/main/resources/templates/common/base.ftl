@@ -5,6 +5,7 @@
 <script type="text/javascript" src="${ctx}/base/js/jquery-1.8.3.min.js"></script>
 <script type="text/javascript" src="${ctx}/base/js/main.js"></script>
 <script type="text/javascript" src="${ctx}/base/js/layui/layui.js"></script>
+<script type="text/javascript" src="${ctx}/base/js/layui/layui.js"></script>
 <link href="${ctx}/base/js/jquery-confirm/jquery-confirm.min.css" rel="stylesheet">
 <link href="${ctx}/base/css/my_base.css" rel="stylesheet">
 
@@ -14,5 +15,7 @@
         debug: true,
         base: '${ctx}/base/modules/'
     }).use('xform'); //加载入口
-
+    layui.use('element', function () {
+        var element = layui.element;
+    });
 </script>

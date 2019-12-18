@@ -100,32 +100,35 @@ layui.define(['layer', 'form', 'upload'], function (exports) {
         }
     });
 
-    // 文件上传
-
-    upload.render({
-        elem: '#file-btn',
-        url: '/file/upload/',
-        size: 5 * 1024, // 限制文件大小，单位 KB
-        done: function (res) {
-            if (res.status == 'success') {
-                layer.msg("文件上传成功", {
-                    icon: 1
-                });
-                var urls = res.urls;
-                $("#file-txt").html(urls[0]);
-                $("#file-val").val(urls[0]);
-            } else {
-                layer.msg(res.msg, {
-                    icon: 2
-                });
-            }
-        }
-    });
+    // // 文件上传
+    //
+    // upload.render({
+    //     elem: '#file-btn',
+    //     url: '/file/upload/',
+    //     size: 5 * 1024, // 限制文件大小，单位 KB
+    //     done: function (res) {
+    //         if (res.status == 'success') {
+    //             layer.msg("文件上传成功", {
+    //                 icon: 1
+    //             });
+    //             var urls = res.urls;
+    //             $("#file-txt").html(urls[0]);
+    //             $("#file-val").val(urls[0]);
+    //         } else {
+    //             layer.msg(res.msg, {
+    //                 icon: 2
+    //             });
+    //         }
+    //     }
+    // });
 
     // 监听提交
     form.on('submit(submit)', function (data) {
-
         var values = data.field, fm = data.form;
+        var submitTyleId = $(this).attr('id')
+        // if (submitTyleId == 'onsubmits') {
+        //     fileAction();
+        // }
 
         //获取checkbox选中的值
         var $ch = $("input:checkbox:checked");
@@ -141,20 +144,9 @@ layui.define(['layer', 'form', 'upload'], function (exports) {
         var index = layer.load(3); // 换了种风格
         $.post($(fm).attr('action'), values, function (data) {
             layer.close(index);
-            if (typeof (data) == 'string' && data.indexOf("请输入用户名和密码登录") > -1) {
-                parent.location.href = "/login";
-                return;
-            }
             if (data.code == 200) {
                 if (data.msg) {
                     parent.layer.msg(data.msg, {icon: 1});
-                    if (data.msg == "OK,授权成功,1分钟后生效  ~") {
-                        // 关闭当前frame
-                        parent.layer.closeAll('iframe');
-                    } else {
-                        window.location.href = data.msg;
-                    }
-
                 } else if (data.url) {
                     window.location.href = data.url;
                     return;

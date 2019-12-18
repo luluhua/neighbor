@@ -41,8 +41,8 @@
         </dd>
     </dl>
     <div class="">
-
-        <form action="" method="get" class="layui-form">
+        <form action="${ctx}/resource/doAdd" method="post" class="layui-form">
+            <input type="hidden" name="id" id="uuid" value="${(uuId)!}">
             <div class="layui-main" style="margin-top:20px;">
                 <form class="layui-form" method="post" action="javascript:;">
                     <div class="layui-form-item">
@@ -62,90 +62,82 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">名称</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="username" lay-verify="required" placeholder="输入名称"
+                    <input type="text" name="name" lay-verify="" placeholder="输入名称"
+                           autocomplete="off" lay-verify="required"
+                           class="layui-input input-title-500">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">描述</label>
+                <div class="layui-input-inline">
+                    <textarea placeholder="资源简单介绍，如规格。。。。" name="describe"
+                              class="layui-textarea input-title-500"></textarea>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">数量</label>
+                <div class="layui-input-inline">
+                    <input type="number" name="quantity" lay-verify="required" placeholder="输入数量"
+                           autocomplete="off"
+                           class="layui-input input-number-100">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">规格</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="specification" lay-verify="required" placeholder="输入规格"
                            autocomplete="off"
                            class="layui-input input-title-500">
                 </div>
             </div>
             <div class="layui-form-item">
-                <label class="layui-form-label">名称</label>
+                <label class="layui-form-label">介绍</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="username" lay-verify="required" placeholder="输入名称"
-                           autocomplete="off"
-                           class="layui-input input-title-500">
+                    <textarea name="intro" placeholder="资源简单介绍，如规格。。。。"
+                              class="layui-textarea input-title-500"></textarea>
                 </div>
             </div>
             <div class="layui-form-item">
-                <label class="layui-form-label">名称</label>
+                <label class="layui-form-label">价格</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="username" lay-verify="required" placeholder="输入名称"
-                           autocomplete="off"
-                           class="layui-input input-title-500">
+                    <input type="text" name="price" lay-verify="required" placeholder="输入名称"
+                           autocomplete="off" lay-verify=""
+                           class="layui-input input-number-100">
                 </div>
             </div>
             <div class="layui-form-item">
-                <label class="layui-form-label">名称</label>
+                <label class="layui-form-label">价格类型</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="username" lay-verify="required" placeholder="输入名称"
-                           autocomplete="off"
-                           class="layui-input input-title-500">
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label">名称</label>
-                <div class="layui-input-inline">
-                    <input type="text" name="username" lay-verify="required" placeholder="输入名称"
-                           autocomplete="off"
-                           class="layui-input input-title-500">
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label">名称</label>
-                <div class="layui-input-inline">
-                    <input type="text" name="username" lay-verify="required" placeholder="输入名称"
-                           autocomplete="off"
-                           class="layui-input input-title-500">
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label">名称</label>
-                <div class="layui-input-inline">
-                    <input type="text" name="username" lay-verify="required" placeholder="输入名称"
-                           autocomplete="off"
-                           class="layui-input input-title-500">
+                    <input class="nav" type="checkbox" lay-check-type="radio" name="priceType"
+                           value="0"
+                           title="单价">
+                    <input class="nav" type="checkbox" lay-check-type="radio" name="priceType"
+                           value="1"
+                           title="总价">
                 </div>
             </div>
 
             <div class="layui-form-item">
                 <label class="layui-form-label">图片上传</label>
+                <input type="hidden" name="files" id="file_" value="">
                 <div class="layui-inline">
-                    <div class="layui-upload-drag" id="upload">
+                    <div class="layui-upload-drag" id="filseUpload">
                         <i class="layui-icon"></i>
                         <p>点击上传，或将文件拖拽到此处</p>
-                    </div>
-                </div>
-                <div class="layui-inline" id="upload_preview"></div>
-            </div>
-            <div class="layui-form-item layui-hide" id="upload_progress">
-                <label class="layui-form-label"></label>
-                <div class="layui-input-inline" style="width:21%;">
-                    <div class="layui-progress" lay-showpercent="true" lay-filter="upload_progress">
-                        <div class="layui-progress-bar layui-bg-blue" lay-percent="0%"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="layui-form-item layui-hide" id="upload_progress">
-                <label class="layui-form-label"></label>
-                <div class="layui-input-inline" style="width:21%;">
-                    <div class="layui-progress" lay-showpercent="true" lay-filter="upload_progress">
-                        <div class="layui-progress-bar layui-bg-blue" lay-percent="0%"></div>
                     </div>
                 </div>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label"></label>
+                <div class="layui-inline" id="upload_preview"></div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label"></label>
+
                 <div class="layui-input-inline">
-                    <button class="layui-btn" lay-submit>提交表单</button>
+                    <a class="layui-btn" id="fileAction">提交</a>
+                    <button class="layui-btn" style="display: none" id="onsubmits" lay-submit lay-filter="submit">提交表单
+                    </button>
                 </div>
             </div>
         </form>
@@ -181,21 +173,25 @@
                 data.elem.checked = !checked ? true : data.elem.checked;
                 form.render('checkbox');
             }
-            if (name != "tagId") {
+            if (name != "tagId" && name != "priceType") {
                 $("#navList").find("div").removeClass("layui-form-checked")
                 $(this).next('div').addClass("layui-form-checked");
-            }
-            var navigationId = $(this).val();
-            $.post('${ctx}/resource/json?_dc=' + new Date().getTime(), {navigationId: navigationId}, function (response) {
-                if (response.code == 200 && response.data.length > 0) {
-                    var html = "";
-                    for (var i = 0; i < response.data.length; i++) {
-                        html += '<input class="nav" type="checkbox" lay-check-type="radio" name="tagId" value="' + response.data[i].id + '" title="' + response.data[i].tagName + '">'
+                var navigationId = $(this).val();
+                $.post('${ctx}/resource/json?_dc=' + new Date().getTime(), {navigationId: navigationId}, function (response) {
+                    if (response.code == 200 && response.data.length > 0) {
+                        var html = "";
+                        for (var i = 0; i < response.data.length; i++) {
+                            html += '<input class="nav" type="checkbox" lay-check-type="radio" name="tagId" value="' + response.data[i].id + '" title="' + response.data[i].tagName + '">'
+                        }
+                        $("#taglist").html(html);
+                        form.render();
+                    } else {
+                        $("#taglist").html("");
+                        form.render();
                     }
-                    $("#taglist").html(html);
-                    form.render();
-                }
-            });
+                });
+            }
+
         });
     });
 
@@ -204,6 +200,5 @@
 <script>
 
 </script>
-
 </body>
 </html>

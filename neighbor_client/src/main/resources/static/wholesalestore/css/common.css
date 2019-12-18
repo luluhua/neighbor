@@ -1007,7 +1007,7 @@ a:hover {
 .banner_nav .left_nav li .show:after {
     position: absolute;
     content: "";
-    background: url('../img/icon.png') -81px -34px;
+    /*background: url('/m/wholesalestore/images/icon.png') -81px -34px;*/
     right: 10px;
     width: 15px;
     height: 15px;
@@ -1078,7 +1078,27 @@ list dd a:hover {
 
 .hfuiase {
     color: #fff;
+}
 
+.img_vem {
+    width: 230px;
+    height: 146px;
+    display: inline-block;
+    padding-left: 10px;
+}
+
+.img_vem span {
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    color: #fff;
+    display: block;
+    position: relative;
+    left: 95%;
+    border-radius: 10px;
+    text-align: center;
+    line-height: 20px;
+    bottom: 158px;
 }
 
 

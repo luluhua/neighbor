@@ -89,30 +89,31 @@ layui.define(['layer', 'form', 'upload'], function (exports) {
 
     // 文件上传
 
-    upload.render({
-        elem: '#file-btn',
-        url: '/file/upload/',
-        size: 5 * 1024, // 限制文件大小，单位 KB
-        done: function (res) {
-            if (res.status == 'success') {
-                layer.msg("文件上传成功", {
-                    icon: 1
-                });
-                var urls = res.urls;
-                $("#file-txt").html(urls[0]);
-                $("#file-val").val(urls[0]);
-            } else {
-                layer.msg(res.msg, {
-                    icon: 2
-                });
-            }
-        }
-    });
+    // upload.render({
+    //     elem: '#file-btn',
+    //     url: '/file/upload/',
+    //     size: 5 * 1024, // 限制文件大小，单位 KB
+    //     done: function (res) {
+    //         if (res.status == 'success') {
+    //             layer.msg("文件上传成功", {
+    //                 icon: 1
+    //             });
+    //             var urls = res.urls;
+    //             $("#file-txt").html(urls[0]);
+    //             $("#file-val").val(urls[0]);
+    //         } else {
+    //             layer.msg(res.msg, {
+    //                 icon: 2
+    //             });
+    //         }
+    //     }
+    // });
 
     // 监听提交
     form.on('submit(submit)', function (data) {
-        var values = data.field, fm = data.form;
+        // alert($(this))
 
+        var values = data.field, fm = data.form;
         //获取checkbox选中的值
         var $ch = $("input:checkbox:checked");
         var name = {};

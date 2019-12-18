@@ -3,14 +3,19 @@ package com.citysmart.ucenter.module.wholesalestore.controller;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.citysmart.common.bean.Rest;
 import com.citysmart.common.controller.SuperController;
+import com.citysmart.common.util.CommonUtil;
+import com.citysmart.ucenter.module.commodity.service.ITGoodsGradeService;
 import com.citysmart.ucenter.module.system.service.ITNavigationService;
 import com.citysmart.ucenter.module.system.service.ITTagService;
 import com.citysmart.ucenter.mybatis.enums.Delete;
 import com.citysmart.ucenter.mybatis.model.SysMenu;
 import com.citysmart.ucenter.mybatis.model.TNavigation;
+import com.citysmart.ucenter.mybatis.model.TSmsSendLog;
 import com.citysmart.ucenter.mybatis.model.TTag;
+import com.citysmart.ucenter.mybatis.model.commodity.TGoodsGrade;
 import com.google.common.collect.Maps;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -36,6 +41,10 @@ public class resourceController extends SuperController {
     @Autowired
     private ITTagService tagService;
 
+    @Autowired
+    private ITGoodsGradeService goodsGradeService;
+
+
     @RequestMapping("/form")
     public String show(Model model) {
         List<TNavigation> navigationsList = navigationService.selectList(new EntityWrapper<TNavigation>().eq("is_deleted", Delete.未删除).orderBy("sort_index", false));
@@ -47,7 +56,7 @@ public class resourceController extends SuperController {
             navigation.add(map);
         }
         model.addAttribute("list", navigation);
-
+        model.addAttribute("uuId", CommonUtil.UUID());
         return "/wholesalestore/resource/resource";
     }
 
@@ -66,6 +75,17 @@ public class resourceController extends SuperController {
             tagListyt.add(tagmap);
         }
         return Rest.okData(tagListyt);
+    }
+
+    /**
+     * 执行新增
+     */
+    @RequestMapping("/doAdd")
+    @ResponseBody
+    public Rest doAdd(TGoodsGrade entity) {
+
+        goodsGradeService.insert(entity);
+        return Rest.ok();
     }
 
 

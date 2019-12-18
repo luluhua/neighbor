@@ -1,9 +1,11 @@
 package com.citysmart.ucenter.mybatis.model.commodity;
 
 import java.util.Date;
+
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.activerecord.Model;
 import com.baomidou.mybatisplus.annotations.TableName;
+
 import java.io.Serializable;
 
 /**
@@ -19,6 +21,7 @@ public class TGoodsGrade extends Model<TGoodsGrade> {
 
     private static final long serialVersionUID = 1L;
 
+    private String id;
     @TableField("goods_id")
     private String goodsId;
     @TableField("user_id")
@@ -33,6 +36,7 @@ public class TGoodsGrade extends Model<TGoodsGrade> {
     private String explain;
     @TableField("sort_index")
     private Integer sortIndex;
+
     /**
      * 创建时间
      */
@@ -44,6 +48,14 @@ public class TGoodsGrade extends Model<TGoodsGrade> {
     @TableField("is_deleted")
     private Integer isDeleted;
 
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getGoodsId() {
         return goodsId;
@@ -109,22 +121,23 @@ public class TGoodsGrade extends Model<TGoodsGrade> {
         this.isDeleted = isDeleted;
     }
 
+
     @Override
     protected Serializable pkVal() {
-        return null;
+        return this.id;
     }
 
     @Override
     public String toString() {
         return "TGoodsGrade{" +
-        "goodsId=" + goodsId +
-        ", userId=" + userId +
-        ", gradeUserId=" + gradeUserId +
-        ", gradeType=" + gradeType +
-        ", explain=" + explain +
-        ", sortIndex=" + sortIndex +
-        ", dtCreate=" + dtCreate +
-        ", isDeleted=" + isDeleted +
-        "}";
+                "goodsId=" + goodsId +
+                ", userId=" + userId +
+                ", gradeUserId=" + gradeUserId +
+                ", gradeType=" + gradeType +
+                ", explain=" + explain +
+                ", sortIndex=" + sortIndex +
+                ", dtCreate=" + dtCreate +
+                ", isDeleted=" + isDeleted +
+                "}";
     }
 }
