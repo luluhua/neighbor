@@ -48,37 +48,15 @@
             before: function (obj) {
                 layer.load(1);
             },
-            auto: false, //选择文件后不自动上传 默认值为true
-            choose: function (obj) {
-                var files = obj.pushFile();
-                obj.preview(function (index, file, result) {
-                    demoCount++
-                    var html = $(["<div class='img_vem'><img alt='预览图' src='" + result + "' width='230px' height='146px' /><span id='" + index + "' class='layui-icon layui-icon-close img_cz'>&#x1006;</span>" +
-                    "<div class='layui-progress' lay-showpercent='true' lay-filter='demo" + demoCount + "'>" +
-                    "<div class='layui-progress-bar layui-bg-red' lay-percent='0%'></div>" +
-                    "</div>" +
-                    "</div>"].join(''))
-                    $("#upload_preview").append(html);
-                    demoFlag = true
-                    html.find('.img_cz').on("click", function () {
-                        var sr = $(this).attr('id');
-                        delete files[sr];
-                        html.remove();
-                        uploadFile.config.elem.next()[0].value = '';
-                    });
-                    obj.preview(function (index, file, result) {
-                        //对上传失败的单个文件重新上传，一般在某个事件中使用
-                        //obj.upload(index, file);
-                    });
-                });
-            },
-            allDone: function (obj) { //当文件全部被提交后，才触发
-                // layer.msg("上传成功！");
-                $("#onsubmits").click();
-            },
+            auto: true, //选择文件后不自动上传 默认值为true
             done: function (res, index, upload) {
                 layer.close(layer.index);
                 if (res.code == 0) {
+                    // var html = "";
+                    var html = "<div class='img_vem'><img alt='预览图' src='" + res.wholeUrl + "' width='230px' height='146px' /><span id='" + res.id + "'  onclick='deleteImg(" + res.id + ")' class='layui-icon layui-icon-close img_cz'>&#x1006;</span>" +
+                        "</div>"
+                    $("#upload_preview").append(html);
+
                     var file_ = $("#file_").val();
                     if (file_ == "" || file_ == null) {
                         $("#file_").val(res.urls);

@@ -125,11 +125,6 @@ layui.define(['layer', 'form', 'upload'], function (exports) {
     // 监听提交
     form.on('submit(submit)', function (data) {
         var values = data.field, fm = data.form;
-        var submitTyleId = $(this).attr('id')
-        // if (submitTyleId == 'onsubmits') {
-        //     fileAction();
-        // }
-
         //获取checkbox选中的值
         var $ch = $("input:checkbox:checked");
         var name = {};

@@ -1,10 +1,12 @@
 package com.citysmart.ucenter.module.base;
 
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.citysmart.common.controller.SuperController;
 import com.citysmart.common.util.CommonUtil;
 import com.citysmart.ucenter.common.Util.RedisUtil;
 import com.citysmart.ucenter.common.Util.ShiroUtil;
 import com.citysmart.ucenter.module.appc.service.ITClientAttachmentService;
+import com.citysmart.ucenter.mybatis.model.TSysAttachment;
 import com.citysmart.ucenter.mybatis.model.app.TClientAttachment;
 import com.citysmart.ucenter.mybatis.model.app.TLjUser;
 import org.apache.commons.io.FileUtils;
@@ -14,6 +16,7 @@ import org.apache.commons.lang3.time.DateFormatUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -89,6 +92,7 @@ public class ClientAttachmentController extends SuperController {
                     result.put("status", "success");
                     result.put("code", 0);
                     result.put("urls", urls);
+                    result.put("id", entity.getId());
                     result.put("wholeUrl", iconPrefix + urls.get(0));
                     result.put("fileIds", fileIds);
                     result.put("filename", filename);
@@ -105,6 +109,37 @@ public class ClientAttachmentController extends SuperController {
         }
         result.put("status", "success");
         result.put("code", 101);
+        return result;
+    }
+
+    @RequestMapping("/deletefile/{fileid}")
+    @ResponseBody
+    public Map<String, Object> deletefile(@PathVariable Integer fileid) {
+        TLjUser ljUser = ShiroUtil.getSessionUser();
+        Map<String, Object> result = new HashMap<String, Object>(16);
+        String fileUrl = env.getProperty("file.upload.url");
+        EntityWrapper<TClientAttachment> ew = new EntityWrapper<TClientAttachment>();
+        ew.eq("id", fileid);
+        TClientAttachment atta = clientAttachmentService.selectOne(ew);
+        if (ljUser.getId().equals(atta.getCreateUserid())) {
+
+
+            EntityWrapper<TClientAttachment> deew = new EntityWrapper<TClientAttachment>();
+            deew.eq("id", fileid);
+            boolean fa = clientAttachmentService.delete(deew);
+            if (fa) {
+                String sb = fileUrl + atta.getFilePath();
+                File file = new File(sb);
+                if (file.delete()) {
+                    result.put("status", "0");
+                    result.put("fileName", atta.getFilePath());
+                } else {
+                    result.put("status", "1");
+                }
+            }
+            return result;
+        }
+        result.put("status", "101");
         return result;
     }
 }

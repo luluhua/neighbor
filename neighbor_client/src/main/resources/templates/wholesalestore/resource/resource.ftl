@@ -49,8 +49,8 @@
                         <label class="layui-form-label">类型</label>
                         <div class="ygkrt" id="navList">
                             <#list list as nav>
-                                <input class="nav" type="checkbox" lay-check-type="radio" name="navigationCode"
-                                       value="${(nav.navigationId)!}"
+                                <input class="nav" type="radio" name="navigationCode"
+                                       value="${(nav.code)!}"
                                        title="${(nav.navigationName)!}">
                             </#list>
                         </div>
@@ -108,10 +108,10 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">价格类型</label>
                 <div class="layui-input-inline">
-                    <input class="nav" type="checkbox" lay-check-type="radio" name="priceType"
+                    <input class="nav" type="radio" name="priceType"
                            value="0"
                            title="单价">
-                    <input class="nav" type="checkbox" lay-check-type="radio" name="priceType"
+                    <input class="nav" type="radio" name="priceType"
                            value="1"
                            title="总价">
                 </div>
@@ -135,8 +135,7 @@
                 <label class="layui-form-label"></label>
 
                 <div class="layui-input-inline">
-                    <a class="layui-btn" id="fileAction">提交</a>
-                    <button class="layui-btn" style="display: none" id="onsubmits" lay-submit lay-filter="submit">提交表单
+                    <button class="layui-btn" id="onsubmits" lay-submit lay-filter="submit">提交表单
                     </button>
                 </div>
             </div>
@@ -155,33 +154,16 @@
 <script>
     layui.use('form', function () {
         var form = layui.form;
-        form.on('checkbox', function (data) {
+        form.on('radio', function (data) {
             var name = data.elem.getAttribute("name");
-            if (data.elem.getAttribute("lay-check-type") === "radio" && name) {
-                var domArr = document.getElementsByName(name);
-                var checked = false;
-                for (var i = 0; i < domArr.length; i++) {
-
-                    if (domArr[i] !== data.elem && domArr[i].getAttribute("lay-check-type") === "radio") {
-                        if (data.elem.checked) {
-                            domArr[i].checked = false;
-                        } else if (domArr[i].checked) {
-                            checked = true;
-                        }
-                    }
-                }
-                data.elem.checked = !checked ? true : data.elem.checked;
-                form.render('checkbox');
-            }
             if (name != "tagId" && name != "priceType") {
-                $("#navList").find("div").removeClass("layui-form-checked")
-                $(this).next('div').addClass("layui-form-checked");
-                var navigationId = $(this).val();
-                $.post('${ctx}/resource/json?_dc=' + new Date().getTime(), {navigationId: navigationId}, function (response) {
+
+                var navigationCode = $(this).val();
+                $.post('${ctx}/resource/json?_dc=' + new Date().getTime(), {navigationCode: navigationCode}, function (response) {
                     if (response.code == 200 && response.data.length > 0) {
                         var html = "";
                         for (var i = 0; i < response.data.length; i++) {
-                            html += '<input class="nav" type="checkbox" lay-check-type="radio" name="tagId" value="' + response.data[i].id + '" title="' + response.data[i].tagName + '">'
+                            html += '<input class="navs" type="radio" lay-check-type="radio" name="tagId" value="' + response.data[i].id + '" title="' + response.data[i].tagName + '">'
                         }
                         $("#taglist").html(html);
                         form.render();
@@ -191,14 +173,30 @@
                     }
                 });
             }
-
         });
     });
 
 </script>
 
 <script>
+    function deleteImg(id) {
+        $.post('${ctx}/client/tSysAttachment/deletefile/' + id, function (response) {
+            if (response.status == 0) {
+                var hjsgr = $("#file_").val();
+                var key = response.fileName;
+                var sess = (',' + hjsgr + ',').replace(',' + key + ',', ',').substr(1).replace(/,$/, '');
+                $("#file_").val(sess);
+                $("#" + id).parent().remove();
+            } else {
+                layer.msg('删除失败！', {
+                    time: 1000,
+                    end: function () {
+                    }
+                })
+            }
+        });
 
+    }
 </script>
 </body>
 </html>

@@ -2401,11 +2401,39 @@ a cite {
 }
 
 .layui-form-radio {
-    line-height: 28px;
-    margin: 6px 10px 0 0;
-    padding-right: 10px;
+    position: relative;
+    height: 30px;
+    line-height: 30px;
+    margin-right: 10px;
+    padding-right: 30px;
     cursor: pointer;
-    font-size: 0
+    font-size: 0;
+    -webkit-transition: .1s linear;
+    transition: .1s linear;
+    box-sizing: border-box;
+    margin-top: 4px;
+}
+
+.layui-form-radioed i:before {
+    content: "\e605";
+}
+
+.layui-form-radio div {
+    padding: 0 10px;
+    height: 100%;
+    font-size: 14px;
+    border-radius: 2px 0 0 2px;
+    background-color: #d2d2d2;
+    color: #fff;
+    overflow: hidden;
+}
+
+.layui-form-radioed div {
+    background-color: #ed6e37 !important;
+}
+
+.layui-anim-scaleSpring:before {
+    content: "\e605";
 }
 
 .layui-form-radio * {
@@ -2413,17 +2441,53 @@ a cite {
 }
 
 .layui-form-radio > i {
-    margin-right: 8px;
-    font-size: 22px;
-    color: #c2c2c2
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 30px;
+    height: 28px;
+    border: 1px solid #d2d2d2;
+    border-left: none;
+    border-radius: 0 2px 2px 0;
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+}
+
+.layui-form-checked i {
+    color: #ed6e37 !important;
+}
+
+.layui-form-radioed i {
+    color: #ed6e37 !important;
 }
 
 .layui-form-radio > i:hover, .layui-form-radioed > i {
-    color: #5FB878
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 30px;
+    height: 28px;
+    border: 1px solid #d2d2d2;
+    border-left: none;
+    border-radius: 0 2px 2px 0;
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
 }
 
 .layui-radio-disbaled > i {
-    color: #e2e2e2 !important
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 30px;
+    height: 28px;
+    border: 1px solid #d2d2d2;
+    border-left: none;
+    border-radius: 0 2px 2px 0;
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
 }
 
 .layui-form-pane .layui-form-label {

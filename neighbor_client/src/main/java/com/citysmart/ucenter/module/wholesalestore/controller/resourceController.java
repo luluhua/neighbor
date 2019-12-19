@@ -3,8 +3,13 @@ package com.citysmart.ucenter.module.wholesalestore.controller;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.citysmart.common.bean.Rest;
 import com.citysmart.common.controller.SuperController;
+import com.citysmart.common.json.JsonFailResult;
+import com.citysmart.common.json.JsonResult;
 import com.citysmart.common.util.CommonUtil;
+import com.citysmart.ucenter.common.Util.ShiroUtil;
+import com.citysmart.ucenter.common.anno.Log;
 import com.citysmart.ucenter.module.commodity.service.ITGoodsGradeService;
+import com.citysmart.ucenter.module.commodity.service.ITGoodsService;
 import com.citysmart.ucenter.module.system.service.ITNavigationService;
 import com.citysmart.ucenter.module.system.service.ITTagService;
 import com.citysmart.ucenter.mybatis.enums.Delete;
@@ -12,6 +17,8 @@ import com.citysmart.ucenter.mybatis.model.SysMenu;
 import com.citysmart.ucenter.mybatis.model.TNavigation;
 import com.citysmart.ucenter.mybatis.model.TSmsSendLog;
 import com.citysmart.ucenter.mybatis.model.TTag;
+import com.citysmart.ucenter.mybatis.model.app.TLjUser;
+import com.citysmart.ucenter.mybatis.model.commodity.TGoods;
 import com.citysmart.ucenter.mybatis.model.commodity.TGoodsGrade;
 import com.google.common.collect.Maps;
 import org.apache.commons.lang3.StringUtils;
@@ -19,9 +26,11 @@ import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -44,6 +53,9 @@ public class resourceController extends SuperController {
     @Autowired
     private ITGoodsGradeService goodsGradeService;
 
+    @Autowired
+    private ITGoodsService goodsService;
+
 
     @RequestMapping("/form")
     public String show(Model model) {
@@ -53,6 +65,7 @@ public class resourceController extends SuperController {
             Map<String, Object> map = new HashMap(16);
             map.put("navigationName", navigations.getName());
             map.put("navigationId", navigations.getId());
+            map.put("code", navigations.getCode());
             navigation.add(map);
         }
         model.addAttribute("list", navigation);
@@ -65,14 +78,17 @@ public class resourceController extends SuperController {
      */
     @RequestMapping("/json")
     @ResponseBody
-    public Rest json(String navigationId) {
-        List<TTag> tagList = tagService.selectList(new EntityWrapper<TTag>().eq("is_deleted", Delete.未删除).orderBy("sort_index", false).eq("navigation_id", navigationId));
+    public Rest json(String navigationCode) {
         List tagListyt = new ArrayList();
-        for (TTag tag : tagList) {
-            Map<String, Object> tagmap = new HashMap(16);
-            tagmap.put("tagName", tag.getName());
-            tagmap.put("id", tag.getId());
-            tagListyt.add(tagmap);
+        TNavigation navigation = navigationService.selectOne(new EntityWrapper<TNavigation>().eq("is_deleted", Delete.未删除).eq("code", navigationCode));
+        if (navigation != null) {
+            List<TTag> tagList = tagService.selectList(new EntityWrapper<TTag>().eq("is_deleted", Delete.未删除).orderBy("sort_index", false).eq("navigation_id", navigation.getId()));
+            for (TTag tag : tagList) {
+                Map<String, Object> tagmap = new HashMap(16);
+                tagmap.put("tagName", tag.getName());
+                tagmap.put("id", tag.getId());
+                tagListyt.add(tagmap);
+            }
         }
         return Rest.okData(tagListyt);
     }
@@ -82,10 +98,14 @@ public class resourceController extends SuperController {
      */
     @RequestMapping("/doAdd")
     @ResponseBody
-    public Rest doAdd(TGoodsGrade entity) {
-
-        goodsGradeService.insert(entity);
-        return Rest.ok();
+    @Log("新增资源")
+    public Rest doAdd(@Valid TGoods entity, BindingResult result) {
+        TLjUser ljUser = ShiroUtil.getSessionUser();
+        if (ljUser != null) {
+            goodsService.insert(entity);
+            return Rest.ok();
+        }
+        return Rest.ok("未登录");
     }
 
 

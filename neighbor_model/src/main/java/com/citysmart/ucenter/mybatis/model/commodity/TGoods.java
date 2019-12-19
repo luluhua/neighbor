@@ -5,8 +5,11 @@ import java.util.Date;
 
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.activerecord.Model;
+import com.baomidou.mybatisplus.annotations.TableLogic;
 import com.baomidou.mybatisplus.annotations.TableName;
+import com.baomidou.mybatisplus.enums.FieldFill;
 
+import javax.validation.Valid;
 import java.io.Serializable;
 
 /**
@@ -21,7 +24,7 @@ import java.io.Serializable;
 public class TGoods extends Model<TGoods> {
 
     private static final long serialVersionUID = 1L;
-    private Integer id;
+    private String id;
     /**
      * 标签id
      */
@@ -72,14 +75,23 @@ public class TGoods extends Model<TGoods> {
      */
     @TableField("navigation_code")
     private String navigationCode;
-    @TableField("dt_create")
+    @TableField(value = "dt_create", fill = FieldFill.INSERT)
     private Date dtCreate;
     /**
      * 是否删除 1:已删除 0：未删除
      */
-    @TableField("is_deleted")
+    @TableLogic
+    @TableField(value = "is_deleted", fill = FieldFill.INSERT)
     private Integer isDeleted;
     private String files;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getTagId() {
         return tagId;
