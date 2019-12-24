@@ -85,7 +85,7 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">规格</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="specification" lay-verify="required" placeholder="输入规格"
+                    <input type="text" name="specification" lay-verify="" placeholder="输入规格"
                            autocomplete="off"
                            class="layui-input input-title-500">
                 </div>
@@ -98,12 +98,13 @@
                 </div>
             </div>
             <div class="layui-form-item">
-                <label class="layui-form-label">价格</label>
+                <label class="layui-form-label">租借价格</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="price" lay-verify="required" placeholder="输入名称"
-                           autocomplete="off" lay-verify=""
-                           class="layui-input input-number-100">
+                    <input type="text" name="price" lay-verify="required" placeholder="输入租借价格"
+                           autocomplete="off"
+                           class="layui-input">
                 </div>
+                <b class="tilaf">/ 天</b>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">价格类型</label>
@@ -114,6 +115,25 @@
                     <input class="nav" type="radio" name="priceType"
                            value="1"
                            title="总价">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">是否出售</label>
+                <div class="">
+                    <input class="nav" type="radio" name="sellStale"
+                           value="0"
+                           title="不出售" checked>
+                    <input class="nav" type="radio" name="sellStale"
+                           value="1"
+                           title="可以出售">
+                </div>
+            </div>
+            <div class="layui-form-item" id="sell_price" style="display: none">
+                <label class="layui-form-label">出售价格</label>
+                <div class="layui-input-inline">
+                    <input type="text" id="sellPrice" name="sellPrice" lay-verify="" placeholder="输入出售价格"
+                           autocomplete="off"
+                           class="layui-input">
                 </div>
             </div>
 
@@ -156,8 +176,18 @@
         var form = layui.form;
         form.on('radio', function (data) {
             var name = data.elem.getAttribute("name");
+            if (name == "sellStale") {
+                var gha = $(this).val();
+                if (gha == 1) {
+                    $("#sell_price").show();
+                    $("#sellPrice").attr('lay-verify', "required");
+                } else {
+                    $("#sell_price").hide();
+                    $("#sellPrice").attr('lay-verify', "");
+                }
+                return true;
+            }
             if (name != "tagId" && name != "priceType") {
-
                 var navigationCode = $(this).val();
                 $.post('${ctx}/resource/json?_dc=' + new Date().getTime(), {navigationCode: navigationCode}, function (response) {
                     if (response.code == 200 && response.data.length > 0) {

@@ -59,7 +59,8 @@ public class homeController extends SuperController {
 
     public final static Integer NUMBER = 1;
 
-    public final static Integer SIZE = 8;
+    public final static Integer SIZE_8 = 8;
+    public final static Integer SIZE_7 = 7;
 
 
     @RequestMapping("/index")
@@ -156,40 +157,45 @@ public class homeController extends SuperController {
      *
      * @return
      */
-    public List indexGoodsList() {
+    public Map<String, Object> indexGoodsList() {
         List informList = new ArrayList<>();
-        Page<TGoods> page = getPage(NUMBER, SIZE);
+        Page<TGoods> seelpage = getPage(NUMBER, SIZE_8);
         EntityWrapper<TGoods> seelew = new EntityWrapper<TGoods>();
         seelew.eq("is_deleted", Delete.未删除);
         seelew.eq("navigation_code", RENTOUT_SELL);
-        Page<TGoods> rentoutSellList = goodsService.selectPage(page, seelew);
+        Page<TGoods> rentoutSellList = goodsService.selectPage(seelpage, seelew);
 
+        Page<TGoods> maintainpage = getPage(NUMBER, SIZE_7);
         EntityWrapper<TGoods> maintainew = new EntityWrapper<TGoods>();
         maintainew.eq("is_deleted", Delete.未删除);
         maintainew.eq("navigation_code", MAINTAIN);
-        Page<TGoods> maintainList = goodsService.selectPage(page, maintainew);
+        Page<TGoods> maintainList = goodsService.selectPage(maintainpage, maintainew);
 
+        Page<TGoods> sjepage = getPage(NUMBER, SIZE_7);
         EntityWrapper<TGoods> sjew = new EntityWrapper<TGoods>();
         sjew.eq("is_deleted", Delete.未删除);
         sjew.eq("navigation_code", TIME_SJ);
-        Page<TGoods> sjList = goodsService.selectPage(page, sjew);
+        Page<TGoods> sjList = goodsService.selectPage(sjepage, sjew);
 
+        Page<TGoods> zydbpage = getPage(NUMBER, SIZE_7);
         EntityWrapper<TGoods> zydbew = new EntityWrapper<TGoods>();
         zydbew.eq("is_deleted", Delete.未删除);
         zydbew.eq("navigation_code", ZYDB);
-        Page<TGoods> zydbewList = goodsService.selectPage(page, zydbew);
+        Page<TGoods> zydbewList = goodsService.selectPage(zydbpage, zydbew);
 
+        Page<TGoods> carrypage = getPage(NUMBER, SIZE_7);
         EntityWrapper<TGoods> carryew = new EntityWrapper<TGoods>();
         carryew.eq("is_deleted", Delete.未删除);
         carryew.eq("navigation_code", CARRY);
-        Page<TGoods> carryewList = goodsService.selectPage(page, carryew);
+        Page<TGoods> carryewList = goodsService.selectPage(carrypage, carryew);
+
         Map<String, Object> map = new HashMap(16);
         map.put("rentoutSellList", rentoutSellList.getRecords());
         map.put("maintainList", maintainList.getRecords());
         map.put("sjList", sjList.getRecords());
         map.put("zydbewList", zydbewList.getRecords());
         map.put("carryewList", carryewList.getRecords());
-        informList.add(map);
-        return informList;
+        return map;
     }
+
 }

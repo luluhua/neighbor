@@ -102,6 +102,10 @@ public class resourceController extends SuperController {
     public Rest doAdd(@Valid TGoods entity, BindingResult result) {
         TLjUser ljUser = ShiroUtil.getSessionUser();
         if (ljUser != null) {
+            if (StringUtils.isNotBlank(entity.getFiles())) {
+                String[] strs = entity.getFiles().split(",");
+                entity.setImages(strs[0].toString());
+            }
             goodsService.insert(entity);
             return Rest.ok();
         }

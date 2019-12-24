@@ -173,402 +173,174 @@
 
 <!--产品推荐-->
 <div class="index_Product">
-
-    <h1 class="h1">产品推荐</h1>
-
+    <#if (goods.rentoutSellList?size>0)>
+    <h1 class="h1">闲置物品</h1>
     <ul id="recommend">
-
-        <li class="border">
-            <h3>
-                <img src="${ctx}/wholesalestore/images/logo.png">
-                <p class="pA">商品名称 </p>
-                <p>CDBG0057</p>
-                <p>购买价：￥<span>310</span></p>
-                <p>出借价：￥<span>310</span></p>
-                <a href="product_details.html">立即购买</a>
-            </h3>
-        </li>
-
-        <li>
-            <h3>
-                <img src="${ctx}/wholesalestore/images/logo.png">
-                <p class="pA">商品名称 </p>
-                <p>CDBG0057</p>
-                <p>购买价：￥<span>310</span></p>
-                <p>出借价：￥<span>310</span></p>
-                <a href="product_details.html">立即购买</a>
-            </h3>
-        </li>
-
-        <li>
-            <h3>
-                <img src="${ctx}/wholesalestore/images/logo.png">
-                <p class="pA">商品名称 </p>
-                <p>CDBG0057</p>
-                <p>购买价：￥<span>310</span></p>
-                <p>出借价：￥<span>310</span></p>
-                <a href="product_details.html">立即购买</a>
-            </h3>
-        </li>
-
-        <li>
-            <h3>
-                <img src="${ctx}/wholesalestore/images/logo.png">
-                <p class="pA">商品名称 </p>
-                <p>CDBG0057</p>
-                <p>购买价：￥<span>310</span></p>
-                <p>出借价：￥<span>310</span></p>
-                <a href="product_details.html">立即购买</a>
-            </h3>
-        </li>
-
+        <#list goods.rentoutSellList as sel>
+            <li class="border">
+                <a href="#" class="yir">
+                    <img src="<@commonTags method="tagHtpImgURL" type="1" value="1">${(tagHtpImgURL)!}</@commonTags>${(sel.images)!'--'}"
+                         onerror="this.src='${ctx}/wholesalestore/images/logo.png'">
+                </a>
+                <h3 class="fhuase">
+                    <div class="vhuiase">
+                        <p class="pA">${(sel.name)!}</p>
+                        <p>${(sel.specification)!}</p>
+                        <p>购买价：<#if sel.sellStale==0>不出售<#else >￥<span> ${(sel.sellPrice)!'--'}</span></#if></p>
+                        <p>出借价：￥<span>${(sel.price)!}</span>/天</p>
+                    </div>
+                    <a class="gotu_daile" href="product_details.html">立即购买</a>
+                </h3>
+            </li>
+        </#list>
     </ul>
-
-    <ul id="recommends">
-
-        <li class="border">
-            <h3>
-                <img src="${ctx}/wholesalestore/images/logo.png">
-                <p class="pA">商品名称 </p>
-                <p>CDBG0057</p>
-                <p>购买价：￥<span>310</span></p>
-                <p>出借价：￥<span>310</span></p>
-                <a href="product_details.html">立即购买</a>
-            </h3>
-        </li>
-
-        <li>
-            <h3>
-                <img src="${ctx}/wholesalestore/images/logo.png">
-                <p class="pA">商品名称 </p>
-                <p>CDBG0057</p>
-                <p>购买价：￥<span>310</span></p>
-                <p>出借价：￥<span>310</span></p>
-                <a href="product_details.html">立即购买</a>
-            </h3>
-        </li>
-
-        <li>
-            <h3>
-                <img src="${ctx}/wholesalestore/images/logo.png">
-                <p class="pA">商品名称 </p>
-                <p>CDBG0057</p>
-                <p>购买价：￥<span>310</span></p>
-                <p>出借价：￥<span>310</span></p>
-                <a href="product_details.html">立即购买</a>
-            </h3>
-        </li>
-
-        <li>
-            <h3>
-                <img src="${ctx}/wholesalestore/images/logo.png">
-                <p class="pA">商品名称 </p>
-                <p>CDBG0057</p>
-                <p>购买价：￥<span>310</span></p>
-                <p>出借价：￥<span>310</span></p>
-                <a href="product_details.html">立即购买</a>
-            </h3>
-        </li>
-
-    </ul>
-
-    <h1 class="h1">分类名称</h1>
-
+    </#if>
+     <#if (goods.maintainList?size>0)>
+    <h1 class="h1">维修</h1>
     <div class="common_div">
-
-        <div class="tab">
-            <b class="b">RALEIGH</b>
-            <b>GIOS</b>
-        </div>
-
         <dl>
+            <#list goods.maintainList as ma>
+                <#if ma_index==0>
             <dt>
-                <a id="zinxd" href="javascript:void(0)" onclick="">
-                    <img id="proimg" src="">
-
+                <a class="vhase" id="zinxd" href="javascript:void(0)">
+                    <img id="proimg"
+                         src="<@commonTags method="tagHtpImgURL" type="1" value="1">${(tagHtpImgURL)!}</@commonTags>${(ma.images)!'--'}"
+                         onerror="this.src='${ctx}/wholesalestore/images/logo.png'">
                     <div class="figure">
-                        <p id="commname"></p>
-                        <span id="model"></span>
-                        <b>￥<span id="price"></span></b>
+                        <p id="commname">${(ma.name)!}</p>
+                        <b>￥<span id="price">${(ma.price)!}</span>/天</b>
                     </div>
                 </a>
             </dt>
-
-            <div id="bike">
-
-                <dd>
-                    <h4>
-                        <img src="${ctx}/wholesalestore/images/logo.png">
-                        <p>商品名称</p>
-                        <p>商品简介</p>
-                        <p>购买：￥<span>2598</span></p>
-                        <p>出借价：￥<span>2598</span></p>
-                        <a href="">立即购买</a>
-                    </h4>
-                </dd>
-
-                <dd>
-                    <h4>
-                        <img src="${ctx}/wholesalestore/images/logo.png">
-                        <p>商品名称</p>
-                        <p>商品简介</p>
-                        <p>购买：￥<span>2598</span></p>
-                        <p>出借价：￥<span>2598</span></p>
-                        <a href="">立即购买</a>
-                    </h4>
-                </dd>
-            </div>
-            <div>
-
-                <dd style="border-left:none">
-                    <h4>
-                        <img src="${ctx}/wholesalestore/images/logo.png">
-                        <p>商品名称</p>
-                        <p>商品简介</p>
-                        <p>购买：￥<span>2598</span></p>
-                        <p>出借价：￥<span>2598</span></p>
-                        <a href="">立即购买</a>
-                    </h4>
-                </dd>
-
-
-                <dd>
-                    <h4>
-                        <img src="${ctx}/wholesalestore/images/logo.png">
-                        <p>商品名称</p>
-                        <p>商品简介</p>
-                        <p>购买：￥<span>2598</span></p>
-                        <p>出借价：￥<span>2598</span></p>
-                        <a href="">立即购买</a>
-                    </h4>
-                </dd>
-
-
-                <dd>
-                    <h4>
-                        <img src="${ctx}/wholesalestore/images/logo.png">
-                        <p>商品名称</p>
-                        <p>商品简介</p>
-                        <p>购买：￥<span>2598</span></p>
-                        <p>出借价：￥<span>2598</span></p>
-                        <a href="">立即购买</a>
-                    </h4>
-                </dd>
-
-
-                <dd>
-                    <h4>
-                        <img src="${ctx}/wholesalestore/images/logo.png">
-                        <p>商品名称</p>
-                        <p>商品简介</p>
-                        <p>购买：￥<span>2598</span></p>
-                        <p>出借价：￥<span>2598</span></p>
-                        <a href="">立即购买</a>
-                    </h4>
-                </dd>
-
-            </div>
-
+                <#else >
+                    <dd>
+                        <a href="#" class="yir">
+                            <img src="<@commonTags method="tagHtpImgURL" type="1" value="1">${(tagHtpImgURL)!}</@commonTags>${(ma.images)!'--'}"
+                                 onerror="this.src='${ctx}/wholesalestore/images/logo.png'">
+                        </a>
+                        <h4>
+                            <p>${(ma.name)!}</p>
+                            <p>${(ma.specification)!}</p>
+                            <p>购买价：<#if ma.sellStale==0>不出售<#else >￥<span> ${(ma.sellPrice)!'--'}</span></#if></p>
+                            <p>出借价：￥<span>${(ma.price)!}</span>/天</p>
+                            <a class="gotu_daile" href="">立即购买</a>
+                        </h4>
+                    </dd>
+                </#if>
+            </#list>
         </dl>
-
     </div>
-
-
-    <h1 class="h1">分类名称</h1>
-
+     </#if>
+    <#if (goods.sjList?size>0)>
+    <h1 class="h1">时间财富</h1>
     <div class="common_div">
-
-        <div class="tab">
-            <b class="b">零件</b>
-            <b>零件</b>
-            <b>零件</b>
-        </div>
-
         <dl>
+            <#list goods.sjList as sj>
+            <#if sj_index==0>
             <dt>
-                <a href="">
-                    <img src="${ctx}/wholesalestore/images/logo.png">
+                <a class="vhase" href="">
+                    <img src="<@commonTags method="tagHtpImgURL" type="1" value="1">${(tagHtpImgURL)!}</@commonTags>${(sj.images)!'--'}"
+                         onerror="this.src='${ctx}/wholesalestore/images/logo.png'">
                     <div class="figure">
-                        <p>商品名称</p>
-                        <span>商品简介</span>
-                        <b>￥10/天</b>
+                        <p>${(sj.name)!}</p>
+                        <b>￥<span id="price">${(sj.price)!}</span>/天</b>
                     </div>
                 </a>
             </dt>
-            <div id="">
-                <dd>
-                    <h4>
-                        <img src="${ctx}/wholesalestore/images/logo.png">
-                        <p>商品名称</p>
-                        <p>商品简介</p>
-                        <p>购买价：￥<span>2598</span></p>
-                        <p>出借价：￥<span>2598</span></p>
-                        <a href="">立即购买</a>
-                    </h4>
-                </dd>
-
-                <dd>
-                    <h4>
-                        <img src="${ctx}/wholesalestore/images/logo.png">
-                        <p>商品名称</p>
-                        <p>商品简介</p>
-                        <p>购买价：￥<span>2598</span></p>
-                        <p>出借价：￥<span>2598</span></p>
-                        <a href="">立即购买</a>
-                    </h4>
-                </dd>
-
-
-                <dd style="border-left:none">
-                    <h4>
-                        <img src="${ctx}/wholesalestore/images/logo.png">
-                        <p>商品名称</p>
-                        <p>商品简介</p>
-                        <p>购买价：￥<span>2598</span></p>
-                        <p>出借价：￥<span>2598</span></p>
-                        <a href="">立即购买</a>
-                    </h4>
-                </dd>
-
-
-                <dd>
-                    <h4>
-                        <img src="${ctx}/wholesalestore/images/logo.png">
-                        <p>商品名称</p>
-                        <p>商品简介</p>
-                        <p>购买价：￥<span>2598</span></p>
-                        <p>出借价：￥<span>2598</span></p>
-                        <a href="">立即购买</a>
-                    </h4>
-                </dd>
-
-
-                <dd>
-                    <h4>
-                        <img src="${ctx}/wholesalestore/images/logo.png">
-                        <p>商品名称</p>
-                        <p>商品简介</p>
-                        <p>购买价：￥<span>2598</span></p>
-                        <p>出借价：￥<span>2598</span></p>
-                        <a href="">立即购买</a>
-                    </h4>
-                </dd>
-
-
-                <dd>
-                    <h4>
-                        <img src="${ctx}/wholesalestore/images/logo.png">
-                        <p>商品名称</p>
-                        <p>商品简介</p>
-                        <p>购买价：￥<span>2598</span></p>
-                        <p>出借价：￥<span>2598</span></p>
-                        <a href="">立即购买</a>
-                    </h4>
-                </dd>
-
-            </div>
+            <#else >
+            <dd>
+                <a href="#" class="yir">
+                    <img src="<@commonTags method="tagHtpImgURL" type="1" value="1">${(tagHtpImgURL)!}</@commonTags>${(sj.images)!'--'}"
+                         onerror="this.src='${ctx}/wholesalestore/images/logo.png'">
+                </a>
+                <h4>
+                    <p>${(sj.name)!}</p>
+                    <p>${(sj.specification)!}</p>
+                    <p>购买价：<#if sj.sellStale==0>不出售<#else >￥<span> ${(sj.sellPrice)!'--'}</span></#if></p>
+                    <p>出借价：￥<span>${(sj.price)!}</span>/天</p>
+                    <a class="gotu_daile" href="">立即购买</a>
+                </h4>
+            </dd>
+            </#if>
+            </#list>
         </dl>
     </div>
-
-
-    <h1 class="h1">分类名称</h1>
-
+    </#if>
+<#if (goods.zydbewList?size>0)>
+    <h1 class="h1">牛B的技术</h1>
     <div class="common_div">
-
-        <div class="tab">
-            <b class="b">配件</b>
-            <b>配件</b>
-            <b>配件</b>
-        </div>
-
         <dl>
+            <#list goods.zydbewList as zyd>
+                <#if zyd_index==0>
             <dt>
-                <a id="onc" href="javascript:void(0)" onclick="">
-                    <img src="${ctx}/wholesalestore/images/logo.png">
+                <a class="vhase" href="">
+                    <img src="<@commonTags method="tagHtpImgURL" type="1" value="1">${(tagHtpImgURL)!}</@commonTags>${(zyd.images)!'--'}"
+                         onerror="this.src='${ctx}/wholesalestore/images/logo.png'">
                     <div class="figure">
-                        <p id="accbrand">商品名称</p>
-                        <span id="acccommname">商品简介</span>
-                        <b>￥<span id="accprice">120</span></b>
+                        <p>${(zyd.name)!}</p>
+                        <b>￥<span id="price">${(zyd.price)!}</span>/天</b>
                     </div>
                 </a>
             </dt>
-            <div id="cordee">
-
-                <dd>
-                    <h4>
-                        <img src="${ctx}/wholesalestore/images/logo.png">
-                        <p>商品名称</p>
-                        <p>商品简介</p>
-                        <p>购买价：￥<span>2598</span></p>
-                        <p>出借：￥<span>2598</span></p>
-                        <a href="">立即购买</a>
-                    </h4>
-                </dd>
-
-                <dd>
-                    <h4>
-                        <img src="${ctx}/wholesalestore/images/logo.png">
-                        <p>商品名称</p>
-                        <p>商品简介</p>
-                        <p>购买价：￥<span>2598</span></p>
-                        <p>出借：￥<span>2598</span></p>
-                        <a href="">立即购买</a>
-                    </h4>
-                </dd>
-
-
-                <dd style="border-left:none">
-                    <h4>
-                        <img src="${ctx}/wholesalestore/images/logo.png">
-                        <p>商品名称</p>
-                        <p>商品简介</p>
-                        <p>购买价：￥<span>2598</span></p>
-                        <p>出借：￥<span>2598</span></p>
-                        <a href="">立即购买</a>
-                    </h4>
-                </dd>
-
-
-                <dd>
-                    <h4>
-                        <img src="${ctx}/wholesalestore/images/logo.png">
-                        <p>商品名称</p>
-                        <p>商品简介</p>
-                        <p>购买价：￥<span>2598</span></p>
-                        <p>出借：￥<span>2598</span></p>
-                        <a href="">立即购买</a>
-                    </h4>
-                </dd>
-
-
-                <dd>
-                    <h4>
-                        <img src="${ctx}/wholesalestore/images/logo.png">
-                        <p>商品名称</p>
-                        <p>商品简介</p>
-                        <p>购买价：￥<span>2598</span></p>
-                        <p>出借：￥<span>2598</span></p>
-                        <a href="">立即购买</a>
-                    </h4>
-                </dd>
-
-
-                <dd>
-                    <h4>
-                        <img src="${ctx}/wholesalestore/images/logo.png">
-                        <p>商品名称</p>
-                        <p>商品简介</p>
-                        <p>购买价：￥<span>2598</span></p>
-                        <p>出借：￥<span>2598</span></p>
-                        <a href="">立即购买</a>
-                    </h4>
-                </dd>
-
-            </div>
+                <#else >
+            <dd>
+                <a href="#" class="yir">
+                    <img src="<@commonTags method="tagHtpImgURL" type="1" value="1">${(tagHtpImgURL)!}</@commonTags>${(zyd.images)!'--'}"
+                         onerror="this.src='${ctx}/wholesalestore/images/logo.png'">
+                </a>
+                <h4>
+                    <p>${(zyd.name)!}</p>
+                    <p>${(zyd.specification)!}</p>
+                    <p>购买价：<#if zyd.sellStale==0>不出售<#else >￥<span> ${(zyd.sellPrice)!'--'}</span></#if></p>
+                    <p>出借价：￥<span>${(zyd.price)!}</span>/天
+                    <p>
+                        <a class="gotu_daile" href="">立即购买</a>
+                </h4>
+            </dd>
+                </#if>
+            </#list>
         </dl>
 
     </div>
+</#if>
+    <#if (goods.carryewList?size>0)>
+    <h1 class="h1">搬运/力气活</h1>
+    <div class="common_div">
+        <dl>
+            <#list goods.carryewList as car>
+                <#if car_index==0>
+            <dt>
+                <a class="vhase" href="">
+                    <img src="<@commonTags method="tagHtpImgURL" type="1" value="1">${(tagHtpImgURL)!}</@commonTags>${(car.images)!'--'}"
+                         onerror="this.src='${ctx}/wholesalestore/images/logo.png'">
+                    <div class="figure">
+                        <p>${(car.name)!}</p>
+                        <b>￥<span id="price">${(car.price)!}</span>/天</b>
+                    </div>
+                </a>
+            </dt>
+                <#else >
+            <dd>
+                <a href="#" class="yir">
+                    <img src="<@commonTags method="tagHtpImgURL" type="1" value="1">${(tagHtpImgURL)!}</@commonTags>${(car.images)!'--'}"
+                         onerror="this.src='${ctx}/wholesalestore/images/logo.png'">
+                </a>
 
+                <h4>
+                    <p>${(car.name)!}</p>
+                    <p>${(car.specification)!}</p>
+                    <p>购买价：<#if car.sellStale==0>不出售<#else >￥<span> ${(car.sellPrice)!'--'}</span></#if></p>
+                    <p>出借价：￥<span>${(car.price)!}</span>/天
+                    <p>
+                        <a class="gotu_daile" href="">立即购买</a>
+                </h4>
+            </dd>
+                </#if>
+            </#list>
+        </dl>
+
+    </div>
+    </#if>
     <!--end-->
 </div>
 

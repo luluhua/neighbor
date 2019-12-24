@@ -1101,6 +1101,57 @@ list dd a:hover {
     bottom: 158px;
 }
 
+.tilaf {
+    display: inline-block;
+    color: red;
+    margin-top: 10px;
+    width: 50px;
+    font-size: 18px;
+}
+
+.fhuase {
+    height: 36%;
+}
+
+.vhuiase {
+    height: 100%;
+}
+
+.vhuiase p {
+    position: relative;
+    bottom: 1px;
+}
+
+.yir {
+    width: 100%;
+    height: 150px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.yir img {
+    width: 90%;
+    margin: auto;
+    display: block;
+}
+
+.vhase {
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.vhase img {
+    width: 90%;
+    margin: auto;
+    display: block;
+}
+
 
 
 

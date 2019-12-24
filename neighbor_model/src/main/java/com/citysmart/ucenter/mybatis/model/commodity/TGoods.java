@@ -85,6 +85,12 @@ public class TGoods extends Model<TGoods> {
     private Integer isDeleted;
     private String files;
 
+    @TableField("sell_stale")
+    private Integer sellStale;
+
+    @TableField("sell_price")
+    private Integer sellPrice;
+
     public String getId() {
         return id;
     }
@@ -213,6 +219,22 @@ public class TGoods extends Model<TGoods> {
         this.files = files;
     }
 
+    public Integer getSellStale() {
+        return sellStale;
+    }
+
+    public void setSellStale(Integer sellStale) {
+        this.sellStale = sellStale;
+    }
+
+    public Integer getSellPrice() {
+        return sellPrice;
+    }
+
+    public void setSellPrice(Integer sellPrice) {
+        this.sellPrice = sellPrice;
+    }
+
     @Override
     protected Serializable pkVal() {
         return this.id;
@@ -235,6 +257,8 @@ public class TGoods extends Model<TGoods> {
                 ", navigationCode=" + navigationCode +
                 ", dtCreate=" + dtCreate +
                 ", isDeleted=" + isDeleted +
+                ", sellStale=" + sellStale +
+                ", sellPrice=" + sellPrice +
                 "}";
     }
 }
