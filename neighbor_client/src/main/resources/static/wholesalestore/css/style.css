@@ -511,7 +511,7 @@
 
 .com_div p {
     color: #666;
-    width: 50px;
+    /*width: 50px;*/
 }
 
 .com_div span {
@@ -682,6 +682,12 @@
     text-overflow: ellipsis;
 }
 
+.datails_img {
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+}
+
 .datails_img img {
     display: block;
     max-width: 100%;
@@ -748,7 +754,7 @@
     margin: 0 auto;
 }
 
-#comments li {
+#comments .fhjuse {
     padding: 30px 0;
     border-bottom: 1px solid #efefef;
     overflow: hidden;

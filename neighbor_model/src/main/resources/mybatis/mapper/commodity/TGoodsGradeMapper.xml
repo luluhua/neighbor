@@ -9,10 +9,28 @@
         <result column="user_id" property="userId"/>
         <result column="grade_user_id" property="gradeUserId"/>
         <result column="grade_type" property="gradeType"/>
-        <result column="explain" property="explain"/>
+        <result column="explains" property="explains"/>
         <result column="sort_index" property="sortIndex"/>
         <result column="dt_create" property="dtCreate"/>
         <result column="is_deleted" property="isDeleted"/>
+        <result column="files" property="files"/>
+
     </resultMap>
 
+
+    <select id="getGradeListByGoodsId" resultType="com.citysmart.ucenter.mybatis.entity.vo.GoodsGradeVo">
+        SELECT
+	g.id AS id,
+	u.nickname AS userName,
+	u.avatar_url AS userAvatar,
+	g.explains as explains,
+	g.files AS files,
+	g.dt_create AS dtCreate,
+	g.score AS score
+    FROM
+        t_goods_grade g
+    LEFT JOIN t_lj_user_info u ON u.user_id = g.user_id
+        WHERE
+        g.goods_id=#{goodsId,jdbcType=VARCHAR}
+    </select>
 </mapper>

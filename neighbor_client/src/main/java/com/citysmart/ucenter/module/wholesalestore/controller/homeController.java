@@ -26,7 +26,7 @@ import java.util.*;
  * @date 2019/12/5
  */
 @Controller
-@RequestMapping("/eec")
+//@RequestMapping("/eec")
 public class homeController extends SuperController {
 
     @Autowired

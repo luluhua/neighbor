@@ -43,40 +43,7 @@
 <#include "base/topHtml.ftl">
 
 <!--头部-->
-<div class="head">
-    <a href="index.html" class="logo">
-        <img src="${ctx}/wholesalestore/images/logo.png">
-    </a>
-
-    <!--搜索-->
-    <div class="search">
-
-        <div class="drop-down">
-            <div class="box">分类</div>
-
-            <span class="span"></span>
-
-            <div class="chose">
-                <div class="curt">东西</div>
-                <div class="curt">配件</div>
-                <div class="curt">零件</div>
-            </div>
-        </div>
-
-
-        <input type="text" id="SearchGoods" onkeypress="if (event.keyCode == 13) searchSkip();" placeholder="Search"
-               class="text"/>
-        <input type="button" value="搜索" class="button" onclick="searchSkip()" title="搜索">
-    </div>
-
-
-    <!--加入购物车-->
-    <div class="cart">
-        <a href="${ctx}/resource/form">我有资源</a>
-    </div>
-    <!--end-->
-</div>
-
+<#include "base/head.ftl">
 
 <!--导航-->
 <nav>
@@ -108,15 +75,7 @@
 
             </div>
         </li>
-    <#--<li><a href="">优惠活动</a></li>-->
 
-    <#--<li><a href="">领优惠券</a></li>-->
-
-    <#--<li><a href="">优惠活动</a></li>-->
-
-    <#--<li><a href="">优惠活动</a></li>-->
-
-    <#--<li><a href="">优惠活动</a></li>-->
     </ul>
     <div class="clear"></div>
 
@@ -178,7 +137,7 @@
     <ul id="recommend">
         <#list goods.rentoutSellList as sel>
             <li class="border">
-                <a href="#" class="yir">
+                <a href="${ctx}/resource/particulars/${(sel.id)!}" class="yir">
                     <img src="<@commonTags method="tagHtpImgURL" type="1" value="1">${(tagHtpImgURL)!}</@commonTags>${(sel.images)!'--'}"
                          onerror="this.src='${ctx}/wholesalestore/images/logo.png'">
                 </a>
@@ -189,7 +148,7 @@
                         <p>购买价：<#if sel.sellStale==0>不出售<#else >￥<span> ${(sel.sellPrice)!'--'}</span></#if></p>
                         <p>出借价：￥<span>${(sel.price)!}</span>/天</p>
                     </div>
-                    <a class="gotu_daile" href="product_details.html">立即购买</a>
+                    <a class="gotu_daile" href="${ctx}/resource/particulars/${(sel.id)!}">立即购买</a>
                 </h3>
             </li>
         </#list>
@@ -202,7 +161,7 @@
             <#list goods.maintainList as ma>
                 <#if ma_index==0>
             <dt>
-                <a class="vhase" id="zinxd" href="javascript:void(0)">
+                <a class="vhase" id="zinxd" href="${ctx}/resource/particulars/${(ma.id)!}">
                     <img id="proimg"
                          src="<@commonTags method="tagHtpImgURL" type="1" value="1">${(tagHtpImgURL)!}</@commonTags>${(ma.images)!'--'}"
                          onerror="this.src='${ctx}/wholesalestore/images/logo.png'">
@@ -214,7 +173,7 @@
             </dt>
                 <#else >
                     <dd>
-                        <a href="#" class="yir">
+                        <a href="${ctx}/resource/particulars/${(ma.id)!}" class="yir">
                             <img src="<@commonTags method="tagHtpImgURL" type="1" value="1">${(tagHtpImgURL)!}</@commonTags>${(ma.images)!'--'}"
                                  onerror="this.src='${ctx}/wholesalestore/images/logo.png'">
                         </a>
@@ -223,7 +182,7 @@
                             <p>${(ma.specification)!}</p>
                             <p>购买价：<#if ma.sellStale==0>不出售<#else >￥<span> ${(ma.sellPrice)!'--'}</span></#if></p>
                             <p>出借价：￥<span>${(ma.price)!}</span>/天</p>
-                            <a class="gotu_daile" href="">立即购买</a>
+                            <a class="gotu_daile" href="${ctx}/resource/particulars/${(ma.id)!}">立即购买</a>
                         </h4>
                     </dd>
                 </#if>
@@ -238,7 +197,7 @@
             <#list goods.sjList as sj>
             <#if sj_index==0>
             <dt>
-                <a class="vhase" href="">
+                <a class="vhase" href="${ctx}/resource/particulars/${(sj.id)!}">
                     <img src="<@commonTags method="tagHtpImgURL" type="1" value="1">${(tagHtpImgURL)!}</@commonTags>${(sj.images)!'--'}"
                          onerror="this.src='${ctx}/wholesalestore/images/logo.png'">
                     <div class="figure">
@@ -249,7 +208,7 @@
             </dt>
             <#else >
             <dd>
-                <a href="#" class="yir">
+                <a href="${ctx}/resource/particulars/${(sj.id)!}" class="yir">
                     <img src="<@commonTags method="tagHtpImgURL" type="1" value="1">${(tagHtpImgURL)!}</@commonTags>${(sj.images)!'--'}"
                          onerror="this.src='${ctx}/wholesalestore/images/logo.png'">
                 </a>
@@ -258,7 +217,7 @@
                     <p>${(sj.specification)!}</p>
                     <p>购买价：<#if sj.sellStale==0>不出售<#else >￥<span> ${(sj.sellPrice)!'--'}</span></#if></p>
                     <p>出借价：￥<span>${(sj.price)!}</span>/天</p>
-                    <a class="gotu_daile" href="">立即购买</a>
+                    <a class="gotu_daile" href="${ctx}/resource/particulars/${(sj.id)!}">立即购买</a>
                 </h4>
             </dd>
             </#if>
@@ -273,7 +232,7 @@
             <#list goods.zydbewList as zyd>
                 <#if zyd_index==0>
             <dt>
-                <a class="vhase" href="">
+                <a class="vhase" href="${ctx}/resource/particulars/${(zyd.id)!}">
                     <img src="<@commonTags method="tagHtpImgURL" type="1" value="1">${(tagHtpImgURL)!}</@commonTags>${(zyd.images)!'--'}"
                          onerror="this.src='${ctx}/wholesalestore/images/logo.png'">
                     <div class="figure">
@@ -284,7 +243,7 @@
             </dt>
                 <#else >
             <dd>
-                <a href="#" class="yir">
+                <a href="${ctx}/resource/particulars/${(zyd.id)!}" class="yir">
                     <img src="<@commonTags method="tagHtpImgURL" type="1" value="1">${(tagHtpImgURL)!}</@commonTags>${(zyd.images)!'--'}"
                          onerror="this.src='${ctx}/wholesalestore/images/logo.png'">
                 </a>
@@ -294,7 +253,7 @@
                     <p>购买价：<#if zyd.sellStale==0>不出售<#else >￥<span> ${(zyd.sellPrice)!'--'}</span></#if></p>
                     <p>出借价：￥<span>${(zyd.price)!}</span>/天
                     <p>
-                        <a class="gotu_daile" href="">立即购买</a>
+                        <a class="gotu_daile" href="${ctx}/resource/particulars/${(zyd.id)!}">立即购买</a>
                 </h4>
             </dd>
                 </#if>
@@ -310,7 +269,7 @@
             <#list goods.carryewList as car>
                 <#if car_index==0>
             <dt>
-                <a class="vhase" href="">
+                <a class="vhase" href="${ctx}/resource/particulars/${(car.id)!}">
                     <img src="<@commonTags method="tagHtpImgURL" type="1" value="1">${(tagHtpImgURL)!}</@commonTags>${(car.images)!'--'}"
                          onerror="this.src='${ctx}/wholesalestore/images/logo.png'">
                     <div class="figure">
@@ -321,7 +280,7 @@
             </dt>
                 <#else >
             <dd>
-                <a href="#" class="yir">
+                <a href="${ctx}/resource/particulars/${(car.id)!}" class="yir">
                     <img src="<@commonTags method="tagHtpImgURL" type="1" value="1">${(tagHtpImgURL)!}</@commonTags>${(car.images)!'--'}"
                          onerror="this.src='${ctx}/wholesalestore/images/logo.png'">
                 </a>
@@ -332,7 +291,7 @@
                     <p>购买价：<#if car.sellStale==0>不出售<#else >￥<span> ${(car.sellPrice)!'--'}</span></#if></p>
                     <p>出借价：￥<span>${(car.price)!}</span>/天
                     <p>
-                        <a class="gotu_daile" href="">立即购买</a>
+                        <a class="gotu_daile" href="${ctx}/resource/particulars/${(car.id)!}">立即购买</a>
                 </h4>
             </dd>
                 </#if>

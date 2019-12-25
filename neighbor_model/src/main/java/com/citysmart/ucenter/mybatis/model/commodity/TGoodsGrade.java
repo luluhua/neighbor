@@ -4,7 +4,9 @@ import java.util.Date;
 
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.activerecord.Model;
+import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
+import com.baomidou.mybatisplus.enums.IdType;
 
 import java.io.Serializable;
 
@@ -20,7 +22,7 @@ import java.io.Serializable;
 public class TGoodsGrade extends Model<TGoodsGrade> {
 
     private static final long serialVersionUID = 1L;
-
+    @TableId(type = IdType.UUID)
     private String id;
     @TableField("goods_id")
     private String goodsId;
@@ -33,7 +35,7 @@ public class TGoodsGrade extends Model<TGoodsGrade> {
      */
     @TableField("grade_type")
     private Integer gradeType;
-    private String explain;
+    private String explains;
     @TableField("sort_index")
     private Integer sortIndex;
 
@@ -47,6 +49,10 @@ public class TGoodsGrade extends Model<TGoodsGrade> {
      */
     @TableField("is_deleted")
     private Integer isDeleted;
+
+    private String files;
+
+    private Integer score;
 
 
     public String getId() {
@@ -89,12 +95,12 @@ public class TGoodsGrade extends Model<TGoodsGrade> {
         this.gradeType = gradeType;
     }
 
-    public String getExplain() {
-        return explain;
+    public String getExplains() {
+        return explains;
     }
 
-    public void setExplain(String explain) {
-        this.explain = explain;
+    public void setExplains(String explains) {
+        this.explains = explains;
     }
 
     public Integer getSortIndex() {
@@ -121,6 +127,21 @@ public class TGoodsGrade extends Model<TGoodsGrade> {
         this.isDeleted = isDeleted;
     }
 
+    public String getFiles() {
+        return files;
+    }
+
+    public void setFiles(String files) {
+        this.files = files;
+    }
+
+    public Integer getScore() {
+        return score;
+    }
+
+    public void setScore(Integer score) {
+        this.score = score;
+    }
 
     @Override
     protected Serializable pkVal() {
@@ -134,7 +155,7 @@ public class TGoodsGrade extends Model<TGoodsGrade> {
                 ", userId=" + userId +
                 ", gradeUserId=" + gradeUserId +
                 ", gradeType=" + gradeType +
-                ", explain=" + explain +
+                ", explains=" + explains +
                 ", sortIndex=" + sortIndex +
                 ", dtCreate=" + dtCreate +
                 ", isDeleted=" + isDeleted +

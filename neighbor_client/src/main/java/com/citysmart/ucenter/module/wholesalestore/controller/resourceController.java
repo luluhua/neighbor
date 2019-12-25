@@ -1,23 +1,31 @@
 package com.citysmart.ucenter.module.wholesalestore.controller;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.baomidou.mybatisplus.plugins.Page;
 import com.citysmart.common.bean.Rest;
 import com.citysmart.common.controller.SuperController;
 import com.citysmart.common.json.JsonFailResult;
-import com.citysmart.common.json.JsonResult;
+import com.citysmart.ucenter.common.Util.PWDStrongUtil;
+import com.citysmart.ucenter.module.appc.service.ITLjUserInfoService;
+import com.citysmart.ucenter.module.wholesalestore.vo.userVo;
 import com.citysmart.common.util.CommonUtil;
 import com.citysmart.ucenter.common.Util.ShiroUtil;
 import com.citysmart.ucenter.common.anno.Log;
+import com.citysmart.ucenter.module.appc.service.ITLjUserAddressService;
+import com.citysmart.ucenter.module.appc.service.ITLjUserService;
 import com.citysmart.ucenter.module.commodity.service.ITGoodsGradeService;
 import com.citysmart.ucenter.module.commodity.service.ITGoodsService;
 import com.citysmart.ucenter.module.system.service.ITNavigationService;
 import com.citysmart.ucenter.module.system.service.ITTagService;
+import com.citysmart.ucenter.mybatis.entity.vo.GoodsGradeVo;
 import com.citysmart.ucenter.mybatis.enums.Delete;
 import com.citysmart.ucenter.mybatis.model.SysMenu;
 import com.citysmart.ucenter.mybatis.model.TNavigation;
 import com.citysmart.ucenter.mybatis.model.TSmsSendLog;
 import com.citysmart.ucenter.mybatis.model.TTag;
 import com.citysmart.ucenter.mybatis.model.app.TLjUser;
+import com.citysmart.ucenter.mybatis.model.app.TLjUserAddress;
+import com.citysmart.ucenter.mybatis.model.app.TLjUserInfo;
 import com.citysmart.ucenter.mybatis.model.commodity.TGoods;
 import com.citysmart.ucenter.mybatis.model.commodity.TGoodsGrade;
 import com.google.common.collect.Maps;
@@ -27,7 +35,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.validation.Valid;
@@ -55,6 +65,15 @@ public class resourceController extends SuperController {
 
     @Autowired
     private ITGoodsService goodsService;
+
+    @Autowired
+    private ITLjUserService userService;
+
+    @Autowired
+    private ITLjUserInfoService userInfoService;
+
+    @Autowired
+    private ITLjUserAddressService addressService;
 
 
     @RequestMapping("/form")
@@ -110,6 +129,33 @@ public class resourceController extends SuperController {
             return Rest.ok();
         }
         return Rest.ok("未登录");
+    }
+
+    @RequestMapping("/particulars/{id}")
+    public String particulars(@PathVariable String id, Model model) {
+        TGoods goods = goodsService.selectById(id);
+        EntityWrapper<TLjUser> userEw = new EntityWrapper<TLjUser>();
+        userEw.eq("id", goods.getUserId());
+        TLjUser user = userService.selectOne(userEw);
+        TLjUserInfo userInfo = userInfoService.selectOne(new EntityWrapper<TLjUserInfo>().eq("user_id", goods.getUserId()));
+        EntityWrapper<TLjUserAddress> addressEw = new EntityWrapper<TLjUserAddress>();
+        addressEw.eq("user_id", goods.getUserId());
+        addressEw.where("state=0");
+        addressEw.eq("is_deleted", Delete.未删除);
+        TLjUserAddress address = addressService.selectOne(addressEw);
+        userVo vo = new userVo();
+        vo.setId(user.getId());
+        vo.setMobile(PWDStrongUtil.Decrypt3DEs(user.getMobile()));
+        if (userInfo != null) {
+            vo.setNickname(userInfo.getNickname());
+            vo.setAvatarUrl(userInfo.getAvatarUrl());
+            vo.setEmail(userInfo.getEmail());
+        }
+        vo.setAddress(address);
+        model.addAttribute("goods", goods);
+        model.addAttribute("user", vo);
+
+        return "/wholesalestore/resource/productDetails";
     }
 
 
