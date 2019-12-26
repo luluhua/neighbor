@@ -441,10 +441,15 @@
     background-color: #fff;
     padding: 20px 0;
     margin-bottom: 20px;
+    height: 250px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .pr_infor dl dt img {
-    max-width: 100%;
+    max-width: 80%;
     margin: 0 auto;
     display: block;
 }
@@ -453,6 +458,11 @@
     width: 20%;
     float: left;
     margin-right: 10px;
+    height: 100px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .pr_infor dl dd img {
@@ -3024,6 +3034,16 @@ a.upload-img:hover {
 
 .focus .wx-a:hover .wx_img {
     display: block;
+}
+
+.zupl {
+    display: block;
+    font-size: 26px;
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    color: #9F9F9F;
+    padding: 50px;
 }
 	
 	

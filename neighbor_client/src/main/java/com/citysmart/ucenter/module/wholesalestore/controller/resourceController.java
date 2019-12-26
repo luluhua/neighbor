@@ -125,6 +125,7 @@ public class resourceController extends SuperController {
                 String[] strs = entity.getFiles().split(",");
                 entity.setImages(strs[0].toString());
             }
+            entity.setUserId(ljUser.getId());
             goodsService.insert(entity);
             return Rest.ok();
         }
@@ -153,7 +154,7 @@ public class resourceController extends SuperController {
         }
         vo.setAddress(address);
         model.addAttribute("goods", goods);
-        model.addAttribute("user", vo);
+        model.addAttribute("users", vo);
 
         return "/wholesalestore/resource/productDetails";
     }

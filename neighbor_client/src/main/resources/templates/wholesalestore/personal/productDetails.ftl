@@ -1,66 +1,24 @@
 <!doctype html>
 <html>
 <head>
+    <#include "../../common/base.ftl">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>个人中心</title>
-    <link rel="stylesheet" type="text/css" href="css/css.css"/>
-    <link rel="stylesheet" type="text/css" href="css/common.css"/>
-    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="${ctx}/wholesalestore/css/css.css"/>
+    <link rel="stylesheet" type="text/css" href="${ctx}/wholesalestore/css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="${ctx}/wholesalestore/css/style.css"/>
 </head>
 
 
 <body class="body_bg">
 
 <!--联系我们-->
-<div class="contact_us">
-    <div class="QQ">
-        <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=206599540&site=qq&menu=yes">在线咨询</a>
-    </div>
-
-    <div class="calls">
-        <p>0771-5710902</p>
-    </div>
-
-    <!--end-->
-</div>
-
+<#include "../base/contact.ftl">
 
 <!--顶部-->
-<div class="header_bg">
-
-    <div class="header">
-        <p class="welcome">您好，欢迎来到简单生活 ！</p>
-
-        <ul>
-            <li class="login">
-			<span class="header_content1">
-				<a href="/store/login.html" target="_blank">登陆</a>|
-				<a href="/store/register.html" target="_blank">注册</a>
-				</span>
-                <span id="land1" style="display: none">
-				<a href="javascript:void{0}" id="username" onclick="GOuser_home()"></a>|
-				<a href="javascript:void{0}" onclick="logout()">退出</a>
-				</span>
-            </li>
-
-            <li class="order"><a href="member_Allorders.html">我的订单</a>
-                <div class="orders">
-                    <a href="member_Allorders.html">待付款<span id=obligationNum>0</span></a>
-                    <a href="member_Allorders.html">待收货<span id="waitReceiving">0</span></a>
-                    <a href="member_Allorders.html">待评论<span id="commentOn">0</span></a>
-                </div>
-            </li>
-
-            <li><a href="Shopping_guide.html">帮助中心</a></li>
-
-            <li class="fh_index"><a href="index.html">商城首页</a></li>
-        </ul>
-    </div>
-    <!--end-->
-</div>
-
+<#include "../base/topHtml.ftl">
 
 <!--头部-->
 <div class="head">

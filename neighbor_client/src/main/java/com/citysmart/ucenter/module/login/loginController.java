@@ -121,7 +121,7 @@ public class loginController extends SuperController {
              * 记录登录日志
              */
             sysLogService.insertLog("用户登录成功", userName, IpUtil.getIpAddr(request), 1, 1);
-            return redirectTo(("/m/login".equals(header) || header == "") ? "/eec/index" : "/login");
+            return redirectTo(("/m/login".equals(header) || header == "") ? "/index" : "/login");
         } catch (Exception e) {
             e.printStackTrace();
             model.addFlashAttribute("error", "用户名或密码错误");

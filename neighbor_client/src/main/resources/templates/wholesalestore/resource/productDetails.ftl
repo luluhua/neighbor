@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-            <#include "../../common/base.ftl">
+<#include "../../common/base.ftl">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -9,26 +9,14 @@
     <link rel="stylesheet" type="text/css" href="${ctx}/wholesalestore/css/css.css"/>
     <link rel="stylesheet" type="text/css" href="${ctx}/wholesalestore/css/common.css"/>
     <link rel="stylesheet" type="text/css" href="${ctx}/wholesalestore/css/style.css"/>
-    <script type="text/javascript" src="${ctx}/wholesalestore/js/jquery-1.8.3.min.js"></script>
 </head>
 
 
 <body class="body_bg">
 
 <!--联系我们-->
-<div class="contact_us">
-    <div class="QQ">
-        <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=206599540&site=qq&menu=yes">在线咨询</a>
-    </div>
 
-    <div class="calls">
-        <p>0771-5710902</p>
-    </div>
-
-    <!--end-->
-</div>
-
-
+<#include "../base/contact.ftl">
 <!--顶部-->
 <#include "../base/topHtml.ftl">
 
@@ -43,13 +31,16 @@
     <div class="pr_infor">
         <dl>
             <dt>
-                <img id="proimg"
+                <img id="proimg" data-magnify="gallery" data-group="1"
+                     data-src="<@commonTags method="tagHtpImgURL" type="1" value="1">${(tagHtpImgURL)!}</@commonTags>${(goods.images)!'--'}"
                      src="<@commonTags method="tagHtpImgURL" type="1" value="1">${(tagHtpImgURL)!}</@commonTags>${(goods.images)!'--'}">
             </dt>
             <#if (goods.files)?? && goods.files!="">
                 <#list goods.files?split(",") as fi>
-                     <dd>
-                         <img src="<@commonTags method="tagHtpImgURL" type="1" value="1">${(tagHtpImgURL)!}</@commonTags>${fi}">
+                     <dd class="fuy">
+                         <img data-group="1"
+                              data-src="<@commonTags method="tagHtpImgURL" type="1" value="1">${(tagHtpImgURL)!}</@commonTags>${fi}"
+                              src="<@commonTags method="tagHtpImgURL" type="1" value="1">${(tagHtpImgURL)!}</@commonTags>${fi}">
                      </dd>
                 </#list>
             </#if>
@@ -82,7 +73,7 @@
             <div class="com_div">
                 <p>联系人：</p>
                 <div class="color_box">
-                    <div class="colorA" id="forsize">${(user.nickname)!'未实名'}</div>
+                    <div class="colorA" id="forsize">${(users.nickname)!'未实名'}</div>
                 </div>
             </div>
             <div class="clear"></div>
@@ -99,7 +90,7 @@
                 <ul>
                     <li><p>所在地址：</p>
                         <span id="brand">
-                            ${(user.address.city)!}${(user.address.region)!}${(user.address.detailedAddress)!}
+                            ${(users.address.city)!}${(users.address.region)!}${(users.address.detailedAddress)!}
                         </span>
                     </li>
                     <li><p>状态：</p><span id="size">闲置</span></li>
@@ -113,64 +104,68 @@
               <#if (goods.files)?? && goods.files!="">
                   <#list goods.files?split(",") as fi>
                     <div class="datails_img">
-                        <img src="<@commonTags method="tagHtpImgURL" type="1" value="1">${(tagHtpImgURL)!}</@commonTags>${fi}">
+                        <img data-magnify="gallery" data-group="2"
+                             data-src="<@commonTags method="tagHtpImgURL" type="1" value="1">${(tagHtpImgURL)!}</@commonTags>${fi}"
+                             src="<@commonTags method="tagHtpImgURL" type="1" value="1">${(tagHtpImgURL)!}</@commonTags>${fi}">
                     </div>
                   </#list>
               </#if>
             </div>
 
             <h5 id="comments_h5" class="datails_h5">产品评价</h5>
-            <iframe id="iframe2"
+            <iframe id="iframe2" name="iframe2"
                     src="${ctx}/grade//list/1?goodsId=${(goods.id)!}"
-                    style="width:100%;height: 500px"
+                    style="width:100%;" onload="this.height=iframe2.document.body.scrollHeight"
                     frameborder="0" scrolling="no"></iframe>
 
         </div>
+        <!-- 右侧广告 -->
         <div class="right_recomm">
-            <h4>产品推荐</h4>
-            <span id="recommendpro">
 
-			<a href="">
-				<img src="images/pr_01.jpg">
+        <#--<h4>产品推荐</h4>-->
+        <#--<span id="recommendpro">-->
 
-				<h3 class="h3A">CycleDesign-CDBG0057</h3>
+        <#--<a href="">-->
+        <#--<img src="images/pr_01.jpg">-->
 
-				<h3 class="h3B">自行车包自行车骑行包便携水袋包双肩背包</h3>
+        <#--<h3 class="h3A">CycleDesign-CDBG0057</h3>-->
 
-				<p>￥<span>310</span></p>
-			</a>
+        <#--<h3 class="h3B">自行车包自行车骑行包便携水袋包双肩背包</h3>-->
 
-			<a href="">
-				<img src="images/pr_01.jpg">
+        <#--<p>￥<span>310</span></p>-->
+        <#--</a>-->
 
-				<h3 class="h3A">CycleDesign-CDBG0057</h3>
+        <#--<a href="">-->
+        <#--<img src="images/pr_01.jpg">-->
 
-				<h3 class="h3B">自行车包自行车骑行包便携水袋包双肩背包</h3>
+        <#--<h3 class="h3A">CycleDesign-CDBG0057</h3>-->
 
-				<p>￥<span>310</span></p>
-			</a>
+        <#--<h3 class="h3B">自行车包自行车骑行包便携水袋包双肩背包</h3>-->
 
-			<a href="">
-				<img src="images/pr_01.jpg">
+        <#--<p>￥<span>310</span></p>-->
+        <#--</a>-->
 
-				<h3 class="h3A">CycleDesign-CDBG0057</h3>
+        <#--<a href="">-->
+        <#--<img src="images/pr_01.jpg">-->
 
-				<h3 class="h3B">自行车包自行车骑行包便携水袋包双肩背包</h3>
+        <#--<h3 class="h3A">CycleDesign-CDBG0057</h3>-->
 
-				<p>￥<span>310</span></p>
-			</a>
+        <#--<h3 class="h3B">自行车包自行车骑行包便携水袋包双肩背包</h3>-->
 
-			<a href="" class="a_border">
-				<img src="images/pr_01.jpg">
+        <#--<p>￥<span>310</span></p>-->
+        <#--</a>-->
 
-				<h3 class="h3A">CycleDesign-CDBG0057</h3>
+        <#--<a href="" class="a_border">-->
+        <#--<img src="images/pr_01.jpg">-->
 
-				<h3 class="h3B">自行车包自行车骑行包便携水袋包双肩背包</h3>
+        <#--<h3 class="h3A">CycleDesign-CDBG0057</h3>-->
 
-				<p>￥<span>310</span></p>
-			</a>
+        <#--<h3 class="h3B">自行车包自行车骑行包便携水袋包双肩背包</h3>-->
 
-			</span>
+        <#--<p>￥<span>310</span></p>-->
+        <#--</a>-->
+
+        <#--</span>-->
         </div>
     </div>
     <!--end-->
@@ -178,5 +173,13 @@
 <!--底部-->
 <#include "../base/footerHtml.ftl">
 <!--end-->
+<script>
+    $(".fuy img").click(function () {
+        var r = $(this).attr('src');
+        $("#proimg").attr('src', r);
+        $("#proimg").attr('data-src', r);
+    })
+</script>
+
 </body>
 </html>
