@@ -91,7 +91,7 @@
     <script type="text/javascript" src="${ctx}/wholesalestore/js/lunbo.min.js"></script>
 
     <div class="banner_fr">
-        <a>
+        <a href="${ctx}/resource/info">
             <img src="${(me.avatarUrl)!}" onerror="this.src='${ctx}/base/images/default.jpg'" id="ports1">
             <h2>您好,<span id="username" style="cursor: pointer"><#if (me.nickname)??>
                 ${(me.nickname)!}

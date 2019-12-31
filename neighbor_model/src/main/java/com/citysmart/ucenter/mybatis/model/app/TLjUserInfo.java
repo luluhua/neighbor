@@ -46,6 +46,9 @@ public class TLjUserInfo extends Model<TLjUserInfo> {
     @TableField("avatar_url")
     private String avatarUrl;
 
+    @TableField(exist = false)
+    private String mobile;
+
     public String getId() {
         return id;
     }
@@ -92,6 +95,14 @@ public class TLjUserInfo extends Model<TLjUserInfo> {
 
     public void setAvatarUrl(String avatarUrl) {
         this.avatarUrl = avatarUrl;
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
     }
 
     @Override

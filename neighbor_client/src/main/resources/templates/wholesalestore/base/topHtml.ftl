@@ -6,7 +6,7 @@
         <ul>
             <li class="login">
                 <#if me??>
-                    <a href="javascript:void{0}">
+                    <a href="${ctx}/resource/info">
                         <#if me.nickname ??>
                             ${(me.nickname)!}
                         <#else >
