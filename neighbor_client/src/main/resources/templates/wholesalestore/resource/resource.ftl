@@ -25,7 +25,7 @@
 <div class="content_foot">
     <dl>
         <dd>
-            <a href="Shopping_guide.html">返回首页</a>
+            <a href="${ctx}/index">返回首页</a>
             <a href="Rights_members.html">我的资源</a>
             <a href="aboutus.html" class="curt_bg">信息发布</a>
         </dd>

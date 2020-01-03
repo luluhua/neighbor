@@ -6,9 +6,11 @@ import com.citysmart.common.util.CommonUtil;
 import com.citysmart.ucenter.common.Util.RedisUtil;
 import com.citysmart.ucenter.common.Util.ShiroUtil;
 import com.citysmart.ucenter.module.appc.service.ITClientAttachmentService;
+import com.citysmart.ucenter.module.appc.service.ITLjUserInfoService;
 import com.citysmart.ucenter.mybatis.model.TSysAttachment;
 import com.citysmart.ucenter.mybatis.model.app.TClientAttachment;
 import com.citysmart.ucenter.mybatis.model.app.TLjUser;
+import com.citysmart.ucenter.mybatis.model.app.TLjUserInfo;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.RandomStringUtils;
@@ -38,6 +40,13 @@ public class ClientAttachmentController extends SuperController {
     @Autowired
     public ITClientAttachmentService clientAttachmentService;
 
+    @Autowired
+    public ITLjUserInfoService userInfoService;
+    /**
+     * 是否保存附件表：1：保存附件表 2 不保存，只返回路径
+     */
+    public static final Integer IS_SAVE = 1;
+
 
     /**
      * 上传文件
@@ -48,7 +57,7 @@ public class ClientAttachmentController extends SuperController {
      */
     @ResponseBody
     @RequestMapping("/file/upload")
-    public Map<String, Object> fileUpload(@RequestParam MultipartFile[] file, String uuid, TClientAttachment entity, Model model) {
+    public Map<String, Object> fileUpload(@RequestParam MultipartFile[] file, String uuid, Integer grouping, TClientAttachment entity, Model model) {
         TLjUser ljUser = ShiroUtil.getSessionUser();
         Map<String, Object> result = new HashMap<String, Object>(5);
         if (ljUser != null) {
@@ -75,17 +84,19 @@ public class ClientAttachmentController extends SuperController {
                         FileUtils.copyInputStreamToFile(myfile.getInputStream(), new File(realPath, reName));
                         fileurl = "/" + cdate + "/" + reName;
                         urls.add(fileurl);
-                        entity.setGid(CommonUtil.UUID());
-                        entity.setName(reName);
-                        entity.setFileSize(myfile.getSize());
-                        entity.setFileext(ext);
-                        entity.setFilePath(fileurl);
-                        entity.setSourceId(uuid);
-                        entity.setCreateUserid(ljUser.getId());
-                        entity.setCreateDatetime(new Date());
-                        entity.setCreateUsername(ljUser.getUsername());
-                        entity.setFileOldName(myfile.getOriginalFilename());
-                        clientAttachmentService.insert(entity);
+                        if (grouping.equals(IS_SAVE)) {
+                            entity.setGid(CommonUtil.UUID());
+                            entity.setName(reName);
+                            entity.setFileSize(myfile.getSize());
+                            entity.setFileext(ext);
+                            entity.setFilePath(fileurl);
+                            entity.setSourceId(uuid);
+                            entity.setCreateUserid(ljUser.getId());
+                            entity.setCreateDatetime(new Date());
+                            entity.setCreateUsername(ljUser.getUsername());
+                            entity.setFileOldName(myfile.getOriginalFilename());
+                            clientAttachmentService.insert(entity);
+                        }
                     }
                 }
                 if (urls.size() > 0) {

@@ -23,17 +23,17 @@
                 </#if>
             </li>
 
-            <li class="order"><a href="member_Allorders.html">我的订单</a>
+            <li class="order"><a href="javascript:void">我的订单</a>
                 <div class="orders">
-                    <a href="member_Allorders.html">待付款<span id=obligationNum>0</span></a>
-                    <a href="member_Allorders.html">待收货<span id="waitReceiving">0</span></a>
-                    <a href="member_Allorders.html">待评论<span id="commentOn">0</span></a>
+                    <a href="javascript:void">待付款<span id=obligationNum>0</span></a>
+                    <a href="javascript:void">待收货<span id="waitReceiving">0</span></a>
+                    <a href="javascript:void">待评论<span id="commentOn">0</span></a>
                 </div>
             </li>
 
-            <li><a href="Shopping_guide.html">帮助中心</a></li>
+            <li><a href="javascript:void">帮助中心</a></li>
 
-            <li class="fh_index"><a href="index.html">商城首页</a></li>
+            <li class="fh_index"><a href="${ctx}/index">商城首页</a></li>
         </ul>
     </div>
     <!--end-->

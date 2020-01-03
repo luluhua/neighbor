@@ -32,7 +32,7 @@
             acceptMime: 'image/jpg, image/png, image/jpeg',//只筛选上述类型图片
             number: 3,//0为不限制上传数量
             xhr: xhrOnProgress,
-            data: {"uuid": uuid}, //可选项 额外的参数，如：{id: 123, abc: 'xxx'}
+            data: {"grouping": 1, "uuid": uuid}, //可选项 额外的参数，如：{id: 123, abc: 'xxx'}
             multiple: true,// 开启多文件上传
             drag: true, //是否允许拖拽上传
             size: 1024 * 3,//为0为不限制大小
@@ -81,6 +81,50 @@
                     layer.closeAll();
                     //重新调用上传方法
                     uploadFile.upload();
+                })
+            }
+        });
+
+
+        var avatarUpload = upload.render({
+            elem: '#avatarUpload', //绑定元素
+            url: '/m/resource/file/setAvatar', //上传接口
+            exts: 'jpg|png|jpeg',//限定上传类型
+            accept: 'images',//指定允许上传时校验的文件类型 images（图片）、file（所有文件）、video（视频）、audio（音频）
+            acceptMime: 'image/jpg, image/png, image/jpeg',//只筛选上述类型图片
+            number: 1,//0为不限制上传数量
+            xhr: xhrOnProgress,
+            data: {"grouping": 1},
+            multiple: true,// 开启多文件上传
+            drag: true, //是否允许拖拽上传
+            size: 1024 * 3,//为0为不限制大小
+            bindAction: '#fileAction',
+            //监听xhr进度，并返回给进度条
+            before: function (obj) {
+                layer.load(3);
+            },
+            auto: true, //选择文件后不自动上传 默认值为true
+            done: function (res, index, upload) {
+                layer.close(layer.index);
+                if (res.code == 0) {
+                    $("#avatar_").attr('src', res.url)
+                }
+                if (res.code == 101) {
+                    layer.msg("登录已过期，请重新登录");
+                }
+            },
+            error: function (index, upload) {
+                //请求异常回调
+                layer.close(layer.index);
+                layer.confirm("上传失败，您是否要重新上传？", {
+                    btn: ['确定', '取消'],
+                    icon: 3,
+                    title: "提示"
+                }, function () {
+                    //关闭询问框
+                    layer.closeAll();
+                    //重新调用上传方法
+                    avatarUpload.upload();
                 })
             }
         });

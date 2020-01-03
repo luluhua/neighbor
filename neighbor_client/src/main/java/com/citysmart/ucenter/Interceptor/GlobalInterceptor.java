@@ -117,6 +117,7 @@ public class GlobalInterceptor extends HandlerInterceptorAdapter {
             map.put("navigationName", navigations.getName());
             map.put("navigationIcon", navigations.getIcon());
             map.put("navigationId", navigations.getId());
+            map.put("code", navigations.getCode());
             map.put("tagList", tagListyt);
             navigation.add(map);
         }

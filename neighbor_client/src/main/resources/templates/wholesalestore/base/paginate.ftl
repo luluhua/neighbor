@@ -15,9 +15,9 @@
             </#if>
 			
 			<#if (currentPage == 1)>
-				 <li><a href="javascript:void(0)">&laquo;</a></li>
+				 <li><a href="javascript:void(0)">上一页</a></li>
             <#else>
-				 <li><a href="${actionUrl}#{currentPage - 1}${urlParas!}">&laquo;</a></li>
+				 <li><a href="${actionUrl}#{currentPage - 1}${urlParas!}">上一页</a></li>
             </#if>
 			
 			<#if (currentPage > 8)>
@@ -40,9 +40,9 @@
 				 <li><a href="${actionUrl}#{totalPage}${urlParas!}">#{totalPage}</a></li>
             </#if>
 			<#if (currentPage == totalPage)>
-				 <li><a href="javascript:void(0)">&raquo;</a></li>
+				 <li><a href="javascript:void(0)">下一页</a></li>
             <#else>
-				 <li><a href="${actionUrl}#{currentPage + 1}${urlParas!}">&raquo;</a></li>
+				 <li><a href="${actionUrl}#{currentPage + 1}${urlParas!}">下一页</a></li>
             </#if>
     </ul>
 </#macro>

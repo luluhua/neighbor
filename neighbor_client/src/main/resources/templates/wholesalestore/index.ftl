@@ -37,20 +37,23 @@
 <!--导航-->
 <nav>
     <ul>
-        <li class="all"><a href="javascript:void(0)">产品分类</a>
+        <li class="all"><a href="${ctx}/list/1">产品分类</a>
             <div class="allA">
                 <section class="banner_nav">
                     <div class="left_nav">
                         <ul>
                             <#list navigation as mun>
-                                <li><a class="show" href="">${(mun.navigationName)!}</a>
+                                <li><a class="show"
+                                       href="${ctx}/list/1?code=${(mun.code)!}">${(mun.navigationName)!}</a>
                                     <div class="lenovo-pc">
                                         <div class="left-pc">
                                             <dl>
                                                 <b class="hfuiase">${(mun.navigationName)!}</b>
                                                 <div class="list">
                                                     <#list mun.tagList as tag>
-                                                        <dd><a href="">${(tag.tagName)!}</a></dd>
+                                                        <dd>
+                                                            <a href="${ctx}/list/1?tag=${(tag.id)!}">${(tag.tagName)!}</a>
+                                                        </dd>
                                                     </#list>
                                                 </div>
                                             </dl>
@@ -133,7 +136,7 @@
                 <h3 class="fhuase">
                     <div class="vhuiase">
                         <p class="pA">${(sel.name)!}</p>
-                        <p>${(sel.specification)!}</p>
+                        <p>规格:${(sel.specification)!'--'}</p>
                         <p>购买价：<#if sel.sellStale==0>不出售<#else >￥<span> ${(sel.sellPrice)!'--'}</span></#if></p>
                         <p>出借价：￥<span>${(sel.price)!}</span>/天</p>
                     </div>
@@ -168,7 +171,7 @@
                         </a>
                         <h4>
                             <p>${(ma.name)!}</p>
-                            <p>${(ma.specification)!}</p>
+                            <p>规格：${(ma.specification)!'--'}</p>
                             <p>购买价：<#if ma.sellStale==0>不出售<#else >￥<span> ${(ma.sellPrice)!'--'}</span></#if></p>
                             <p>出借价：￥<span>${(ma.price)!}</span>/天</p>
                             <a class="gotu_daile" href="${ctx}/resource/particulars/${(ma.id)!}">立即购买</a>
@@ -203,7 +206,7 @@
                 </a>
                 <h4>
                     <p>${(sj.name)!}</p>
-                    <p>${(sj.specification)!}</p>
+                    <p>规格：${(sj.specification)!'--'}</p>
                     <p>购买价：<#if sj.sellStale==0>不出售<#else >￥<span> ${(sj.sellPrice)!'--'}</span></#if></p>
                     <p>出借价：￥<span>${(sj.price)!}</span>/天</p>
                     <a class="gotu_daile" href="${ctx}/resource/particulars/${(sj.id)!}">立即购买</a>
@@ -238,7 +241,7 @@
                 </a>
                 <h4>
                     <p>${(zyd.name)!}</p>
-                    <p>${(zyd.specification)!}</p>
+                    <p>规格：${(zyd.specification)!'--'}</p>
                     <p>购买价：<#if zyd.sellStale==0>不出售<#else >￥<span> ${(zyd.sellPrice)!'--'}</span></#if></p>
                     <p>出借价：￥<span>${(zyd.price)!}</span>/天
                     <p>
@@ -276,7 +279,7 @@
 
                 <h4>
                     <p>${(car.name)!}</p>
-                    <p>${(car.specification)!}</p>
+                    <p>规格：${(car.specification)!'--'}</p>
                     <p>购买价：<#if car.sellStale==0>不出售<#else >￥<span> ${(car.sellPrice)!'--'}</span></#if></p>
                     <p>出借价：￥<span>${(car.price)!}</span>/天
                     <p>

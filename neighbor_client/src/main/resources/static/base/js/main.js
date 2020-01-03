@@ -1,11 +1,18 @@
+layui.use('form', function () {
+    var form = layui.form;
+})
+
 if (typeof (activity) == 'undefined') {
     window.activity = {
         location: function () {
             window.location.href = document.referrer;
         },
-        getHeader: function () {
-
-            return document.referrer;
+        isNotBlank: function (e) {
+            if (e != "" && e.length != 0) {
+                return true;
+            } else {
+                return false;
+            }
         },
 
     }

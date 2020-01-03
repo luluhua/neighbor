@@ -132,6 +132,13 @@ public class resourceController extends SuperController {
         return Rest.ok("未登录");
     }
 
+    /**
+     * 详情
+     *
+     * @param id
+     * @param model
+     * @return
+     */
     @RequestMapping("/particulars/{id}")
     public String particulars(@PathVariable String id, Model model) {
         TGoods goods = goodsService.selectById(id);

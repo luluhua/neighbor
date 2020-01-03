@@ -13,10 +13,13 @@ import com.citysmart.ucenter.mybatis.model.TAttachments;
 import com.citysmart.ucenter.mybatis.model.TCmsAdv;
 import com.citysmart.ucenter.mybatis.model.TCmsAdvpos;
 import com.citysmart.ucenter.mybatis.model.commodity.TGoods;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -196,6 +199,41 @@ public class homeController extends SuperController {
         map.put("zydbewList", zydbewList.getRecords());
         map.put("carryewList", carryewList.getRecords());
         return map;
+    }
+
+    /**
+     * 资源列表
+     *
+     * @param pageNumber
+     * @param pageSize
+     * @param code
+     * @param tag
+     * @param search
+     * @param model
+     * @return pageData
+     */
+    @RequestMapping("/list/{pageNumber}")
+    public String list(@PathVariable Integer pageNumber, @RequestParam(defaultValue = "30") Integer pageSize, String code, String tag, String search, Model model) {
+        Page<TGoods> page = getPage(pageNumber, pageSize);
+        model.addAttribute("pageSize", pageSize);
+        EntityWrapper<TGoods> ew = new EntityWrapper<TGoods>();
+        ew.eq("is_deleted", Delete.未删除);
+        ew.orderBy("sort_index", false);
+        if (StringUtils.isNotBlank(code)) {
+            ew.eq("navigation_code", code);
+            model.addAttribute("code", code);
+        }
+        if (StringUtils.isNotBlank(tag)) {
+            ew.eq("tag_id", tag);
+            model.addAttribute("tag", tag);
+        }
+        if (StringUtils.isNotBlank(search)) {
+            ew.like("name", search);
+            model.addAttribute("search", search);
+        }
+        Page<TGoods> pageData = goodsService.selectPage(page, ew);
+        model.addAttribute("pageData", pageData);
+        return "/wholesalestore/resource/product";
     }
 
 }

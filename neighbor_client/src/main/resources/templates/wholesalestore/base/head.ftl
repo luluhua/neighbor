@@ -5,9 +5,11 @@
 
     <!--搜索-->
     <div class="search">
-        <input type="text" id="SearchGoods" onkeypress="if (event.keyCode == 13) searchSkip();" placeholder="Search"
-               class="text"/>
-        <input type="button" value="搜索" class="button" onclick="searchSkip()" title="搜索">
+        <form action="${ctx}/list/1" method="post" class="layui-form">
+            <input type="text" name="search" placeholder="输入你要搜索的内容"
+                   class="text"/>
+            <input type="submit" value="搜索" class="button" title="搜索">
+        </form>
     </div>
 
 
