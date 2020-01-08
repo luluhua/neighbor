@@ -5,14 +5,12 @@ import lombok.Setter;
 
 /**
  * @author li
- * @date 2019/4/23
+ * @date 2020/1/6
  */
 @Getter
 @Setter
-public class TendencyVo {
-
-    private String yearMonth;
-    private Integer date;
-    private Integer sumpdc;
-
+public class UserScoreVO {
+    private String id;
+    private String username;
+    private double score;
 }

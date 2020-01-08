@@ -4,12 +4,13 @@ import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.citysmart.common.bean.Rest;
 import com.citysmart.common.controller.SuperController;
 import com.citysmart.common.util.CommonUtil;
-import com.citysmart.ucenter.common.Util.PWDStrongUtil;
-import com.citysmart.ucenter.common.Util.RedisUtil;
-import com.citysmart.ucenter.common.Util.ShiroUtil;
+import com.citysmart.common.util.TimeUtil;
+import com.citysmart.ucenter.common.Util.*;
 import com.citysmart.ucenter.common.anno.Log;
 import com.citysmart.ucenter.module.appc.service.ITLjUserInfoService;
 import com.citysmart.ucenter.module.appc.service.ITLjUserService;
+import com.citysmart.ucenter.module.commodity.service.ITGoodsGradeService;
+import com.citysmart.ucenter.module.mail.IMailService;
 import com.citysmart.ucenter.mybatis.model.app.TClientAttachment;
 import com.citysmart.ucenter.mybatis.model.app.TLjUser;
 import com.citysmart.ucenter.mybatis.model.app.TLjUserInfo;
@@ -20,6 +21,8 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.DateFormatUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -43,10 +46,19 @@ import java.util.*;
 public class personalController extends SuperController {
 
     @Autowired
-    private ITLjUserService userService;
+    private ITGoodsGradeService gradeService;
 
     @Autowired
     private ITLjUserInfoService userInfoService;
+
+
+    @Autowired
+    public IMailService mailService;
+    /**
+     * 邮件发送器
+     */
+    @Autowired
+    public JavaMailSender mailSender;
 
     public final static String ICON_PREFIX = RedisUtil.getValueByKey("http.img.url");
 
@@ -60,8 +72,10 @@ public class personalController extends SuperController {
             TLjUserInfo info = userInfoService.selectOne(userEw);
             if (StringUtils.isNotBlank(info.getAvatarUrl())) {
                 info.setAvatarUrl(ICON_PREFIX + info.getAvatarUrl());
+                info.setEmail(VerifyUtil.getFormatMail(info.getEmail()));
             }
             model.addAttribute("info", info);
+            model.addAttribute("score", gradeService.getUserScore(ljUser.getId()).getScore());
             return "/wholesalestore/personal/memberData";
         }
         return "/wholesalestore/login";
@@ -189,4 +203,52 @@ public class personalController extends SuperController {
         return result;
     }
 
+    /**
+     * 新增/修改邮箱 -发送邮件
+     *
+     * @param mail
+     * @return
+     */
+    @RequestMapping("/sendMail")
+    @ResponseBody
+    @Log("新增/修改邮箱 -发送邮件")
+    public Rest sendMail(String mail, String jEmail) {
+        if (VerifyUtil.VerifyMail(mail)) {
+            String sender = env.getProperty("spring.mail.username");
+            String emailCode = CommonUtil.randomNumber().toString();
+            String verificationCodeTime = RedisUtil.getValueByKey("verification.Code.Time");
+            TLjUser ljUser = ShiroUtil.getSessionUser();
+            if (ljUser != null) {
+                EntityWrapper<TLjUserInfo> userEw = new EntityWrapper<TLjUserInfo>();
+                userEw.eq("user_id", ljUser.getId());
+                TLjUserInfo info = userInfoService.selectOne(userEw);
+                if (StringUtils.isNotBlank(jEmail) && !jEmail.equals(info.getEmail())) {
+                    return Rest.failure("原邮箱输入有误");
+                }
+                StringBuilder builder = new StringBuilder();
+                String userRedispackagekey = RedisUtil.QINGXIU_PACKAGE_KEY + ".smsCode." + 2 + ":" + mail;
+                //获取剩余时间
+                long time_expire = 60;
+                long restTime = JedisUtil.getInstance().new Keys().ttl(userRedispackagekey);
+                long existenceTime = Long.valueOf(TimeUtil.MillisecondToSecond(Integer.parseInt(verificationCodeTime)).toString()) - restTime;
+                if (existenceTime == 0 || existenceTime >= time_expire) {
+                    RedisUtil.delPackageKey("smsCode", mail);
+                    builder.append("尊重的用户：")
+                            .append("感谢您使用简单生活网,您办理的业务验证码是：").append("<b style='color: #0f0f0f;font-size: 16px'>").append(emailCode).append("</b>")
+                            .append(",验证码有效时间5分钟。");
+                    mailService.sendMimeMessge(mailSender, sender, mail, "简单生活网修改邮箱号码验证码", builder.toString());
+                    JedisUtil.getInstance().new Strings().setEx(userRedispackagekey, 2, emailCode);
+                    Map<String, Object> map = new HashMap<>(16);
+                    return Rest.ok("验证码已发送到请注意查收。");
+                }
+                return Rest.failure("邮件发送过于频繁！");
+
+                //把验证码加入缓存
+
+            }
+            return Rest.failure("登录已过期，请从新登录！");
+
+        }
+        return Rest.failure("请填写正确的邮箱！");
+    }
 }

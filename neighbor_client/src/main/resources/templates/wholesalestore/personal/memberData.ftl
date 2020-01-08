@@ -33,13 +33,11 @@
         <ul class="menu_ul">
             <li><a href="${ctx}/resource/info" class="menu_a">个人资料</a></li>
 
-            <li><a href="javascript:void">我的地址</a></li>
-
             <li><a href="javascript:void">我的收藏</a></li>
 
             <li><a href="javascript:void">我的消息</a></li>
 
-            <li><a href=javascript:void">修改密码</a></li>
+            <li><a href="javascript:void">修改密码</a></li>
 
             <li><a href="javascript:void">认证信息</a></li>
 
@@ -55,14 +53,15 @@
                                                                  title="修改头像"></a>
                 <p>
                     <span><b> ${(me.userName)!}</b></span>
+                    <span class="spana">有效期:2019-2020</span>
                 </p>
             </dd>
             <dt>
-                <a href="member_Allorders.html">未完成订单<b>0</b></a>
+                <a href="javascript:void">评分<b>${(score)!}</b></a>
             </dt>
 
             <dt>
-                <a href="member_collection.html">收藏的产品<b>0</b></a>
+                <a href="javascript:void">积分<b>0</b></a>
             </dt>
         </dl>
 
@@ -133,20 +132,27 @@
                     </div>
 
                     <div class="common_fl email_hidden">
+                        <#if  (info.email)??>
+                            <b>邮箱: ${(info.email)!}</b>
                         <h4>
-                            <p>邮箱：</p>
-
+                            <p>原邮箱：</p>
+                            <input type="text" id="jEmail" placeholder="输入邮箱" class="text">
+                        </h4>
+                        </#if>
+                        <h4>
+                            <p>新邮箱：</p>
                             <input type="text" id="newEmail" placeholder="输入邮箱" class="text">
                         </h4>
                         <h4>
                             <p>验证码：</p>
                             <input type="text" id="emailCode" placeholder="输入验证码" class="text text_phone">
 
-                            <button id="emailVerificationCode" onclick="emailVerificationCode()">获取验证码</button>
+                            <button id="emailVerificationCode">获取验证码</button>
+                            <button id="qx" style="display: none"></button>
                         </h4>
                         <a href="javascript:email_qx()" class="email_qx">取消</a>
 
-                        <a href="javascript:void" onclick="modifyEmail()">确定</a>
+                        <a href="javascript:void" class="setEmail">确定</a>
                     </div>
                 </li>
             </ol>
@@ -217,9 +223,57 @@
                 }
             })
         }
+    })
+    $("#emailVerificationCode").click(function () {
+        var mail = $("#newEmail").val();
+        var jEmail = $("#jEmail").val();
+        if (activity.isNotBlank(mail)) {
+            $.post('${ctx}/resource/sendMail?_dc=' + new Date().getTime(), {
+                mail: mail,
+                jEmail: jEmail
+            }, function (response) {
+                if (response.code == 200) {
+                    countDown();
+                    layer.msg(response.msg, {
+                        time: 1000,
+                        end: function () {
+                            $("#emailVerificationCode").hide();
+                            $("#qx").show();
+                        }
+                    })
+                } else {
+                    layer.msg(response.msg, {
+                        time: 1000,
+                        end: function () {
+                        }
+                    })
+                }
+            })
+        } else {
+            layer.msg('请填写邮箱！', {
+                time: 1000,
+                end: function () {
+                }
+            })
+        }
 
     })
+    var flag = 1;
+    var i = 60;
 
+    function countDown() {
+        i = i - 1;
+        $("#qx").html(i + "秒后重发");
+        if (i == 0) {
+            $("#emailVerificationCode").show();
+            $("#emailVerificationCode").html("重新发送");
+            $("#qx").hide();
+            flag = 1;
+            i = 60;
+            return;
+        }
+        setTimeout('countDown()', 1000);
+    }
 
 </script>
 <script>

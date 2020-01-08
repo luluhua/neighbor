@@ -33,4 +33,16 @@
         WHERE
         g.goods_id=#{goodsId,jdbcType=VARCHAR}
     </select>
+
+    <select id="getUserScore" resultType="com.citysmart.ucenter.mybatis.entity.vo.UserScoreVO">
+        SELECT
+            u.id as id,
+            avg(g.score) as score,
+            u.username as username
+        FROM
+            t_goods_grade g
+           LEFT JOIN t_lj_user u ON u.id = g.user_id
+        WHERE
+            g.user_id = #{userId}
+    </select>
 </mapper>

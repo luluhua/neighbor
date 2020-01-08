@@ -869,6 +869,7 @@ footer {
 .member_cent .left {
     float: left;
     width: 16%;
+    margin-top: 170px;
 }
 
 .member_cent .left p {

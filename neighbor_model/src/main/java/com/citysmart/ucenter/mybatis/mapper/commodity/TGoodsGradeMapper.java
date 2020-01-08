@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.mapper.BaseMapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.citysmart.ucenter.mybatis.entity.vo.GoodsGradeVo;
 import com.citysmart.ucenter.mybatis.entity.vo.SysRoleQueryVo;
+import com.citysmart.ucenter.mybatis.entity.vo.UserScoreVO;
 import com.citysmart.ucenter.mybatis.model.SysRole;
 import com.citysmart.ucenter.mybatis.model.commodity.TGoodsGrade;
 import org.apache.ibatis.annotations.Param;
@@ -22,5 +23,7 @@ public interface TGoodsGradeMapper extends BaseMapper<TGoodsGrade> {
 
 
     List<GoodsGradeVo> getGradeListByGoodsId(@Param("page") Page page, @Param("goodsId") String goodsId);
+
+    UserScoreVO getUserScore(@Param("userId") String userId);
 
 }
