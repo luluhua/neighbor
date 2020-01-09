@@ -1,27 +1,19 @@
-<!doctype html>
-<html>
-<head>
-<#include "../../common/base.ftl">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title></title>
+<#include "../../common/layout_dl.ftl">
+<@header>
     <link rel="stylesheet" type="text/css" href="${ctx}/wholesalestore/css/css.css"/>
     <link rel="stylesheet" type="text/css" href="${ctx}/wholesalestore/css/common.css"/>
     <link rel="stylesheet" type="text/css" href="${ctx}/wholesalestore/css/style.css"/>
-</head>
-
-
-<body class="body_bg">
+</@header>
+<@body>
 
 <!--联系我们-->
 
-<#include "../base/contact.ftl">
+    <#include "../base/contact.ftl">
 <!--顶部-->
-<#include "../base/topHtml.ftl">
+    <#include "../base/topHtml.ftl">
 
 <!--头部-->
-<#include "../base/head.ftl">
+    <#include "../base/head.ftl">
 
 <nav>
 </nav>
@@ -171,8 +163,10 @@
     <!--end-->
 </div>
 <!--底部-->
-<#include "../base/footerHtml.ftl">
+    <#include "../base/footerHtml.ftl">
 <!--end-->
+</@body>
+<@footer>
 <script>
     $(".fuy img").click(function () {
         var r = $(this).attr('src');
@@ -181,5 +175,4 @@
     })
 </script>
 
-</body>
-</html>
+</@footer>

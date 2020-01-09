@@ -1,27 +1,17 @@
-<!doctype html>
-<html>
-<head>
-        <#include "../../common/base.ftl">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>信息发布</title>
+<#include "../../common/layout_dl.ftl">
+<@header>
     <link href="${ctx}/wholesalestore/css/css.css" rel="stylesheet" type="text/css"/>
     <link href="${ctx}/wholesalestore/css/common.css" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" type="text/css" href="${ctx}/wholesalestore/css/style.css"/>
     <link href="${ctx}/base/js/layui/css/layui.css" rel="stylesheet"/>
-    <script src="${ctx}/base/js/upload.js" type="text/javascript"></script>
-
-
-</head>
-
-<body class="body_bg">
+</@header>
+<@body>
 
 <!--联系我们-->
-<#include "../base/contact.ftl">
+    <#include "../base/contact.ftl">
 
 <!--顶部-->
-<#include "../base/topHtml.ftl">
+    <#include "../base/topHtml.ftl">
 <div class="content_foot">
     <dl>
         <dd>
@@ -67,7 +57,7 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">数量</label>
                 <div class="layui-input-inline">
-                    <input type="number" name="quantity" lay-verify="required" placeholder="输入数量"
+                    <input type="number" name="quantity" lay-verify="" placeholder="输入数量"
                            autocomplete="off"
                            class="layui-input input-number-100">
                 </div>
@@ -127,6 +117,24 @@
                 </div>
             </div>
 
+            <div class="layui-form-item" id="sell_price">
+                <label class="layui-form-label">所在位置：</label>
+
+                <div class="hfuiawe">
+                    <button type="button" class="layui-btn layui-btn-xs dialog_param" name="sellStale"
+                            data-title="选择地址" data-url="${ctx}/toMap" data-par="" ,data-width="350"
+                            data-height="450">选择位置
+                    </button>
+                    <input id="lngId" type="hidden" name="lng" value="">
+                    <input id="latId" type="hidden" name="lat" value="">
+                    <input type="text" id="location" name="location" lay-verify="" placeholder="填写详细地址"
+                           class="layui-input input-title-500">
+                    <span class="fase">选择地址后请手动补全详细地址。详细的地址有利于别人更好的找到你的资源所在位置</span>
+                </div>
+
+            </div>
+
+
             <div class="layui-form-item">
                 <label class="layui-form-label">图片上传</label>
                 <input type="hidden" name="files" id="file_" value="">
@@ -158,9 +166,12 @@
 
 
 <!--底部-->
-<#include "../base/footerHtml.ftl">
+    <#include "../base/footerHtml.ftl">
 
 <!--end-->
+
+</@body>
+<@footer>
 <script>
     layui.use('form', function () {
         var form = layui.form;
@@ -217,6 +228,15 @@
         });
 
     }
+
+    $(".dialog_param").click(function () {
+        var me = this;
+        var url = $(this).attr('data-url');
+        var par = $(this).attr('data-par');
+        width = $(me).attr('data-width') || 800,
+                height = $(me).attr('data-height') || 400,
+                title = $(me).attr('data-title') || '';
+        x_admin_show_param(title, url, width, height, par);
+    });
 </script>
-</body>
-</html>
+</@footer>

@@ -1,30 +1,22 @@
-<!doctype html>
-<html>
-<head>
-    <#include "../../common/base.ftl">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>个人资料</title>
+<#include "../../common/layout_dl.ftl">
+<@header>
     <link rel="stylesheet" type="text/css" href="${ctx}/wholesalestore/css/css.css"/>
     <link rel="stylesheet" type="text/css" href="${ctx}/wholesalestore/css/common.css"/>
     <link rel="stylesheet" type="text/css" href="${ctx}/wholesalestore/css/style.css"/>
     <link href="${ctx}/base/js/layui/css/layui.css" rel="stylesheet"/>
     <script type="text/javascript" src="${ctx}/wholesalestore/js/common.js"></script>
     <script src="${ctx}/base/js/upload.js" type="text/javascript"></script>
-</head>
-
-
-<body class="body_bg">
+</@header>
+<@body>
 
 <!--联系我们-->
-<#include "../base/contact.ftl">
+    <#include "../base/contact.ftl">
 
 <!--顶部-->
-<#include "../base/topHtml.ftl">
+    <#include "../base/topHtml.ftl">
 
 <!--会员中心-头部-->
-<#include "../base/personalTop.ftl">
+    <#include "../base/personalTop.ftl">
 
 <!--会员中心-内容-->
 <div class="member_cent">
@@ -126,17 +118,19 @@
                     <div class="common_fl email">
                         <p>邮箱：</p>
 
-                        <span id="email"></span>
+                        <span id="email">${(info.email)!}</span>
 
                         <a href="javascript:email()">修改</a>
                     </div>
 
                     <div class="common_fl email_hidden">
                         <#if  (info.email)??>
-                            <b>邮箱: ${(info.email)!}</b>
+                        <h4>
+                            <p>已绑定邮箱: ${(info.email)!}</p>
+                        </h4>
                         <h4>
                             <p>原邮箱：</p>
-                            <input type="text" id="jEmail" placeholder="输入邮箱" class="text">
+                            <input type="text" id="jEmail" placeholder="输入完整的原邮箱" class="text">
                         </h4>
                         </#if>
                         <h4>
@@ -165,6 +159,10 @@
 
 <<#include "../base/footerHtml.ftl">
 <!--end-->
+
+</@body>
+<@footer>
+
 <script>
     $(".setGender").click(function () {
         var gender = $("input[name='gender']:checked").val();
@@ -205,7 +203,7 @@
                     layer.msg(response.msg, {
                         time: 1000,
                         end: function () {
-                            name_hidden();
+                            email_qx();
                         }
                     })
                 } else {
@@ -275,6 +273,39 @@
         setTimeout('countDown()', 1000);
     }
 
+    $(".setEmail").click(function () {
+        var email = $("#newEmail").val();
+        var code = $("#emailCode").val();
+        if (activity.isNotBlank(nickname)) {
+            $.post('${ctx}/resource/setEmail?_dc=' + new Date().getTime(), {
+                email: email,
+                code: code
+            }, function (response) {
+                if (response.code == 200) {
+                    $("#email").html(email);
+                    layer.msg(response.msg, {
+                        time: 1000,
+                        end: function () {
+                            name_hidden();
+                        }
+                    })
+                } else {
+                    layer.msg(response.msg, {
+                        time: 1000,
+                        end: function () {
+                        }
+                    })
+                }
+            })
+        } else {
+            layer.msg('请填写昵称！', {
+                time: 1000,
+                end: function () {
+                }
+            })
+        }
+    })
+
 </script>
 <script>
     layui.use('form', function () {
@@ -283,5 +314,4 @@
 </script>
 
 
-</body>
-</html>
+</@footer>

@@ -130,6 +130,7 @@ public class personalController extends SuperController {
             } else {
                 TLjUserInfo infos = new TLjUserInfo();
                 infos.setGender(gender);
+                info.setUserId(ljUser.getId());
                 userInfoService.insert(infos);
             }
             return Rest.ok("修改成功！");
@@ -226,7 +227,7 @@ public class personalController extends SuperController {
                     return Rest.failure("原邮箱输入有误");
                 }
                 StringBuilder builder = new StringBuilder();
-                String userRedispackagekey = RedisUtil.QINGXIU_PACKAGE_KEY + ".smsCode." + 2 + ":" + mail;
+                String userRedispackagekey = RedisUtil.QINGXIU_PACKAGE_KEY + ".smsCode." + sendsmsrUtil.EMAIL_CODE + ":" + mail;
                 //获取剩余时间
                 long time_expire = 60;
                 long restTime = JedisUtil.getInstance().new Keys().ttl(userRedispackagekey);
@@ -237,7 +238,9 @@ public class personalController extends SuperController {
                             .append("感谢您使用简单生活网,您办理的业务验证码是：").append("<b style='color: #0f0f0f;font-size: 16px'>").append(emailCode).append("</b>")
                             .append(",验证码有效时间5分钟。");
                     mailService.sendMimeMessge(mailSender, sender, mail, "简单生活网修改邮箱号码验证码", builder.toString());
-                    JedisUtil.getInstance().new Strings().setEx(userRedispackagekey, 2, emailCode);
+                    JedisUtil.getInstance().new Strings().setEx(userRedispackagekey,
+                            TimeUtil.MillisecondToSecond(Integer.parseInt(verificationCodeTime)),
+                            emailCode);
                     Map<String, Object> map = new HashMap<>(16);
                     return Rest.ok("验证码已发送到请注意查收。");
                 }
@@ -250,5 +253,37 @@ public class personalController extends SuperController {
 
         }
         return Rest.failure("请填写正确的邮箱！");
+    }
+
+    /**
+     * 新增/修改邮箱
+     *
+     * @param email
+     * @return
+     */
+    @RequestMapping("/setEmail")
+    @ResponseBody
+    @Log("新增/修改邮箱")
+    public Rest setEmail(String email, String code) {
+        if (!sendsmsrUtil.verifyEmailCode(email, code, sendsmsrUtil.EMAIL_CODE)) {
+            return Rest.failure("验证码不正确");
+        }
+        TLjUser ljUser = ShiroUtil.getSessionUser();
+        if (ljUser != null) {
+            EntityWrapper<TLjUserInfo> userEw = new EntityWrapper<TLjUserInfo>();
+            userEw.eq("user_id", ljUser.getId());
+            TLjUserInfo info = userInfoService.selectOne(userEw);
+            if (info != null) {
+                info.setEmail(email);
+                userInfoService.updateById(info);
+            } else {
+                TLjUserInfo infos = new TLjUserInfo();
+                infos.setEmail(email);
+                infos.setUserId(ljUser.getId());
+                userInfoService.insert(infos);
+            }
+            return Rest.ok("修改成功！");
+        }
+        return Rest.failure("登录已过期，请从新登录");
     }
 }

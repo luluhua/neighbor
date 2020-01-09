@@ -91,6 +91,20 @@ public class TGoods extends Model<TGoods> {
     @TableField("sell_price")
     private Integer sellPrice;
 
+    /**
+     * 位置地址
+     */
+    private String location;
+    /**
+     * 经度
+     */
+    private Double lng;
+    /**
+     * 纬度
+     */
+
+    private Double lat;
+
     public String getId() {
         return id;
     }
@@ -233,6 +247,30 @@ public class TGoods extends Model<TGoods> {
 
     public void setSellPrice(Integer sellPrice) {
         this.sellPrice = sellPrice;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public Double getLng() {
+        return lng;
+    }
+
+    public void setLng(Double lng) {
+        this.lng = lng;
+    }
+
+    public Double getLat() {
+        return lat;
+    }
+
+    public void setLat(Double lat) {
+        this.lat = lat;
     }
 
     @Override

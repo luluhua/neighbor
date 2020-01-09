@@ -1,38 +1,23 @@
-<#--<#macro header>-->
-<!doctype html>
-<html>
-<head>
-    <#include "../common/base.ftl">
-
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
-
-    <title>商城首页</title>
-
+<#include "../common/layout_dl.ftl">
+<@header>
     <link href="${ctx}/wholesalestore/css/css.css" rel="stylesheet" type="text/css"/>
     <link href="${ctx}/wholesalestore/css/common.css" rel="stylesheet" type="text/css"/>
     <link href="${ctx}/wholesalestore/css/style.css" rel="stylesheet" type="text/css"/>
     <link href="${ctx}/wholesalestore/css/mobile.css" rel="stylesheet" type="text/css"/>
-    <script type="text/javascript" src="${ctx}/wholesalestore/js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="${ctx}/base/js/jquery-1.8.3.min.js"></script>
     <script type="text/javascript" src="${ctx}/wholesalestore/js/fanhuidibu.js"></script>     <!--返回顶部-->
-    <script type="text/javascript" src="${ctx}/wholesalestore/js/banner.js"></script>
-    <script type="text/javascript" src="${ctx}/wholesalestore/js/index.js"></script>
 
-</head>
-
-
-<body class="body_bg">
+</@header>
+<@body>
 
 <!--联系我们-->
-<#include "base/contact.ftl">
+    <#include "base/contact.ftl">
 
 <!--顶部-->
-<#include "base/topHtml.ftl">
+    <#include "base/topHtml.ftl">
 
 <!--头部-->
-<#include "base/head.ftl">
+    <#include "base/head.ftl">
 
 <!--导航-->
 <nav>
@@ -91,7 +76,7 @@
             </#list>
         </ul>
     </div>
-    <script type="text/javascript" src="${ctx}/wholesalestore/js/lunbo.min.js"></script>
+
 
     <div class="banner_fr">
         <a href="${ctx}/resource/info">
@@ -297,15 +282,18 @@
 
 
 <!--底部-->
-<#include "base/footerHtml.ftl">
+    <#include "base/footerHtml.ftl">
 <!--end-->
 
 
-</body>
+</@body>
+<@footer>
+    <script type="text/javascript" src="${ctx}/wholesalestore/js/banner.js"></script>
+<script type="text/javascript" src="${ctx}/wholesalestore/js/index.js"></script>
+    <script type="text/javascript" src="${ctx}/wholesalestore/js/lunbo.min.js"></script>
 <script type="text/javascript" src="${ctx}/wholesalestore/js/passbyvalue.js"></script>
 <script type="text/javascript" src="${ctx}/base/js/jquery.kxbdmarquee.js"></script>
 <script>
     $("#marquee6").kxbdMarquee({direction: "up", isEqual: false});
 </script>
-</html>
-<#--</#macro>-->
+</@footer>

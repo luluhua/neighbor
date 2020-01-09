@@ -40,6 +40,7 @@ public class sendsmsrUtil {
     public static String REGISTER_CODE = "register";
     public static String FORGET_PASSWORD_CODE = "forgetpassword";
     public static String UPDATE_PHONE_CODE = "updatephone";
+    public static String EMAIL_CODE = "emailcode";
 
     public static TSmsConfig getTSmsConfig() {
         TSmsConfig smsConfig = smsConfigService.selectOne(new EntityWrapper<TSmsConfig>().eq("is_enabled", 0));
@@ -67,6 +68,27 @@ public class sendsmsrUtil {
     }
 
     /**
+     * 验证->验证码是否正确
+     *
+     * @param email 邮箱
+     * @return ture 正确 false 不正确
+     */
+    public static boolean verifyEmailCode(String email, String code, String typeCode) {
+        String verificationCode = RedisUtil.getValueByPackageKey("smsCode." + typeCode, email);
+        logger.warn("验证码验证：验证码类型【" + typeCode + "】,输入验证码【" + code + "】,邮箱号码【" + email + "】,redis 验证码【" + verificationCode + "】");
+        if (StringUtils.isBlank(verificationCode)) {
+            return false;
+        }
+        if (!code.equals(verificationCode)) {
+            return false;
+        }
+        //验证成功后就删除缓存
+        RedisUtil.delPackageKey("smsCode." + typeCode, email);
+        return true;
+    }
+
+
+    /**
      * HTTP接口发送短信
      * nonghg 2019-12-10
      *
@@ -85,7 +107,7 @@ public class sendsmsrUtil {
         String verificationCodeTime = RedisUtil.getValueByKey("verification.Code.Time");
         long time_expire = 60;
         //获取剩余时间
-        long restTime = JedisUtil.getInstance().new Keys().ttl(userRedispackagekey);
+        long restTime = JedisUtil.getInstance().new Keys().ttl(userRedispackagekey);//秒
         long existenceTime = Long.valueOf(TimeUtil.MillisecondToSecond(Integer.parseInt(verificationCodeTime)).toString()) - restTime;
         if (existenceTime == 0 || existenceTime >= time_expire) {
             RedisUtil.delPackageKey("smsCode", PWDStrongUtil.Encryption3DEs(phone));
@@ -114,8 +136,9 @@ public class sendsmsrUtil {
                     if ("2".equals(code)) {
                         //把验证码加入缓存
                         JedisUtil.getInstance().new Strings().setEx(userRedispackagekey,
-                                smsConfig.getSmsTemplate(),
+                                TimeUtil.MillisecondToSecond(Integer.parseInt(verificationCodeTime)),
                                 verificationCode);
+
                         addSendMessageLogInfo("您的验证码为：" + verificationCode, phone, "", smsType.toString());
                         logger.warn("验证码发送：验证码类型【验证码】,输入验证码【" + verificationCode + "】,手机号码【" + phone + "】,redis key【" + userRedispackagekey + "】");
                         return new JsonSuccessResult("发送成功", verificationCode);
