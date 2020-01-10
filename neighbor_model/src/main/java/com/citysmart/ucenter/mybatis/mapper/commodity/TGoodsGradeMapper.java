@@ -26,4 +26,6 @@ public interface TGoodsGradeMapper extends BaseMapper<TGoodsGrade> {
 
     UserScoreVO getUserScore(@Param("userId") String userId);
 
+    UserScoreVO getGoodsScore(@Param("id") String id);
+
 }

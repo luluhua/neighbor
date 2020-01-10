@@ -2,11 +2,10 @@
 
     <div class="header">
         <p class="welcome">您好，欢迎来到简单生活 ！</p>
-
         <ul>
             <li class="login">
                 <#if me??>
-                    <a href="${ctx}/resource/info">
+                    <a href="${ctx}/resource/info?p=info">
                         <#if me.nickname ??>
                             ${(me.nickname)!}
                         <#else >

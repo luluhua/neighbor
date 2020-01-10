@@ -8,6 +8,8 @@
     <script type="text/javascript" src="${ctx}/wholesalestore/js/fanhuidibu.js"></script>     <!--返回顶部-->
 
 </@header>
+<@js>
+</@js>
 <@body>
 
 <!--联系我们-->
@@ -79,7 +81,7 @@
 
 
     <div class="banner_fr">
-        <a href="${ctx}/resource/info">
+        <a href="${ctx}/resource/info?p=info">
             <img src="${(me.avatarUrl)!}" onerror="this.src='${ctx}/base/images/default.jpg'" id="ports1">
             <h2>您好,<span id="username" style="cursor: pointer"><#if (me.nickname)??>
                 ${(me.nickname)!}

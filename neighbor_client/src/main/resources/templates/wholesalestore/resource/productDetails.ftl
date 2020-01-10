@@ -4,6 +4,8 @@
     <link rel="stylesheet" type="text/css" href="${ctx}/wholesalestore/css/common.css"/>
     <link rel="stylesheet" type="text/css" href="${ctx}/wholesalestore/css/style.css"/>
 </@header>
+<@js>
+</@js>
 <@body>
 
 <!--联系我们-->
@@ -40,7 +42,6 @@
 
         <div class="infor_fr">
             <h1>${(goods.name)!}</h1>
-
             <h2>${(goods.specification)!}</h2>
             <div class="com_div">
                 <p>数量：</p>
@@ -82,12 +83,12 @@
                 <ul>
                     <li><p>所在地址：</p>
                         <span id="brand">
-                            ${(users.address.city)!}${(users.address.region)!}${(users.address.detailedAddress)!}
+                            ${(goods.location)!"未填写"}
                         </span>
                     </li>
                     <li><p>状态：</p><span id="size">闲置</span></li>
 
-                    <li><p>评分：</p><span id="models">4.6分</span></li>
+                    <li><p>评分：</p><span id="models">${(score)!"0"}分</span></li>
 
                     <li><p>成交次数：</p><span id="tinct">2</span></li>
 

@@ -7,13 +7,16 @@
   <#nested>
 </head>
 </#macro>
+<#macro js>
+    <#include "js.ftl">
+    <#nested>
+</#macro>
 <!-- /header -->
 <#macro body>
     <#nested>
 </#macro>
 <!-- /body -->
 <#macro footer>
-    <#include "js.ftl">
     <#nested>
 </body>
 </html>

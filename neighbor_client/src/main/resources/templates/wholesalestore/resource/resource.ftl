@@ -5,6 +5,9 @@
     <link rel="stylesheet" type="text/css" href="${ctx}/wholesalestore/css/style.css"/>
     <link href="${ctx}/base/js/layui/css/layui.css" rel="stylesheet"/>
 </@header>
+<@js>
+
+</@js>
 <@body>
 
 <!--联系我们-->
@@ -16,8 +19,8 @@
     <dl>
         <dd>
             <a href="${ctx}/index">返回首页</a>
-            <a href="Rights_members.html">我的资源</a>
-            <a href="aboutus.html" class="curt_bg">信息发布</a>
+            <a href="${ctx}/resource/ex?p=ex">我的资源</a>
+            <a href="${ctx}/resource/form" class="curt_bg">资源发布</a>
         </dd>
     </dl>
     <div class="">
@@ -131,7 +134,6 @@
                            class="layui-input input-title-500">
                     <span class="fase">选择地址后请手动补全详细地址。详细的地址有利于别人更好的找到你的资源所在位置</span>
                 </div>
-
             </div>
 
 

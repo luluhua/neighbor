@@ -6,11 +6,13 @@ import com.citysmart.ucenter.common.Util.RedisUtil;
 import com.citysmart.ucenter.common.Util.SpringUtil;
 import com.citysmart.ucenter.module.appc.service.ITLjUserInfoService;
 import com.citysmart.ucenter.module.appc.service.ITLjUserService;
+import com.citysmart.ucenter.module.commodity.service.ITGoodsGradeService;
 import com.citysmart.ucenter.module.system.service.ISysSettingService;
 import com.citysmart.ucenter.module.system.service.ITNavigationService;
 import com.citysmart.ucenter.module.system.service.ITSysUserLogService;
 import com.citysmart.ucenter.module.system.service.ITTagService;
 import com.citysmart.ucenter.mybatis.entity.vo.LjUserVO;
+import com.citysmart.ucenter.mybatis.entity.vo.UserScoreVO;
 import com.citysmart.ucenter.mybatis.enums.Delete;
 import com.citysmart.ucenter.mybatis.model.SysCity;
 import com.citysmart.ucenter.mybatis.model.SysSetting;
@@ -39,6 +41,9 @@ public class GlobalInterceptor extends HandlerInterceptorAdapter {
 
     @Autowired
     private ITLjUserInfoService infoService;
+
+    @Autowired
+    private ITGoodsGradeService gradeService;
     public final static String ICON_PREFIX = RedisUtil.getValueByKey("http.img.url");
 
     @Override
@@ -70,13 +75,22 @@ public class GlobalInterceptor extends HandlerInterceptorAdapter {
                     user.setNickname(info.getNickname());
                     user.setAvatarUrl(ICON_PREFIX + info.getAvatarUrl());
                 }
+                UserScoreVO score = gradeService.getUserScore(me.getId());
                 request.setAttribute("me", user);
+                if (score != null) {
+                    request.setAttribute("userscore", score);
+                }
+
             }
 
 
             /**
              * 资源和当前选中菜单
              */
+            String res = request.getParameter("p");
+            if (res != null) {
+                request.getSession().setAttribute("res", res);
+            }
             getOthenData(request);
 
         }

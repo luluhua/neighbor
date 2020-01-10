@@ -45,4 +45,13 @@
         WHERE
             g.user_id = #{userId}
     </select>
+
+    <select id="getGoodsScore" resultType="com.citysmart.ucenter.mybatis.entity.vo.UserScoreVO">
+        SELECT
+            avg(g.score) AS score
+        FROM
+            t_goods_grade g
+        WHERE
+            g.goods_id =#{id}
+    </select>
 </mapper>

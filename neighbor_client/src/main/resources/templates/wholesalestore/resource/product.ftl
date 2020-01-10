@@ -3,6 +3,9 @@
     <link rel="stylesheet" type="text/css" href="${ctx}/wholesalestore/css/css.css"/>
     <link rel="stylesheet" type="text/css" href="${ctx}/wholesalestore/css/common.css"/>
     <link rel="stylesheet" type="text/css" href="${ctx}/wholesalestore/css/style.css"/>
+
+</@header>
+<@js>
 <script language="javascript" type="text/javascript">
     function showSubLevel(Obj) {
         Obj.className = "hover";
@@ -12,7 +15,7 @@
         Obj.className = "";
     }
 </script>
-</@header>
+</@js>
 <@body>
 
 

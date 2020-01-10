@@ -10,10 +10,14 @@ import com.citysmart.ucenter.common.anno.Log;
 import com.citysmart.ucenter.module.appc.service.ITLjUserInfoService;
 import com.citysmart.ucenter.module.appc.service.ITLjUserService;
 import com.citysmart.ucenter.module.commodity.service.ITGoodsGradeService;
+import com.citysmart.ucenter.module.commodity.service.ITGoodsService;
 import com.citysmart.ucenter.module.mail.IMailService;
+import com.citysmart.ucenter.mybatis.entity.vo.UserScoreVO;
+import com.citysmart.ucenter.mybatis.enums.Delete;
 import com.citysmart.ucenter.mybatis.model.app.TClientAttachment;
 import com.citysmart.ucenter.mybatis.model.app.TLjUser;
 import com.citysmart.ucenter.mybatis.model.app.TLjUserInfo;
+import com.citysmart.ucenter.mybatis.model.commodity.TGoods;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.RandomStringUtils;
@@ -46,7 +50,7 @@ import java.util.*;
 public class personalController extends SuperController {
 
     @Autowired
-    private ITGoodsGradeService gradeService;
+    private ITGoodsService goodsService;
 
     @Autowired
     private ITLjUserInfoService userInfoService;
@@ -75,7 +79,6 @@ public class personalController extends SuperController {
                 info.setEmail(VerifyUtil.getFormatMail(info.getEmail()));
             }
             model.addAttribute("info", info);
-            model.addAttribute("score", gradeService.getUserScore(ljUser.getId()).getScore());
             return "/wholesalestore/personal/memberData";
         }
         return "/wholesalestore/login";
@@ -286,4 +289,20 @@ public class personalController extends SuperController {
         }
         return Rest.failure("登录已过期，请从新登录");
     }
+
+    @RequestMapping("/ex")
+    public String Myresource(Model model) {
+        TLjUser ljUser = ShiroUtil.getSessionUser();
+        if (ljUser != null) {
+            EntityWrapper<TGoods> ew = new EntityWrapper<TGoods>();
+            ew.eq("user_id", ljUser.getId());
+            ew.eq("is_deleted", Delete.未删除);
+            ew.orderBy("dt_create", false);
+            List<TGoods> goods = goodsService.selectList(ew);
+            model.addAttribute("resource", goods);
+            return "/wholesalestore/personal/myGoods";
+        }
+        return "/wholesalestore/login";
+    }
+
 }

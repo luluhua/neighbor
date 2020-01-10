@@ -22,4 +22,6 @@ public interface ITGoodsGradeService extends IService<TGoodsGrade> {
 
     UserScoreVO getUserScore(String userid);
 
+    UserScoreVO getGoodsScore(String id);
+
 }

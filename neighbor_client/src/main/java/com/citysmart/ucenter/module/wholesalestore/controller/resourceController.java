@@ -18,6 +18,7 @@ import com.citysmart.ucenter.module.commodity.service.ITGoodsService;
 import com.citysmart.ucenter.module.system.service.ITNavigationService;
 import com.citysmart.ucenter.module.system.service.ITTagService;
 import com.citysmart.ucenter.mybatis.entity.vo.GoodsGradeVo;
+import com.citysmart.ucenter.mybatis.entity.vo.UserScoreVO;
 import com.citysmart.ucenter.mybatis.enums.Delete;
 import com.citysmart.ucenter.mybatis.model.SysMenu;
 import com.citysmart.ucenter.mybatis.model.TNavigation;
@@ -61,7 +62,7 @@ public class resourceController extends SuperController {
     private ITTagService tagService;
 
     @Autowired
-    private ITGoodsGradeService goodsGradeService;
+    private ITGoodsGradeService gradeService;
 
     @Autowired
     private ITGoodsService goodsService;
@@ -159,10 +160,13 @@ public class resourceController extends SuperController {
             vo.setAvatarUrl(userInfo.getAvatarUrl());
             vo.setEmail(userInfo.getEmail());
         }
+        UserScoreVO score = gradeService.getGoodsScore(id);
         vo.setAddress(address);
         model.addAttribute("goods", goods);
         model.addAttribute("users", vo);
-
+        if (score != null) {
+            model.addAttribute("score", score.getScore());
+        }
         return "/wholesalestore/resource/productDetails";
     }
 

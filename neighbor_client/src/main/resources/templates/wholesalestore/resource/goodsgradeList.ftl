@@ -5,6 +5,8 @@
     <link rel="stylesheet" type="text/css" href="${ctx}/wholesalestore/css/style.css"/>
     <script type="text/javascript" src="${ctx}/wholesalestore/js/jquery-1.8.3.min.js"></script>
 </@header>
+<@js>
+</@js>
 <@body>
 <!--产品评价-->
     <#if (pageData.getRecords()?size>0)>

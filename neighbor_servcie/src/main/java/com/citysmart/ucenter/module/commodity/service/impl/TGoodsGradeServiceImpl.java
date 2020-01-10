@@ -35,5 +35,11 @@ public class TGoodsGradeServiceImpl extends ServiceImpl<TGoodsGradeMapper, TGood
         return this.baseMapper.getUserScore(userId);
     }
 
+    @Override
+    public UserScoreVO getGoodsScore(String id) {
+
+        return this.baseMapper.getGoodsScore(id);
+    }
+
 
 }

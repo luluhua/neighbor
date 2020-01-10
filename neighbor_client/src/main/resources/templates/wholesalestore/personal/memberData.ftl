@@ -7,6 +7,8 @@
     <script type="text/javascript" src="${ctx}/wholesalestore/js/common.js"></script>
     <script src="${ctx}/base/js/upload.js" type="text/javascript"></script>
 </@header>
+<@js>
+</@js>
 <@body>
 
 <!--联系我们-->
@@ -20,42 +22,10 @@
 
 <!--会员中心-内容-->
 <div class="member_cent">
-    <div class="left">
-        <p>个人中心</p>
-        <ul class="menu_ul">
-            <li><a href="${ctx}/resource/info" class="menu_a">个人资料</a></li>
-
-            <li><a href="javascript:void">我的收藏</a></li>
-
-            <li><a href="javascript:void">我的消息</a></li>
-
-            <li><a href="javascript:void">修改密码</a></li>
-
-            <li><a href="javascript:void">认证信息</a></li>
-
-        </ul>
-    </div>
+    <#include "../base/personalLeft.ftl">
 
     <div class="right">
-        <dl>
-            <dd>
-                <a href="javascript:void" id="avatarUpload"><img id="avatar_"
-                                                                 src="${(info.avatarUrl)!}"
-                                                                 onerror="this.src='${ctx}/base/images/default.jpg'"
-                                                                 title="修改头像"></a>
-                <p>
-                    <span><b> ${(me.userName)!}</b></span>
-                    <span class="spana">有效期:2019-2020</span>
-                </p>
-            </dd>
-            <dt>
-                <a href="javascript:void">评分<b>${(score)!}</b></a>
-            </dt>
-
-            <dt>
-                <a href="javascript:void">积分<b>0</b></a>
-            </dt>
-        </dl>
+ <#include "../base/userInfo.ftl">
 
         <div class="common_border layui-form">
 
@@ -157,7 +127,7 @@
 </div>
 
 
-<<#include "../base/footerHtml.ftl">
+    <#include "../base/footerHtml.ftl">
 <!--end-->
 
 </@body>
