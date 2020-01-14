@@ -105,6 +105,8 @@ public class TGoods extends Model<TGoods> {
 
     private Double lat;
 
+    private Integer status;
+
     public String getId() {
         return id;
     }
@@ -271,6 +273,14 @@ public class TGoods extends Model<TGoods> {
 
     public void setLat(Double lat) {
         this.lat = lat;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
     @Override

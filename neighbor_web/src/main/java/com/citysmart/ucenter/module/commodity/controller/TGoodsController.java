@@ -41,17 +41,19 @@ public class TGoodsController extends SuperController {
      * 分页查询
      */
     @RequestMapping("/list/{pageNumber}")
-    public String list(@PathVariable Integer pageNumber, @RequestParam(defaultValue = "15") Integer pageSize, String search, Model model) {
+    public String list(@PathVariable Integer pageNumber, @RequestParam(defaultValue = "15") Integer pageSize, String search, String userId, Model model) {
 
         Page<TGoods> page = getPage(pageNumber, pageSize);
         model.addAttribute("pageSize", pageSize);
         // 查询分页
         EntityWrapper<TGoods> ew = new EntityWrapper<TGoods>();
+        ew.eq("user_id", userId);
         if (StringUtils.isNotBlank(search)) {
             model.addAttribute("search", search);
         }
         Page<TGoods> pageData = service.selectPage(page, ew);
         model.addAttribute("pageData", pageData);
+        model.addAttribute("userId", userId);
         return "/commodity/tGoods/list";
     }
 

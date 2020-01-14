@@ -14,3 +14,7 @@ ADD COLUMN `location`  varchar(255) DEFAULT null  COMMENT '地址' AFTER `sell_p
 ADD COLUMN `lng`  decimal(20,8) DEFAULT NULL COMMENT '经度' AFTER `lng`;
 ADD COLUMN `lat`  decimal(20,8) DEFAULT NULL COMMENT '维度' AFTER `location`;
 
+2020-1-14    //--  资源表添加一个字段【status】
+ALTER TABLE `t_goods`
+ADD COLUMN `status`  tinyint(2) DEFAULT '0'  COMMENT '0：上架  1下架' AFTER `lat`,
+

@@ -34,7 +34,7 @@
             <!--没有产品时的页面-->
             <#if (resource?size) ==0>
             <div class="order_none">
-                <p>您没有发布资源，<a href="index.html">去发布　！＞＞</a></p>
+                <p>您没有发布资源，<a href="${ctx}/resource/form">去发布　！＞＞</a></p>
             </div>
             <#else >
             <ol id="collections" class="collection">
@@ -48,10 +48,24 @@
                             <h3>${(resource.name)!}</h3>
                         </div>
                         <div class="re-operation">
-                            <a href="" class="bjit">编辑</a>
-                            <a href="" class="caoz">下架</a>
+                            <a href="${ctx}/resource/re_edit/${(resource.id)!}" class="bjit">编辑</a>
+                            <#if resource.status==0>
+                                <a data-toggle="tooltip" title="删除" data-placement="bottom"
+                                   data-tiggle="ajax"
+                                   data-submit-url="${ctx}/resource/operation/${(resource.id)!}?status=1"
+                                   data-confirm="您确定要下架该条资源吗?" class="caoz">下架</a>
+                            <#else >
+                            <a data-toggle="tooltip" title="删除" data-placement="bottom"
+                               data-tiggle="ajax"
+                               data-submit-url="${ctx}/resource/operation/${(resource.id)!}?status=0"
+                               data-confirm="您确定要上架该条资源吗?" class="caoz">上架</a>
+                            </#if>
+
                         </div>
-                        <sub></sub>
+                        <a class="delete-re" data-toggle="tooltip" title="删除" data-placement="bottom"
+                           data-tiggle="ajax"
+                           data-submit-url="${ctx}/resource/doDelete/${(resource.id)!}"
+                           data-confirm="您确定要删除该条资源吗?"></a>
                     </li>
                 </#list>
             </ol>
@@ -66,4 +80,5 @@
 
 </@body>
 <@footer>
+<script src="${ctx}/base/js/init.js" type="text/javascript"></script>
 </@footer>

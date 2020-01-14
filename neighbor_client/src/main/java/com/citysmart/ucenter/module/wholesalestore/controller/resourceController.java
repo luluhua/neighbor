@@ -6,6 +6,7 @@ import com.citysmart.common.bean.Rest;
 import com.citysmart.common.controller.SuperController;
 import com.citysmart.common.json.JsonFailResult;
 import com.citysmart.ucenter.common.Util.PWDStrongUtil;
+import com.citysmart.ucenter.module.appc.service.ITClientAttachmentService;
 import com.citysmart.ucenter.module.appc.service.ITLjUserInfoService;
 import com.citysmart.ucenter.module.wholesalestore.vo.userVo;
 import com.citysmart.common.util.CommonUtil;
@@ -24,6 +25,7 @@ import com.citysmart.ucenter.mybatis.model.SysMenu;
 import com.citysmart.ucenter.mybatis.model.TNavigation;
 import com.citysmart.ucenter.mybatis.model.TSmsSendLog;
 import com.citysmart.ucenter.mybatis.model.TTag;
+import com.citysmart.ucenter.mybatis.model.app.TClientAttachment;
 import com.citysmart.ucenter.mybatis.model.app.TLjUser;
 import com.citysmart.ucenter.mybatis.model.app.TLjUserAddress;
 import com.citysmart.ucenter.mybatis.model.app.TLjUserInfo;
@@ -76,21 +78,28 @@ public class resourceController extends SuperController {
     @Autowired
     private ITLjUserAddressService addressService;
 
+    @Autowired
+    private ITClientAttachmentService clientAttachmentService;
+
 
     @RequestMapping("/form")
     public String show(Model model) {
-        List<TNavigation> navigationsList = navigationService.selectList(new EntityWrapper<TNavigation>().eq("is_deleted", Delete.未删除).orderBy("sort_index", false));
-        List navigation = new ArrayList();
-        for (TNavigation navigations : navigationsList) {
-            Map<String, Object> map = new HashMap(16);
-            map.put("navigationName", navigations.getName());
-            map.put("navigationId", navigations.getId());
-            map.put("code", navigations.getCode());
-            navigation.add(map);
+        TLjUser ljUser = ShiroUtil.getSessionUser();
+        if (ljUser != null) {
+            List<TNavigation> navigationsList = navigationService.selectList(new EntityWrapper<TNavigation>().eq("is_deleted", Delete.未删除).orderBy("sort_index", false));
+            List navigation = new ArrayList();
+            for (TNavigation navigations : navigationsList) {
+                Map<String, Object> map = new HashMap(16);
+                map.put("navigationName", navigations.getName());
+                map.put("navigationId", navigations.getId());
+                map.put("code", navigations.getCode());
+                navigation.add(map);
+            }
+            model.addAttribute("list", navigation);
+            model.addAttribute("uuId", CommonUtil.UUID());
+            return "/wholesalestore/resource/resource";
         }
-        model.addAttribute("list", navigation);
-        model.addAttribute("uuId", CommonUtil.UUID());
-        return "/wholesalestore/resource/resource";
+        return "/wholesalestore/login";
     }
 
     /**
@@ -130,7 +139,7 @@ public class resourceController extends SuperController {
             goodsService.insert(entity);
             return Rest.ok();
         }
-        return Rest.ok("未登录");
+        return Rest.failure("未登录");
     }
 
     /**
@@ -168,6 +177,99 @@ public class resourceController extends SuperController {
             model.addAttribute("score", score.getScore());
         }
         return "/wholesalestore/resource/productDetails";
+    }
+
+    /**
+     * 我的资源编辑
+     *
+     * @param model
+     * @return
+     */
+    @RequestMapping("/re_edit/{id}")
+    public String reEdit(@PathVariable String id, Model model) {
+        TLjUser ljUser = ShiroUtil.getSessionUser();
+        if (ljUser != null) {
+            TGoods goods = goodsService.selectById(id);
+            List<TNavigation> navigationsList = navigationService.selectList(new EntityWrapper<TNavigation>().eq("is_deleted", Delete.未删除).orderBy("sort_index", false));
+            List navigation = new ArrayList();
+            for (TNavigation navigations : navigationsList) {
+                Map<String, Object> map = new HashMap(16);
+                map.put("navigationName", navigations.getName());
+                map.put("navigationId", navigations.getId());
+                map.put("code", navigations.getCode());
+                navigation.add(map);
+            }
+
+            TNavigation navig = navigationService.selectOne(new EntityWrapper<TNavigation>().eq("is_deleted", Delete.未删除).eq("code", goods.getNavigationCode()));
+            List<TTag> tagList = tagService.selectList(new EntityWrapper<TTag>().eq("is_deleted", Delete.未删除).orderBy("sort_index", false).eq("navigation_id", navig.getId()));
+            EntityWrapper<TClientAttachment> ew = new EntityWrapper<TClientAttachment>();
+            ew.eq("source_id", id);
+            ew.orderBy("create_datetime", false);
+            List<TClientAttachment> fileList = clientAttachmentService.selectList(ew);
+            model.addAttribute("goods", goods);
+            model.addAttribute("list", navigation);
+            model.addAttribute("tagList", tagList);
+            model.addAttribute("fileList", fileList);
+            return "/wholesalestore/resource/resourceEdit";
+        }
+        return "/wholesalestore/login";
+    }
+
+    /**
+     * 执行编辑
+     */
+    @RequestMapping("/doEdit")
+    @ResponseBody
+    @Log("资源编辑")
+    public Rest doEdit(@Valid TGoods entity, BindingResult result) {
+        TLjUser ljUser = ShiroUtil.getSessionUser();
+        if (ljUser != null) {
+            if (StringUtils.isNotBlank(entity.getFiles())) {
+                String[] strs = entity.getFiles().split(",");
+                entity.setImages(strs[0].toString());
+            } else {
+                entity.setImages("");
+            }
+            goodsService.updateById(entity);
+            return Rest.ok();
+        }
+        return Rest.failure("未登录");
+    }
+
+    /**
+     * 执行删除
+     */
+    @RequestMapping("/doDelete/{id}")
+    @ResponseBody
+    @Log("资源删除")
+    public Rest doDelete(@PathVariable String id) {
+        TLjUser ljUser = ShiroUtil.getSessionUser();
+        if (ljUser != null) {
+            goodsService.deleteById(id);
+            return Rest.ok();
+        }
+        return Rest.failure("未登录");
+    }
+
+    /**
+     * 执行下架/上架操作
+     */
+    @RequestMapping("/operation/{id}")
+    @ResponseBody
+    @Log("资源删除")
+    public Rest operation(@PathVariable String id, Integer status) {
+        TLjUser ljUser = ShiroUtil.getSessionUser();
+        if (ljUser != null) {
+            TGoods goods = goodsService.selectById(id);
+            if (goods != null) {
+                goods.setStatus(status);
+                goodsService.updateById(goods);
+                return Rest.ok();
+            }
+
+            return Rest.failure("资源不存在");
+        }
+        return Rest.failure("未登录");
     }
 
 

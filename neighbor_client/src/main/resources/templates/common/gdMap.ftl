@@ -34,6 +34,8 @@
     }
 </style>
 </@header>
+<@js>
+</@js>
 <@body>
      <div id="container"></div>
 <div id="myPageTop" style="position: absolute;top: 5px;left: 10px;width: 180px">

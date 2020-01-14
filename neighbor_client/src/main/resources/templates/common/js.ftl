@@ -5,6 +5,9 @@
 <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=GMGAvOCI4vHHUdYINMC54wp9"></script>
 <script src="${ctx}/base/js/x-layui.js" charset="utf-8"></script>
 <script src="${ctx}/base/js/upload.js" type="text/javascript"></script>
+
+
+
 <script type="text/javascript">
     layui.config({
         version: true,

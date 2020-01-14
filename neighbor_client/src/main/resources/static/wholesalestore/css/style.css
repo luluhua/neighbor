@@ -1472,7 +1472,7 @@ select::-ms-expand {
     color: #ed6e37;
 }
 
-.collection li sub {
+.collection li .delete-re {
     background: url(../images/icon_29.png) no-repeat;
     width: 15px;
     height: 14px;
@@ -1481,7 +1481,7 @@ select::-ms-expand {
     right: 5px;
     top: 0;
     cursor: pointer;
-    display: none;
+    /*display: none;*/
 }
 
 .collection li sub:hover {

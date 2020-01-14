@@ -46,7 +46,7 @@
                                 <th>手机号码</th>
                                 <th>状态</th>
                                 <th>创建时间</th>
-                                <th width="120px">操作</th>
+                                <th width="180px">操作</th>
                             </tr>
                 <#list pageData.getRecords() as entity>
         <tr>
@@ -65,6 +65,7 @@
             </td>
             <td>${(entity.dtCreate?string('yyyy-MM-dd hh:mm:ss'))!'--'}</td>
             <td>
+                <a class="btn btn-primary btn-xs" href="/commodity/tGoods/list/1?userId=${(entity.id)!}">发布的资源</a>
                 <@shiro.hasPermission name="editTLjUser">
                 <a class="btn btn-primary btn-xs dialog" href="javascript:;"
                    data-url="/appc/tLjUser/edit/${(entity.id)!}"
