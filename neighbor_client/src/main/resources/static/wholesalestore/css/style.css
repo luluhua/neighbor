@@ -1628,9 +1628,9 @@ select::-ms-expand {
 
 .massage_ol h3 span,
 .massage_ol h3 p {
-    float: left;
-    display: block;
+    display: inline-block;
     margin-right: 20px;
+    padding-left: 10px;
 }
 
 .massage_ol h3 span {
@@ -1639,12 +1639,12 @@ select::-ms-expand {
 }
 
 .massage_ol h3 b {
-    display: block;
-    float: right;
-    /*width: 15px;*/
-    height: 14px;
+    display: inline-block;
+    width: 10px;
+    height: 10px;
     cursor: pointer;
-    /*background:url(../images/icon_29.png) no-repeat;*/
+    background-color: #f10e0e;
+    border-radius: 50%;
 
 }
 
@@ -2908,20 +2908,21 @@ a.upload-img:hover {
     z-index: 999;
     position: fixed;
     top: 0;
-    display: none;
+
 }
 
 .dialog_box1 {
-    max-width: 600px;
+    width: 100%;
     margin: 0 auto;
-    margin-top: 10%;
+    /* margin-top: 10%; */
     background-color: #f7f7f7;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+    /* box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4); */
     position: relative;
+    height: 100%;
 }
 
 #boxscroll {
-    height: 300px;
+    height: 70%;
     width: 94%;
     padding: 3%;
     overflow: auto;
@@ -2966,9 +2967,9 @@ a.upload-img:hover {
     margin: 0 5px;
 }
 
-.boxscroll_dl dd,
-.boxscroll_dl dt {
-    overflow: hidden;
+.boxscroll_dl {
+    display: table;
+    width: 100%;
 }
 
 .boxscroll_dl img {
@@ -2976,16 +2977,16 @@ a.upload-img:hover {
     height: 48px;
     border-radius: 50%;
     display: block;
-    float: left;
+    /*float: left;*/
 }
 
 .boxscroll_dl p {
     float: left;
-    max-width: 50%;
+    /* max-width: 50%; */
     padding: 6px;
     border-radius: 5px;
     border: 1px solid #ddd;
-    margin-left: 20px;
+    /* margin-left: 20px; */
     position: relative;
     margin-top: 10px;
     background-color: #fff;
@@ -3001,40 +3002,49 @@ a.upload-img:hover {
     top: 5px;
 }
 
-.boxscroll_dl dd {
-    margin-top: 20px;
+.left-u .haeasf {
+    width: 80%;
+    display: table;
+    float: left;
 }
 
-.boxscroll_dl dd p,
-.boxscroll_dl dd img {
+.left-u img {
+    float: left;
+}
+
+.left-u p {
+    float: left;
+    margin-left: 20px;
+}
+
+.right-u .haeasf {
+    width: 80%;
+    display: table;
     float: right;
 }
 
-.boxscroll_dl dd p {
-    margin-right: 20px;
-    border: 1px solid #ac2a08;
+.right-u img {
+    float: right;
 }
 
-.boxscroll_dl dd p:before {
-    position: absolute;
-    content: '';
-    width: 15px;
-    height: 10px;
-    /*background: url(../images/icon43.png) no-repeat;*/
-    right: -14px;
-    top: 5px;
+.right-u p {
+    float: right;
+    margin-right: 20px;
 }
 
 .hf_box {
     overflow: hidden;
+    width: 90%;
+    margin: auto;
 }
 
 .hf_box .text {
-    width: 98%;
-    height: 50px;
+    width: 80%;
+    height: 100px;
     border: none;
     padding: 1%;
     font-family: '微软雅黑';
+    border: 1px #e8e0e0 solid;
 }
 
 .hf_box button {

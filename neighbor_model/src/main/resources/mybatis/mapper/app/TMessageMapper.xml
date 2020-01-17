@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.citysmart.ucenter.mybatis.mapper.app.TMessageMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.citysmart.ucenter.mybatis.model.app.TMessage">
+        <result column="id" property="id"/>
+        <result column="sender" property="sender"/>
+        <result column="user_id" property="userId"/>
+        <result column="type" property="type"/>
+        <result column="userName" property="userName"/>
+        <result column="content" property="content"/>
+        <result column="files" property="files"/>
+        <result column="status" property="status"/>
+        <result column="dt_create" property="dtCreate"/>
+        <result column="is_deleted" property="isDeleted"/>
+    </resultMap>
+
+    <select id="getDialogue" resultType="com.citysmart.ucenter.mybatis.entity.vo.dialogueVO">
+        SELECT
+            m.id AS id,
+            u.avatar_url AS userAvatar,
+            m.content as content,
+            m.files as files,
+            m.uset as uset,
+            m.user_id as userid,
+            m.type as type
+            FROM
+                t_message  m
+            LEFT JOIN t_lj_user_info u ON u.user_id = m.sender
+                WHERE
+                m.user_id=#{userid,jdbcType=VARCHAR}
+                AND sender =#{sender,jdbcType=VARCHAR}
+                OR
+                m.sender=#{userid,jdbcType=VARCHAR}
+				AND m.user_id = #{sender,jdbcType=VARCHAR}
+        ORDER BY m.dt_create
+
+    </select>
+
+</mapper>

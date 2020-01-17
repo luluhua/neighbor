@@ -18,3 +18,19 @@ ADD COLUMN `lat`  decimal(20,8) DEFAULT NULL COMMENT '维度' AFTER `location`;
 ALTER TABLE `t_goods`
 ADD COLUMN `status`  tinyint(2) DEFAULT '0'  COMMENT '0：上架  1下架' AFTER `lat`,
 
+2020-1-17    //--  信息表
+CREATE TABLE `t_message` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `sender` varchar(255) COLLATE utf8_bin DEFAULT NULL COMMENT '发送者',
+  `user_id` varchar(32) COLLATE utf8_bin DEFAULT NULL COMMENT '用户id',
+  `type` tinyint(2) DEFAULT NULL COMMENT '类型 0系统消息  1用户消息',
+  `userName` varchar(255) COLLATE utf8_bin DEFAULT NULL COMMENT '用户名',
+  `content` varchar(255) COLLATE utf8_bin DEFAULT NULL COMMENT '内容',
+  `files` varchar(255) COLLATE utf8_bin DEFAULT NULL COMMENT '附件 多个,隔开',
+  `status` tinyint(2) DEFAULT NULL COMMENT '是否已读 0：未读 1：已读',
+  `dt_create` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
+  `is_deleted` tinyint(2) DEFAULT NULL COMMENT '是否删除 1:已删除 0：未删除',
+  `uset` tinyint(2) DEFAULT NULL COMMENT '0发送者  1自己',
+  PRIMARY KEY (`id`)
+)
+

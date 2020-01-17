@@ -7,7 +7,7 @@
 
         <li><a href="javascript:void">我的收藏</a></li>
 
-        <li><a href="javascript:void">我的消息</a></li>
+        <li><a href="${ctx}/message/list/1?p=ge" <#if res?? && "ge"==res> class="menu_a" </#if>>我的消息</a></li>
 
         <li><a href="javascript:void">修改密码</a></li>
 

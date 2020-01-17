@@ -130,7 +130,7 @@ public class Encryption3DEsUtil {
      * 工具测试
      */
     public static void main(String[] args) {
-        String msg = "6Xnsu3DrPcojjNAhvRWtmA==";
+        String msg = "18269110252";
         String key = "qingxiuParentEncryptionMode2019";
         System.out.println("【加密前】：" + msg);
         //加密
