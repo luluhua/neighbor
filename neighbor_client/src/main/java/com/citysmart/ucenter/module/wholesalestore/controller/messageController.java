@@ -5,17 +5,22 @@ import com.baomidou.mybatisplus.plugins.Page;
 import com.citysmart.common.bean.Rest;
 import com.citysmart.common.controller.SuperController;
 import com.citysmart.common.util.CommonUtil;
+import com.citysmart.ucenter.common.Util.RedisUtil;
 import com.citysmart.ucenter.common.Util.ShiroUtil;
 import com.citysmart.ucenter.common.anno.Log;
 import com.citysmart.ucenter.component.mybatis.WebSocket.SocketServer;
 import com.citysmart.ucenter.component.mybatis.WebSocket.WebSocketOneToOne;
 import com.citysmart.ucenter.component.mybatis.WebSocket.WebSocketServer;
+import com.citysmart.ucenter.module.appc.service.ITLjUserInfoService;
 import com.citysmart.ucenter.module.appc.service.ITMessageService;
 import com.citysmart.ucenter.mybatis.enums.Delete;
 import com.citysmart.ucenter.mybatis.model.app.TLjUser;
+import com.citysmart.ucenter.mybatis.model.app.TLjUserInfo;
 import com.citysmart.ucenter.mybatis.model.app.TMessage;
 import com.citysmart.ucenter.mybatis.entity.vo.dialogueVO;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.nutz.json.Json;
+import org.nutz.json.JsonFormat;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,6 +36,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
@@ -50,9 +58,16 @@ public class messageController extends SuperController {
     @Autowired
     public ITMessageService service;
 
+    @Autowired
+    public ITLjUserInfoService userInfoService;
+
 
     @Autowired
     private WebSocketOneToOne webSocketOneToOne;
+
+    public final static String ICON_PREFIX = RedisUtil.getValueByKey("http.img.url");
+
+    public final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     /**
      * 分页查询
@@ -70,6 +85,7 @@ public class messageController extends SuperController {
             ew.orderBy("dt_create", false);
             ew.groupBy("sender");
             Page<TMessage> pageData = service.selectPage(page, ew);
+
             model.addAttribute("pageData", pageData);
 
             return "/wholesalestore/personal/message";
@@ -101,23 +117,33 @@ public class messageController extends SuperController {
         TLjUser ljUser = ShiroUtil.getSessionUser();
         if (ljUser != null) {
             entity.setSender(ljUser.getId());
+            entity.setType(1);
+            entity.setUserName(ljUser.getUsername());
             service.insert(entity);
-            SocketServer.sendMessage(entity.getContent(), ljUser.getId(), entity.getSender(), entity.getId());
-            return Rest.ok();
+            EntityWrapper<TLjUserInfo> ew = new EntityWrapper<TLjUserInfo>();
+            ew.eq("user_id", ljUser.getId());
+            TLjUserInfo userInfo = userInfoService.selectOne(ew);
+
+            return Rest.okData(entity);
         }
         return Rest.failure("登录失效");
 
     }
 
 
-    public static boolean sendmsg(HttpServletRequest request) {
-        String friend_id = request.getParameter("friend_id");
-        String user_id = request.getParameter("user_id");
-        String msg = request.getParameter("msg");
-        String time = request.getParameter("time");
-        String msgId = request.getParameter("msgId");
+    @RequestMapping("sendmsg")
+    @ResponseBody
+    public String sendmsg(String sender, String content) {
+        TLjUser ljUser = ShiroUtil.getSessionUser();
+        if (ljUser != null) {
+            EntityWrapper<TLjUserInfo> ew = new EntityWrapper<TLjUserInfo>();
+            ew.eq("user_id", ljUser.getId());
+            TLjUserInfo userInfo = userInfoService.selectOne(ew);
+            SocketServer.sendMessage(content, ljUser.getId(), sender, (userInfo.getAvatarUrl() != null && userInfo.getAvatarUrl() != "") ? ICON_PREFIX + userInfo.getAvatarUrl() : "");
+        }
 
-        return true;
+
+        return "success";
     }
 
 
@@ -140,8 +166,8 @@ public class messageController extends SuperController {
     public String edit(@PathVariable String id, Model model) {
         TLjUser ljUser = ShiroUtil.getSessionUser();
         if (ljUser != null) {
-//            List<dialogueVO> messageList = service.getDialogue(ljUser.getId(), id);
-//            model.addAttribute("entity", messageList);
+            List<dialogueVO> messageList = service.getDialogue(ljUser.getId(), id);
+            model.addAttribute("entity", messageList);
             EntityWrapper<TMessage> ew = new EntityWrapper<TMessage>();
             TMessage message = new TMessage();
             message.setStatus(1);
@@ -201,5 +227,6 @@ public class messageController extends SuperController {
         service.updateById(entity);
         return Rest.ok();
     }
+
 
 }

@@ -66,7 +66,8 @@
                     // layer.msg("上传成功！");
                 }
                 if (res.code == 101) {
-                    layer.msg("请登录！");
+                    activity.iconNoTooltip("请登录!")
+                    // layer.msg("请登录！");
                 }
             },
             error: function (index, upload) {
@@ -110,7 +111,7 @@
                     $("#avatar_").attr('src', res.url)
                 }
                 if (res.code == 101) {
-                    layer.msg("登录已过期，请重新登录");
+                    activity.iconNoTooltip("登录已过期，请重新登录")
                 }
             },
             error: function (index, upload) {

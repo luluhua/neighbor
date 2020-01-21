@@ -110,8 +110,32 @@
     color: #ed6e37;
 }
 
-.header ul li.order {
-    background: url(../images/icon_01.png) no-repeat center right;
+/*.header ul li.order {*/
+/*background: url(../images/icon_01.png) no-repeat center right;*/
+/*}*/
+
+.msg-ic {
+    width: 20px;
+    height: 30px;
+    display: inline-block !important;
+    background: url(../images/msg-icon.png) center center no-repeat;
+    background-size: contain;
+
+}
+
+.order span {
+    background-color: #CA0C16;
+    border-radius: 16px;
+    padding: 0 3px !important;
+    position: absolute;
+    color: #fff;
+    font-size: xx-small;
+    vertical-align: middle;
+    line-height: 16px !important;
+    height: 16px;
+    min-width: 11px;
+    border: 1px solid #FFF;
+    text-align: center !important;
 }
 
 .header ul li.order:hover {

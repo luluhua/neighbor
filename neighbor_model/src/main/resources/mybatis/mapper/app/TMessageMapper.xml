@@ -24,7 +24,9 @@
             m.files as files,
             m.uset as uset,
             m.user_id as userid,
-            m.type as type
+            m.type as type,
+            m.sender as friendId,
+            m.dt_create as time
             FROM
                 t_message  m
             LEFT JOIN t_lj_user_info u ON u.user_id = m.sender

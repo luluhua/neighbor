@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.activerecord.Model;
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
+import com.baomidou.mybatisplus.enums.FieldFill;
 import com.baomidou.mybatisplus.enums.IdType;
 
 import java.io.Serializable;
@@ -22,6 +23,7 @@ import java.io.Serializable;
 public class TMessage extends Model<TMessage> {
 
     private static final long serialVersionUID = 1L;
+
 
     @TableId(type = IdType.AUTO)
     private Integer id;
@@ -57,7 +59,7 @@ public class TMessage extends Model<TMessage> {
     /**
      * 创建时间
      */
-    @TableField("dt_create")
+    @TableField(value = "dt_create", fill = FieldFill.INSERT)
     private Date dtCreate;
     /**
      * 是否删除 1:已删除 0：未删除
@@ -68,6 +70,9 @@ public class TMessage extends Model<TMessage> {
      * 0发送者  1接收者
      */
     private Integer uset;
+
+    @TableField(exist = false)
+    private String avatarUrl;
 
     public Integer getId() {
         return id;
@@ -157,6 +162,15 @@ public class TMessage extends Model<TMessage> {
         this.uset = uset;
     }
 
+    public String getAvatarUrl() {
+        return avatarUrl;
+    }
+
+    public void setAvatarUrl(String avatarUrl) {
+
+        this.avatarUrl = avatarUrl;
+    }
+
     @Override
     protected Serializable pkVal() {
         return this.id;
@@ -174,6 +188,7 @@ public class TMessage extends Model<TMessage> {
                 ", status=" + status +
                 ", dtCreate=" + dtCreate +
                 ", isDeleted=" + isDeleted +
+                ", avatarUrl=" + avatarUrl +
                 "}";
     }
 }

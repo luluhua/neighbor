@@ -14,6 +14,7 @@ import java.util.Map;
 @Component
 public class SocketServer {
 
+
     private Session session;
     private static Map<String, Session> sessionPool = new HashMap<>();
     private static Map<String, String> sessionIds = new HashMap<>();
@@ -41,17 +42,18 @@ public class SocketServer {
         error.printStackTrace();
     }
 
-    public static void sendMessage(String message, String userId, String friendId, Integer msgId) {
+    public static void sendMessage(String message, String userId, String friendId, String avatarUrl) {
         TMessage messageEntity = new TMessage();
         messageEntity.setContent(message);
-        messageEntity.setSender(friendId);
-        messageEntity.setUserId(userId);
-        messageEntity.setId(msgId);
+        messageEntity.setSender(userId);
+        messageEntity.setUserId(friendId);
+        messageEntity.setAvatarUrl(avatarUrl);
+//        messageEntity.setId(msgId);
         Session s = sessionPool.get(friendId);
         if (s != null) {
             try {
                 s.getBasicRemote().sendObject(messageEntity);
-                ;
+
             } catch (IOException e) {
                 e.printStackTrace();
             } catch (EncodeException e) {

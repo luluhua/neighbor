@@ -11,24 +11,24 @@
 <div class="dialog_box">
     <div class="dialog_box1">
         <div id="boxscroll">
-        <#--<#list entity as list>-->
-        <#--<div class="boxscroll_dl  <#if list.userid !=me.id>left-u <#else >right-u </#if>">-->
-        <#--<#if list.userid !=me.id>-->
-        <#--<img src="<@commonTags method="tagHtpImgURL" type="1" value="1">${(tagHtpImgURL)!}</@commonTags>${(list.userAvatar)!'--'}"-->
-        <#--onerror="this.src='${ctx}/base/images/sys_avatar.jpg'">-->
-        <#--<#else ><img src="${(me.avatarUrl)!}" onerror="this.src='${ctx}/base/images/default.jpg'"></#if>-->
-        <#--<div class="haeasf">-->
-        <#--<p> ${(list.content)!}-->
-        <#--<#if list.files??>-->
-        <#--<#list list.files?split(",") as fi>-->
-        <#--<img src="${fi}">-->
-        <#--</#list>-->
-        <#--</#if>-->
-        <#--</p>-->
+        <#list entity as list>
+            <div class="boxscroll_dl  <#if list.friendId !=me.id>left-u <#else >right-u </#if>">
+        <#if list.friendId !=me.id>
+        <img src="<@commonTags method="tagHtpImgURL" type="1" value="1">${(tagHtpImgURL)!}</@commonTags>${(list.userAvatar)!'--'}"
+             onerror="this.src='${ctx}/base/images/sys_avatar.jpg'">
+        <#else ><img src="${(me.avatarUrl)!}" onerror="this.src='${ctx}/base/images/default.jpg'"></#if>
+                <div class="haeasf">
+                    <p> ${(list.content)!}
+        <#if list.files??>
+            <#list list.files?split(",") as fi>
+        <img src="${fi}">
+            </#list>
+        </#if>
+                    </p>
 
-        <#--</div>-->
-        <#--</div>-->
-        <#--</#list>-->
+                </div>
+            </div>
+        </#list>
         </div>
 
         <!--回复框-->
@@ -43,85 +43,75 @@
 <@footer>
 <script src="${ctx}/base/js/init.js" type="text/javascript"></script>
 <script>
-    getMessageList();
-
-
-    function getMessageList() {
-        var userid = "${(userid)!}";
-        var friendid = "${(sender)!}";
-        var mes = "${(me.id)}";
-        $.ajax({
-                    type: "post",
-                    url: "${ctx}/message/messageList", //向后端请求数据的url
-                    data: {"userid": userid, "friendid": friendid},
-                    success: function (res) {
-                        if (res.count == "0") {
-                            var html = ""
-                            var cleimg = "${ctx}/base/images/default.jpg"
-                            var imgurl = "<@commonTags method="tagHtpImgURL" type="1" value="1">${(tagHtpImgURL)!}</@commonTags>";
-                            for (var i = 0; i < res.data.length; i++) {
-                                // alert(res.data[i].userAvatar)
-                                var fxd = "";
-                                var toux;
-                                var img;
-                                if (res.data[i].userid == mes) {
-                                    fxd = "left-u";
-                                } else {
-                                    fxd = "right-u";
-                                }
-                                if (res.data[i].userAvatar == "" && res.data[i].type == 0) {
-                                    toux = "${ctx}/base/images/sys_avatar.jpg"
-                                }
-                                if (res.data[i].userAvatar == "" && res.data[i].type == 1) {
-                                    toux = "${ctx}/base/images/default.jpg"
-                                }
-                                if (res.data[i].userAvatar != "") {
-                                    toux = imgurl + res.data[i].userAvatar;
-                                }
-                                if ("" + res.data[i].userid + "" == "${(me.id)}") {
-                                    img = '<img src="' + toux + '">'
-                                } else {
-                                    img = '<img src="${(me.avatarUrl)!}">'
-
-                                }
-                                html += '<div class="boxscroll_dl ' + fxd + '">' + img + '' +
-                                        '<div class="haeasf">' +
-                                        '<p>' + res.data[i].content + '</p>' +
-                                        '</div>' +
-                                        '</div>'
-                            }
-                            $("#boxscroll").html(html);
-
-                        } else {
-                            alert("无数据");
-                        }
-                    }
-                }
-        );
-    }
-
+    connect("${(userid)!}")
     $(".but-for").click(function () {
         var content = $("#content").val();
-        var sender = $("#sender").val();
+        var sender = "${(sender)!}";
         if (content != null && content != "") {
+            $.getJSON('${ctx}/message/sendmsg?sender=' + sender + '&content=' + content, function (data) {
+                alert(data);
+            });
             $.ajax({
                 type: "post",
-                url: "${ctx}/message/doAdd", //向后端请求数据的url
+                url: "${ctx}/message/doAdd",
                 data: {
                     "userId": sender,
                     "content": content,
                 },
                 success: function (data) {
-                    /* if(data.result=="0"){
-                        alert("上传失败");
-                    }else{
-                        alert("上传成功");
-                    } */
+                    var html = '<div class="boxscroll_dl right-u">' +
+                            '<img src="${(me.avatarUrl)!}" onerror="this.src=\'${ctx}/base/images/default.jpg\'">' +
+                            '<div class="haeasf">' +
+                            '<p>' + content + '</p>' +
+                            '</div>' +
+                            '</div>'
+                    $("#boxscroll").append(html);
+                    $("#content").val("")
+                    var scrollHeight = $('#boxscroll').prop("scrollHeight");
+                    $('#boxscroll').scrollTop(scrollHeight, 200);
                 }
             });
         }
 
     })
+
+    function connect(user_id) {
+        if ('WebSocket' in window) {
+            ws = new WebSocket("ws://127.0.0.1:9111/m/socketServer/" + user_id);
+        }
+        else if ('MozWebSocket' in window) {
+            ws = new MozWebSocket("ws://127.0.0.1:9111/m/socketServer/" + user_id);
+        }
+        else {
+            activity.iconNoTooltip("该浏览器不支持即时聊天");
+        }
+        ws.onmessage = function (evt) {
+            console.log(evt.data);
+            var friend_id = $("#sender").val();
+            var json = $.parseJSON(evt.data);
+            if (json.userId == user_id && json.sender == friend_id) {
+                var json = $.parseJSON(evt.data);
+                var html = '<div class="boxscroll_dl left-u">' +
+                        '<img src="' + json.avatarUrl + '" onerror="this.src=\'${ctx}/base/images/sys_avatar.jpg\'">' +
+                        '<div class="haeasf">' +
+                        '<p>' + json.content + '</p>' +
+                        '</div>' +
+                        '</div>'
+                setTimeout(function () {
+                    $("#boxscroll").append(html)
+                }, 1000);
+                var scrollHeight = $('#boxscroll').prop("scrollHeight");
+                $('#boxscroll').scrollTop(scrollHeight, 200);
+
+            }
+        };
+        ws.onclose = function (evt) {
+            activity.shakeTooltip("通讯中断");
+        };
+        ws.onopen = function (evt) {
+
+        };
+    }
 </script>
 
 </@footer>

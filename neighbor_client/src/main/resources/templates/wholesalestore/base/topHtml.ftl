@@ -22,12 +22,7 @@
                 </#if>
             </li>
 
-            <li class="order"><a href="javascript:void">我的订单</a>
-                <div class="orders">
-                    <a href="javascript:void">待付款<span id=obligationNum>0</span></a>
-                    <a href="javascript:void">待收货<span id="waitReceiving">0</span></a>
-                    <a href="javascript:void">待评论<span id="commentOn">0</span></a>
-                </div>
+            <li class="order"><a class="msg-ic" href="${ctx}/message/list/1?p=ge"></a><span>1</span>
             </li>
 
             <li><a href="javascript:void">帮助中心</a></li>
