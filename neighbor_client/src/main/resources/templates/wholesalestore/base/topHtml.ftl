@@ -23,7 +23,7 @@
             </li>
 
             <li class="order"><a class="msg-ic" href="${ctx}/message/list/1?p=ge"></a>
-                <#if (unread>0)>
+                <#if unread??&&(unread>0)>
                 <span>${unread!}</span>
                 </#if>
 
