@@ -96,6 +96,8 @@ public class ShiroUtil {
                 Object object = subject.getPrincipal();
                 if (object != null) {
                     TLjUser ljUser = (TLjUser) object;
+
+
                     HttpHelper.getHttpServletRequest().getSession().setAttribute("user", ljUser);
                     /*秒为单位*/
 //                    HttpHelper.getHttpServletRequest().getSession().setMaxInactiveInterval(60);

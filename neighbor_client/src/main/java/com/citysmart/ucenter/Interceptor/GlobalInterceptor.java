@@ -1,11 +1,13 @@
 package com.citysmart.ucenter.Interceptor;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.baomidou.mybatisplus.plugins.Page;
 import com.citysmart.ucenter.common.Util.PWDStrongUtil;
 import com.citysmart.ucenter.common.Util.RedisUtil;
 import com.citysmart.ucenter.common.Util.SpringUtil;
 import com.citysmart.ucenter.module.appc.service.ITLjUserInfoService;
 import com.citysmart.ucenter.module.appc.service.ITLjUserService;
+import com.citysmart.ucenter.module.appc.service.ITMessageService;
 import com.citysmart.ucenter.module.commodity.service.ITGoodsGradeService;
 import com.citysmart.ucenter.module.system.service.ISysSettingService;
 import com.citysmart.ucenter.module.system.service.ITNavigationService;
@@ -21,6 +23,7 @@ import com.citysmart.ucenter.mybatis.model.TTag;
 import com.citysmart.ucenter.mybatis.model.app.TLjUser;
 import com.citysmart.ucenter.mybatis.model.app.TLjUserInfo;
 import com.citysmart.ucenter.mybatis.model.app.TLjUserSecurity;
+import com.citysmart.ucenter.mybatis.model.app.TMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
@@ -44,6 +47,10 @@ public class GlobalInterceptor extends HandlerInterceptorAdapter {
 
     @Autowired
     private ITGoodsGradeService gradeService;
+
+    @Autowired
+    public ITMessageService messageService;
+
     public final static String ICON_PREFIX = RedisUtil.getValueByKey("http.img.url");
 
     @Override
@@ -80,7 +87,13 @@ public class GlobalInterceptor extends HandlerInterceptorAdapter {
                 if (score != null) {
                     request.setAttribute("userscore", score);
                 }
-
+                EntityWrapper<TMessage> ew = new EntityWrapper<TMessage>();
+                ew.eq("user_id", me.getId());
+                ew.eq("is_deleted", Delete.未删除);
+                ew.eq("status", 0);
+                ew.groupBy("sender");
+                List messagelist = messageService.selectList(ew);
+                request.setAttribute("unread", messagelist.size());
             }
 
 
@@ -127,7 +140,6 @@ public class GlobalInterceptor extends HandlerInterceptorAdapter {
                 tagmap.put("tagSkipUrl", tag.getSkipUrl());
                 tagListyt.add(tagmap);
             }
-
             map.put("navigationName", navigations.getName());
             map.put("navigationIcon", navigations.getIcon());
             map.put("navigationId", navigations.getId());
@@ -135,7 +147,6 @@ public class GlobalInterceptor extends HandlerInterceptorAdapter {
             map.put("tagList", tagListyt);
             navigation.add(map);
         }
-
         request.setAttribute("navigation", navigation);
 
     }

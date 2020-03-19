@@ -130,25 +130,19 @@ public class Encryption3DEsUtil {
      * 工具测试
      */
 
+
     public static void main(String[] args) {
-        String str = "";
-        boolean flag = str.contains("http");
-        System.out.println(flag);
+        String msg = "18269110252";
+        String key = "qingxiuParentEncryptionMode2019";
+        System.out.println("【加密前】：" + msg);
+        //加密
+        String secretArr = encryptMode(msg, key);
+        System.out.println("【加密后】：" + new String(secretArr));
+
+        //解密
+//        key = "1";
+        String myMsgArr = decryptMode(secretArr, key);
+        System.out.println("【解密后】：" + new String(myMsgArr));
     }
-
-
-//    public static void main(String[] args) {
-//        String msg = "18269110252";
-//        String key = "qingxiuParentEncryptionMode2019";
-//        System.out.println("【加密前】：" + msg);
-//        //加密
-//        String secretArr = encryptMode(msg, key);
-//        System.out.println("【加密后】：" + new String(secretArr));
-//
-//        //解密
-////        key = "1";
-//        String myMsgArr = decryptMode(secretArr, key);
-//        System.out.println("【解密后】：" + new String(myMsgArr));
-//    }
 
 }

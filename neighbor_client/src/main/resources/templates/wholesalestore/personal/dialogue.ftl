@@ -48,9 +48,7 @@
         var content = $("#content").val();
         var sender = "${(sender)!}";
         if (content != null && content != "") {
-            $.getJSON('${ctx}/message/sendmsg?sender=' + sender + '&content=' + content, function (data) {
-                alert(data);
-            });
+
             $.ajax({
                 type: "post",
                 url: "${ctx}/message/doAdd",
@@ -59,16 +57,23 @@
                     "content": content,
                 },
                 success: function (data) {
-                    var html = '<div class="boxscroll_dl right-u">' +
-                            '<img src="${(me.avatarUrl)!}" onerror="this.src=\'${ctx}/base/images/default.jpg\'">' +
-                            '<div class="haeasf">' +
-                            '<p>' + content + '</p>' +
-                            '</div>' +
-                            '</div>'
-                    $("#boxscroll").append(html);
-                    $("#content").val("")
-                    var scrollHeight = $('#boxscroll').prop("scrollHeight");
-                    $('#boxscroll').scrollTop(scrollHeight, 200);
+                    if (data.code == 200) {
+                        var html = '<div class="boxscroll_dl right-u">' +
+                                '<img src="${(me.avatarUrl)!}" onerror="this.src=\'${ctx}/base/images/default.jpg\'">' +
+                                '<div class="haeasf">' +
+                                '<p>' + content + '</p>' +
+                                '</div>' +
+                                '</div>'
+                        $("#boxscroll").append(html);
+                        $("#content").val("")
+                        var scrollHeight = $('#boxscroll').prop("scrollHeight");
+                        $('#boxscroll').scrollTop(scrollHeight, 200);
+
+                        $.getJSON('${ctx}/message/sendmsg?sender=' + sender + '&content=' + content, function (data) {
+                            alert(data);
+                        });
+                    }
+
                 }
             });
         }

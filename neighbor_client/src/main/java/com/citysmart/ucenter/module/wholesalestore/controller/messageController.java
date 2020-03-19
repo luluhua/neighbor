@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.plugins.Page;
 import com.citysmart.common.bean.Rest;
 import com.citysmart.common.controller.SuperController;
 import com.citysmart.common.util.CommonUtil;
+import com.citysmart.ucenter.common.Util.PWDStrongUtil;
 import com.citysmart.ucenter.common.Util.RedisUtil;
 import com.citysmart.ucenter.common.Util.ShiroUtil;
 import com.citysmart.ucenter.common.anno.Log;
@@ -61,9 +62,13 @@ public class messageController extends SuperController {
     @Autowired
     public ITLjUserInfoService userInfoService;
 
-
     @Autowired
-    private WebSocketOneToOne webSocketOneToOne;
+    public SocketServer socketServer;
+
+    /**
+     * 0 第一次联系   1非第一次
+     */
+    public final static String MESSAGE_USET = "0";
 
     public final static String ICON_PREFIX = RedisUtil.getValueByKey("http.img.url");
 
@@ -85,9 +90,7 @@ public class messageController extends SuperController {
             ew.orderBy("dt_create", false);
             ew.groupBy("sender");
             Page<TMessage> pageData = service.selectPage(page, ew);
-
             model.addAttribute("pageData", pageData);
-
             return "/wholesalestore/personal/message";
         }
         return "/wholesalestore/login";
@@ -103,11 +106,11 @@ public class messageController extends SuperController {
     }
 
     /**
-     * 执行新增
+     * 执行回复
      */
     @RequestMapping("/doAdd")
     @ResponseBody
-    @Log("新增")
+    @Log("回复聊天")
     public Rest doAdd(@Valid TMessage entity, BindingResult result) {
         if (result.hasErrors()) {
             for (ObjectError error : result.getAllErrors()) {
@@ -116,14 +119,19 @@ public class messageController extends SuperController {
         }
         TLjUser ljUser = ShiroUtil.getSessionUser();
         if (ljUser != null) {
+            List<TMessage> list = service.selectListBySenderAndUserId(ljUser.getId(), entity.getUserId());
+            if (list.size() > 0) {
+                entity.setUset(1);
+            }
             entity.setSender(ljUser.getId());
             entity.setType(1);
-            entity.setUserName(ljUser.getUsername());
-            service.insert(entity);
             EntityWrapper<TLjUserInfo> ew = new EntityWrapper<TLjUserInfo>();
             ew.eq("user_id", ljUser.getId());
             TLjUserInfo userInfo = userInfoService.selectOne(ew);
-
+            if (userInfo != null) {
+                entity.setUserName(userInfo.getNickname() != null ? userInfo.getNickname() : PWDStrongUtil.Decrypt3DEs(ljUser.getUsername()));
+            }
+            service.insert(entity);
             return Rest.okData(entity);
         }
         return Rest.failure("登录失效");
@@ -139,7 +147,22 @@ public class messageController extends SuperController {
             EntityWrapper<TLjUserInfo> ew = new EntityWrapper<TLjUserInfo>();
             ew.eq("user_id", ljUser.getId());
             TLjUserInfo userInfo = userInfoService.selectOne(ew);
-            SocketServer.sendMessage(content, ljUser.getId(), sender, (userInfo.getAvatarUrl() != null && userInfo.getAvatarUrl() != "") ? ICON_PREFIX + userInfo.getAvatarUrl() : "");
+            Integer status = SocketServer.sendMessage(content, ljUser.getId(), sender, (userInfo.getAvatarUrl() != null && userInfo.getAvatarUrl() != "") ? ICON_PREFIX + userInfo.getAvatarUrl() : "");
+            if (status == 0) {
+                EntityWrapper<TMessage> ews = new EntityWrapper<TMessage>();
+                TMessage message = new TMessage();
+                message.setStatus(1);
+                ews.eq("sender", ljUser.getId());
+                ews.eq("user_id", sender);
+                service.update(message, ews);
+            } else {
+                EntityWrapper<TMessage> ews = new EntityWrapper<TMessage>();
+                TMessage message = new TMessage();
+                message.setStatus(0);
+                ews.eq("sender", ljUser.getId());
+                ews.eq("user_id", sender);
+                service.update(message, ews);
+            }
         }
 
 

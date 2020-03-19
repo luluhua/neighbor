@@ -1,6 +1,11 @@
 package com.citysmart.ucenter.component.mybatis.WebSocket;
 
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.citysmart.ucenter.module.appc.service.ITMessageService;
+import com.citysmart.ucenter.module.appc.service.impl.TMessageServiceImpl;
+import com.citysmart.ucenter.mybatis.model.app.TLjUserInfo;
 import com.citysmart.ucenter.mybatis.model.app.TMessage;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.websocket.*;
@@ -18,6 +23,9 @@ public class SocketServer {
     private Session session;
     private static Map<String, Session> sessionPool = new HashMap<>();
     private static Map<String, String> sessionIds = new HashMap<>();
+
+    @Autowired
+    public ITMessageService service;
 
     @OnOpen
     public void open(Session session, @PathParam(value = "userid") String userid) {
@@ -42,15 +50,15 @@ public class SocketServer {
         error.printStackTrace();
     }
 
-    public static void sendMessage(String message, String userId, String friendId, String avatarUrl) {
+    public static Integer sendMessage(String message, String userId, String friendId, String avatarUrl) {
         TMessage messageEntity = new TMessage();
         messageEntity.setContent(message);
         messageEntity.setSender(userId);
         messageEntity.setUserId(friendId);
         messageEntity.setAvatarUrl(avatarUrl);
-//        messageEntity.setId(msgId);
         Session s = sessionPool.get(friendId);
-        if (s != null) {
+        Integer status = 0;
+        if (s != null) { //对方打开着
             try {
                 s.getBasicRemote().sendObject(messageEntity);
 
@@ -60,7 +68,10 @@ public class SocketServer {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }
+        } else {  //对方未打开
+            status = 1;
         }
+        return status;
     }
 
     public static int getOnlineNum() {
@@ -74,6 +85,12 @@ public class SocketServer {
         }
         return users.toString();
     }
+
+//    public boolean updateMessageStatus(String userid, String friendId, Integer Status) {
+//
+//
+//        return messageService.updateupdateMessageStatus(userid, friendId, Status);
+//    }
 
 //	public static void sendAll(String msg) {
 //		for (String key : sessionIds.keySet()) {

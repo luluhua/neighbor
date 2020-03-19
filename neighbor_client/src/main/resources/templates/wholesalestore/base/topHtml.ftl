@@ -1,7 +1,7 @@
 <div class="header_bg">
 
     <div class="header">
-        <p class="welcome">您好，欢迎来到简单生活 ！</p>
+        <p class="welcome">您好，欢迎来到简单生活网 ！</p>
         <ul>
             <li class="login">
                 <#if me??>
@@ -16,13 +16,17 @@
                        data-placement="bottom"
                        data-tiggle="ajax"
                        data-submit-url="${ctx}/logout"
-                       data-confirm="您确定要推出登录吗?">退出</a>
+                       data-confirm="您确定要退出登录吗?">退出</a>
                 <#else >
                <a href="${ctx}/login">登陆</a>
                 </#if>
             </li>
 
-            <li class="order"><a class="msg-ic" href="${ctx}/message/list/1?p=ge"></a><span>1</span>
+            <li class="order"><a class="msg-ic" href="${ctx}/message/list/1?p=ge"></a>
+                <#if (unread>0)>
+                <span>${unread!}</span>
+                </#if>
+
             </li>
 
             <li><a href="javascript:void">帮助中心</a></li>

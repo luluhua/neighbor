@@ -7,6 +7,7 @@ import com.citysmart.ucenter.mybatis.model.app.TMessage;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -19,5 +20,7 @@ import java.util.List;
 public interface TMessageMapper extends BaseMapper<TMessage> {
 
     List<dialogueVO> getDialogue(@Param("userid") String userid, @Param("sender") String sender);
+
+    List selectListBySenderAndUserId(@Param("map") Map<String, Object> map);
 
 }

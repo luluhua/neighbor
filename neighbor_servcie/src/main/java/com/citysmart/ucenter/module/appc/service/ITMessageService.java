@@ -18,4 +18,6 @@ public interface ITMessageService extends IService<TMessage> {
 
     List<dialogueVO> getDialogue(String userid, String sender);
 
+    List<TMessage> selectListBySenderAndUserId(String userid, String friendId);
+
 }

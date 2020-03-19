@@ -24,8 +24,7 @@
         <div class="common_border">
             <h3 id="h3">
 			<span id="xings">
-				<p class="spanxiang" onclick="myMessage()">收件箱</p>
-				<p onclick="mysendmailbox()">发件箱</p>
+                <p class="spanxiang">消息</p>
 				</span>
                 <p class="p">共 <b id="totalCount">${(pageData.total)!}</b> 条消息</p>
             </h3>
@@ -37,7 +36,6 @@
                                       <#if list.status==0>
                                     <b></b>
                                       </#if>
-                                    <p>系统消息</p>
                                     <p>${(list.userName)!}</p>
                                     <span>${(list.dtCreate?string('yyyy-MM-dd HH:mm:ss'))!'--'}</span>
                                 </h3>
@@ -45,7 +43,7 @@
                                 <a class="dialog" href="javascript:;" data-title="与 ${(list.userName)!} 聊天"
                                    data-url="${ctx}/message/edit/${(list.sender)!}" data-width="770" data-height="700"
                                    data-toggle="tooltip" title="与 ${(list.userName)!} 聊天"
-                                   data-placement="bottom">了解详情</a>
+                                   data-placement="bottom">查看详情</a>
                             </li>
                         </#list>
                     </ol>
@@ -66,4 +64,10 @@
 <@footer>
 <script src="${ctx}/base/js/init.js" type="text/javascript"></script>
 <script src="${ctx}/base/js/x-layui.js" type="text/javascript"></script>
+<script>
+    $("#xings p").click(function () {
+        $(this).addClass("spanxiang").siblings().removeClass("spanxiang");
+    })
+</script>
+
 </@footer>

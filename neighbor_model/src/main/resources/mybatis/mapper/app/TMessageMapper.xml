@@ -39,5 +39,19 @@
         ORDER BY m.dt_create
 
     </select>
+    <select id="selectListBySenderAndUserId" resultType="com.citysmart.ucenter.mybatis.model.app.TMessage">
+        SELECT
+            *
+        FROM
+            t_message
+        WHERE
+            sender = #{map.userid,jdbcType=VARCHAR}
+                AND user_id = #{map.friendid,jdbcType=VARCHAR}
+        OR (
+            sender = #{map.friendid,jdbcType=VARCHAR}
+            AND user_id = #{map.userid,jdbcType=VARCHAR}
+        )
+    </select>
+
 
 </mapper>
