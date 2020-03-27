@@ -5,7 +5,7 @@
 
         <li><a href="${ctx}/resource/ex?p=ex" <#if res?? && "ex"==res> class="menu_a" </#if> >我的资源</a></li>
 
-        <li><a href="javascript:void">我的收藏</a></li>
+        <li><a href="${ctx}/goodsCollect/list?p=cl" <#if res?? && "cl"==res> class="menu_a" </#if>>我的收藏</a></li>
 
         <li><a href="${ctx}/message/list/1?p=ge" <#if res?? && "ge"==res> class="menu_a" </#if>>我的消息</a></li>
 

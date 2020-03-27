@@ -2,6 +2,8 @@
 
     "use strict";
 
+//Ajax提交操作,不带确认提示,用于AJAX删除单个记录
+
 
 //Ajax提交操作,带确认提示,用于AJAX删除单个记录
     $("*[data-tiggle='ajax']").click(function () {
@@ -34,7 +36,6 @@
                 '取消': {}
             }
         });
-
     });
 //Ajax提交操作,带确认提示,并返回结果
     $("*[data-tiggle='ajaxRetrun']").click(function () {

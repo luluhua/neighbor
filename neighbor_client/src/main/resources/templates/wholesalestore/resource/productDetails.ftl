@@ -23,6 +23,9 @@
 <div class="product">
 
     <div class="pr_infor">
+        <a class="collect-icon no_col" data-placement="bottom"
+           data-tiggle="noTooltip"
+           data-submit-url="${ctx}/goodsCollect/operation?id=${(goods.id)!}"><span></span>收藏</a>
         <dl>
             <dt>
                 <img id="proimg" data-magnify="gallery" data-group="1"
@@ -72,7 +75,9 @@
             <div class="clear"></div>
             <div class="infor_cart" id="infor_cart">
                 <a href="javascript:void(0)">联系TA</a>
-                <a href="javascript:void(0)" class="color" 租用</a>
+                <a href="javascript:void(0)" class="color">租用</a>
+
+
             </div>
         </div>
     </div>
@@ -168,12 +173,40 @@
 <!--end-->
 </@body>
 <@footer>
+
 <script>
-    $(".fuy img").click(function () {
-        var r = $(this).attr('src');
-        $("#proimg").attr('src', r);
-        $("#proimg").attr('data-src', r);
-    })
+    $("*[data-tiggle='noTooltip']").click(function () {
+        var dataUrl = $(this).attr("data-submit-url");
+        $.post(dataUrl, {}, function (data) {
+            if (data.code == 200) {
+                if (data.state == 1) {
+                    $(".collect-icon").addClass("no_col").siblings().removeClass("is_col");
+                    layer.msg(data.msg, {
+                        time: 1000,
+                        end: function () {
+                        }
+                    })
+                    return true;
+                }
+                if (data.state == 2) {
+                    $(".collect-icon").addClass("is_col").siblings().removeClass("no_col");
+                    layer.msg(data.msg, {
+                        time: 1000,
+                        end: function () {
+                        }
+                    })
+                    return true;
+                }
+            } else {
+                layer.msg("未登录", {
+                    time: 1000,
+                    end: function () {
+                    }
+                })
+            }
+        });
+    });
+
 </script>
 
 </@footer>
