@@ -9,6 +9,7 @@ import com.baomidou.mybatisplus.annotations.TableLogic;
 import com.baomidou.mybatisplus.annotations.TableName;
 import com.baomidou.mybatisplus.enums.FieldFill;
 import com.baomidou.mybatisplus.enums.IdType;
+import com.citysmart.ucenter.mybatis._Model;
 
 import java.io.Serializable;
 

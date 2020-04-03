@@ -8,6 +8,7 @@ import com.citysmart.common.json.JsonFailResult;
 import com.citysmart.ucenter.common.Util.PWDStrongUtil;
 import com.citysmart.ucenter.module.appc.service.ITClientAttachmentService;
 import com.citysmart.ucenter.module.appc.service.ITLjUserInfoService;
+import com.citysmart.ucenter.module.commodity.service.ITGoodsCollectService;
 import com.citysmart.ucenter.module.wholesalestore.vo.userVo;
 import com.citysmart.common.util.CommonUtil;
 import com.citysmart.ucenter.common.Util.ShiroUtil;
@@ -30,6 +31,7 @@ import com.citysmart.ucenter.mybatis.model.app.TLjUser;
 import com.citysmart.ucenter.mybatis.model.app.TLjUserAddress;
 import com.citysmart.ucenter.mybatis.model.app.TLjUserInfo;
 import com.citysmart.ucenter.mybatis.model.commodity.TGoods;
+import com.citysmart.ucenter.mybatis.model.commodity.TGoodsCollect;
 import com.citysmart.ucenter.mybatis.model.commodity.TGoodsGrade;
 import com.google.common.collect.Maps;
 import org.apache.commons.lang3.StringUtils;
@@ -80,6 +82,9 @@ public class resourceController extends SuperController {
 
     @Autowired
     private ITClientAttachmentService clientAttachmentService;
+
+    @Autowired
+    public ITGoodsCollectService goodsCollectService;
 
 
     @RequestMapping("/form")
@@ -171,6 +176,21 @@ public class resourceController extends SuperController {
         }
         UserScoreVO score = gradeService.getGoodsScore(id);
         vo.setAddress(address);
+
+        TLjUser ljUser = ShiroUtil.getSessionUser();
+        if (ljUser != null) {
+            EntityWrapper<TGoodsCollect> ew = new EntityWrapper<TGoodsCollect>();
+            ew.eq("user_id", ljUser.getId());
+            ew.eq("goods_id", id);
+            ew.eq("is_deleted", Delete.未删除);
+            TGoodsCollect entity = goodsCollectService.selectOne(ew);
+            if (entity != null) {
+                goods.setIsCollect(1);
+            } else {
+                goods.setIsCollect(0);
+            }
+        }
+
         model.addAttribute("goods", goods);
         model.addAttribute("users", vo);
         if (score != null) {

@@ -3205,6 +3205,16 @@ a.upload-img:hover {
     font-size: 12px;
 }
 
+.de_sign {
+    width: 100px;
+    height: 100px;
+    display: block;
+    background: url(../images/member.png) no-repeat scroll center transparent;
+    background-size: 100% 100%;
+    position: absolute;
+    left: 110px;
+}
+
 
 	
 	

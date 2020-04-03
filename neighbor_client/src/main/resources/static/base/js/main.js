@@ -19,12 +19,12 @@ if (typeof (activity) == 'undefined') {
             layer.msg(msg);
         },
         //文字+成功提示
-        iconNoTooltip: function (msg) {
-            layer.msg(msg, {icon: 2});
-        },
-        //文字+失败提示
         iconYesTooltip: function (msg) {
             layer.msg(msg, {icon: 1});
+        },
+        //文字+失败提示
+        iconNoTooltip: function (msg) {
+            layer.msg(msg, {icon: 2});
         },
         //文字抖动提示
         shakeTooltip: function (msg) {

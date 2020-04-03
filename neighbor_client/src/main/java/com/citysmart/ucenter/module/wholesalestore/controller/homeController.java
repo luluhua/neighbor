@@ -165,30 +165,35 @@ public class homeController extends SuperController {
         Page<TGoods> seelpage = getPage(NUMBER, SIZE_8);
         EntityWrapper<TGoods> seelew = new EntityWrapper<TGoods>();
         seelew.eq("is_deleted", Delete.未删除);
+        seelew.where("status=0");
         seelew.eq("navigation_code", RENTOUT_SELL);
         Page<TGoods> rentoutSellList = goodsService.selectPage(seelpage, seelew);
 
         Page<TGoods> maintainpage = getPage(NUMBER, SIZE_7);
         EntityWrapper<TGoods> maintainew = new EntityWrapper<TGoods>();
         maintainew.eq("is_deleted", Delete.未删除);
+        maintainew.where("status=0");
         maintainew.eq("navigation_code", MAINTAIN);
         Page<TGoods> maintainList = goodsService.selectPage(maintainpage, maintainew);
 
         Page<TGoods> sjepage = getPage(NUMBER, SIZE_7);
         EntityWrapper<TGoods> sjew = new EntityWrapper<TGoods>();
         sjew.eq("is_deleted", Delete.未删除);
+        sjew.where("status=0");
         sjew.eq("navigation_code", TIME_SJ);
         Page<TGoods> sjList = goodsService.selectPage(sjepage, sjew);
 
         Page<TGoods> zydbpage = getPage(NUMBER, SIZE_7);
         EntityWrapper<TGoods> zydbew = new EntityWrapper<TGoods>();
         zydbew.eq("is_deleted", Delete.未删除);
+        zydbew.where("status=0");
         zydbew.eq("navigation_code", ZYDB);
         Page<TGoods> zydbewList = goodsService.selectPage(zydbpage, zydbew);
 
         Page<TGoods> carrypage = getPage(NUMBER, SIZE_7);
         EntityWrapper<TGoods> carryew = new EntityWrapper<TGoods>();
         carryew.eq("is_deleted", Delete.未删除);
+        carryew.where("status=0");
         carryew.eq("navigation_code", CARRY);
         Page<TGoods> carryewList = goodsService.selectPage(carrypage, carryew);
 
@@ -218,6 +223,7 @@ public class homeController extends SuperController {
         model.addAttribute("pageSize", pageSize);
         EntityWrapper<TGoods> ew = new EntityWrapper<TGoods>();
         ew.eq("is_deleted", Delete.未删除);
+        ew.where("status=0");
         ew.orderBy("sort_index", false);
         if (StringUtils.isNotBlank(code)) {
             ew.eq("navigation_code", code);

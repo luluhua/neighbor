@@ -107,6 +107,9 @@ public class TGoods extends Model<TGoods> {
 
     private Integer status;
 
+    @TableField(exist = false)
+    private Integer isCollect;
+
     public String getId() {
         return id;
     }
@@ -281,6 +284,14 @@ public class TGoods extends Model<TGoods> {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public Integer getIsCollect() {
+        return isCollect;
+    }
+
+    public void setIsCollect(Integer isCollect) {
+        this.isCollect = isCollect;
     }
 
     @Override

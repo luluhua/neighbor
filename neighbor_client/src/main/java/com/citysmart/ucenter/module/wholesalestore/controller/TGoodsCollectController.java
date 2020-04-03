@@ -1,6 +1,7 @@
 package com.citysmart.ucenter.module.wholesalestore.controller;
 
 import com.citysmart.common.controller.SuperController;
+import com.citysmart.common.util.CommonUtil;
 import com.citysmart.ucenter.common.Util.ShiroUtil;
 import com.citysmart.ucenter.module.commodity.service.ITGoodsCollectService;
 import com.citysmart.ucenter.mybatis.enums.Delete;
@@ -87,9 +88,10 @@ public class TGoodsCollectController extends SuperController {
                 map.put("msg", "取消成功！");
             } else {
                 TGoodsCollect goodsCollect = new TGoodsCollect();
+//                goodsCollect.setId(CommonUtil.UUID());
                 goodsCollect.setUserId(ljUser.getId());
                 goodsCollect.setGoodsId(id);
-                service.insert(entity);
+                service.insert(goodsCollect);
                 map.put("state", 2);
                 map.put("msg", "收藏成功！");
             }
@@ -101,10 +103,10 @@ public class TGoodsCollectController extends SuperController {
     /**
      * 删除
      */
-    @RequestMapping("/delete")
+    @RequestMapping("/delete/{id}")
     @ResponseBody
     @Log("删除")
-    public Rest delete(Integer id) {
+    public Rest delete(@PathVariable String id) {
         service.deleteById(id);
         return Rest.ok();
     }

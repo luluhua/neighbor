@@ -23,7 +23,8 @@
 <div class="product">
 
     <div class="pr_infor">
-        <a class="collect-icon no_col" data-placement="bottom"
+        <a class="collect-icon <#if goods.isCollect?? && goods.isCollect==1>is_col<#else >no_col</#if> "
+           data-placement="bottom"
            data-tiggle="noTooltip"
            data-submit-url="${ctx}/goodsCollect/operation?id=${(goods.id)!}"><span></span>收藏</a>
         <dl>
@@ -91,7 +92,9 @@
                             ${(goods.location)!"未填写"}
                         </span>
                     </li>
-                    <li><p>状态：</p><span id="size">闲置</span></li>
+                    <li><p>状态：</p><span id="size">
+                        <#if goods.status==0>闲置<#elseif goods.isDeleted==1>已删除<#else >已下架</#if>
+                    </span></li>
 
                     <li><p>评分：</p><span id="models">${(score)!"0"}分</span></li>
 
@@ -177,32 +180,20 @@
 <script>
     $("*[data-tiggle='noTooltip']").click(function () {
         var dataUrl = $(this).attr("data-submit-url");
-        $.post(dataUrl, {}, function (data) {
-            if (data.code == 200) {
-                if (data.state == 1) {
-                    $(".collect-icon").addClass("no_col").siblings().removeClass("is_col");
-                    layer.msg(data.msg, {
-                        time: 1000,
-                        end: function () {
-                        }
-                    })
+        $.post(dataUrl, {}, function (result) {
+            if (result.code == 200) {
+                if (result.data.state == 1) {
+                    $(".collect-icon").addClass("no_col").removeClass("is_col");
+                    activity.iconYesTooltip(result.data.msg)
                     return true;
                 }
-                if (data.state == 2) {
-                    $(".collect-icon").addClass("is_col").siblings().removeClass("no_col");
-                    layer.msg(data.msg, {
-                        time: 1000,
-                        end: function () {
-                        }
-                    })
+                if (result.data.state == 2) {
+                    $(".collect-icon").addClass("is_col").removeClass("no_col");
+                    activity.iconYesTooltip(result.data.msg)
                     return true;
                 }
             } else {
-                layer.msg("未登录", {
-                    time: 1000,
-                    end: function () {
-                    }
-                })
+                activity.shakeTooltip(result.msg)
             }
         });
     });

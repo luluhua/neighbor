@@ -154,4 +154,14 @@ public class RedisUtil {
     public static boolean releaseDistributedLock(String lockKey, String requestId) {
         return jedisUtil.new RedisLock().releaseDistributedLock(lockKey,requestId);
     }
+
+    /**
+     * 添加 reids  缓存
+     *
+     * @param key
+     * @param value
+     */
+    public static void setKeyValueByExpires(String key, String value, Integer expires) {
+        jedisUtil.new Strings().setEx(QINGXIU_PACKAGE_KEY + ":" + key, expires, value);
+    }
 }

@@ -40,6 +40,9 @@
             <ol id="collections" class="collection">
                 <#list resource as resource>
                     <li>
+                         <#if resource.isDeleted==1 || resource.status==1>
+                            <span class="de_sign"></span>
+                         </#if>
                         <div class="coll_div">
                             <img src="<@commonTags method="tagHtpImgURL" type="1" value="1">${(tagHtpImgURL)!}</@commonTags>${(resource.images)!'--'}"
                                  onerror="this.src='${ctx}/wholesalestore/images/logo.png'">

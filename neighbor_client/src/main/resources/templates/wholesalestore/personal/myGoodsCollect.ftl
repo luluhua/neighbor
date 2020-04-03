@@ -40,17 +40,24 @@
             <ol id="collections" class="collection">
                 <#list list as list>
                     <li>
-                        <div class="coll_div">
-                            <img src="<@commonTags method="tagHtpImgURL" type="1" value="1">${(tagHtpImgURL)!}</@commonTags>${(list.goodsImages)!'--'}"
-                                 onerror="this.src='${ctx}/wholesalestore/images/logo.png'">
-                        </div>
-                        <div class="re-name">
-                            <h3>${(list.goodsName)!}</h3>
-                        </div>
-                        <a class="delete-re" data-toggle="tooltip" title="删除" data-placement="bottom"
-                           data-tiggle="ajax"
-                           data-submit-url="${ctx}/goodsCollect/delete/${(list.id)!}"
-                           data-confirm="您确定要取消收藏该条资源吗?"></a>
+                        <#if list.isDeleted==1 || list.status==1>
+                            <span class="de_sign"></span>
+                        </#if>
+
+                        <a <#if list.isDeleted==1 || list.status==1>href="javascript:;"
+                           <#else>href="${ctx}/resource/particulars/${(list.goodsId)!}"</#if>>
+                            <div class="coll_div">
+                                <img src="<@commonTags method="tagHtpImgURL" type="1" value="1">${(tagHtpImgURL)!}</@commonTags>${(list.goodsImages)!'--'}"
+                                     onerror="this.src='${ctx}/wholesalestore/images/logo.png'">
+                            </div>
+                            <div class="re-name">
+                                <h3>${(list.goodsName)!}</h3>
+                            </div>
+                            <a class="delete-re" data-toggle="tooltip" title="删除" data-placement="bottom"
+                               data-tiggle="ajax"
+                               data-submit-url="${ctx}/goodsCollect/delete/${(list.id)!}"
+                               data-confirm="您确定要取消收藏该条资源吗?"></a>
+                        </a>
                     </li>
                 </#list>
             </ol>
