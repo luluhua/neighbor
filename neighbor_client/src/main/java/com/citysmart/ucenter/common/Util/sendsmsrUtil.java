@@ -117,7 +117,7 @@ public class sendsmsrUtil {
                         verificationCode);
                 int t = smsConfig.getSmsTemplate() / 60;
                 String content = new String("欢迎您使用简单生活网，您的验证码是：" + verificationCode
-                        + "。有效时间" + t + "分钟。安全提醒：验证码切勿向他人泄露，以防止上当受骗。如有疑问请咨询在线客服。");
+                        + "。有效时间5分钟。安全提醒：验证码切勿向他人泄露，以防止上当受骗。如有疑问请咨询在线客服。");
                 NameValuePair[] data = {//提交短信
                         new NameValuePair("account", smsConfig.getSmsAccount()),
                         new NameValuePair("password", smsConfig.getSmsPassword()),

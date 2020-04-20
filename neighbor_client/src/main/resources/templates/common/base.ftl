@@ -9,3 +9,8 @@
 
 <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="${ctx}/base/css/jquery.magnify.css">
+
+<script type="text/javascript" src="${ctx}/base/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="${ctx}/base/js/layui/layui.js"></script>
+<script type="text/javascript" src="${ctx}/base/js/main.js"></script>
+<script type="text/javascript" src="${ctx}/base/js/xform.js"></script>

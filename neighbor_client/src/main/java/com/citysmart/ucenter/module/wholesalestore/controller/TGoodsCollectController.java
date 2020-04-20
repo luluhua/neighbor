@@ -88,7 +88,6 @@ public class TGoodsCollectController extends SuperController {
                 map.put("msg", "取消成功！");
             } else {
                 TGoodsCollect goodsCollect = new TGoodsCollect();
-//                goodsCollect.setId(CommonUtil.UUID());
                 goodsCollect.setUserId(ljUser.getId());
                 goodsCollect.setGoodsId(id);
                 service.insert(goodsCollect);

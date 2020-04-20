@@ -38,9 +38,34 @@ if (typeof (activity) == 'undefined') {
             //     layer.closeAll('loading');
             // }, 2000);
         },
-        verify: function (msg) {
+        //时间内加载
+        timeJump: function (msg, time, func) {
+            layer.msg(msg, {icon: 1, time: time}, function () {
+                window.location.href = func;
+            });
 
-        }
+        },
+        post: function (url, data, funcSucc, funcFailed, funcComplete) {
+            var token = mainNet.getToken();
+            $.ajax({
+                type: 'POST',
+                url: url,
+                data: data,
+                dataType: "json",
+                complete: function () {
+                    if (funcComplete) funcComplete();
+                },
+                success: function (result) {
+                    if (!mainNet.processResult(result)) {
+                        return;
+                    }
+                    if (funcSucc) funcSucc(result);
+                },
+                error: function (msg) {
+                    if (funcFailed) funcFailed(msg);
+                }
+            });
+        },
 
     }
 }

@@ -128,32 +128,17 @@ layui.define(['layer', 'form', 'upload'], function (exports) {
         var index = layer.load(3); // 换了种风格
         $.post($(fm).attr('action'), values, function (data) {
             layer.close(index);
-            if (typeof (data) == 'string' && data.indexOf("请输入用户名和密码登录") > -1) {
-                parent.location.href = "/login";
-                return;
-            }
             if (data.code == 200) {
-                if (data.msg) {
-                    parent.layer.msg(data.msg, {icon: 1});
-                    if (data.msg == "OK,授权成功,1分钟后生效  ~") {
-                        // 关闭当前frame
-                        parent.layer.closeAll('iframe');
-                    } else {
-                        window.location.href = data.msg;
-                    }
+                if (data.url) {
+                    activity.timeJump(data.msg, 2000, data.url);
 
-                } else if (data.url) {
-                    window.location.href = data.url;
                     return;
                 } else {
-                    parent.layer.msg('提交成功', {icon: 1});
-                    // 关闭当前frame
-                    parent.layer.closeAll('iframe');
-                    parent.location.reload();
+                    parent.layer.msg('注册成功', {icon: 1});
                 }
 
             } else {
-                layer.msg(data.msg, {icon: 2});
+                activity.iconNoTooltip(data.msg)
             }
 
         });

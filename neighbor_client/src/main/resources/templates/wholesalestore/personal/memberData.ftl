@@ -5,7 +5,7 @@
     <link rel="stylesheet" type="text/css" href="${ctx}/wholesalestore/css/style.css"/>
     <link href="${ctx}/base/js/layui/css/layui.css" rel="stylesheet"/>
     <script type="text/javascript" src="${ctx}/wholesalestore/js/common.js"></script>
-    <script src="${ctx}/base/js/upload.js" type="text/javascript"></script>
+
 </@header>
 <@js>
 </@js>
@@ -138,23 +138,47 @@
         var gender = $("input[name='gender']:checked").val();
         var title = $("input[name='gender']:checked").attr('title');
         if (activity.isNotBlank(gender)) {
-            $.post('${ctx}/resource/setGender?_dc=' + new Date().getTime(), {gender: gender}, function (response) {
-                if (response.code == 200) {
-                    $("#gender_sex").html(title);
-                    layer.msg(response.msg, {
-                        time: 1000,
-                        end: function () {
-                            gender_qx();
+            activity.post('${ctx}/resource/setGender',
+                    {
+                        gender: gender
+                    },
+                    function (result) {
+                        if (result.code == 200) {
+                            $("#gender_sex").html(title);
+                            layer.msg(response.msg, {
+                                time: 1000,
+                                end: function () {
+                                    gender_qx();
+                                }
+                            })
+                        } else {
+                            layer.msg("系统异常，请稍后重试！", {
+                                time: 1000,
+                                end: function () {
+                                }
+                            })
                         }
-                    })
-                } else {
-                    layer.msg("系统异常，请稍后重试！", {
-                        time: 1000,
-                        end: function () {
-                        }
-                    })
-                }
-            });
+                    });
+
+
+        <#--$.post('${ctx}/resource/setGender?_dc=' + new Date().getTime(), {gender: gender}, function (response) {-->
+        <#--if (response.code == 200) {-->
+        <#--$("#gender_sex").html(title);-->
+        <#--layer.msg(response.msg, {-->
+        <#--time: 1000,-->
+        <#--end: function () {-->
+        <#--gender_qx();-->
+        <#--}-->
+        <#--})-->
+        <#--} else {-->
+        <#--layer.msg("系统异常，请稍后重试！", {-->
+        <#--time: 1000,-->
+        <#--end: function () {-->
+        <#--}-->
+        <#--})-->
+        <#--}-->
+        <#--});-->
+
         } else {
             layer.msg('请选择性别', {
                 time: 1000,
@@ -167,23 +191,47 @@
     $(".setNickname").click(function () {
         var nickname = $("#nickname").val();
         if (activity.isNotBlank(nickname)) {
-            $.post('${ctx}/resource/setNickname?_dc=' + new Date().getTime(), {nickname: nickname}, function (response) {
-                if (response.code == 200) {
-                    $("#nickname_").html(nickname);
-                    layer.msg(response.msg, {
-                        time: 1000,
-                        end: function () {
-                            email_qx();
+            activity.post('${ctx}/resource/setNickname',
+                    {
+                        nickname: nickname
+                    },
+                    function (result) {
+                        if (result.code == 200) {
+                            $("#nickname_").html(nickname);
+                            layer.msg(response.msg, {
+                                time: 1000,
+                                end: function () {
+                                    name_hidden();
+                                }
+                            })
+                        } else {
+                            layer.msg("系统异常，请稍后重试！", {
+                                time: 1000,
+                                end: function () {
+                                }
+                            })
                         }
-                    })
-                } else {
-                    layer.msg("系统异常，请稍后重试！", {
-                        time: 1000,
-                        end: function () {
-                        }
-                    })
-                }
-            })
+                    });
+
+
+        <#--$.post('${ctx}/resource/setNickname?_dc=' + new Date().getTime(), {nickname: nickname}, function (response) {-->
+        <#--if (response.code == 200) {-->
+        <#--$("#nickname_").html(nickname);-->
+        <#--layer.msg(response.msg, {-->
+        <#--time: 1000,-->
+        <#--end: function () {-->
+        <#--name_hidden();-->
+        <#--}-->
+        <#--})-->
+        <#--} else {-->
+        <#--layer.msg("系统异常，请稍后重试！", {-->
+        <#--time: 1000,-->
+        <#--end: function () {-->
+        <#--}-->
+        <#--})-->
+        <#--}-->
+        <#--})-->
+
         } else {
             layer.msg('请填写昵称！', {
                 time: 1000,
@@ -196,27 +244,53 @@
         var mail = $("#newEmail").val();
         var jEmail = $("#jEmail").val();
         if (activity.isNotBlank(mail)) {
-            $.post('${ctx}/resource/sendMail?_dc=' + new Date().getTime(), {
-                mail: mail,
-                jEmail: jEmail
-            }, function (response) {
-                if (response.code == 200) {
-                    countDown();
-                    layer.msg(response.msg, {
-                        time: 1000,
-                        end: function () {
-                            $("#emailVerificationCode").hide();
-                            $("#qx").show();
+            activity.post('${ctx}/resource/sendMail',
+                    {
+                        nmail: mail,
+                        jEmail: jEmail
+                    },
+                    function (result) {
+                        if (result.code == 200) {
+                            countDown();
+                            layer.msg(response.msg, {
+                                time: 1000,
+                                end: function () {
+                                    $("#emailVerificationCode").hide();
+                                    $("#qx").show();
+                                }
+                            })
+                        } else {
+                            layer.msg("系统异常，请稍后重试！", {
+                                time: 1000,
+                                end: function () {
+                                }
+                            })
                         }
-                    })
-                } else {
-                    layer.msg(response.msg, {
-                        time: 1000,
-                        end: function () {
-                        }
-                    })
-                }
-            })
+                    });
+
+
+        <#--$.post('${ctx}/resource/sendMail?_dc=' + new Date().getTime(), {-->
+        <#--mail: mail,-->
+        <#--jEmail: jEmail-->
+        <#--}, function (response) {-->
+        <#--if (response.code == 200) {-->
+        <#--countDown();-->
+        <#--layer.msg(response.msg, {-->
+        <#--time: 1000,-->
+        <#--end: function () {-->
+        <#--$("#emailVerificationCode").hide();-->
+        <#--$("#qx").show();-->
+        <#--}-->
+        <#--})-->
+        <#--} else {-->
+        <#--layer.msg(response.msg, {-->
+        <#--time: 1000,-->
+        <#--end: function () {-->
+        <#--}-->
+        <#--})-->
+        <#--}-->
+        <#--})-->
+
         } else {
             layer.msg('请填写邮箱！', {
                 time: 1000,
@@ -247,26 +321,52 @@
         var email = $("#newEmail").val();
         var code = $("#emailCode").val();
         if (activity.isNotBlank(nickname)) {
-            $.post('${ctx}/resource/setEmail?_dc=' + new Date().getTime(), {
-                email: email,
-                code: code
-            }, function (response) {
-                if (response.code == 200) {
-                    $("#email").html(email);
-                    layer.msg(response.msg, {
-                        time: 1000,
-                        end: function () {
-                            name_hidden();
+            activity.post('${ctx}/resource/setEmail',
+                    {
+                        email: email,
+                        code: code
+                    },
+                    function (result) {
+                        if (result.code == 200) {
+                            $("#email").html(email);
+                            layer.msg(response.msg, {
+                                time: 1000,
+                                end: function () {
+                                    email_qx();
+                                }
+                            })
+                        } else {
+                            layer.msg("系统异常，请稍后重试！", {
+                                time: 1000,
+                                end: function () {
+                                }
+                            })
                         }
-                    })
-                } else {
-                    layer.msg(response.msg, {
-                        time: 1000,
-                        end: function () {
-                        }
-                    })
-                }
-            })
+                    });
+
+
+        <#--$.post('${ctx}/resource/setEmail?_dc=' + new Date().getTime(), {-->
+        <#--email: email,-->
+        <#--code: code-->
+        <#--}, function (response) {-->
+        <#--if (response.code == 200) {-->
+        <#--$("#email").html(email);-->
+        <#--layer.msg(response.msg, {-->
+        <#--time: 1000,-->
+        <#--end: function () {-->
+        <#--email_qx();-->
+        <#--;-->
+        <#--}-->
+        <#--})-->
+        <#--} else {-->
+        <#--layer.msg(response.msg, {-->
+        <#--time: 1000,-->
+        <#--end: function () {-->
+        <#--}-->
+        <#--})-->
+        <#--}-->
+        <#--})-->
+
         } else {
             layer.msg('请填写昵称！', {
                 time: 1000,

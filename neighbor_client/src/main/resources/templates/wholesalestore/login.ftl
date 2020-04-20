@@ -104,12 +104,12 @@
 
                                 <span>手机号码<b>*</b></span>
 
-                                <input type="text" placeholder="请输入手机号码" id="pho">
+                                <input type="text" name="phone" placeholder="请输入手机号码" id="phone">
                             </li>
                             <div class="clear"></div>
 
                             <li>
-                                <h6 class="error er_block" id="rxyzm" style="display: none"></h6>
+                                <h6 class="error er_block" id="longyzm" style="display: none"></h6>
                                 <span>验证码<b>*</b></span>
 
                                 <input type="text" id="verifyCode" placeholder="请输入验证码" class="yzm_input" value="">
@@ -125,7 +125,16 @@
 
                                 <input type="text" placeholder="请输入手机验证码" class="code_input" id="phoneVerification">
 
-                                <a href="javascript:void(0)" class="code_butt" id="enroll_bt" onclick="registers()">获取验证码</a>
+                                <a href="javascript:void(0)" class="code_butt" id="enroll_code">获取验证码</a>
+                                <a href="javascript:void(0)" style="display: none" class="code_butt"
+                                   id="codedaojisAnlogin"></a>
+                                <a class="code_butt" id="enroll_lon" href="javascript:;" data-toggle="tooltip"
+                                   title="获取验证码"
+                                   data-placement="bottom"
+                                   data-tiggle="ajax"
+                                   data-submit-url="${ctx}/getLoginVerification">获取验证码</a>
+
+
                             </li>
                             <div class="clear"></div>
 
@@ -199,15 +208,13 @@
 
                                 <input type="text" name="phoneCode" placeholder="输入手机验证码" class="code_input" id="verify"
                                        value=""/>
-
                                 <a href="javascript:void(0)" style="display: none" class="code_butt"
                                    id="codedaojis"></a>
                                 <a class="code_butt" id="enroll_re" href="javascript:;" data-toggle="tooltip"
                                    title="获取验证码"
                                    data-placement="bottom"
                                    data-tiggle="ajax"
-                                   data-submit-url="${ctx}/getVerification"
-                                   data-confirm="您确定要推出登录吗?">获取验证码</a>
+                                   data-submit-url="${ctx}/getVerification">获取验证码</a>
                             </li>
                             <div class="clear"></div>
                             <li>
@@ -313,40 +320,91 @@
         var phone = $("#phones").val();
         var imgCode = $("#reyzm").val();
         var dataUrl = $(this).attr("data-submit-url");
-        $.post(dataUrl, {"phone": phone, "captcha": imgCode}, function (json) {
-            console.log(json)
-            if (json.code == 200) {
-                layer.msg(json.msg);
-                loganresCofg.upImgCode();
-                $("#enroll_re").hide();
-                $("#codedaojis").show();
-                countDown();
-            } else {
-                layer.msg(json.msg);
-                loganresCofg.upImgCode();
-            }
-        });
+        activity.post(dataUrl,
+                {
+                    phone: phone,
+                    captcha: imgCode
+                },
+                function (result) {
+                    if (result.code == 200) {
+                        activity.iconYesTooltip(json.msg)
+                        loganresCofg.upImgCode();
+                        $("#enroll_re").hide();
+                        $("#codedaojis").show();
+                        countDown("enroll_re", "codedaojis");
 
-    })
+                    } else {
+                        activity.iconNoTooltip(json.msg)
+                        loganresCofg.upImgCode();
+                    }
+                    //
+                    //
+                    // $.post(dataUrl, {"phone": phone, "captcha": imgCode}, function (json) {
+                    //     if (json.code == 200) {
+                    //         activity.iconYesTooltip(json.msg)
+                    //         loganresCofg.upImgCode();
+                    //         $("#enroll_re").hide();
+                    //         $("#codedaojis").show();
+                    //         countDown();
+                    //     } else {
+                    //         activity.iconNoTooltip(json.msg)
+                    //         loganresCofg.upImgCode();
+                    //     }
+                    // });
+                })
+    });
+
+
+    $("#enroll_lon").click(function () {
+        var phone = $("#phone").val();
+        var imgCode = $("#longyzm").val();
+        var dataUrl = $(this).attr("data-submit-url");
+        activity.post(dataUrl,
+                {
+                    phone: phone,
+                    captcha: imgCode
+                },
+                function (result) {
+                    if (result.code == 200) {
+                        activity.iconYesTooltip(json.msg)
+                        loganresCofg.upImgCode();
+                        $("#enroll_lon").hide();
+                        $("#codedaojisAnlogin").show();
+                        countDown("enroll_lon", "codedaojisAnlogin");
+
+                    } else {
+                        activity.iconNoTooltip(json.msg)
+                        loganresCofg.upImgCode();
+                    }
+                })
+    });
+
 
     windoe:loganresCofg = {
         upImgCode: function () {
-            $.post('${ctx}/login/captcha', function (response) {
-                $('.refimg').attr('src', '${ctx}/login/captcha')
-            })
+            activity.post('${ctx}/login/captcha',
+                    function (result) {
+                        $('.refimg').attr('src', '${ctx}/login/captcha')
+                    })
+
+
+        <#--$.post('${ctx}/login/captcha', function (response) {-->
+        <#--$('.refimg').attr('src', '${ctx}/login/captcha')-->
+        <#--})-->
+
         },
 
     }
     var flag = 1;
     var i = 60;
 
-    function countDown() {
+    function countDown(hideId, showId) {
         i = i - 1;
-        $("#codedaojis").html(i + "秒后重发");
+        $("#" + hideId).html(i + "秒后重发");
         if (i == 0) {
-            $("#enroll_re").show();
-            $("#enroll_re").html("重新发送");
-            $("#codedaojis").hide();
+            $("#" + showId).show();
+            $("#" + showId).html("重新发送");
+            $("#" + hideId).hide();
             flag = 1;
             i = 60;
             return;

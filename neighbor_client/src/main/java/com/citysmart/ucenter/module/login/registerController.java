@@ -50,7 +50,7 @@ public class registerController extends SuperController {
             }
             userService.insertUser(vo);
             sysLogService.insertLog("用户注册", vo.getUsername(), IpUtil.getIpAddr(request), 1, 1);
-            return Rest.ok();
+            return Rest.okUrl("注册成功,马上跳转登录页", "/m/login");
         } catch (DuplicateKeyException e) {
             return Rest.failure("用户名已存在");
         } catch (Exception e) {

@@ -1,25 +1,31 @@
 package com.citysmart.ucenter.module.login;
 
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.interfaces.DecodedJWT;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.citysmart.common.bean.Rest;
+import com.citysmart.common.component.jwt.JWTUtil;
+import com.citysmart.common.component.jwt.JwtToken;
 import com.citysmart.common.controller.SuperController;
+import com.citysmart.common.json.JsonResult;
 import com.citysmart.common.util.IpUtil;
 import com.citysmart.common.util.PBKDF2Util;
 import com.citysmart.ucenter.common.HttpHelper;
-import com.citysmart.ucenter.common.Util.PWDStrongUtil;
-import com.citysmart.ucenter.common.Util.ShiroUtil;
-import com.citysmart.ucenter.common.Util.ShiroUtilWeb;
+import com.citysmart.ucenter.common.Util.*;
 import com.citysmart.ucenter.module.appc.service.ITLjUserService;
 import com.citysmart.ucenter.module.system.service.ITLjUserSecurityService;
 import com.citysmart.ucenter.module.system.service.ITSysUserLogService;
 import com.citysmart.ucenter.module.system.service.ITSysUserSecurityService;
 import com.citysmart.ucenter.mybatis.entity.vo.registreVO;
+import com.citysmart.ucenter.mybatis.model.TSmsConfig;
 import com.citysmart.ucenter.mybatis.model.app.TLjUser;
 import com.citysmart.ucenter.mybatis.model.app.TLjUserSecurity;
 import com.google.code.kaptcha.impl.DefaultKaptcha;
+import com.tuyang.beanutils.BeanCopyUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.subject.Subject;
+import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -96,7 +102,6 @@ public class loginController extends SuperController {
             Subject currentUser = SecurityUtils.getSubject();
             if (!currentUser.isAuthenticated()) {
                 try {
-                    //1天-过期
                     currentUser.login(usernamePasswordToken);
                     ShiroUtil.getSessionUser();
                 } catch (UnknownAccountException uae) {
@@ -129,6 +134,33 @@ public class loginController extends SuperController {
             return redirectTo("/login");
         }
     }
+
+
+    private String createJwtToken(TLjUser user) throws Exception {
+        //创建 jwt token
+        Long time = Long.valueOf(RedisUtil.getValueByKey("jwt.expire.time"));
+        Long refreshtime = Long.valueOf(RedisUtil.getValueByKey("jwt.refresh.time"));
+        String token = JWTUtil.sign(user.getGuid(), user.getPassword(), time);
+        Subject currentUser = SecurityUtils.getSubject();
+        JwtToken jwtToken = new JwtToken(token);
+        if (!currentUser.isAuthenticated()) {
+            currentUser.login(jwtToken);
+            //存入redis
+//            RedisApiUtils.setApi(tAppUser.getUsername(), token, Integer.parseInt(time.toString()));
+//            //获取过期时间及刷新时间
+//            AppUserVo appUserVo = BeanCopyUtils.copyBean(tAppUser, AppUserVo.class);
+//            byte[] src = Base64.decodeBase64(token);
+//            DecodedJWT jwt = JWT.decode(new String(src));
+//            appUserVo.setExpiresAtTime(jwt.getExpiresAt().getTime());
+//            appUserVo.setRefreshTime(JwtUtil.getRefreshTime(jwt.getExpiresAt().getTime(), refreshtime));
+//            appUserVo.setToken(token);
+//            //绑定用户设备
+//            bindingUserDevice(tAppUser);
+            return redirectTo("/login");
+        }
+        return redirectTo("/login");
+    }
+
 
     @RequestMapping("/logout")
     @ResponseBody
@@ -196,6 +228,31 @@ public class loginController extends SuperController {
         responseOutputStream.write(captchaChallengeAsJpeg);
         responseOutputStream.flush();
         responseOutputStream.close();
+    }
+
+    /**
+     * 登录发送短信
+     *
+     * @param model
+     * @param request
+     * @return
+     */
+    @RequestMapping("/getLoginVerification")
+    @ResponseBody
+    public Rest getLoginVerification(Model model, HttpServletRequest request, String phone, String captcha) {
+        if (userService.selectOne(new EntityWrapper<TLjUser>().eq("username", PWDStrongUtil.Encryption3DEs(phone))) == null) {
+            return Rest.failure("手机号码未注册");
+        }
+        String rightCode = (String) request.getSession().getAttribute("rightCode");
+        if (rightCode.equals(captcha)) {
+            TSmsConfig config = sendsmsrUtil.getTSmsConfig();
+            JsonResult result = sendsmsrUtil.sendMessageByHttp(config, phone, sendsmsrUtil.LOGIN_CODE);
+            if (result.getCode() == 0) {
+                return Rest.ok(result.getMsg());
+            }
+            return Rest.failure(result.getMsg());
+        }
+        return Rest.failure("图形验证码错误");
     }
 
 }

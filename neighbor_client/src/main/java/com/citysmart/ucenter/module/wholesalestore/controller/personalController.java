@@ -76,9 +76,11 @@ public class personalController extends SuperController {
             EntityWrapper<TLjUserInfo> userEw = new EntityWrapper<TLjUserInfo>();
             userEw.eq("user_id", ljUser.getId());
             TLjUserInfo info = userInfoService.selectOne(userEw);
-            if (StringUtils.isNotBlank(info.getAvatarUrl())) {
-                info.setAvatarUrl(ICON_PREFIX + info.getAvatarUrl());
+            if (info != null) {
                 info.setEmail(VerifyUtil.getFormatMail(info.getEmail()));
+                if (StringUtils.isNotBlank(info.getAvatarUrl())) {
+                    info.setAvatarUrl(ICON_PREFIX + info.getAvatarUrl());
+                }
             }
             model.addAttribute("info", info);
             return "/wholesalestore/personal/memberData";

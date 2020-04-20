@@ -72,24 +72,24 @@ public class Rest {
     }
 
     public static Rest ok() {
-        return new Rest(200, 0, null, "","");
+        return new Rest(200, 0, null, "", "");
     }
 
     public static Rest ok(String msg) {
-        return new Rest(200, 0, null, msg,"");
+        return new Rest(200, 0, null, msg, "");
     }
 
     public static Rest okData(Object data) {
-        return new Rest(200, 0, data, "ok","");
+        return new Rest(200, 0, data, "ok", "");
     }
 
     public static Rest failure(String msg) {
         // TODO Auto-generated method stub
-        return new Rest(500, 0, null, msg,"");
+        return new Rest(500, 0, null, msg, "");
     }
 
-    public static Rest okUrl(String url) {
-        return new Rest(200, 0, null, null, url);
+    public static Rest okUrl(String msg, String url) {
+        return new Rest(200, 0, null, msg, url);
     }
 
     ;

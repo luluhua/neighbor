@@ -49,33 +49,65 @@
         var sender = "${(sender)!}";
         if (content != null && content != "") {
 
-            $.ajax({
-                type: "post",
-                url: "${ctx}/message/doAdd",
-                data: {
-                    "userId": sender,
-                    "content": content,
-                },
-                success: function (data) {
-                    if (data.code == 200) {
-                        var html = '<div class="boxscroll_dl right-u">' +
-                                '<img src="${(me.avatarUrl)!}" onerror="this.src=\'${ctx}/base/images/default.jpg\'">' +
-                                '<div class="haeasf">' +
-                                '<p>' + content + '</p>' +
-                                '</div>' +
-                                '</div>'
-                        $("#boxscroll").append(html);
-                        $("#content").val("")
-                        var scrollHeight = $('#boxscroll').prop("scrollHeight");
-                        $('#boxscroll').scrollTop(scrollHeight, 200);
+            activity.post('${ctx}/message/doAdd',
+                    {
+                        userId: sender,
+                        content: content,
+                    },
+                    function (result) {
+                        if (result.code == 200) {
+                            var html = '<div class="boxscroll_dl right-u">' +
+                                    '<img src="${(me.avatarUrl)!}" onerror="this.src=\'${ctx}/base/images/default.jpg\'">' +
+                                    '<div class="haeasf">' +
+                                    '<p>' + content + '</p>' +
+                                    '</div>' +
+                                    '</div>'
+                            $("#boxscroll").append(html);
+                            $("#content").val("")
+                            var scrollHeight = $('#boxscroll').prop("scrollHeight");
+                            $('#boxscroll').scrollTop(scrollHeight, 200);
 
-                        $.getJSON('${ctx}/message/sendmsg?sender=' + sender + '&content=' + content, function (data) {
-                            alert(data);
-                        });
-                    }
+                            $.getJSON('${ctx}/message/sendmsg?sender=' + sender + '&content=' + content, function (data) {
 
-                }
-            });
+                            });
+                        } else {
+                            layer.msg("系统异常，请稍后重试！", {
+                                time: 1000,
+                                end: function () {
+                                }
+                            })
+                        }
+                    });
+
+
+        <#--$.ajax({-->
+        <#--type: "post",-->
+        <#--url: "${ctx}/message/doAdd",-->
+        <#--data: {-->
+        <#--"userId": sender,-->
+        <#--"content": content,-->
+        <#--},-->
+        <#--success: function (data) {-->
+        <#--if (data.code == 200) {-->
+        <#--var html = '<div class="boxscroll_dl right-u">' +-->
+        <#--'<img src="${(me.avatarUrl)!}" onerror="this.src=\'${ctx}/base/images/default.jpg\'">' +-->
+        <#--'<div class="haeasf">' +-->
+        <#--'<p>' + content + '</p>' +-->
+        <#--'</div>' +-->
+        <#--'</div>'-->
+        <#--$("#boxscroll").append(html);-->
+        <#--$("#content").val("")-->
+        <#--var scrollHeight = $('#boxscroll').prop("scrollHeight");-->
+        <#--$('#boxscroll').scrollTop(scrollHeight, 200);-->
+
+        <#--$.getJSON('${ctx}/message/sendmsg?sender=' + sender + '&content=' + content, function (data) {-->
+        <#--alert(data);-->
+        <#--});-->
+        <#--}-->
+
+        <#--}-->
+        <#--});-->
+
         }
 
     })
