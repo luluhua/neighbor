@@ -127,7 +127,7 @@
                         <p>购买价：<#if sel.sellStale==0>不出售<#else >￥<span> ${(sel.sellPrice)!'--'}</span></#if></p>
                         <p>出借价：￥<span>${(sel.price)!}</span>/天</p>
                     </div>
-                    <a class="gotu_daile" href="${ctx}/resource/particulars/${(sel.id)!}">立即购买</a>
+                    <a class="gotu_daile" href="${ctx}/resource/particulars/${(sel.id)!}">查看详情</a>
                 </h3>
             </li>
         </#list>
