@@ -1715,6 +1715,18 @@ select::-ms-expand {
     \ font-size: 14px;
 }
 
+.mpas {
+    margin-left: 90px;
+    padding: 5px 15px;
+    border: none;
+    background-color: #ed6e37;
+    color: #fff;
+    font-family: '微软雅黑';
+    cursor: pointer;
+    font-size: 14px;
+    display: inline-block;
+}
+
 .password_ol button {
     margin-left: 90px;
     padding: 5px 15px;

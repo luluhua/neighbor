@@ -22,6 +22,7 @@ import com.citysmart.ucenter.mybatis.model.app.TLjUser;
 import com.citysmart.ucenter.mybatis.model.app.TLjUserSecurity;
 import com.google.code.kaptcha.impl.DefaultKaptcha;
 import com.tuyang.beanutils.BeanCopyUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.subject.Subject;
@@ -126,39 +127,16 @@ public class loginController extends SuperController {
              * 记录登录日志
              */
             sysLogService.insertLog("用户登录成功", userName, IpUtil.getIpAddr(request), 1, 1);
-            return redirectTo(("/m/login".equals(header) || header == "") ? "/index" : "/login");
+            if ("/login".equals(header) || StringUtils.isBlank(header)) {
+                header = "/index";
+            }
+            return redirectTo(header);
         } catch (Exception e) {
             e.printStackTrace();
             model.addFlashAttribute("error", "用户名或密码错误");
             sysLogService.insertLog("用户登录失败：" + e.getMessage(), userName, IpUtil.getIpAddr(request), 1, 1);
             return redirectTo("/login");
         }
-    }
-
-
-    private String createJwtToken(TLjUser user) throws Exception {
-        //创建 jwt token
-        Long time = Long.valueOf(RedisUtil.getValueByKey("jwt.expire.time"));
-        Long refreshtime = Long.valueOf(RedisUtil.getValueByKey("jwt.refresh.time"));
-        String token = JWTUtil.sign(user.getGuid(), user.getPassword(), time);
-        Subject currentUser = SecurityUtils.getSubject();
-        JwtToken jwtToken = new JwtToken(token);
-        if (!currentUser.isAuthenticated()) {
-            currentUser.login(jwtToken);
-            //存入redis
-//            RedisApiUtils.setApi(tAppUser.getUsername(), token, Integer.parseInt(time.toString()));
-//            //获取过期时间及刷新时间
-//            AppUserVo appUserVo = BeanCopyUtils.copyBean(tAppUser, AppUserVo.class);
-//            byte[] src = Base64.decodeBase64(token);
-//            DecodedJWT jwt = JWT.decode(new String(src));
-//            appUserVo.setExpiresAtTime(jwt.getExpiresAt().getTime());
-//            appUserVo.setRefreshTime(JwtUtil.getRefreshTime(jwt.getExpiresAt().getTime(), refreshtime));
-//            appUserVo.setToken(token);
-//            //绑定用户设备
-//            bindingUserDevice(tAppUser);
-            return redirectTo("/login");
-        }
-        return redirectTo("/login");
     }
 
 

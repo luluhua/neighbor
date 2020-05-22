@@ -63,7 +63,7 @@ public class SimpleCodeController extends SuperController {
         String clientId = request.getParameter("clientId");
         String state = request.getParameter("state");
         StringBuffer getCodeUrl = new StringBuffer();
-        getCodeUrl.append("/m/code/get");
+        getCodeUrl.append("/code/get");
         getCodeUrl.append("?clientId=").append(clientId);
         getCodeUrl.append("&redirectUri=").append(urlDecoder(redirectUri));
         if(StringUtils.isNotBlank(state)){

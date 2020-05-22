@@ -39,7 +39,8 @@ public class SuperController {
     protected ServletContext application;
 
     @Autowired
-    protected  Environment env;//当
+    protected Environment env;//当
+
     /**
      * 是否为 post 请求
      */
@@ -76,11 +77,11 @@ public class SuperController {
      * @return
      */
     protected <T> Page<T> getPage(int pageNumber, int pageSize) {
-        if(pageNumber<0){
-            pageNumber=1;
+        if (pageNumber < 0) {
+            pageNumber = 1;
         }
-        if(pageSize<0||pageSize>200){
-            pageSize=15;
+        if (pageSize < 0 || pageSize > 200) {
+            pageSize = 15;
         }
         return new Page<T>(pageNumber, pageSize);
     }
@@ -93,6 +94,7 @@ public class SuperController {
      * @return
      */
     protected String redirectTo(String url) {
+
         StringBuffer rto = new StringBuffer("redirect:");
         rto.append(url);
         return rto.toString();
@@ -134,10 +136,11 @@ public class SuperController {
 
     /**
      * 获取配置文件内容
+     *
      * @param key
      * @return
      */
-    protected  String getProperty(String key){
+    protected String getProperty(String key) {
         return env.getProperty(key);
     }
 

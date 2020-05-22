@@ -74,7 +74,7 @@ public class SqController extends SuperController {
         //获取token
         try{
             Map<String, String> map =new HashMap(1);
-            map.put("redirect_uri", "https://qxqtest.gxgov.net/m/sq/getCode");
+            map.put("redirect_uri", "https://qxqtest.gxgov.net/sq/getCode");
             map.put("code",code);
             map.put("grant_type", "authorization_code");
             map.put("client_id", "01704038a299437486b7e4367ef772e1");
@@ -140,7 +140,7 @@ public class SqController extends SuperController {
         try{
 
             Map<String, String> map =new HashMap(1);
-            map.put("redirect_uri", "http://192.168.1.45:8083/m/sq/getCodeTest");
+            map.put("redirect_uri", "http://192.168.1.45:8083/sq/getCodeTest");
             map.put("code",code);
             map.put("grant_type", "authorization_code");
             map.put("client_id", "01704038a299437486b7e4367ef772e1");

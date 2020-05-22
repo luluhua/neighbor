@@ -161,7 +161,7 @@
                             <p>规格：${(ma.specification)!'--'}</p>
                             <p>购买价：<#if ma.sellStale==0>不出售<#else >￥<span> ${(ma.sellPrice)!'--'}</span></#if></p>
                             <p>出借价：￥<span>${(ma.price)!}</span>/天</p>
-                            <a class="gotu_daile" href="${ctx}/resource/particulars/${(ma.id)!}">立即购买</a>
+                            <a class="gotu_daile" href="${ctx}/resource/particulars/${(ma.id)!}">查看详情</a>
                         </h4>
                     </dd>
                 </#if>
@@ -196,7 +196,7 @@
                     <p>规格：${(sj.specification)!'--'}</p>
                     <p>购买价：<#if sj.sellStale==0>不出售<#else >￥<span> ${(sj.sellPrice)!'--'}</span></#if></p>
                     <p>出借价：￥<span>${(sj.price)!}</span>/天</p>
-                    <a class="gotu_daile" href="${ctx}/resource/particulars/${(sj.id)!}">立即购买</a>
+                    <a class="gotu_daile" href="${ctx}/resource/particulars/${(sj.id)!}">查看详情</a>
                 </h4>
             </dd>
             </#if>
@@ -232,7 +232,7 @@
                     <p>购买价：<#if zyd.sellStale==0>不出售<#else >￥<span> ${(zyd.sellPrice)!'--'}</span></#if></p>
                     <p>出借价：￥<span>${(zyd.price)!}</span>/天
                     <p>
-                        <a class="gotu_daile" href="${ctx}/resource/particulars/${(zyd.id)!}">立即购买</a>
+                        <a class="gotu_daile" href="${ctx}/resource/particulars/${(zyd.id)!}">查看详情</a>
                 </h4>
             </dd>
                 </#if>
@@ -270,7 +270,7 @@
                     <p>购买价：<#if car.sellStale==0>不出售<#else >￥<span> ${(car.sellPrice)!'--'}</span></#if></p>
                     <p>出借价：￥<span>${(car.price)!}</span>/天
                     <p>
-                        <a class="gotu_daile" href="${ctx}/resource/particulars/${(car.id)!}">立即购买</a>
+                        <a class="gotu_daile" href="${ctx}/resource/particulars/${(car.id)!}">查看详情</a>
                 </h4>
             </dd>
                 </#if>
@@ -290,9 +290,9 @@
 
 </@body>
 <@footer>
-    <script type="text/javascript" src="${ctx}/wholesalestore/js/banner.js"></script>
+<script type="text/javascript" src="${ctx}/wholesalestore/js/banner.js"></script>
 <script type="text/javascript" src="${ctx}/wholesalestore/js/index.js"></script>
-    <script type="text/javascript" src="${ctx}/wholesalestore/js/lunbo.min.js"></script>
+<script type="text/javascript" src="${ctx}/wholesalestore/js/lunbo.min.js"></script>
 <script type="text/javascript" src="${ctx}/wholesalestore/js/passbyvalue.js"></script>
 <script type="text/javascript" src="${ctx}/base/js/jquery.kxbdmarquee.js"></script>
 <script>

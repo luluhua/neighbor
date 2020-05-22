@@ -3,9 +3,14 @@ package com.citysmart.ucenter.module.wholesalestore.controller;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.citysmart.common.bean.Rest;
 import com.citysmart.common.controller.SuperController;
+import com.citysmart.common.json.JsonFailResult;
+import com.citysmart.common.json.JsonResult;
+import com.citysmart.common.json.JsonSuccessResult;
 import com.citysmart.common.util.CommonUtil;
+import com.citysmart.common.util.PBKDF2Util;
 import com.citysmart.common.util.TimeUtil;
 import com.citysmart.ucenter.common.Util.*;
+import com.citysmart.ucenter.common.anno.AppLogin;
 import com.citysmart.ucenter.common.anno.Log;
 import com.citysmart.ucenter.module.appc.service.ITClientAttachmentService;
 import com.citysmart.ucenter.module.appc.service.ITLjUserInfoService;
@@ -13,19 +18,27 @@ import com.citysmart.ucenter.module.appc.service.ITLjUserService;
 import com.citysmart.ucenter.module.commodity.service.ITGoodsGradeService;
 import com.citysmart.ucenter.module.commodity.service.ITGoodsService;
 import com.citysmart.ucenter.module.mail.IMailService;
+import com.citysmart.ucenter.module.system.service.ITLjUserSecurityService;
 import com.citysmart.ucenter.mybatis.entity.vo.UserScoreVO;
 import com.citysmart.ucenter.mybatis.enums.Delete;
+import com.citysmart.ucenter.mybatis.model.TAppUser;
 import com.citysmart.ucenter.mybatis.model.TSysAttachment;
+import com.citysmart.ucenter.mybatis.model.TSysUser;
+import com.citysmart.ucenter.mybatis.model.TSysUserSecurity;
 import com.citysmart.ucenter.mybatis.model.app.TClientAttachment;
 import com.citysmart.ucenter.mybatis.model.app.TLjUser;
 import com.citysmart.ucenter.mybatis.model.app.TLjUserInfo;
+import com.citysmart.ucenter.mybatis.model.app.TLjUserSecurity;
 import com.citysmart.ucenter.mybatis.model.commodity.TGoods;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.DateFormatUtils;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.LockedAccountException;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -57,6 +70,9 @@ public class personalController extends SuperController {
 
     @Autowired
     private ITLjUserInfoService userInfoService;
+
+    @Autowired
+    private ITLjUserSecurityService userSecurityService;
 
     @Autowired
     public IMailService mailService;
@@ -313,6 +329,79 @@ public class personalController extends SuperController {
             return "/wholesalestore/personal/myGoods";
         }
         return "/wholesalestore/login";
+    }
+
+    @RequestMapping("/mps")
+    public String mps(Model model) {
+        TLjUser ljUser = ShiroUtil.getSessionUser();
+        if (ljUser != null) {
+            return "/wholesalestore/personal/memberPas";
+        }
+        return "/wholesalestore/login";
+    }
+
+    /**
+     * 修改密码
+     *
+     * @param password newPassword
+     * @return
+     */
+    @RequestMapping("/alterPass")
+    @ResponseBody
+    @Log("修改密码")
+    @AppLogin
+    public Rest alterPass(String password, String newPassword) {
+        if (!StringUtils.isNotBlank(password)) {
+            return Rest.failure("请填写原密码");
+        }
+        if (!StringUtils.isNotBlank(newPassword)) {
+            return Rest.failure("请填写新密码");
+        }
+        if (!PatternUtil.validatorPassword(newPassword)) {
+            return Rest.failure("密码必须是字母和数字不少6位数");
+        }
+        TLjUser ljUser = ShiroUtil.getSessionUser();
+        if (ljUser != null) {
+            try {
+                EntityWrapper<TLjUserSecurity> ew = new EntityWrapper<TLjUserSecurity>();
+                ew.eq("user_id", ljUser.getId());
+                TLjUserSecurity security = userSecurityService.selectOne(ew);
+
+                Subject subject = SecurityUtils.getSubject();
+                TLjUser ljser = (TLjUser) subject.getPrincipal();
+                //查询旧密码
+                TLjUserSecurity ljUserSecurity = userSecurityService
+                        .selectOne(new EntityWrapper<TLjUserSecurity>().eq("user_id", ljser.getId()));
+                if (ljUserSecurity == null) {
+                    //未设置密码
+                    throw new LockedAccountException();
+                }
+                if (!PBKDF2Util.validatePassword(password, ljUserSecurity.getPassword(), ljUserSecurity.getSalt())) {
+                    return Rest.failure("旧密码输入错误");
+                }
+
+                String _3DesPassword = PBKDF2Util.createHash(password.toCharArray(), null);
+                TLjUser upUser = new TLjUser();
+                upUser.setId(ljUser.getId());
+                upUser.setPassword(PBKDF2Util.createHash(password.toCharArray(), null));
+                String hash = PBKDF2Util.createHash(password.toCharArray(), null);
+                String salt = PBKDF2Util.getSalt(hash);
+                TLjUserSecurity serSecurity = new TLjUserSecurity();
+                serSecurity.setPassword(PBKDF2Util.getHash(hash));
+                serSecurity.setSalt(salt);
+                serSecurity.setUserId(ljUser.getId());
+                boolean fa = userSecurityService.alterPass(upUser, serSecurity);
+                if (fa) {
+                    return Rest.ok("修改成功");
+                } else {
+                    return Rest.failure("修改失败");
+                }
+            } catch (Exception e) {
+                logger.error("修改登录密码接口异常：" + e.getMessage());
+                return Rest.failure("系统异常！请重试");
+            }
+        }
+        return Rest.failure("登录已过期，请从新登录");
     }
 
 

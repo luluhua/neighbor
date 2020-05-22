@@ -1,6 +1,6 @@
 package com.citysmart.common.json;
 
-public class JsonFailResult extends JsonResult{
+public class JsonFailResult extends JsonResult {
     public JsonFailResult() {
 
         super(1, FAIL, null);
@@ -27,9 +27,12 @@ public class JsonFailResult extends JsonResult{
     }
 
     public JsonFailResult(int ret, String msg) {
-        super(ret, msg,"");
+        super(ret, msg, "");
     }
+
     public JsonFailResult(String msg) {
-        super(1, msg,"");
+        super(1, msg, "");
     }
+
+
 }

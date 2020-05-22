@@ -1,5 +1,6 @@
 <!doctype html>
 <#include "../common/base.ftl">
+<#include "../common/layout_dl.ftl">
 <html>
 <head>
     <meta charset="utf-8">
@@ -10,7 +11,8 @@
 </head>
 <link rel="stylesheet" type="text/css" href="${ctx}/wholesalestore/css/css.css"/>
 <link rel="stylesheet" type="text/css" href="${ctx}/wholesalestore/css/login.css"/>
-
+<@js>
+</@js>
 
 <!--登陆-->
 
@@ -27,7 +29,7 @@
         <!--导航-->
         <nav class="log_nav">
             <ul>
-                <li><a href="/index.html" target="_Blank">简单生活网</a></li>
+                <li><a href="/index">简单生活网</a></li>
                 <li><a href="javascript:void{0}" onclick="Classify('ALL')">论坛</a></li>
             </ul>
         </nav>
@@ -327,14 +329,14 @@
                 },
                 function (result) {
                     if (result.code == 200) {
-                        activity.iconYesTooltip(json.msg)
+                        activity.iconYesTooltip(result.msg)
                         loganresCofg.upImgCode();
                         $("#enroll_re").hide();
                         $("#codedaojis").show();
                         countDown("enroll_re", "codedaojis");
 
                     } else {
-                        activity.iconNoTooltip(json.msg)
+                        activity.iconNoTooltip(result.msg)
                         loganresCofg.upImgCode();
                     }
                     //
@@ -366,14 +368,14 @@
                 },
                 function (result) {
                     if (result.code == 200) {
-                        activity.iconYesTooltip(json.msg)
+                        activity.iconYesTooltip(result.msg)
                         loganresCofg.upImgCode();
                         $("#enroll_lon").hide();
                         $("#codedaojisAnlogin").show();
                         countDown("enroll_lon", "codedaojisAnlogin");
 
                     } else {
-                        activity.iconNoTooltip(json.msg)
+                        activity.iconNoTooltip(result.msg)
                         loganresCofg.upImgCode();
                     }
                 })
@@ -397,19 +399,23 @@
     }
     var flag = 1;
     var i = 60;
+    var hideId;
+    var showId;
 
     function countDown(hideId, showId) {
+        hideId = hideId;
+        showId = showId;
         i = i - 1;
-        $("#" + hideId).html(i + "秒后重发");
+        $("#" + showId).html(i + "秒后重发");
         if (i == 0) {
-            $("#" + showId).show();
-            $("#" + showId).html("重新发送");
-            $("#" + hideId).hide();
+            $("#" + hideId).show();
+            $("#" + hideId).html("重新发送");
+            $("#" + showId).hide();
             flag = 1;
             i = 60;
             return;
         }
-        setTimeout('countDown()', 1000);
+        setTimeout('countDown(hideId,showId)', 1000);
     }
 </script>
 <script type="text/javascript" src="${ctx}/base/js/jquery-confirm/jquery-confirm.min.js"></script>

@@ -3,7 +3,6 @@
     <link href="${ctx}/wholesalestore/css/css.css" rel="stylesheet" type="text/css"/>
     <link href="${ctx}/wholesalestore/css/common.css" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" type="text/css" href="${ctx}/wholesalestore/css/style.css"/>
-    <link href="${ctx}/base/js/layui/css/layui.css" rel="stylesheet"/>
 </@header>
 <@js>
 

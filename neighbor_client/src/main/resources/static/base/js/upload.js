@@ -26,7 +26,7 @@
         var uuid = $("#uuid").val();
         var uploadFile = upload.render({
             elem: '#filseUpload', //绑定元素
-            url: '/m/client/tSysAttachment/file/upload', //上传接口
+            url: '/client/tSysAttachment/file/upload', //上传接口
             exts: 'jpg|png|jpeg',//限定上传类型
             accept: 'images',//指定允许上传时校验的文件类型 images（图片）、file（所有文件）、video（视频）、audio（音频）
             acceptMime: 'image/jpg, image/png, image/jpeg',//只筛选上述类型图片
@@ -89,7 +89,7 @@
 
         var avatarUpload = upload.render({
             elem: '#avatarUpload', //绑定元素
-            url: '/m/resource/file/setAvatar', //上传接口
+            url: '/resource/file/setAvatar', //上传接口
             exts: 'jpg|png|jpeg',//限定上传类型
             accept: 'images',//指定允许上传时校验的文件类型 images（图片）、file（所有文件）、video（视频）、audio（音频）
             acceptMime: 'image/jpg, image/png, image/jpeg',//只筛选上述类型图片

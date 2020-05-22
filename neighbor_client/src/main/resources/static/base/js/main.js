@@ -14,6 +14,13 @@ if (typeof (activity) == 'undefined') {
                 return false;
             }
         },
+        isBlank: function (e) {
+            if (e == "" && e.length == 0) {
+                return true;
+            } else {
+                return false;
+            }
+        },
         //文字提示
         textTooltip: function (msg) {
             layer.msg(msg);
@@ -45,8 +52,15 @@ if (typeof (activity) == 'undefined') {
             });
 
         },
+        processResult: function (result) {
+            if (result.code == 110201) {
+                window.location.replace("verfiy.html?needLogin=true");
+                return false;
+            }
+            return true;
+        },
         post: function (url, data, funcSucc, funcFailed, funcComplete) {
-            var token = mainNet.getToken();
+            // var token = mainNet.getToken();
             $.ajax({
                 type: 'POST',
                 url: url,
@@ -56,7 +70,7 @@ if (typeof (activity) == 'undefined') {
                     if (funcComplete) funcComplete();
                 },
                 success: function (result) {
-                    if (!mainNet.processResult(result)) {
+                    if (!activity.processResult(result)) {
                         return;
                     }
                     if (funcSucc) funcSucc(result);

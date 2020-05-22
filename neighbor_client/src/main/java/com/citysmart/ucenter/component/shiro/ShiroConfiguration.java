@@ -87,7 +87,7 @@ public class ShiroConfiguration {
         shiroFilterFactoryBean.setSecurityManager(securityManager);
         //登录
         shiroFilterFactoryBean.setLoginUrl("/login");
-        shiroFilterFactoryBean.setUnauthorizedUrl("/eec/index");
+        shiroFilterFactoryBean.setUnauthorizedUrl("/index");
         //首页
         shiroFilterFactoryBean.setSuccessUrl("/index");
         //错误页面，认证不通过跳转

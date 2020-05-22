@@ -114,10 +114,10 @@
 
     function connect(user_id) {
         if ('WebSocket' in window) {
-            ws = new WebSocket("ws://127.0.0.1:9111/m/socketServer/" + user_id);
+            ws = new WebSocket("ws://127.0.0.1:9111/socketServer/" + user_id);
         }
         else if ('MozWebSocket' in window) {
-            ws = new MozWebSocket("ws://127.0.0.1:9111/m/socketServer/" + user_id);
+            ws = new MozWebSocket("ws://127.0.0.1:9111/socketServer/" + user_id);
         }
         else {
             activity.iconNoTooltip("该浏览器不支持即时聊天");
