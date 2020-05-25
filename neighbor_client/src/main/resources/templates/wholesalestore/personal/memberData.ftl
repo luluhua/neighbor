@@ -145,7 +145,7 @@
                     function (result) {
                         if (result.code == 200) {
                             $("#gender_sex").html(title);
-                            layer.msg(response.msg, {
+                            layer.msg(result.msg, {
                                 time: 1000,
                                 end: function () {
                                     gender_qx();
@@ -158,27 +158,9 @@
                                 }
                             })
                         }
+                    }, function () {
+                        activity.iconNoTooltip("系统异常！请稍后重试")
                     });
-
-
-        <#--$.post('${ctx}/resource/setGender?_dc=' + new Date().getTime(), {gender: gender}, function (response) {-->
-        <#--if (response.code == 200) {-->
-        <#--$("#gender_sex").html(title);-->
-        <#--layer.msg(response.msg, {-->
-        <#--time: 1000,-->
-        <#--end: function () {-->
-        <#--gender_qx();-->
-        <#--}-->
-        <#--})-->
-        <#--} else {-->
-        <#--layer.msg("系统异常，请稍后重试！", {-->
-        <#--time: 1000,-->
-        <#--end: function () {-->
-        <#--}-->
-        <#--})-->
-        <#--}-->
-        <#--});-->
-
         } else {
             layer.msg('请选择性别', {
                 time: 1000,
@@ -198,7 +180,7 @@
                     function (result) {
                         if (result.code == 200) {
                             $("#nickname_").html(nickname);
-                            layer.msg(response.msg, {
+                            layer.msg(result.msg, {
                                 time: 1000,
                                 end: function () {
                                     name_hidden();
@@ -211,27 +193,9 @@
                                 }
                             })
                         }
+                    }, function () {
+                        activity.iconNoTooltip("系统异常！请稍后重试")
                     });
-
-
-        <#--$.post('${ctx}/resource/setNickname?_dc=' + new Date().getTime(), {nickname: nickname}, function (response) {-->
-        <#--if (response.code == 200) {-->
-        <#--$("#nickname_").html(nickname);-->
-        <#--layer.msg(response.msg, {-->
-        <#--time: 1000,-->
-        <#--end: function () {-->
-        <#--name_hidden();-->
-        <#--}-->
-        <#--})-->
-        <#--} else {-->
-        <#--layer.msg("系统异常，请稍后重试！", {-->
-        <#--time: 1000,-->
-        <#--end: function () {-->
-        <#--}-->
-        <#--})-->
-        <#--}-->
-        <#--})-->
-
         } else {
             layer.msg('请填写昵称！', {
                 time: 1000,
@@ -246,13 +210,13 @@
         if (activity.isNotBlank(mail)) {
             activity.post('${ctx}/resource/sendMail',
                     {
-                        nmail: mail,
+                        mail: mail,
                         jEmail: jEmail
                     },
                     function (result) {
                         if (result.code == 200) {
                             countDown();
-                            layer.msg(response.msg, {
+                            layer.msg(result.msg, {
                                 time: 1000,
                                 end: function () {
                                     $("#emailVerificationCode").hide();
@@ -260,45 +224,14 @@
                                 }
                             })
                         } else {
-                            layer.msg("系统异常，请稍后重试！", {
-                                time: 1000,
-                                end: function () {
-                                }
-                            })
+                            activity.iconNoTooltip("系统异常！请稍后重试")
                         }
+                    }, function () {
+                        activity.iconNoTooltip("系统异常！请稍后重试")
                     });
-
-
-        <#--$.post('${ctx}/resource/sendMail?_dc=' + new Date().getTime(), {-->
-        <#--mail: mail,-->
-        <#--jEmail: jEmail-->
-        <#--}, function (response) {-->
-        <#--if (response.code == 200) {-->
-        <#--countDown();-->
-        <#--layer.msg(response.msg, {-->
-        <#--time: 1000,-->
-        <#--end: function () {-->
-        <#--$("#emailVerificationCode").hide();-->
-        <#--$("#qx").show();-->
-        <#--}-->
-        <#--})-->
-        <#--} else {-->
-        <#--layer.msg(response.msg, {-->
-        <#--time: 1000,-->
-        <#--end: function () {-->
-        <#--}-->
-        <#--})-->
-        <#--}-->
-        <#--})-->
-
         } else {
-            layer.msg('请填写邮箱！', {
-                time: 1000,
-                end: function () {
-                }
-            })
+            activity.shakeTooltip('请填写邮箱！');
         }
-
     })
     var flag = 1;
     var i = 60;
@@ -329,7 +262,7 @@
                     function (result) {
                         if (result.code == 200) {
                             $("#email").html(email);
-                            layer.msg(response.msg, {
+                            layer.msg(result.msg, {
                                 time: 1000,
                                 end: function () {
                                     email_qx();

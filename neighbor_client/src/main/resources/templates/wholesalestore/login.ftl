@@ -339,20 +339,6 @@
                         activity.iconNoTooltip(result.msg)
                         loganresCofg.upImgCode();
                     }
-                    //
-                    //
-                    // $.post(dataUrl, {"phone": phone, "captcha": imgCode}, function (json) {
-                    //     if (json.code == 200) {
-                    //         activity.iconYesTooltip(json.msg)
-                    //         loganresCofg.upImgCode();
-                    //         $("#enroll_re").hide();
-                    //         $("#codedaojis").show();
-                    //         countDown();
-                    //     } else {
-                    //         activity.iconNoTooltip(json.msg)
-                    //         loganresCofg.upImgCode();
-                    //     }
-                    // });
                 })
     });
 
@@ -415,7 +401,7 @@
             i = 60;
             return;
         }
-        setTimeout('countDown(hideId,showId)', 1000);
+        setTimeout('countDown(' + hideId + ',' + showId + ')', 1000);
     }
 </script>
 <script type="text/javascript" src="${ctx}/base/js/jquery-confirm/jquery-confirm.min.js"></script>

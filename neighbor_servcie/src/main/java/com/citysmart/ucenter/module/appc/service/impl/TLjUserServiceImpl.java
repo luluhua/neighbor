@@ -50,7 +50,6 @@ public class TLjUserServiceImpl extends ServiceImpl<TLjUserMapper, TLjUser> impl
         //保存用户
         userMapper.insert(user);
         //设置登录密码
-        // 使用用户输入的密码 update zyj 20190618
         String hash = PBKDF2Util.createHash(vo.getPassword().toCharArray(), null);
         String salt = PBKDF2Util.getSalt(hash);
         String password = PBKDF2Util.getHash(hash);

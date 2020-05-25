@@ -75,7 +75,11 @@
             </div>
             <div class="clear"></div>
             <div class="infor_cart" id="infor_cart">
-                <a href="javascript:void(0)">联系TA</a>
+            <#--<a href="javascript:void(0)">联系TA</a>-->
+                <a class="dialog" href="javascript:;" data-title="与 ${(users.nickname)!'商家'} 聊天"
+                   data-url="${ctx}/message/edit/${(users.id)!}" data-width="770" data-height="700"
+                   data-toggle="tooltip" title="与 ${(users.nickname)!'商家'} 聊天"
+                   data-placement="bottom">联系TA</a>
                 <a href="javascript:void(0)" class="color">租用</a>
 
 
@@ -176,7 +180,8 @@
 <!--end-->
 </@body>
 <@footer>
-
+<script src="${ctx}/base/js/init.js" type="text/javascript"></script>
+<script src="${ctx}/base/js/x-layui.js" type="text/javascript"></script>
 <script>
     $("*[data-tiggle='noTooltip']").click(function () {
         var dataUrl = $(this).attr("data-submit-url");

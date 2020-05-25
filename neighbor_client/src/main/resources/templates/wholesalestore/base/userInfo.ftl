@@ -10,7 +10,7 @@
         </p>
     </dd>
     <dt>
-        <a href="javascript:void">评分<b>${(userscore.score)!}</b></a>
+        <a href="javascript:void">评分<b>${(userscore.score)!0}</b></a>
     </dt>
 
     <dt>

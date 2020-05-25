@@ -15,6 +15,5 @@ import org.springframework.transaction.annotation.Transactional;
  */
 public interface ITLjUserSecurityService extends IService<TLjUserSecurity> {
 
-    boolean alterPass(TLjUser user, TLjUserSecurity sec);
 
 }

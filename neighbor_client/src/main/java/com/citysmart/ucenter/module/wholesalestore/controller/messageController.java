@@ -147,7 +147,7 @@ public class messageController extends SuperController {
             EntityWrapper<TLjUserInfo> ew = new EntityWrapper<TLjUserInfo>();
             ew.eq("user_id", ljUser.getId());
             TLjUserInfo userInfo = userInfoService.selectOne(ew);
-            Integer status = SocketServer.sendMessage(content, ljUser.getId(), sender, (userInfo.getAvatarUrl() != null && userInfo.getAvatarUrl() != "") ? ICON_PREFIX + userInfo.getAvatarUrl() : "");
+            Integer status = SocketServer.sendMessage(content, ljUser.getId(), sender, (userInfo != null && userInfo.getAvatarUrl() != null && userInfo.getAvatarUrl() != "") ? ICON_PREFIX + userInfo.getAvatarUrl() : "");
             if (status == 0) {
                 EntityWrapper<TMessage> ews = new EntityWrapper<TMessage>();
                 TMessage message = new TMessage();

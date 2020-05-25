@@ -379,18 +379,13 @@ public class personalController extends SuperController {
                 if (!PBKDF2Util.validatePassword(password, ljUserSecurity.getPassword(), ljUserSecurity.getSalt())) {
                     return Rest.failure("旧密码输入错误");
                 }
-
-                String _3DesPassword = PBKDF2Util.createHash(password.toCharArray(), null);
-                TLjUser upUser = new TLjUser();
-                upUser.setId(ljUser.getId());
-                upUser.setPassword(PBKDF2Util.createHash(password.toCharArray(), null));
-                String hash = PBKDF2Util.createHash(password.toCharArray(), null);
-                String salt = PBKDF2Util.getSalt(hash);
                 TLjUserSecurity serSecurity = new TLjUserSecurity();
-                serSecurity.setPassword(PBKDF2Util.getHash(hash));
+                String hash = PBKDF2Util.createHash(newPassword.toCharArray(), null);
+                String salt = PBKDF2Util.getSalt(hash);
+                String newPa = PBKDF2Util.getHash(hash);
+                serSecurity.setPassword(newPa);
                 serSecurity.setSalt(salt);
-                serSecurity.setUserId(ljUser.getId());
-                boolean fa = userSecurityService.alterPass(upUser, serSecurity);
+                boolean fa = userSecurityService.update(serSecurity, new EntityWrapper<TLjUserSecurity>().eq("user_id", ljUser.getId()));
                 if (fa) {
                     return Rest.ok("修改成功");
                 } else {

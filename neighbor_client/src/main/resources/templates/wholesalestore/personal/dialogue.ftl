@@ -79,7 +79,6 @@
                         }
                     });
 
-
         <#--$.ajax({-->
         <#--type: "post",-->
         <#--url: "${ctx}/message/doAdd",-->

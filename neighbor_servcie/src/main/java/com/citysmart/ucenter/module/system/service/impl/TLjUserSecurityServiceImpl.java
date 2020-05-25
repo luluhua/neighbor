@@ -33,18 +33,5 @@ public class TLjUserSecurityServiceImpl extends ServiceImpl<TLjUserSecurityMappe
     @Autowired
     private ITLjUserService userService;
 
-    @Override
-    @Transactional
-    public boolean alterPass(TLjUser user, TLjUserSecurity sec) {
-        try {
-            userService.update(user, new EntityWrapper<TLjUser>().eq("id", user.getId()));
-            userSecurityService.update(sec, new EntityWrapper<TLjUserSecurity>().eq("user_id", sec.getUserId()));
-        } catch (Exception e) {
-            e.getMessage();
-            TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
-            return false;
-        }
-        return true;
-    }
 
 }
