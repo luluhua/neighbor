@@ -276,30 +276,6 @@
                             })
                         }
                     });
-
-
-        <#--$.post('${ctx}/resource/setEmail?_dc=' + new Date().getTime(), {-->
-        <#--email: email,-->
-        <#--code: code-->
-        <#--}, function (response) {-->
-        <#--if (response.code == 200) {-->
-        <#--$("#email").html(email);-->
-        <#--layer.msg(response.msg, {-->
-        <#--time: 1000,-->
-        <#--end: function () {-->
-        <#--email_qx();-->
-        <#--;-->
-        <#--}-->
-        <#--})-->
-        <#--} else {-->
-        <#--layer.msg(response.msg, {-->
-        <#--time: 1000,-->
-        <#--end: function () {-->
-        <#--}-->
-        <#--})-->
-        <#--}-->
-        <#--})-->
-
         } else {
             layer.msg('请填写昵称！', {
                 time: 1000,
