@@ -29,7 +29,7 @@
         <mybatis-plus.version>2.3</mybatis-plus.version>
         <mybatis-plus-springboot.version>1.0.5</mybatis-plus-springboot.version>
         <mybatis-springboot.version>1.3.0</mybatis-springboot.version>
-        <mysql.version>5.1.32</mysql.version>
+        <mysql.version>8.0.28</mysql.version>
         <jackson.version>2.9.5</jackson.version>
         <druid.version>1.0.29</druid.version>
         <servlet-api.version>3.0.1</servlet-api.version>
