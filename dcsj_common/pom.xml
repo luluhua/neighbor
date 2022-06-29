@@ -41,7 +41,7 @@
         <lombok.version>1.18.4</lombok.version>
         <java-jwt.version>3.3.0</java-jwt.version>
         <dom4j.version>1.6.1</dom4j.version>
-        <poi.version>4.0.0</poi.version>
+        <poi.version>4.1.1</poi.version>
         <coobird.version>0.4.8</coobird.version>
         <javanps.version>2.3.2</javanps.version>
     </properties>
